@@ -19,6 +19,8 @@ function App() {
       setIsScroll(false);
     }
   });
+
+  console.log(process.env.REACT_APP_BASE_URL ,"base url")
   return (<>
     {isScroll && <ScrollUp />}
     <Routes>
