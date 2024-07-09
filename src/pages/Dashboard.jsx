@@ -1,10 +1,12 @@
 import React from 'react'
+import Button from '../common/Button/Button'
+import Proutes from '../common/Proutes'
 
 function Dashboard() {
   return (
-    <div>
-      
-    </div>
+    <Proutes>
+    <Button>hello</Button>
+    </Proutes>
   )
 }
 

@@ -5,11 +5,11 @@ const apiInstance = axios.create({
 
 apiInstance.interceptors.request.use(config => {
 
-
+    return config;
 
 
 }, (error) => {
-    return Promise.reject(error)
+    new Promise.reject(error.message)
 })
 
 

@@ -1,0 +1,23 @@
+.btn_wrapper {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 10px;
+
+    button {
+        color: #fffffff8;
+        padding: 10px 20px;
+        border: 1px solid #2162c42a;
+        text-transform: capitalize;
+        font-weight: 600;
+        border-radius: 4px;
+        background-color: #2162c4ee;
+        transition: all linear 0.4s;
+
+        &:hover {
+            color: white;
+            background-color: #2476f1ee;
+
+        }
+    }
+}
