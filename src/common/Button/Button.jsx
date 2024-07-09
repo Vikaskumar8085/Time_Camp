@@ -1,10 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
-function Button({ children }) {
+function Button({ onclick, children }) {
     return (
         <>
             <div className="btn_wrapper">
-                <button>
+                <button onClick={onclick}>
                     {children}
                 </button>
             </div>
@@ -13,4 +14,7 @@ function Button({ children }) {
     )
 }
 
-export default Button
+export default Button;
+
+
+

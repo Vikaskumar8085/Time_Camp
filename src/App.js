@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 import Loader from './common/Loader/Loader';
 import ScrollUp from './common/ScrollUp/ScrollUp';
 import Dashboard from './pages/Dashboard';
@@ -8,6 +9,7 @@ import Login from './pages/Login';
 import SiginUp from './pages/SiginUp';
 function App() {
   const [isScroll, setIsScroll] = useState(false);
+  const isLoad = useSelector(state => state.loader.loading)
   window.addEventListener("scroll", () => {
 
     if (
@@ -20,8 +22,9 @@ function App() {
     }
   });
 
-  console.log(process.env.REACT_APP_BASE_URL ,"base url")
+  console.log(process.env.REACT_APP_BASE_URL, "base url")
   return (<>
+    {isLoad && <Loader />}
     {isScroll && <ScrollUp />}
     <Routes>
       <Route path="/" index element={<Dashboard />} />
