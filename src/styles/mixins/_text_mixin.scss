@@ -1,7 +1,7 @@
 @mixin text-mixin ($size, $color) {
     text-decoration: none;
     text-transform : capitalize;
-    letter-spacing : 1px;
+    letter-spacing : 0.4px;
     font-size      : $size;
     color          : $color;
 
