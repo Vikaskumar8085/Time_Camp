@@ -8,11 +8,10 @@ function Proutes({ children }) {
         }
     }, [0])
 
-
     return (
-        <div>
+        <>
             {children}
-        </div>
+        </>
     )
 }
 

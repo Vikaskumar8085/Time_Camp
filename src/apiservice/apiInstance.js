@@ -6,10 +6,7 @@ const apiInstance = axios.create({
 });
 
 apiInstance.interceptors.request.use(config => {
-
     return config;
-
-
 }, (error) => {
     new Promise.reject(error.message)
 })
