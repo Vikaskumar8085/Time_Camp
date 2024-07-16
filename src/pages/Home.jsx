@@ -1,10 +1,16 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import Card from "../common/Cards/Card";
 import Image from "../common/Image/Image";
+import Input from "../common/Input/Input";
 
 function Home() {
   return (
     <>
+      <Helmet>
+        <title> World</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <Card>
         <article>
           <h1>hello</h1>
@@ -31,6 +37,7 @@ function Home() {
         </picture> */}
         <Image data={"https://www.w3schools.com/tags/img_pink_flowers.jpg"} />
       </Card>
+      <Input labelText={"Name"} placeholder="hello" />
     </>
   );
 }

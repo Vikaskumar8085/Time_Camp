@@ -4,19 +4,17 @@
 
 
 
-<<<<<<< HEAD
-=======
 :root {
     --white-color:#{$bg-color};
 }
->>>>>>> ed87da99fd05d7efb141db2601b73febc2350084
 
 * {
-    margin    : 0px;
-    padding   : 0px;
+    margin: 0px;
+    padding: 0px;
     box-sizing: border-box;
 
 }
+
 :root {
     --white-color: white
 }
@@ -29,22 +27,28 @@ h3,
 h4,
 h5,
 h6 {
-    font-family   : "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
     letter-spacing: 0.1rem;
-    font-weight   : 800;
+    font-weight: 800;
     text-transform: uppercase;
 
 }
 
-p {
-    letter-spacing: 0.3px;
-    text-align    : justify;
-
-    word-spacing: 2px;
-    word-wrap   : normal;
+p,
+label {
+    font-family: "Quicksand", sans-serif;
+    text-align: justify;
+    font-weight: 100;
+    text-transform: capitalize;
+    word-spacing: 1px;
+    font-size: 10px;
+    word-break: break-all;
+    font-style: normal;
 }
+
+
 
 img {
     max-width: 100%;
-    height   : auto;
+    height: auto;
 }

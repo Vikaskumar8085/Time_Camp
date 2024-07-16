@@ -1,0 +1,23 @@
+.input_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+
+
+    label {
+        @include text-mixin(1rem, var(--color-one))
+    }
+
+    input {
+        padding: 5px;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.623);
+        overflow: hidden;
+        outline: none;
+
+    }
+
+
+}
+
