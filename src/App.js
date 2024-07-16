@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import Loader from "./common/Loader/Loader";
 import ScrollUp from "./common/ScrollUp/ScrollUp";
-import Dashboard from "./pages/Dashboard";
-import Login from "./pages/Login";
-import SiginUp from "./pages/SiginUp";
+import Loader from "./common/Loader";
 import Home from "./pages/Home";
+import Login from "./pages/AuthPages/Login";
+import Blog from "./pages/Blog";
+import Dashboard from "./pages/DashboardPages/Dashboard";
+import SiginUp from "./pages/AuthPages/SiginUp";
+import Contact from "./pages/Contact";
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -29,9 +30,11 @@ function App() {
       {isScroll && <ScrollUp />}
       <Routes>
         <Route path="/" index element={<Home />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SiginUp />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </>
   );

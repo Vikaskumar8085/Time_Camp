@@ -1,11 +1,17 @@
-import React from 'react'
+import React from "react";
+import Input from "../../common/Input/Input";
+import { Button } from "@mui/material";
 
 function LoginForm() {
   return (
-    <div>
-    
-    </div>
-  )
+    <>
+      <form action="">
+        <Input />
+        <Input />
+        <Button>Submit</Button>
+      </form>
+    </>
+  );
 }
 
-export default LoginForm
+export default LoginForm;

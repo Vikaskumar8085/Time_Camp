@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function LoginTitle() {
   return (
-    <div>
-      
+    <div className="login_title">
+      <h1>Login</h1>
     </div>
-  )
+  );
 }
 
-export default LoginTitle
+export default LoginTitle;

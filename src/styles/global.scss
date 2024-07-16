@@ -2,24 +2,30 @@
 @import "./index";
 @import "./variable/index";
 
-
-
 :root {
-    --white-color:#{$bg-color};
+    --white-color :#{$bg-color};
+    --color-one   :#{$color-one};
+    --color-two   :#{$color-two};
+    --color-three :#{$color-three};
+    --color-four  : #{$color-four};
+    --color-six   :#{$color-six};
+    --color-five  :#{$color-five};
 }
 
 * {
-    margin: 0px;
-    padding: 0px;
+    margin    : 0px;
+    padding   : 0px;
     box-sizing: border-box;
 
 }
 
-:root {
-    --white-color: white
-}
 
-body {}
+body {
+    max-height: 100vh;
+    height    : fit-content;
+    min-height: 100vh;
+
+}
 
 h1,
 h2,
@@ -27,28 +33,28 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Poppins", sans-serif;
+    font-family   : "Poppins", sans-serif;
     letter-spacing: 0.1rem;
-    font-weight: 800;
+    font-weight   : 800;
     text-transform: uppercase;
 
 }
 
 p,
 label {
-    font-family: "Quicksand", sans-serif;
-    text-align: justify;
-    font-weight: 100;
+    font-family   : "Quicksand", sans-serif;
+    text-align    : justify;
+    font-weight   : 100;
     text-transform: capitalize;
-    word-spacing: 1px;
-    font-size: 10px;
-    word-break: break-all;
-    font-style: normal;
+    word-spacing  : 1px;
+    font-size     : 10px;
+    word-break    : break-all;
+    font-style    : normal;
 }
 
 
 
 img {
     max-width: 100%;
-    height: auto;
+    height   : auto;
 }
