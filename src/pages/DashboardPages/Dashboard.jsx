@@ -3,14 +3,14 @@ import { setLoader } from "../../redux/slices/loaderSlice";
 import { useDispatch } from "react-redux";
 import Button from "../../common/Button";
 import Proutes from "../../common/Proutes";
+import Layout from "../../common/dashboard/Layout";
 
 function Dashboard() {
-  const dispatch = useDispatch();
-  return (
-    <Proutes>
-      <Button onclick={() => dispatch(setLoader(true))}>hello</Button>
-    </Proutes>
-  );
+  return <Proutes>
+    <Layout>
+      dashbaord
+    </Layout>
+  </Proutes>;
 }
 
 export default Dashboard;
