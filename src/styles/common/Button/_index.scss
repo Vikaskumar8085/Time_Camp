@@ -1,23 +1,22 @@
+@import "../../mixins/basic_style";
 .btn_wrapper {
-    display: block;
-    overflow: hidden;
-    position: relative;
-    margin: 10px;
+  @include basic_style;
+  margin: 10px 0px;
 
-    button {
-        color: #fffffff8;
-        padding: 10px 20px;
-        border: 1px solid #2162c42a;
-        text-transform: capitalize;
-        font-weight: 600;
-        border-radius: 4px;
-        background-color: #2162c4ee;
-        transition: all linear 0.4s;
+  button {
+    color: var(--color-white);
+    padding: 10px 20px;
+    width: 100%;
+    border: 1px solid #2162c42a;
+    text-transform: capitalize;
+    font-weight: 600;
+    border-radius: 4px;
+    background-color: var(--color-two);
+    transition: all linear 0.3s;
 
-        &:hover {
-            color: white;
-            background-color: #2476f1ee;
-
-        }
+    &:hover {
+      color: var(--color-white);
+      background-color: var(--color-five);
     }
+  }
 }

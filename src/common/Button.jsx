@@ -1,10 +1,10 @@
 import React from "react";
 
-function Button({ onclick, children, arialabel }) {
+function Button({ onclick, children, arialabel, type, ...rest }) {
   return (
     <>
       <div className="btn_wrapper">
-        <button onClick={onclick} aria-label={arialabel}>
+        <button onClick={onclick} type={type} aria-label={arialabel} {...rest}>
           {children}
         </button>
       </div>
