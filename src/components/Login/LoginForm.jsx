@@ -3,19 +3,16 @@ import Input from "../../common/Input/Input";
 import Button from "../../common/Button";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-function LoginForm() {
-  const [isPass, setIsPass] = React.useState(false);
-
+function LoginForm({ handleSubmit }) {
   const formik = useFormik({
     initialValues: {
-         Email: "",
+      Email: "",
       Password: "",
     },
-    
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      handleSubmit(values);
+      formik.resetForm();
     },
   });
   // const typevalue = isPass ? "password" : "text";
@@ -24,19 +21,19 @@ function LoginForm() {
     <>
       <div className="login_form">
         {/* <i onClick={()=>{setIsPass(!isPass)}}> {Icon}</i> */}
-        <form  onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit}>
           <Input
             name={"Email"}
             type="email"
             labelText="Email"
             placeholder="Please Enter Your Email "
-            {...formik.getFieldProps('Email')}
+            {...formik.getFieldProps("Email")}
           />
           <Input
             name={"Password"}
             type={"password"}
             labelText="Password"
-            {...formik.getFieldProps('Password')}
+            {...formik.getFieldProps("Password")}
             placeholder="Please Enter Your Password "
           />
           <Button type="submit">Submit</Button>

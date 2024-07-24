@@ -9,6 +9,7 @@ import Blog from "./pages/Blog";
 import Dashboard from "./pages/DashboardPages/Dashboard";
 import SiginUp from "./pages/AuthPages/SiginUp";
 import Contact from "./pages/Contact";
+import { Toaster } from "react-hot-toast";
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -23,11 +24,11 @@ function App() {
     }
   });
 
-  console.log(process.env.REACT_APP_BASE_URL, "base url");
   return (
     <>
       {isLoad && <Loader />}
       {isScroll && <ScrollUp />}
+
       <Routes>
         <Route path="/" index element={<Home />} />
         <Route path="/blog" element={<Blog />} />
@@ -36,6 +37,8 @@ function App() {
         <Route path="/signup" element={<SiginUp />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+    <Toaster/>
+
     </>
   );
 }

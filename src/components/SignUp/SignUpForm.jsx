@@ -4,18 +4,19 @@ import Button from "../../common/Button";
 import Input from "../../common/Input/Input";
 import { useFormik } from "formik";
 
-function SignUpForm() {
+function SignUpForm({ handleSubmit }) {
   const formik = useFormik({
     initialValues: {
       FirstName: "",
       LastName: "",
       Email: "",
       Password: "",
-      term: Boolean,
+      term: "",
     },
 
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      handleSubmit(values);
+      formik.resetForm();
     },
   });
 
@@ -26,17 +27,20 @@ function SignUpForm() {
           labelText={"First Name"}
           type="text"
           placeholder="Please enter your name"
+          autocomplete="off"
           {...formik.getFieldProps("FirstName")}
         />
         <Input
           labelText={"Last Name"}
           type="text"
           placeholder={"Please enter your last name"}
+          autocomplete="off"
           {...formik.getFieldProps("LastName")}
         />
         <Input
           labelText={"Email"}
           type="Email"
+          autocomplete="off"
           placeholder={"Please enter Your email"}
           {...formik.getFieldProps("Email")}
         />
@@ -44,16 +48,18 @@ function SignUpForm() {
         <Input
           labelText={"Password"}
           type="password"
+          autocomplete="off"
           placeholder={"Please Enter your Password"}
           {...formik.getFieldProps("Password")}
         />
 
         <div style={{ display: "flex" }}>
           <input
+            autocomplete="off"
             type="checkbox"
             {...formik.getFieldProps("term")}
             name="term"
-            id=""
+            required
           />
           &nbsp;
           <p className="mx-2">

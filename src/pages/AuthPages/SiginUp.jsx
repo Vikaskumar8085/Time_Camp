@@ -4,8 +4,9 @@ import { Helmet } from "react-helmet-async";
 import SignUpForm from "../../components/SignUp/SignUpForm";
 
 const SiginUp = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (values) => {
+    
+    console.log(values,"////");
   };
   return (
     <>
@@ -17,7 +18,7 @@ const SiginUp = () => {
           <div className="Register_title">
             <h1>Register</h1>
           </div>
-          <SignUpForm />
+          <SignUpForm handleSubmit={handleSubmit} />
         </div>
       </div>
     </>

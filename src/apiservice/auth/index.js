@@ -14,8 +14,13 @@ export const loginauth = async (payload) => {
 };
 
 // get Profile
-export const getprofile = async () => {
-  const response = await apiInstance.get();
+export const LoginStatus = async () => {
+  const response = await apiInstance.get("/user/loginStatus");
   return response;
 };
-//
+//get user
+
+export const getUserdata = async () => {
+  const response = await apiInstance.get("/user/get-user");
+  return response;
+};
