@@ -17,62 +17,64 @@ function Layout({ children }) {
   const isRole = GetUserData?.message?.Role;
 
   // login Status
-  const loginstatus = async () => {
-    try {
-      dispatch(setLoader(true));
-      const response = await LoginStatus();
-      if (response) {
-        dispatch(setLoader(false));
-        dispatch(setLoginStatus(response?.data?.message));
-      }
-    } catch (error) {
-      dispatch(setLoader(false));
-      console.log(error?.response?.data);
-    }
-  };
+  // const loginstatus = async () => {
+  //   try {
+  //     dispatch(setLoader(true));
+  //     const response = await LoginStatus();
+  //     if (response) {
+  //       dispatch(setLoader(false));
+  //       dispatch(setLoginStatus(response?.data?.message));
+  //     }
+  //   } catch (error) {
+  //     dispatch(setLoader(false));
+  //     console.log(error?.response?.data);
+  //   }
+  // };
 
   //get User role based
 
-  const GetUser = async () => {
-    try {
-      dispatch(setLoader(true));
-      const response = await getUserdata();
-      if (response.status === 200) {
-        console.log("response", response?.data?.message);
-        dispatch(setLoader(false));
-        dispatch(setGetUser(response?.data));
-      }
-      console.log(response);
-    } catch (error) {
-      dispatch(setLoader(false));
-      throw new Error(error?.response?.message);
-    }
-  };
+  // const GetUser = async () => {
+  //   try {
+  //     dispatch(setLoader(true));
+  //     const response = await getUserdata();
+  //     if (response.status === 200) {
+  //       console.log("response", response?.data?.message);
+  //       dispatch(setLoader(false));
+  //       dispatch(setGetUser(response?.data));
+  //     }
+  //     console.log(response);
+  //   } catch (error) {
+  //     dispatch(setLoader(false));
+  //     throw new Error(error?.response?.message);
+  //   }
+  // };
 
   // login auth
-  const isAuth = () => {
-    if (sessionStorage.getItem("isLoginStatus")) {
-      navigate("/dashboard");
-    } else {
-      navigate("/login");
-    }
-  };
+  // const isAuth = () => {
+  //   if (sessionStorage.getItem("isLoginStatus")) {
+  //     navigate("/dashboard");
+  //   } else {
+  //     navigate("/login");
+  //   }
+  // };
 
-  useEffect(() => {
-    loginstatus();
-    GetUser();
-    isAuth();
-  }, [dispatch]);
+  // useEffect(() => {
+  //   loginstatus();
+  //   GetUser();
+  //   isAuth();
+  // }, [dispatch]);
 
   return (
     <>
-      <div className="dashboard_wrapper">
-        <Header GetUserData={GetUserData} />
-        <div className="dashboard_box">
+      <div className="wrapper">
+        <div className="dashboard_wrapper">
           <Sidebar Role={GetUserData} />
-          <main>
-            <div className="content">{children}</div>
-          </main>
+          <div className="dashboard_box">
+            <Header GetUserData={GetUserData} />
+            <main>
+              <div className="content">{children}</div>
+            </main>
+          </div>
         </div>
       </div>
     </>

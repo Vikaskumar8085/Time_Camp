@@ -3,6 +3,8 @@ import Input from "../../common/Input/Input";
 import Button from "../../common/Button";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
+import google from "../../assest/google.png";
+import InputPassword from "../../common/Input/InputPassword";
 
 function LoginForm({ handleSubmit }) {
   const formik = useFormik({
@@ -29,15 +31,30 @@ function LoginForm({ handleSubmit }) {
             placeholder="Please Enter Your Email "
             {...formik.getFieldProps("Email")}
           />
-          <Input
+          <InputPassword
             name={"Password"}
             type={"password"}
             labelText="Password"
             {...formik.getFieldProps("Password")}
             placeholder="Please Enter Your Password "
           />
+          <Link
+            to="#"
+            style={{
+              float: "right",
+              margin: "5px 0px",
+              textDecoration: "none ",
+            }}
+          >
+            Forget Password
+          </Link>
+
           <Button type="submit">Submit</Button>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <p>or</p>
+          </div>
         </form>
+
         <div className="login_footer">
           <h1>
             if your not register please <Link to="/signup">click here</Link>

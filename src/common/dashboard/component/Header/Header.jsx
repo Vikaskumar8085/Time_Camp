@@ -1,21 +1,18 @@
 import React from "react";
 
 function Header(GetUserData) {
-  console.log(GetUserData, "header");
   return (
-    <div className="header">
-      <div className="header_logo">
-        <h4>logo</h4>
-      </div>
-      <header>
-        <div className="head">
-          <div className="head_logo"></div>
-          <div className="head_profile">
-            <img src="" />
-          </div>
+    <header className="header_wrapper">
+      <div className="header_box">
+        <div className="head_logo">
+          <img src="https://d2w2i7rp1a0wob.cloudfront.net/static/images/logos/KekaLogoBlack.svg" />
         </div>
-      </header>
-    </div>
+        <div className="head_profile">
+          <img src="https://i.ibb.co/4pDNDk1/avatar.png" />
+          <p>Admin</p>
+        </div>
+      </div>
+    </header>
   );
 }
 

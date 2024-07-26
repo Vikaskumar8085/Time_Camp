@@ -3,15 +3,6 @@
 @import "./variable/index";
 
 :root {
-  --white-color: #{$bg-color};
-  --bg-color: #{$bg-color};
-  --color-one: #{$color-one};
-  --color-two: #{$color-two};
-  --color-three: #{$color-three};
-  --color-four: #{$color-four};
-  --color-white: #{$color-six};
-  --color-five: #{$color-five};
-
   // dasboard
   --sidebar-color: #{$sidebarcolor};
   --sidebar-hover: #{$sidebarhover};
@@ -27,7 +18,6 @@
 
 body {
   max-height: 100vh;
-  height: fit-content;
   min-height: 100vh;
 }
 
@@ -46,9 +36,6 @@ h6 {
 p,
 label {
   font-family: "Quicksand", sans-serif;
-
- 
-
 }
 
 img {

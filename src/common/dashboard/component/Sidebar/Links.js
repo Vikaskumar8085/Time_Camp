@@ -1,6 +1,13 @@
 import { FaTh, FaRegChartBar, FaCommentAlt } from "react-icons/fa";
 import { BiImageAdd } from "react-icons/bi";
-
+import { CgProfile } from "react-icons/cg";
+import { IoPeopleSharp } from "react-icons/io5";
+import {
+  MdDashboard,
+  MdSettings,
+  MdOutlineAdminPanelSettings,
+} from "react-icons/md";
+import { MdOutlineBugReport } from "react-icons/md";
 export const Super_Admin = [
   {
     title: "Dashboard",
@@ -56,16 +63,33 @@ export const Super_Admin = [
 export const Admin = [
   {
     title: "Dashboard",
-    icon: <FaCommentAlt />,
+    icon: <MdDashboard />,
     path: "/dashboard",
   },
   {
     title: "Profile",
+    icon: <CgProfile />,
     path: "/profile",
   },
   {
-    title: "Company",
-    path: "/company",
+    title: "Our Company",
+    icon: <IoPeopleSharp />,
+    path: "/client",
+  },
+  {
+    title: "Admin",
+    icon: <MdOutlineAdminPanelSettings />,
+    path: "/admin",
+  },
+  {
+    title: "Employee",
+    icon: <MdOutlineBugReport />,
+    path: "/employee",
+  },
+  {
+    title: "Settings",
+    icon: <MdSettings />,
+    path: "/settings",
   },
 ];
 

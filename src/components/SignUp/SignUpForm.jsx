@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "../../common/Button";
 import Input from "../../common/Input/Input";
 import { useFormik } from "formik";
+import InputPassword from "../../common/Input/InputPassword";
 
 function SignUpForm({ handleSubmit }) {
   const formik = useFormik({
@@ -45,7 +46,7 @@ function SignUpForm({ handleSubmit }) {
           {...formik.getFieldProps("Email")}
         />
 
-        <Input
+        <InputPassword
           labelText={"Password"}
           type="password"
           autocomplete="off"

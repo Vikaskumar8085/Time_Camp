@@ -58,6 +58,7 @@ function Login() {
       <div className="login_wrapper">
         <div className="login_box">
           <LoginTitle />
+
           <LoginForm handleSubmit={handleSubmit} />
         </div>
       </div>

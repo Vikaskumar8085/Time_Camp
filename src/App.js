@@ -10,6 +10,10 @@ import Dashboard from "./pages/DashboardPages/Dashboard";
 import SiginUp from "./pages/AuthPages/SiginUp";
 import Contact from "./pages/Contact";
 import { Toaster } from "react-hot-toast";
+import Client from "./pages/AdminPages/Client";
+import Adminpage from "./pages/AdminPages/Adminpage";
+import Employee from "./pages/AdminPages/Employee";
+import Profile from "./pages/DashboardPages/Profile";
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -33,12 +37,15 @@ function App() {
         <Route path="/" index element={<Home />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/client" element={<Client />} />
+        <Route path="/admin" element={<Adminpage />} />
+        <Route path="/employee" element={<Employee />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SiginUp />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
-    <Toaster/>
-
+      <Toaster />
     </>
   );
 }

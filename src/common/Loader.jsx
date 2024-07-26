@@ -5,7 +5,7 @@ function Loader() {
   return (
     <div className="Loader_container">
       <div className="Loader_row">
-        <ScaleLoader color='red' />
+        <ScaleLoader color='#ffffff' />
       </div>
     </div>
   )

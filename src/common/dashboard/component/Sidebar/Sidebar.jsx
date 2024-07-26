@@ -1,6 +1,6 @@
 import React from "react";
 import { MdOutlineAddHome } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Admin, Contractor, Employee, Super_Admin } from "./Links";
 
 function Sidebar({ Role }) {
@@ -9,8 +9,10 @@ function Sidebar({ Role }) {
     return (
       <>
         <li key={index}>
-          <span>{item?.icon}</span>
-          <Link to={item?.path}>{item?.title}</Link>
+          <NavLink to={item?.path}>
+            <span>{item?.icon}</span>
+            {item?.title}
+          </NavLink>
         </li>
       </>
     );
@@ -19,9 +21,15 @@ function Sidebar({ Role }) {
   const IsAdmin = Admin?.map((item, index) => {
     return (
       <>
-        <li key={index}>
-          <span>{item?.icon}</span>
-          <Link to={item?.path}>{item?.title}</Link>
+        <li
+          key={index}
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          <NavLink to={item?.path}>
+            <span>{item?.icon}</span>
+
+            {item?.title}
+          </NavLink>
         </li>
       </>
     );
@@ -32,7 +40,7 @@ function Sidebar({ Role }) {
       <>
         <li key={index}>
           <span>{item?.icon}</span>
-          <Link to={item?.path}>{item?.title}</Link>
+          <NavLink to={item?.path}>{item?.title}</NavLink>
         </li>
       </>
     );
@@ -43,15 +51,23 @@ function Sidebar({ Role }) {
       <>
         <li key={index}>
           <span>{item?.icon}</span>
-          <Link to={item?.path}>{item?.title}</Link>
+          <NavLink to={item?.path}>{item?.title}</NavLink>
         </li>
       </>
     );
   });
   return (
     <div className="sidebar">
+      <div className="side_logo">
+        <img
+          src="https://d2w2i7rp1a0wob.cloudfront.net/static/images/logos/KekaLogoBlack.svg"
+          alt=""
+          srcset=""
+        />
+      </div>
       <aside>
         <ul>
+          {IsAdmin}
           {IsRole === "super_admin" && <>{IsSuperAdmin}</>}
           {IsRole === "Admin" && <>{IsAdmin}</>}
           {IsRole === "employee" && <>{IsEmployee}</>}
