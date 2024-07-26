@@ -2,25 +2,24 @@
 @import "../../mixins/text_mixin";
 
 .header_wrapper {
-    width: 100%;
-    @include basic_style;
+  width: 100%;
+  @include basic_style;
+  header {
+    padding: 0px 0px;
+    background-color: var(--color-five);
 
-    header {
-        padding         : 20px 0px;
-        background-color: var(--color-five);
-
-        .logo h1 {
-            color: var(--white-color);
-        }
-
-        nav ul li {
-            display        : inline-block;
-            margin         : 10px 20px;
-            list-style-type: none;
-
-            a {
-                @include text-mixin(1em, var(--white-color));
-            }
-        }
+    .logo h1 {
+      color: var(--white-color);
     }
+
+    nav ul li {
+      display: inline-block;
+      margin: 10px 20px;
+      list-style-type: none;
+
+      a {
+        @include text-mixin(1em, var(--white-color));
+      }
+    }
+  }
 }
