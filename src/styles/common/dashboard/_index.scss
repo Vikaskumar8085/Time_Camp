@@ -1,43 +1,33 @@
 @import "../../mixins/basic_style";
 
 // #4494c9
-// #534288
 
 .dashboard_wrapper {
-  width: 100%;
-  height: 100vh;
   @include basic_style;
-  .header {
-    background-image: linear-gradient(
-      110deg,
-      var(--linear-one) 40%,
-      var(--linear-two)
-    );
-    width: 100%;
-    padding: 20px;
-  }
-  .dashboard_box {
-    display: flex;
+  width  : 100%;
+  display: flex;
 
-    .sidebar {
-      overflow: auto;
-      width: 100px;
-      background-color: var(--sidebar-color);
-      height: 100vh;
-      @import "./component/Sidebar/sidebar_nav";
-    }
-    main {
-      width: 100%;
-      .navigation {
-        width: 100%;
-        background-color: rgb(255, 255, 255);
-        @import "./component/Navigation/navigation";
-      }
-      .content {
-        padding: 20px;
-        display: block;
-        overflow: hidden;
-      }
+  .sidebar {
+    background-color: red;
+    width           : 180px;
+    height          : 100vh;
+    position        : relative;
+  }
+
+  .dashboard_box {
+    display        : flex;
+    justify-content: space-between;
+    flex-direction : column;
+    width          : 100%;
+    height         : 100vh;
+    overflow       : scroll;
+
+    .header {
+      width           : 100%;
+      background-color: blue;
     }
   }
+
+
+
 }

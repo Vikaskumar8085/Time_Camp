@@ -59,17 +59,17 @@ function Layout({ children }) {
   };
 
   useEffect(() => {
-    loginstatus();
-    GetUser();
-    isAuth();
+    // loginstatus();
+    // GetUser();
+    // isAuth();
   }, [dispatch]);
 
   return (
     <>
       <div className="dashboard_wrapper">
-        <Header GetUserData={GetUserData} />
+        <Sidebar Role={GetUserData} />
         <div className="dashboard_box">
-          <Sidebar Role={GetUserData} />
+          <Header GetUserData={GetUserData} />
           <main>
             <div className="content">{children}</div>
           </main>
