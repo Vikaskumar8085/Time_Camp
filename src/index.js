@@ -7,17 +7,20 @@ import store from "./redux/store";
 import { BrowserRouter } from "react-router-dom";
 import swDev from "./swDev";
 import { HelmetProvider } from "react-helmet-async";
-
-const helmetContext = {};
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <HelmetProvider>
-        <App />
-      </HelmetProvider>
-    </BrowserRouter>
+    <GoogleOAuthProvider clientId="189595369066-lk3ped7489jrnlmt471ij31plt6eso29.apps.googleusercontent.com">
+    {/* <GoogleOAuthProvider> */}
+      <BrowserRouter>
+        <HelmetProvider>
+          <App />
+        </HelmetProvider>
+      </BrowserRouter>
+    </GoogleOAuthProvider>
+    {/* </GoogleOAuthProvider> */}
   </Provider>
 );
 swDev();

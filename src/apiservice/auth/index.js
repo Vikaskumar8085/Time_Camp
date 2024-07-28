@@ -24,3 +24,29 @@ export const getUserdata = async () => {
   const response = await apiInstance.get("/user/get-user");
   return response;
 };
+
+// Edit user
+
+export const EditAuthUser = async (value) => {
+  const response = await apiInstance.post("/user/Edit-user", value);
+  return response;
+};
+
+// Forget Password
+export const ForgetPasswordUser = async (value) => {
+  const response = await apiInstance.post("/user/Forget-password", value);
+  return response;
+};
+
+// change password
+
+export const ChangePasswordAuth = async (value) => {
+  const response = await apiInstance.post("/user/change-password", value);
+  return response;
+};
+
+// google Auth
+export const GoogleLoginAuth = async (value) => {
+  const response = await apiInstance.post("/user/google-auth", value);
+  return response;
+};
