@@ -4,9 +4,15 @@ import Proutes from "../../common/Proutes";
 import Button from "../../common/Button";
 import ClientDrawer from "../../components/AdminComponent/Clientcomponent/ClientDrawer";
 import ClientTab from "../../components/AdminComponent/Clientcomponent/ClientTab";
+import "./Clienttab.css";
 
 function Client() {
   const [IsOpen, setOpen] = React.useState(false);
+  const [activeTab, setActiveTab] = React.useState(0);
+
+  const handleTabChange = (index) => {
+    setActiveTab(index);
+  };
 
   const tabs = [
     {
@@ -47,6 +53,25 @@ function Client() {
             {IsOpen && <ClientDrawer IsOpen={IsOpen} setOpen={setOpen} />}
           </section>
           <ClientTab tabs={tabs} />
+          <div className="tab-container">
+            <div className="tab-header">
+              {tabs.map((tab, index) => (
+                <div key={index} onClick={() => handleTabChange(index)}>
+                  {tab.title}
+                </div>
+              ))}
+            </div>
+            <div className="tab-content">
+              {tabs.map((tab, index) => (
+                <div
+                  key={index}
+                  className={`tab-pane ${activeTab === index ? "active" : ""}`}
+                >
+                  {tab.content}
+                </div>
+              ))}
+            </div>
+          </div>
         </Layout>
       </Proutes>
     </>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Clienttab.css";
 
 function ClientTab({ tabs }) {
   const [activeTab, setActiveTab] = useState(0);
