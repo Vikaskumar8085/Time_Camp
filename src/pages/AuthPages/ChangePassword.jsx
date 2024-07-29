@@ -1,32 +1,40 @@
 import React, { useState } from "react";
+import { Container, Grid, Typography } from "@mui/material";
+import InputPassword from "../../common/Input/InputPassword";
+import Button from "../../common/Button";
 
 function ChangePassword() {
-  const [isOldpassword, setIsoldPassword] = useState("");
-  const [Password, setPassword] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(isOldpassword, Password);
-  };
   return (
     <>
-      <div className="forget_container">
-        <div className="forget_wrapper">
-          <form onSubmit={handleSubmit}>
-            <input
-              type="oldpass"
-              name=""
-              onChange={(e) => setIsoldPassword(e.target.value)}
-              id=""
-            />
-            <input
-              type="text"
-              name=""
-              onChange={(e) => setPassword(e.target.value)}
-              id=""
-            />
-            <button>submit</button>
-          </form>
-        </div>
+      <div className="CPassword_wrapper">
+        <Container>
+          <Grid container spacing={5}>
+            <Grid item xs={12}>
+              <div className="CPassword_box">
+              <Typography
+                  variant="h6"
+                  sx={{
+                    margin: "10px 0px",
+                    fontSize: "15px",
+                    textAlign: "center",
+                  }}
+                >
+                  {" "}
+                  Change Password
+                </Typography>
+                <form action="">
+                  <InputPassword
+                    placeholder={"Please Enter Your Old Password"}
+                  />
+                  <InputPassword
+                    placeholder={"Please Enter Your New Password"}
+                  />
+                  <Button type={"submit"}>submit</Button>
+                </form>
+              </div>
+            </Grid>
+          </Grid>
+        </Container>
       </div>
     </>
   );

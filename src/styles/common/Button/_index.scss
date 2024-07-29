@@ -1,22 +1,14 @@
-@import "../../mixins/basic_style";
 .btn_wrapper {
-  @include basic_style;
   margin: 10px 0px;
-
+  position: relative;
+  display: block;
+  overflow: hidden;
   button {
-    color: var(--color-white);
     padding: 10px 20px;
-    width: 100%;
     border: 1px solid #2162c42a;
     text-transform: capitalize;
     font-weight: 600;
     border-radius: 4px;
-    background-color: var(--color-two);
     transition: all linear 0.3s;
-
-    &:hover {
-      color: var(--color-white);
-      background-color: var(--color-five);
-    }
   }
 }

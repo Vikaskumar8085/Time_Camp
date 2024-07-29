@@ -72,7 +72,7 @@ export const Admin = [
     path: "/profile",
   },
   {
-    title: "Our Company",
+    title: "Our Client",
     icon: <IoPeopleSharp />,
     path: "/client",
   },

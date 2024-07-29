@@ -1,6 +1,4 @@
 import React from "react";
-import { FaEyeSlash, FaEye } from "react-icons/fa";
-
 function Input({
   type,
   value,

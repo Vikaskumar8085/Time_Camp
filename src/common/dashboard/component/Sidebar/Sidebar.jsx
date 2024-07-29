@@ -21,11 +21,11 @@ function Sidebar({ Role }) {
   const IsAdmin = Admin?.map((item, index) => {
     return (
       <>
-        <li
-          key={index}
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          <NavLink to={item?.path}>
+        <li key={index}>
+          <NavLink
+            to={item?.path}
+            className={({ isActive }) => (isActive ? "activesidebarlink" : "")}
+          >
             <span>{item?.icon}</span>
 
             {item?.title}
@@ -67,11 +67,7 @@ function Sidebar({ Role }) {
       </div>
       <aside>
         <ul>
-<<<<<<< HEAD
           {IsAdmin}
-=======
-          {IsSuperAdmin}
->>>>>>> 2c7ae09435f1cde9188914c38404715163a9e606
           {IsRole === "super_admin" && <>{IsSuperAdmin}</>}
           {IsRole === "Admin" && <>{IsAdmin}</>}
           {IsRole === "employee" && <>{IsEmployee}</>}

@@ -4,8 +4,14 @@
 
 :root {
   // dasboard
-  --sidebar-color: #{$sidebarcolor};
-  --sidebar-hover: #{$sidebarhover};
+  --bg-primary-color: #{$bg-white-primary};
+  --bg-secondary-color: #{$bg-white-secondary};
+  --text-primary-color: #{$text-primary-color};
+  --text-secondary-color: #{$text-secondary-color};
+  --sidebar-color: #{$sidebar-primary-color};
+  --sidebar-hover: #{$sidebar-hover-color};
+  --primary-color: #{$primary-color};
+  --secondary-color: #{$secondary-color};
   --linear-one: #{#0088d2};
   --linear-two: #{#534288};
 }

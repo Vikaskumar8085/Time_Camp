@@ -1,0 +1,52 @@
+.sidebar {
+  background-color: var(--sidebar-color);
+  display: block;
+  position: relative;
+  overflow: auto;
+  width: 140px !important;
+  height: 100vh;
+  .side_logo {
+    background-color: var(--primary-color);
+    padding: 10px 0px;
+    display: grid;
+    place-items: center;
+  }
+
+  aside ul {
+    position: relative;
+    display: block;
+    overflow: auto;
+
+    li {
+      width: 100%;
+
+      display: flex;
+      flex-direction: column !important;
+      justify-content: center !important;
+      transition: all linear 0.4s;
+
+      span {
+        width: 100%;
+        text-align: center;
+        color: var(--bg-primary-color);
+      }
+      a {
+        padding: 20px 0px;
+        text-align: center;
+        width: 100%;
+        color: var(--text-primary-color);
+        @include text-mixin(1em, var(--text-primary-color));
+      }
+
+      &:hover {
+        color: var(--text-secondary-color);
+        background-color: var(--sidebar-hover);
+      }
+    }
+  }
+}
+
+.activesidebarlink {
+  color: var(--text-secondary-color);
+  background-color: var(--sidebar-hover);
+}

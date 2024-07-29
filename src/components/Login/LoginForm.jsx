@@ -39,7 +39,7 @@ function LoginForm({ handleSubmit }) {
             placeholder="Please Enter Your Password "
           />
           <Link
-            to="#"
+            to={"/forget-password"}
             style={{
               float: "right",
               margin: "5px 0px",
@@ -48,7 +48,7 @@ function LoginForm({ handleSubmit }) {
           >
             Forget Password
           </Link>
-
+          <br />  
           <Button type="submit">Submit</Button>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <p>or</p>

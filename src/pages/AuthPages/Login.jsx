@@ -7,7 +7,7 @@ import { setLoader } from "../../redux/slices/loaderSlice";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { setLogin } from "../../redux/slices/authslices/authslice";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 
 function Login() {
@@ -68,7 +68,6 @@ function Login() {
       <div className="login_wrapper">
         <div className="login_box">
           <LoginTitle />
-
           <LoginForm handleSubmit={handleSubmit} />
           <GoogleLogin onSuccess={onSuccess} onError={onError} useOneTap />
         </div>
