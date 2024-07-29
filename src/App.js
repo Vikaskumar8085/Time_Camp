@@ -10,10 +10,17 @@ import Dashboard from "./pages/DashboardPages/Dashboard";
 import SiginUp from "./pages/AuthPages/SiginUp";
 import Contact from "./pages/Contact";
 import { Toaster } from "react-hot-toast";
+<<<<<<< HEAD
 import Client from "./pages/AdminPages/Client";
 import Adminpage from "./pages/AdminPages/Adminpage";
 import Employee from "./pages/AdminPages/Employee";
 import Profile from "./pages/DashboardPages/Profile";
+=======
+import ForgetPassword from "./pages/AuthPages/ForgetPassword";
+import ChangePassword from "./pages/AuthPages/ChangePassword";
+import ProfilePage from "./pages/DashboardPages/ProfilePage";
+import Company from "./pages/AdminPages/Company";
+>>>>>>> 2c7ae09435f1cde9188914c38404715163a9e606
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -42,6 +49,8 @@ function App() {
         <Route path="/employee" element={<Employee />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SiginUp />} />
+        <Route path="/forget" element={<ForgetPassword />} />
+        <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>

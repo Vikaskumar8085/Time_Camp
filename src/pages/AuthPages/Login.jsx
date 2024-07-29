@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import LoginTitle from "../../components/Login/LoginTitle";
 import LoginForm from "../../components/Login/LoginForm";
-import { loginauth } from "../../apiservice/auth";
+import { GoogleLoginAuth, loginauth } from "../../apiservice/auth";
 import { setLoader } from "../../redux/slices/loaderSlice";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { setLogin } from "../../redux/slices/authslices/authslice";
 import { Navigate, useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
 
 function Login() {
   const dispatch = useDispatch();
@@ -46,6 +47,15 @@ function Login() {
     }
   };
 
+  const onSuccess = async (credentialResponse) => {
+    console.log(credentialResponse);
+    const response = await GoogleLoginAuth(credentialResponse);
+    console.log(response);
+  };
+
+  const onError = () => {
+    console.log("Login Failed");
+  };
   useEffect(() => {
     isAuth();
   }, [0]);
@@ -60,6 +70,7 @@ function Login() {
           <LoginTitle />
 
           <LoginForm handleSubmit={handleSubmit} />
+          <GoogleLogin onSuccess={onSuccess} onError={onError} useOneTap />
         </div>
       </div>
     </>

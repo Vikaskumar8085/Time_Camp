@@ -58,6 +58,7 @@ function Layout({ children }) {
   //   }
   // };
 
+<<<<<<< HEAD
   // useEffect(() => {
   //   loginstatus();
   //   GetUser();
@@ -75,6 +76,23 @@ function Layout({ children }) {
               <div className="content">{children}</div>
             </main>
           </div>
+=======
+  useEffect(() => {
+    // loginstatus();
+    // GetUser();
+    // isAuth();
+  }, [dispatch]);
+
+  return (
+    <>
+      <div className="dashboard_wrapper">
+        <Sidebar Role={GetUserData} />
+        <div className="dashboard_box">
+          <Header GetUserData={GetUserData} />
+          <main>
+            <div className="content">{children}</div>
+          </main>
+>>>>>>> 2c7ae09435f1cde9188914c38404715163a9e606
         </div>
       </div>
     </>

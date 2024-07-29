@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import Layout from "../../common/dashboard/Layout";
 import Proutes from "../../common/Proutes";
 import Box from "@mui/material/Box";
@@ -63,6 +64,11 @@ function Employee() {
       </Proutes>
     </>
   );
+=======
+
+function Employee() {
+  return <div>Employee</div>;
+>>>>>>> 2c7ae09435f1cde9188914c38404715163a9e606
 }
 
 export default Employee;
