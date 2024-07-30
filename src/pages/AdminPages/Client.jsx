@@ -3,8 +3,7 @@ import Layout from "../../common/dashboard/Layout";
 import Proutes from "../../common/Proutes";
 import Button from "../../common/Button";
 import ClientDrawer from "../../components/AdminComponent/Clientcomponent/ClientDrawer";
-import ClientTab from "../../components/AdminComponent/Clientcomponent/ClientTab";
-import "./Clienttab.css";
+import TabComponent from "../../common/TabComponent";
 
 function Client() {
   const [IsOpen, setOpen] = React.useState(false);
@@ -16,11 +15,14 @@ function Client() {
 
   const tabs = [
     {
-      title: "Tab 1",
+      title: "Add Client",
       content: (
         <>
-          <h2>Content for Tab 1</h2>
-          <p>This is the content of the first tab.</p>
+          {" "}
+          <section className="client_wrapper">
+            <Button onclick={() => setOpen(true)}>add client</Button>
+            {IsOpen && <ClientDrawer IsOpen={IsOpen} setOpen={setOpen} />}
+          </section>
         </>
       ),
     },
@@ -28,50 +30,22 @@ function Client() {
       title: "Tab 2",
       content: (
         <>
-          <h2>Content for Tab 2</h2>
-          <p>This is the content of the second tab.</p>
-        </>
-      ),
-    },
-    {
-      title: "Tab 1",
-      content: (
-        <>
-          <h2>Content for Tab 3</h2>
-          <p>This is the content of the third tab.</p>
+          <h1>hello</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam non
+            perferendis eum, perspiciatis nesciunt officiis facilis illum animi
+            porro vero, dicta at modi voluptates quas vel facere praesentium
+            consequatur recusandae.
+          </p>
         </>
       ),
     },
   ];
-
   return (
     <>
       <Proutes>
         <Layout>
-          <section className="client_wrapper">
-            <Button onclick={() => setOpen(true)}>add client</Button>
-            {IsOpen && <ClientDrawer IsOpen={IsOpen} setOpen={setOpen} />}
-          </section>
-          <ClientTab tabs={tabs} />
-          <div className="tab-container">
-            <div className="tab-header">
-              {tabs.map((tab, index) => (
-                <div key={index} onClick={() => handleTabChange(index)}>
-                  {tab.title}
-                </div>
-              ))}
-            </div>
-            <div className="tab-content">
-              {tabs.map((tab, index) => (
-                <div
-                  key={index}
-                  className={`tab-pane ${activeTab === index ? "active" : ""}`}
-                >
-                  {tab.content}
-                </div>
-              ))}
-            </div>
-          </div>
+          <TabComponent tabs={tabs} />
         </Layout>
       </Proutes>
     </>

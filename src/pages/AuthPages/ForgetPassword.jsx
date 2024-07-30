@@ -1,9 +1,14 @@
 import React from "react";
 import { Container, Grid, Typography } from "@mui/material";
-import InputPassword from "../../common/Input/InputPassword";
-import Button from "../../common/Button";
+import ForgetForm from "../../components/AuthComponent/ForgetPassword/ForgetForm";
+
+
 
 function ForgetPassword() {
+  const hsubmit = (value) => {
+    console.log(value, "values");
+  };
+
   return (
     <>
       <div className="forget-password-wrapper">
@@ -23,10 +28,7 @@ function ForgetPassword() {
                   Forget Password
                 </Typography>
 
-                <form>
-                  <InputPassword placeholder={"Please Enter Email"} />
-                  <Button type={"submit"}>submit</Button>
-                </form>
+                <ForgetForm hsubmit={hsubmit} />
               </div>
             </Grid>
           </Grid>

@@ -18,6 +18,7 @@ import ForgetPassword from "./pages/AuthPages/ForgetPassword";
 import ChangePassword from "./pages/AuthPages/ChangePassword";
 import ProfilePage from "./pages/DashboardPages/ProfilePage";
 import Company from "./pages/AdminPages/Company";
+import VerifyToken from "./pages/VerifyToken";
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -50,6 +51,7 @@ function App() {
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/verify/:id" element={<VerifyToken />} />
       </Routes>
       <Toaster />
     </>

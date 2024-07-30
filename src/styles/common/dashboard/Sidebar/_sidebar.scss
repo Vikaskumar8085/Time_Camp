@@ -1,10 +1,11 @@
 .sidebar {
   background-color: var(--sidebar-color);
   display: block;
-  position: relative;
-  overflow: auto;
+  position: fixed;
+  overflow-x: hidden;
   width: 140px !important;
   height: 100vh;
+  max-height: min-content;
   .side_logo {
     background-color: var(--primary-color);
     padding: 10px 0px;

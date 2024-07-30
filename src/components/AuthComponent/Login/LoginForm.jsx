@@ -1,10 +1,10 @@
 import React from "react";
-import Input from "../../common/Input/Input";
-import Button from "../../common/Button";
+import Input from "../../../common/Input/Input";
+import Button from "../../../common/Button";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
-import google from "../../assest/google.png";
-import InputPassword from "../../common/Input/InputPassword";
+import InputPassword from "../../../common/Input/InputPassword";
+import { validate } from "./validation";
 
 function LoginForm({ handleSubmit }) {
   const formik = useFormik({
@@ -12,17 +12,17 @@ function LoginForm({ handleSubmit }) {
       Email: "",
       Password: "",
     },
+    validate,
     onSubmit: (values) => {
       handleSubmit(values);
+      console.log("hello");
       formik.resetForm();
     },
   });
-  // const typevalue = isPass ? "password" : "text";
-  // const Icon = isPass ?<FaEye /> :<FaEyeSlash/>
+
   return (
     <>
       <div className="login_form">
-        {/* <i onClick={()=>{setIsPass(!isPass)}}> {Icon}</i> */}
         <form onSubmit={formik.handleSubmit}>
           <Input
             name={"Email"}
@@ -30,7 +30,11 @@ function LoginForm({ handleSubmit }) {
             labelText="Email"
             placeholder="Please Enter Your Email "
             {...formik.getFieldProps("Email")}
+            value={formik.values.Email}
           />
+          {formik.touched.Email && formik.errors.Email ? (
+            <div>{formik.errors.Email}</div>
+          ) : null}
           <InputPassword
             name={"Password"}
             type={"password"}
@@ -38,6 +42,9 @@ function LoginForm({ handleSubmit }) {
             {...formik.getFieldProps("Password")}
             placeholder="Please Enter Your Password "
           />
+          {formik.touched.Password && formik.errors.Password ? (
+            <div>{formik.errors.Password}</div>
+          ) : null}
           <Link
             to={"/forget-password"}
             style={{
@@ -48,7 +55,7 @@ function LoginForm({ handleSubmit }) {
           >
             Forget Password
           </Link>
-          <br />  
+          <br />
           <Button type="submit">Submit</Button>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <p>or</p>

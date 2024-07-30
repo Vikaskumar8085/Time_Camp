@@ -1,5 +1,4 @@
 import React from "react";
-import { CiLogin } from "react-icons/ci";
 
 function LoginTitle() {
   return (

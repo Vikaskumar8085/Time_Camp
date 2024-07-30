@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../../common/Button";
-import Input from "../../common/Input/Input";
+import Input from "../../../common/Input/Input";
 import { useFormik } from "formik";
-import InputPassword from "../../common/Input/InputPassword";
-
+import { validate } from "./signupvalidation";
+import InputPassword from "../../../common/Input/InputPassword";
+import Button from "../../../common/Button";
 function SignUpForm({ handleSubmit }) {
   const formik = useFormik({
     initialValues: {
@@ -14,7 +14,7 @@ function SignUpForm({ handleSubmit }) {
       Password: "",
       term: "",
     },
-
+    validate,
     onSubmit: (values) => {
       handleSubmit(values);
       formik.resetForm();
@@ -24,13 +24,16 @@ function SignUpForm({ handleSubmit }) {
   return (
     <div className="register_form">
       <form onSubmit={formik.handleSubmit}>
-        <Input
+        <InputPassword
           labelText={"First Name"}
           type="text"
           placeholder="Please enter your name"
           autocomplete="off"
           {...formik.getFieldProps("FirstName")}
         />
+        {formik.touched.FirstName && formik.errors.FirstName ? (
+          <div>{formik.errors.FirstName}</div>
+        ) : null}
         <Input
           labelText={"Last Name"}
           type="text"
@@ -38,6 +41,9 @@ function SignUpForm({ handleSubmit }) {
           autocomplete="off"
           {...formik.getFieldProps("LastName")}
         />
+        {formik.touched.LastName && formik.errors.LastName ? (
+          <div>{formik.errors.LastName}</div>
+        ) : null}
         <Input
           labelText={"Email"}
           type="Email"
@@ -45,7 +51,9 @@ function SignUpForm({ handleSubmit }) {
           placeholder={"Please enter Your email"}
           {...formik.getFieldProps("Email")}
         />
-
+        {formik.touched.Email && formik.errors.Email ? (
+          <div>{formik.errors.Email}</div>
+        ) : null}
         <InputPassword
           labelText={"Password"}
           type="password"
@@ -53,14 +61,15 @@ function SignUpForm({ handleSubmit }) {
           placeholder={"Please Enter your Password"}
           {...formik.getFieldProps("Password")}
         />
-
+        {formik.touched.Password && formik.errors.Password ? (
+          <div>{formik.errors.Password}</div>
+        ) : null}
         <div style={{ display: "flex" }}>
           <input
             autocomplete="off"
             type="checkbox"
-            {...formik.getFieldProps("term")}
-            name="term"
-            required
+            {...formik.getFieldProps("Term")}
+            name="Term"
           />
           &nbsp;
           <p className="mx-2">
@@ -68,6 +77,9 @@ function SignUpForm({ handleSubmit }) {
           </p>
         </div>
 
+        {formik.touched.Term && formik.errors.Term ? (
+          <div>{formik.errors.Term}</div>
+        ) : null}
         <Button type={"submit"}>Submit</Button>
       </form>
 

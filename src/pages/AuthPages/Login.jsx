@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import LoginTitle from "../../components/Login/LoginTitle";
-import LoginForm from "../../components/Login/LoginForm";
 import { GoogleLoginAuth, loginauth } from "../../apiservice/auth";
 import { setLoader } from "../../redux/slices/loaderSlice";
 import { useDispatch } from "react-redux";
@@ -9,6 +7,8 @@ import toast from "react-hot-toast";
 import { setLogin } from "../../redux/slices/authslices/authslice";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
+import LoginTitle from "../../components/AuthComponent/Login/LoginTitle";
+import LoginForm from "../../components/AuthComponent/Login/LoginForm";
 
 function Login() {
   const dispatch = useDispatch();

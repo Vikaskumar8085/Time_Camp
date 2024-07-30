@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { lazy, useState } from "react";
 import { Container, Grid, Typography } from "@mui/material";
 import InputPassword from "../../common/Input/InputPassword";
 import Button from "../../common/Button";
+const CPForm = lazy(() => import("../../components/AuthComponent/ChangePassword/CPForm"));
 
 function ChangePassword() {
+  const ChangePasswordHandleSubmit = (values) => {
+    console.log(values);
+  };
+
   return (
     <>
       <div className="CPassword_wrapper">
@@ -11,7 +16,7 @@ function ChangePassword() {
           <Grid container spacing={5}>
             <Grid item xs={12}>
               <div className="CPassword_box">
-              <Typography
+                <Typography
                   variant="h6"
                   sx={{
                     margin: "10px 0px",
@@ -20,17 +25,12 @@ function ChangePassword() {
                   }}
                 >
                   {" "}
-                  Change Password
+                  Reset Password
                 </Typography>
-                <form action="">
-                  <InputPassword
-                    placeholder={"Please Enter Your Old Password"}
-                  />
-                  <InputPassword
-                    placeholder={"Please Enter Your New Password"}
-                  />
-                  <Button type={"submit"}>submit</Button>
-                </form>
+
+                <CPForm
+                  ChangePasswordHandleSubmit={ChangePasswordHandleSubmit}
+                />
               </div>
             </Grid>
           </Grid>

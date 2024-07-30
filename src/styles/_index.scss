@@ -3,23 +3,23 @@
 @import "./AdminStyle/index";
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
   border-radius: 40px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  border-radius: 30px;
+  border-radius: 3px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--color-five);
+  background: var(--sidebar-color);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-four);
+  background: var(--sidebar-color);
 }
 
 @media only screen and (max-width: 600px) {

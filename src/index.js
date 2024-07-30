@@ -13,14 +13,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <GoogleOAuthProvider clientId="189595369066-lk3ped7489jrnlmt471ij31plt6eso29.apps.googleusercontent.com">
-    {/* <GoogleOAuthProvider> */}
       <BrowserRouter>
         <HelmetProvider>
           <App />
         </HelmetProvider>
       </BrowserRouter>
     </GoogleOAuthProvider>
-    {/* </GoogleOAuthProvider> */}
   </Provider>
 );
 swDev();

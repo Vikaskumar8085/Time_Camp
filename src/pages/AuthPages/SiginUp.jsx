@@ -1,7 +1,8 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Helmet } from "react-helmet-async";
-
-import SignUpForm from "../../components/SignUp/SignUpForm";
+const SignUpForm = lazy(() =>
+  import("../../components/AuthComponent/SignUp/SignUpForm")
+);
 
 const SiginUp = () => {
   const handleSubmit = (values) => {
@@ -14,7 +15,7 @@ const SiginUp = () => {
       </Helmet>
       <div className="Register_wrapper">
         <div className="Register_box">
-            {/* <div className="Register_leftSide">
+          {/* <div className="Register_leftSide">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Voluptates excepturi expedita incidunt dolores enim perferendis
