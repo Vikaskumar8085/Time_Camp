@@ -14,10 +14,6 @@ import { GoogleLoginAuth, loginauth } from "../../apiservice/auth";
 import Button from "../../common/Button";
 import axios from "axios";
 function Login() {
-  const [user, setUser] = useState([]);
-  console.log(user, "user");
-  const [profile, setProfile] = useState([]);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -55,19 +51,15 @@ function Login() {
 
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
+      dispatch(setLoader(true));
       const response = await GoogleLoginAuth(tokenResponse);
+      if (response?.data?.success) {
+        console.log(response?.data?.message);
+        dispatch(setLoader(false));
+      }
     },
   });
 
-  // const onSuccess = async (credentialResponse) => {
-  //   console.log(credentialResponse);
-  //   const response = await GoogleLoginAuth(credentialResponse);
-  //   console.log(response);
-  // };
-
-  // const onError = () => {
-  //   console.log("Login Failed");
-  // };
   useEffect(() => {
     isAuth();
   }, [0]);
