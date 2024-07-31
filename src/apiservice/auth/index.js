@@ -50,3 +50,8 @@ export const GoogleLoginAuth = async (value) => {
   const response = await apiInstance.post("/user/google-auth", value);
   return response;
 };
+
+export const verifyMail = async (value) => {
+  const respons = await apiInstance.get(`/user/verify/${value.id}`);
+  return respons;
+};

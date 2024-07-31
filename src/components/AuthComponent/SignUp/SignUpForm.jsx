@@ -5,18 +5,18 @@ import { useFormik } from "formik";
 import { validate } from "./signupvalidation";
 import InputPassword from "../../../common/Input/InputPassword";
 import Button from "../../../common/Button";
-function SignUpForm({ handleSubmit }) {
+function SignUpForm({ hsubmit }) {
   const formik = useFormik({
     initialValues: {
       FirstName: "",
       LastName: "",
       Email: "",
       Password: "",
-      term: "",
+      Term: "",
     },
     validate,
     onSubmit: (values) => {
-      handleSubmit(values);
+      hsubmit(values);
       formik.resetForm();
     },
   });
@@ -24,7 +24,7 @@ function SignUpForm({ handleSubmit }) {
   return (
     <div className="register_form">
       <form onSubmit={formik.handleSubmit}>
-        <InputPassword
+        <Input
           labelText={"First Name"}
           type="text"
           placeholder="Please enter your name"
@@ -32,7 +32,9 @@ function SignUpForm({ handleSubmit }) {
           {...formik.getFieldProps("FirstName")}
         />
         {formik.touched.FirstName && formik.errors.FirstName ? (
-          <div>{formik.errors.FirstName}</div>
+          <div style={{ color: "red", marginTop: "5px" }}>
+            {formik.errors.FirstName}
+          </div>
         ) : null}
         <Input
           labelText={"Last Name"}
@@ -42,7 +44,9 @@ function SignUpForm({ handleSubmit }) {
           {...formik.getFieldProps("LastName")}
         />
         {formik.touched.LastName && formik.errors.LastName ? (
-          <div>{formik.errors.LastName}</div>
+          <div style={{ color: "red", marginTop: "5px" }}>
+            {formik.errors.LastName}
+          </div>
         ) : null}
         <Input
           labelText={"Email"}
@@ -52,7 +56,9 @@ function SignUpForm({ handleSubmit }) {
           {...formik.getFieldProps("Email")}
         />
         {formik.touched.Email && formik.errors.Email ? (
-          <div>{formik.errors.Email}</div>
+          <div style={{ color: "red", marginTop: "5px" }}>
+            {formik.errors.Email}
+          </div>
         ) : null}
         <InputPassword
           labelText={"Password"}
@@ -62,7 +68,9 @@ function SignUpForm({ handleSubmit }) {
           {...formik.getFieldProps("Password")}
         />
         {formik.touched.Password && formik.errors.Password ? (
-          <div>{formik.errors.Password}</div>
+          <div style={{ color: "red", marginTop: "5px" }}>
+            {formik.errors.Password}
+          </div>
         ) : null}
         <div style={{ display: "flex" }}>
           <input
@@ -78,7 +86,9 @@ function SignUpForm({ handleSubmit }) {
         </div>
 
         {formik.touched.Term && formik.errors.Term ? (
-          <div>{formik.errors.Term}</div>
+          <div style={{ color: "red", marginTop: "5px" }}>
+            {formik.errors.Term}
+          </div>
         ) : null}
         <Button type={"submit"}>Submit</Button>
       </form>

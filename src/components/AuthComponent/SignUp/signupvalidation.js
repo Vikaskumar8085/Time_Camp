@@ -1,49 +1,40 @@
 export const validate = (values) => {
   const errors = {};
 
-  // First Name
+  // Validate FirstName
   if (!values.FirstName) {
-    errors.FirstName = "FirstName is required";
-  } else if (
-    (
-      <p style={{ color: "red !mportant" }}>
-        {
-          !/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/i.test(
-            values.FirstName
-          )
-        }
-      </p>
-    )
-  ) {
-    errors.FirstName = "Invalid email address";
+    errors.FirstName = "First name is required";
+  } else if (!/^[A-Za-z]{2,50}$/.test(values.FirstName)) {
+    errors.FirstName = "First name must be 2-50 alphabetic characters";
   }
-  //   lastName
+
+  // Validate LastName
   if (!values.LastName) {
-    errors.LastName = "LastName is required";
-  } else if (
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.LastName)
-  ) {
-    errors.LastName = "Invalid LastName address";
+    errors.LastName = "Last name is required";
+  } else if (!/^[A-Za-z]{2,50}$/.test(values.LastName)) {
+    errors.LastName = "Last name must be 2-50 alphabetic characters";
   }
-  // Email
+
+  // Validate Email
   if (!values.Email) {
     errors.Email = "Email is required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.Email)) {
+  } else if (
+    !/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(values.Email)
+  ) {
     errors.Email = "Invalid email address";
   }
-  //   password
+
+  // Validate Password
   if (!values.Password) {
     errors.Password = "Password is required";
-  } else if (values.Password.length < 6) {
-    errors.Password = "Password must be at least 6 characters long";
+  } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(values.Password)) {
+    errors.Password =
+      "Password must be at least 8 characters, including letters and numbers";
   }
 
-  //   Term
-
+  // Validate Terms
   if (!values.Term) {
-    errors.Term = "Term is required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.Term)) {
-    errors.Term = "Invalid Term mail address";
+    errors.Term = "You must accept the terms and conditions";
   }
 
   return errors;

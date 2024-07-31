@@ -1,16 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import { Suspense, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { GoogleLoginAuth, loginauth } from "../../apiservice/auth";
 import { setLoader } from "../../redux/slices/loaderSlice";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { setLogin } from "../../redux/slices/authslices/authslice";
 import { useNavigate } from "react-router-dom";
-import { GoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
+import Loader from "../../common/Loader";
 import LoginTitle from "../../components/AuthComponent/Login/LoginTitle";
 import LoginForm from "../../components/AuthComponent/Login/LoginForm";
-
+import { GoogleLoginAuth, loginauth } from "../../apiservice/auth";
+import Button from "../../common/Button";
+import axios from "axios";
 function Login() {
+  const [user, setUser] = useState([]);
+  console.log(user, "user");
+  const [profile, setProfile] = useState([]);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,19 +26,18 @@ function Login() {
     try {
       dispatch(setLoader(true));
       const response = await loginauth(values);
-      console.log(response, "asdfalsdfjl");
+      console.log(response, "response");
       if (response?.data?.success) {
         dispatch(setLoader(false));
         dispatch(setLogin(response?.data?.data));
         toast.success(response?.data?.message);
         navigate("/dashboard");
       } else {
-        console.log(response);
+        toast.error(response?.data?.message);
       }
     } catch (error) {
       dispatch(setLoader(false));
       toast.error(error?.response?.data?.message);
-      console.log(error.response);
       navigate("/login");
     }
   };
@@ -47,31 +53,39 @@ function Login() {
     }
   };
 
-  const onSuccess = async (credentialResponse) => {
-    console.log(credentialResponse);
-    const response = await GoogleLoginAuth(credentialResponse);
-    console.log(response);
-  };
+  const login = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      const response = await GoogleLoginAuth(tokenResponse);
+    },
+  });
 
-  const onError = () => {
-    console.log("Login Failed");
-  };
+  // const onSuccess = async (credentialResponse) => {
+  //   console.log(credentialResponse);
+  //   const response = await GoogleLoginAuth(credentialResponse);
+  //   console.log(response);
+  // };
+
+  // const onError = () => {
+  //   console.log("Login Failed");
+  // };
   useEffect(() => {
     isAuth();
   }, [0]);
 
   return (
     <>
-      <Helmet>
-        <title>Login</title>
-      </Helmet>
-      <div className="login_wrapper">
-        <div className="login_box">
-          <LoginTitle />
-          <LoginForm handleSubmit={handleSubmit} />
-          <GoogleLogin onSuccess={onSuccess} onError={onError} useOneTap />
+      <Suspense fallback={<Loader />}>
+        <Helmet>
+          <title>Login</title>
+        </Helmet>
+        <div className="login_wrapper">
+          <div className="login_box">
+            <LoginTitle />
+            <LoginForm handleSubmit={handleSubmit} />
+            <Button onClick={() => login()}>Google Login</Button>
+          </div>
         </div>
-      </div>
+      </Suspense>
     </>
   );
 }
