@@ -34,7 +34,7 @@ export const EditAuthUser = async (value) => {
 
 // Forget Password
 export const ForgetPasswordUser = async (value) => {
-  const response = await apiInstance.post("/user/Forget-password", value);
+  const response = await apiInstance.post("/user/forget", value);
   return response;
 };
 
