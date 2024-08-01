@@ -26,6 +26,11 @@
                     background-color: var(--sidebar-color);
                     color           : var(--text-primary-color);
                 }
+
+                &:hover {
+                    background-color: var(--sidebar-color);
+                    color           : var(--text-primary-color);
+                }
             }
         }
 
