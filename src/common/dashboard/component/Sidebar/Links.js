@@ -87,6 +87,11 @@ export const Admin = [
     path: "/employee",
   },
   {
+    title: "Contractor",
+    icon: <MdOutlineBugReport />,
+    path: "/contractor",
+  },
+  {
     title: "Settings",
     icon: <MdSettings />,
     path: "/settings",
