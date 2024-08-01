@@ -5,7 +5,12 @@ import Input from "../../../common/Input/Input";
 import Button from "../../../common/Button";
 import { useFormik } from "formik";
 import { validate } from "./adminDrawerValidation";
+import { createAdmin } from "../../../apiservice/admin";
+import { useDispatch } from "react-redux";
+import { setLoader } from "../../../redux/slices/loaderSlice";
+import toast from "react-hot-toast";
 function AdminDrawer({ IsOpen, setOpen }) {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       FirstName: "",
@@ -17,8 +22,26 @@ function AdminDrawer({ IsOpen, setOpen }) {
     },
     validate: validate,
 
-    onSubmit: (value) => {
-      console.log(value);
+    onSubmit: async (value) => {
+      try {
+        const Payload = {
+          FirstName: value.FirstName,
+          LastName: value.LastName,
+          Email: value.Email,
+          Phone: value.Phone,
+          Password: value.Password,
+        };
+
+        dispatch(setLoader(true));
+        const response = await createAdmin(Payload);
+        if (response?.data?.success) {
+          dispatch(setLoader(false));
+          toast.success(response?.data?.message);
+        }
+      } catch (error) {
+        dispatch(setLoader(false));
+        toast.error(error?.response?.data?.message);
+      }
     },
   });
   return (
@@ -47,7 +70,9 @@ function AdminDrawer({ IsOpen, setOpen }) {
                     {...formik.getFieldProps("FirstName")}
                   />
                   {formik.touched.FirstName && formik.errors.FirstName ? (
-                    <div>{formik.errors.FirstName}</div>
+                    <div style={{ color: "red", marginLeft: "5px" }}>
+                      {formik.errors.FirstName}
+                    </div>
                   ) : null}
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -57,7 +82,9 @@ function AdminDrawer({ IsOpen, setOpen }) {
                     {...formik.getFieldProps("LastName")}
                   />
                   {formik.touched.LastName && formik.errors.LastName ? (
-                    <div>{formik.errors.LastName}</div>
+                    <div style={{ color: "red", marginLeft: "5px" }}>
+                      {formik.errors.LastName}
+                    </div>
                   ) : null}
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -67,7 +94,9 @@ function AdminDrawer({ IsOpen, setOpen }) {
                     {...formik.getFieldProps("Phone")}
                   />
                   {formik.touched.Phone && formik.errors.Phone ? (
-                    <div>{formik.errors.Phone}</div>
+                    <div style={{ color: "red", marginLeft: "5px" }}>
+                      {formik.errors.Phone}
+                    </div>
                   ) : null}
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -77,7 +106,9 @@ function AdminDrawer({ IsOpen, setOpen }) {
                     {...formik.getFieldProps("Email")}
                   />
                   {formik.touched.Email && formik.errors.Email ? (
-                    <div>{formik.errors.Email}</div>
+                    <div style={{ color: "red", marginLeft: "5px" }}>
+                      {formik.errors.Email}
+                    </div>
                   ) : null}
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -88,7 +119,9 @@ function AdminDrawer({ IsOpen, setOpen }) {
                     {...formik.getFieldProps("Password")}
                   />
                   {formik.touched.Password && formik.errors.Password ? (
-                    <div>{formik.errors.Password}</div>
+                    <div style={{ color: "red", marginLeft: "5px" }}>
+                      {formik.errors.Password}
+                    </div>
                   ) : null}
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -100,7 +133,9 @@ function AdminDrawer({ IsOpen, setOpen }) {
                   />
                   {formik.touched.ConfirmPassword &&
                   formik.errors.ConfirmPassword ? (
-                    <div>{formik.errors.ConfirmPassword}</div>
+                    <div style={{ color: "red", marginLeft: "5px" }}>
+                      {formik.errors.ConfirmPassword}
+                    </div>
                   ) : null}
                 </Grid>
                 <Grid item xs={12}>

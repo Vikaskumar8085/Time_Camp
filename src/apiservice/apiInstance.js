@@ -8,7 +8,7 @@ apiInstance.interceptors.request.use(
   (config) => {
     const getToken = JSON.parse(localStorage.getItem("token"));
     if (getToken) {
-      config.headers.Authorization = `Bearer ${getToken}`;
+      config.headers.Authorization = `Bearer ${"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YWIyZDA1MzQwODNiODQxYmI3NzFhNSIsImlhdCI6MTcyMjUxMTIyMywiZXhwIjoxNzIyNTE0ODIzfQ.KaGAbIUAtlL2fPj1cCqB6FDve7BKriZPLfIgfUo8a_0"}`;
     }
     return config;
   },

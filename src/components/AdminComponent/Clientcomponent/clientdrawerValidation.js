@@ -33,22 +33,22 @@ export const validate = (values) => {
   }
 
   // Validate Email
-  if (!values.Email) {
-    errors.Email = "Email is required";
-  } else if (!emailRegex.test(values.Email)) {
-    errors.Email = "Invalid email address";
+  if (!values.Client_Email) {
+    errors.Client_Email = "Client_Email is required";
+  } else if (!emailRegex.test(values.Client_Email)) {
+    errors.Client_Email = "Invalid email address";
   }
 
   // Validate Address
-  if (!values.Address) {
-    errors.Address = "Address is required";
+  if (!values.Client_Address) {
+    errors.Client_Address = "Address is required";
   }
 
   // Validate Postal Code
-  if (!values.PostalCode) {
-    errors.PostalCode = "Postal code is required";
-  } else if (!postalCodeRegex.test(values.PostalCode)) {
-    errors.PostalCode = "Invalid postal code format";
+  if (!values.Client_Postal_Code) {
+    errors.Client_Postal_Code = "Postal code is required";
+  } else if (!postalCodeRegex.test(values.Client_Postal_Code)) {
+    errors.Client_Postal_Code = "Invalid postal code format";
   }
 
   // Validate GST Number
@@ -58,10 +58,10 @@ export const validate = (values) => {
     errors.GstNumber = "Invalid GST number format";
   }
   // Phone
-  if (!values.Phone) {
-    errors.Phone = "Phone number is required";
-  } else if (!phoneRegex.test(values.Phone)) {
-    errors.Phone = "Invalid phone number format";
+  if (!values.Client_Phone) {
+    errors.Client_Phone = "Phone number is required";
+  } else if (!phoneRegex.test(values.Client_Phone)) {
+    errors.Client_Phone = "Invalid phone number format";
   }
   return errors;
 };

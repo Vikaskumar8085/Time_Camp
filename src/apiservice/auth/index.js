@@ -51,6 +51,7 @@ export const GoogleLoginAuth = async (value) => {
   return response;
 };
 
+// verifyMail
 export const verifyMail = async (value) => {
   const respons = await apiInstance.get(`/user/verify/${value.id}`);
   return respons;
