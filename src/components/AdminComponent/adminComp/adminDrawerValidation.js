@@ -2,6 +2,7 @@ export const validate = (values) => {
   const errors = {};
 
   // Regular expressions for validation
+
   const nameRegex = /^[A-Za-z\s]+$/; // Allows letters and spaces
   const passwordRegex =
     /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // At least one uppercase letter, one lowercase letter, one digit, one special character, and minimum 8 characters long
@@ -35,6 +36,12 @@ export const validate = (values) => {
     errors.Email = "Email is required";
   } else if (!emailRegex.test(values.Email)) {
     errors.Email = "Invalid email address";
+  } 
+  // Validate Phone
+  if (!values.Phone) {
+    errors.Phone = "Phone number is required";
+  } else if (!phoneRegex.test(values.Phone)) {
+    errors.Phone = "Invalid phone number format";
   }
 
   // Validate Password
@@ -50,13 +57,6 @@ export const validate = (values) => {
     errors.ConfirmPassword = "Confirm password is required";
   } else if (values.ConfirmPassword !== values.Password) {
     errors.ConfirmPassword = "Passwords must match";
-  }
-
-  // Validate Phone
-  if (!values.Phone) {
-    errors.Phone = "Phone number is required";
-  } else if (!phoneRegex.test(values.Phone)) {
-    errors.Phone = "Invalid phone number format";
   }
 
   return errors;

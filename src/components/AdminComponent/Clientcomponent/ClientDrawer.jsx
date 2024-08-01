@@ -6,22 +6,41 @@ import Input from "../../../common/Input/Input";
 import Button from "../../../common/Button";
 import { useFormik } from "formik";
 import { validate } from "./clientdrawerValidation";
+import { useDispatch } from "react-redux";
+import { setLoader } from "../../../redux/slices/loaderSlice";
+import { createClient } from "../../../apiservice/admin";
+import toast from "react-hot-toast";
 
 function ClientDrawer({ setOpen, IsOpen }) {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
-      Client_Name: "",
       Company_Name: "",
-      Email: "",
-      Phone: "",
-      Address: "",
-      PostalCode: "",
+      Client_Name: "",
+      Client_Email: "",
+      Client_Phone: "",
+      Client_Postal_Code: "",
+      Client_Address: "",
       GstNumber: "",
     },
     validate: validate,
-
-    onSubmit: (value) => {
-      console.log(value);
+    onSubmit: async (value) => {
+      try {
+        dispatch(setLoader(true));
+        const response = await createClient(value);
+        console.log(response);
+        if (response?.data?.success) {
+          dispatch(setLoader(false));
+          toast.success(response?.data?.message);
+          formik.resetForm();
+          setOpen(false);
+        }
+      } catch (error) {
+        dispatch(setLoader(false));
+        toast.error(error?.response?.data?.message);
+        formik.resetForm();
+      }
     },
   });
   return (
@@ -52,7 +71,9 @@ function ClientDrawer({ setOpen, IsOpen }) {
                     />
                     {formik.touched.Company_Name &&
                     formik.errors.Company_Name ? (
-                      <div>{formik.errors.Company_Name}</div>
+                      <div style={{ color: "red", marginLeft: "5px" }}>
+                        {formik.errors.Company_Name}
+                      </div>
                     ) : null}
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -62,52 +83,66 @@ function ClientDrawer({ setOpen, IsOpen }) {
                       {...formik.getFieldProps("Client_Name")}
                     />
                     {formik.touched.Client_Name && formik.errors.Client_Name ? (
-                      <div>{formik.errors.Client_Name}</div>
+                      <div style={{ color: "red", marginLeft: "5px" }}>
+                        {formik.errors.Client_Name}
+                      </div>
                     ) : null}
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText="Email Address"
+                      labelText="Client Email"
                       type="email"
-                      placeholder={"Please enter your Email"}
-                      {...formik.getFieldProps("Email")}
+                      placeholder={"Please enter your Client_Email"}
+                      {...formik.getFieldProps("Client_Email")}
                     />
-                    {formik.touched.Email && formik.errors.Email ? (
-                      <div>{formik.errors.Email}</div>
+                    {formik.touched.Client_Email &&
+                    formik.errors.Client_Email ? (
+                      <div style={{ color: "red", marginLeft: "5px" }}>
+                        {formik.errors.Client_Email}
+                      </div>
                     ) : null}
                   </Grid>
 
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText=" Address"
+                      labelText=" Client Address"
                       type="text"
-                      placeholder={"Please enter your Address"}
-                      {...formik.getFieldProps("Address")}
+                      placeholder={"Please enter your Client Address"}
+                      {...formik.getFieldProps("Client_Address")}
                     />
-                    {formik.touched.Address && formik.errors.Address ? (
-                      <div>{formik.errors.Address}</div>
+                    {formik.touched.Client_Address &&
+                    formik.errors.Client_Address ? (
+                      <div style={{ color: "red", marginLeft: "5px" }}>
+                        {formik.errors.Client_Address}
+                      </div>
                     ) : null}
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText=" Postal Code"
+                      labelText="Client_Phone"
                       type="text"
-                      {...formik.getFieldProps("PostalCode")}
+                      {...formik.getFieldProps("Client_Phone")}
                       placeholder={"Please enter your Postal Code"}
                     />
-                    {formik.touched.PostalCode && formik.errors.PostalCode ? (
-                      <div>{formik.errors.PostalCode}</div>
+                    {formik.touched.Client_Phone &&
+                    formik.errors.Client_Phone ? (
+                      <div style={{ color: "red", marginLeft: "5px" }}>
+                        {formik.errors.Client_Phone}
+                      </div>
                     ) : null}
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText=" Phone"
+                      labelText=" Client_Postal_Code"
                       type="text"
-                      {...formik.getFieldProps("Phone")}
-                      placeholder={"Please enter your Phone Number"}
+                      {...formik.getFieldProps("Client_Postal_Code")}
+                      placeholder={"Please enter your Client Postal Code"}
                     />
-                    {formik.touched.Phone && formik.errors.Phone ? (
-                      <div>{formik.errors.Phone}</div>
+                    {formik.touched.Client_Postal_Code &&
+                    formik.errors.Client_Postal_Code ? (
+                      <div style={{ color: "red", marginLeft: "5px" }}>
+                        {formik.errors.Client_Postal_Code}
+                      </div>
                     ) : null}
                   </Grid>
                   <Grid item xs={12}>
@@ -118,7 +153,9 @@ function ClientDrawer({ setOpen, IsOpen }) {
                       {...formik.getFieldProps("GstNumber")}
                     />
                     {formik.touched.GstNumber && formik.errors.GstNumber ? (
-                      <div>{formik.errors.GstNumber}</div>
+                      <div style={{ color: "red", marginLeft: "5px" }}>
+                        {formik.errors.GstNumber}
+                      </div>
                     ) : null}
                   </Grid>
                   <Grid item xs={12}>

@@ -1,11 +1,8 @@
 import React, { Suspense } from "react";
 import { Container, Grid, Typography } from "@mui/material";
 import ForgetForm from "../../components/AuthComponent/ForgetPassword/ForgetForm";
-import Loader from "../../common/Loader";
-import { useDispatch } from "react-redux";
-import { setLoader } from "../../redux/slices/loaderSlice";
-import { ForgetPasswordUser } from "../../apiservice/auth";
-import toast from "react-hot-toast";
+
+
 
 function ForgetPassword() {
   const dispatch = useDispatch();
@@ -26,29 +23,29 @@ function ForgetPassword() {
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
-        <div className="forget-password-wrapper">
-          <Container>
-            <Grid container spacing={5}>
-              <Grid item xs={12}>
-                <div className="forget-password-box">
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      margin: "10px 0px",
-                      fontSize: "15px",
-                      textAlign: "center",
-                    }}
-                  >
-                    Forget Password
-                  </Typography>
-                  <ForgetForm hsubmit={hsubmit} />
-                </div>
-              </Grid>
+      <div className="forget-password-wrapper">
+        <Container>
+          <Grid container spacing={5}>
+            <Grid item xs={12}>
+              <div className="forget-password-box">
+                <Typography
+                  variant="h6"
+                  sx={{
+                    margin: "10px 0px",
+                    fontSize: "15px",
+                    textAlign: "center",
+                  }}
+                >
+                  {" "}
+                  Forget Password
+                </Typography>
+
+                <ForgetForm hsubmit={hsubmit} />
+              </div>
             </Grid>
-          </Container>
-        </div>
-      </Suspense>
+          </Grid>
+        </Container>
+      </div>
     </>
   );
 }
