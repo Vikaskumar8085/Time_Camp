@@ -4,6 +4,7 @@ import Proutes from "../../common/Proutes";
 import Button from "../../common/Button";
 import ClientDrawer from "../../components/AdminComponent/Clientcomponent/ClientDrawer";
 import TabComponent from "../../common/TabComponent";
+import TabComp from "../../common/TabComp";
 
 function Client() {
   const [IsOpen, setOpen] = React.useState(false);
@@ -13,12 +14,11 @@ function Client() {
     setActiveTab(index);
   };
 
-  const tabs = [
+  const tabsheadr = [{ title: "Clients" }, { title: "Client Block" }];
+  const Tabsbody = [
     {
-      title: "Add Client",
       content: (
         <>
-          {" "}
           <section className="client_wrapper">
             <Button onclick={() => setOpen(true)}>add client</Button>
             {IsOpen && <ClientDrawer IsOpen={IsOpen} setOpen={setOpen} />}
@@ -27,15 +27,14 @@ function Client() {
       ),
     },
     {
-      title: "Tab 2",
       content: (
         <>
-          <h1>hello</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam non
-            perferendis eum, perspiciatis nesciunt officiis facilis illum animi
-            porro vero, dicta at modi voluptates quas vel facere praesentium
-            consequatur recusandae.
+            {" "}
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
+            aspernatur eligendi culpa accusantium quos quisquam facere facilis
+            suscipit ipsum, ratione placeat unde distinctio alias, dolor porro
+            id! Reprehenderit, aliquid. Doloremque.
           </p>
         </>
       ),
@@ -45,7 +44,7 @@ function Client() {
     <>
       <Proutes>
         <Layout>
-          <TabComponent tabs={tabs} />
+          <TabComp Tabsheader={tabsheadr} TabsBody={Tabsbody} />
         </Layout>
       </Proutes>
     </>
