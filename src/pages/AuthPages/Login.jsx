@@ -27,7 +27,7 @@ function Login() {
         dispatch(setLoader(false));
         dispatch(setLogin(response?.data?.data));
         toast.success(response?.data?.message);
-        navigate("/dashboard");
+        window.location.href = "/dashboard";
       } else {
         toast.error(response?.data?.message);
       }
@@ -53,9 +53,11 @@ function Login() {
     onSuccess: async (tokenResponse) => {
       dispatch(setLoader(true));
       const response = await GoogleLoginAuth(tokenResponse);
+      console.log(response,"response")
       if (response?.data?.success) {
         console.log(response?.data?.message);
         dispatch(setLoader(false));
+        window.location.href = "/dashboard";
       }
     },
   });

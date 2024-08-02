@@ -4,9 +4,23 @@ import Proutes from "../../common/Proutes";
 import Button from "../../common/Button";
 import EmployeeDrawer from "../../components/AdminComponent/EmployeeComponent/EmployeeDrawer";
 import TabComp from "../../common/TabComp";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@mui/material";
 
 function Employee() {
   const [IsOpen, setOpen] = React.useState(false);
+  const rows = [
+    { name: "John Doe", age: 28, city: "New York" },
+    { name: "Jane Smith", age: 34, city: "Los Angeles" },
+    { name: "Emily Johnson", age: 22, city: "Chicago" },
+  ];
 
   const tabsheadr = [{ title: "Employee" }, { title: "Employee Details" }];
   const Tabsbody = [
@@ -17,6 +31,26 @@ function Employee() {
             <Button onclick={() => setOpen(true)}>add Employee</Button>
             {IsOpen && <EmployeeDrawer IsOpen={IsOpen} setOpen={setOpen} />}
           </section>
+          <TableContainer component={Paper}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Age</TableCell>
+                  <TableCell>City</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map((row, index) => (
+                  <TableRow key={index}>
+                    <TableCell>{row.name}</TableCell>
+                    <TableCell>{row.age}</TableCell>
+                    <TableCell>{row.city}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </>
       ),
     },

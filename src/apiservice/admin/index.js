@@ -25,7 +25,7 @@ export const createAdmin = async (payload) => {
 };
 
 // get all admins
-export const getAdmins = async () => {
+export const GetallAdminApiCall = async () => {
   const response = await apiInstance.get("/v1/get-all-admin");
   return response;
 };

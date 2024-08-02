@@ -5,14 +5,15 @@ import InputPassword from "../../../common/Input/InputPassword";
 import Input from "../../../common/Input/Input";
 import Button from "../../../common/Button";
 
-function EmployeeDrawer({ setOpen, IsOpen }) {
-  const handleSubmit = () => {
-    alert("hello");
+function ContractorDrawer({ IsOpen, setOpen }) {
+  const handlesubmit = (values) => {
+    alert(values);
   };
+
   return (
     <>
       <Drawer open={IsOpen} onClose={() => setOpen(false)} anchor={"right"}>
-        <div className="EmployeeDrawer">
+        <div className="ClientDrawer_box">
           <Container component="main" maxWidth="sm">
             <Box
               sx={{
@@ -27,7 +28,7 @@ function EmployeeDrawer({ setOpen, IsOpen }) {
                 </Typography>
               </div>
               {/* <Box component="form" sx={{ mt: 0 }}> */}
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handlesubmit}>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
                     <Input
@@ -69,4 +70,4 @@ function EmployeeDrawer({ setOpen, IsOpen }) {
   );
 }
 
-export default EmployeeDrawer;
+export default ContractorDrawer;

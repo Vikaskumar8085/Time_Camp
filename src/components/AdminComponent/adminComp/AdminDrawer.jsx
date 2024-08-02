@@ -9,7 +9,7 @@ import { createAdmin } from "../../../apiservice/admin";
 import { useDispatch } from "react-redux";
 import { setLoader } from "../../../redux/slices/loaderSlice";
 import toast from "react-hot-toast";
-function AdminDrawer({ IsOpen, setOpen }) {
+function AdminDrawer({ IsOpen, setOpen, GetAllAdmins }) {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -37,6 +37,7 @@ function AdminDrawer({ IsOpen, setOpen }) {
         if (response?.data?.success) {
           dispatch(setLoader(false));
           toast.success(response?.data?.message);
+          GetAllAdmins();
         }
       } catch (error) {
         dispatch(setLoader(false));
