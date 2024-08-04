@@ -15,7 +15,6 @@ function LoginForm({ handleSubmit }) {
     validate,
     onSubmit: (values) => {
       handleSubmit(values);
-      console.log("hello");
       formik.resetForm();
     },
   });
@@ -33,7 +32,9 @@ function LoginForm({ handleSubmit }) {
             value={formik.values.Email}
           />
           {formik.touched.Email && formik.errors.Email ? (
-            <div>{formik.errors.Email}</div>
+            <div style={{ color: "red", marginLeft: "5px" }}>
+              {formik.errors.Email}
+            </div>
           ) : null}
           <InputPassword
             name={"Password"}
@@ -43,7 +44,9 @@ function LoginForm({ handleSubmit }) {
             placeholder="Please Enter Your Password "
           />
           {formik.touched.Password && formik.errors.Password ? (
-            <div>{formik.errors.Password}</div>
+            <div style={{ color: "red", marginLeft: "5px" }}>
+              {formik.errors.Password}
+            </div>
           ) : null}
           <Link
             to={"/forget-password"}

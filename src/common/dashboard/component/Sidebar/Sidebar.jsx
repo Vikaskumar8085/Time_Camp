@@ -1,6 +1,5 @@
 import React from "react";
-import { MdOutlineAddHome } from "react-icons/md";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Admin, Contractor, Employee, Super_Admin } from "./Links";
 
 function Sidebar({ Role }) {
@@ -67,7 +66,6 @@ function Sidebar({ Role }) {
       </div>
       <aside>
         <ul>
-          {IsAdmin}
           {IsRole === "super_admin" && <>{IsSuperAdmin}</>}
           {IsRole === "Admin" && <>{IsAdmin}</>}
           {IsRole === "employee" && <>{IsEmployee}</>}

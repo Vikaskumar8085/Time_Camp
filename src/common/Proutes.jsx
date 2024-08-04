@@ -1,18 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Proutes({ children }) {
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!sessionStorage.getItem("token")) {
-            // window.location.href = "/login"  
-        }
-    }, [0])
+  useEffect(() => {
+    if (!sessionStorage.getItem("token")) {
+      navigate("/login");
+    } 
+  }, [0]);
 
-    return (
-        <>
-            {children}
-        </>
-    )
+  return <>{children}</>;
 }
 
-export default Proutes
+export default Proutes;

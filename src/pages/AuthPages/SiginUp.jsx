@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useDispatch } from "react-redux";
 import { registerauth } from "../../apiservice/auth";
@@ -35,6 +35,18 @@ const SiginUp = () => {
       navigate("/signup");
     }
   };
+
+  // check authentication
+  const isAuth = () => {
+    if (sessionStorage.getItem("token")) {
+      navigate("/dashboard");
+    }
+  };
+
+  useEffect(() => {
+    isAuth();
+  }, [0]);
+
   return (
     <>
       <Suspense fallback={<Loader />}>

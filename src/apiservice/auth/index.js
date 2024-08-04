@@ -56,3 +56,10 @@ export const verifyMail = async (value) => {
   const respons = await apiInstance.get(`/user/verify/${value.id}`);
   return respons;
 };
+
+// edit User
+
+export const EditUserApiCall= async (value) => {
+  const respons = await apiInstance.post("/user/edit-user", value);
+  return respons;
+};

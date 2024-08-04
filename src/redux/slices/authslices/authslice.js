@@ -8,11 +8,10 @@ const authSlice = createSlice({
   },
   reducers: {
     setLogin: (state, action) => {
-      localStorage.setItem("token", JSON.stringify(action.payload));
+      sessionStorage.setItem("token", JSON.stringify(action.payload));
     },
     setLoginStatus: (state, action) => {
       if (state.isLogin === false) {
-        sessionStorage.setItem("isLoginStatus", action.payload);
         state.isLogin = action.payload;
       }
     },

@@ -31,23 +31,23 @@ function Layout({ children }) {
   //   }
   // };
 
-  //get User role based
+  // get User role based
 
-  // const GetUser = async () => {
-  //   try {
-  //     dispatch(setLoader(true));
-  //     const response = await getUserdata();
-  //     if (response.status === 200) {
-  //       console.log("response", response?.data?.message);
-  //       dispatch(setLoader(false));
-  //       dispatch(setGetUser(response?.data));
-  //     }
-  //     console.log(response);
-  //   } catch (error) {
-  //     dispatch(setLoader(false));
-  //     throw new Error(error?.response?.message);
-  //   }
-  // };
+  const GetUser = async () => {
+    try {
+      dispatch(setLoader(true));
+      const response = await getUserdata();
+      if (response.status === 200) {
+        console.log("response", response?.data?.message);
+        dispatch(setLoader(false));
+        dispatch(setGetUser(response?.data));
+      }
+      console.log(response);
+    } catch (error) {
+      dispatch(setLoader(false));
+      throw new Error(error?.response?.message);
+    }
+  };
 
   // login auth
   // const isAuth = () => {
@@ -58,14 +58,9 @@ function Layout({ children }) {
   //   }
   // };
 
-
-  // useEffect(() => {
-  //   loginstatus();
-  //   GetUser();
-  //   isAuth();
-  // }, [dispatch]);
-
-
+  useEffect(() => {
+    GetUser();
+  }, [dispatch]);
 
   return (
     <>
@@ -76,7 +71,6 @@ function Layout({ children }) {
           <main>
             <div className="content">{children}</div>
           </main>
-
         </div>
       </div>
     </>

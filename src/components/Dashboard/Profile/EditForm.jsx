@@ -1,23 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Input from "../../../common/Input/Input";
 import { useFormik } from "formik";
-import { validate } from "./signupvalidation";
-import InputPassword from "../../../common/Input/InputPassword";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Input from "../../../common/Input/Input";
 import Button from "../../../common/Button";
-function SignUpForm({ hsubmit }) {
+import { setLoader } from "../../../redux/slices/loaderSlice";
+import { EditUserApiCall } from "../../../apiservice/auth";
+import { Navigate } from "react-router-dom";
+import toast from "react-hot-toast";
+
+function EditForm() {
+  const dispatch = useDispatch();
+  const GetUserData = useSelector((state) => state.auth.values);
+
   const formik = useFormik({
     initialValues: {
-      FirstName: "",
-      LastName: "",
-      Email: "",
-      Password: "",
-      Term: "",
+      FirstName: GetUserData?.message?.FirstName || "",
+      LastName: GetUserData?.message?.LastName,
+      Email: GetUserData?.message?.Email,
     },
-    validate,
-    onSubmit: (values) => {
-      hsubmit(values);
-      // formik.resetForm();
+    onSubmit: async (values) => {
+      try {
+        dispatch(setLoader(true));
+        const EditUserResponse = await EditUserApiCall(values);
+        if (EditUserResponse?.data?.success) {
+          window.location.href = "/Profile";
+          dispatch(setLoader(false));
+          toast.success(EditUserResponse?.data?.message);
+        }
+
+        formik.resetForm();
+      } catch (error) {
+        dispatch(setLoader(false));
+        console.log(error?.response?.data?.message);
+      }
     },
   });
 
@@ -60,46 +75,11 @@ function SignUpForm({ hsubmit }) {
             {formik.errors.Email}
           </div>
         ) : null}
-        <InputPassword
-          labelText={"Password"}
-          type="password"
-          autocomplete="off"
-          placeholder={"Please Enter your Password"}
-          {...formik.getFieldProps("Password")}
-        />
-        {formik.touched.Password && formik.errors.Password ? (
-          <div style={{ color: "red", marginTop: "5px" }}>
-            {formik.errors.Password}
-          </div>
-        ) : null}
-        <div style={{ display: "flex" }}>
-          <input
-            autocomplete="off"
-            type="checkbox"
-            {...formik.getFieldProps("Term")}
-            name="Term"
-          />
-          &nbsp;
-          <p className="mx-2">
-            I agree with all <Link to="">Term & Condition</Link>
-          </p>
-        </div>
 
-        {formik.touched.Term && formik.errors.Term ? (
-          <div style={{ color: "red", marginTop: "5px" }}>
-            {formik.errors.Term}
-          </div>
-        ) : null}
         <Button type={"submit"}>Submit</Button>
       </form>
-
-      <div className="register_footer">
-        <h1>
-          Alerady Register !please <Link to="/login">click here</Link>
-        </h1>
-      </div>
     </div>
   );
 }
 
-export default SignUpForm;
+export default EditForm;

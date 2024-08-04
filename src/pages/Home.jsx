@@ -1,8 +1,5 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import Card from "../common/Card";
-import InputPhone from "../common/Input/InputPhone";
-
 import Wrapper from "../common/wrapper/Wrapper";
 import TabComp from "../common/TabComp";
 

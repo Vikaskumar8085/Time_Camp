@@ -27,9 +27,13 @@ export const validate = (values) => {
   // Validate Password
   if (!values.Password) {
     errors.Password = "Password is required";
-  } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(values.Password)) {
+  } else if (
+    !/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+      values.Password
+    )
+  ) {
     errors.Password =
-      "Password must be at least 8 characters, including letters and numbers";
+      "Password must include uppercase, lowercase, number, and special character";
   }
 
   // Validate Terms

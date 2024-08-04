@@ -22,14 +22,29 @@ import {
   CardContent,
   CardMedia,
   Typography,
+  Box,
 } from "@mui/material";
+import Input from "../../common/Input/Input";
 function Adminpage() {
   const [isAdmin, setIsAdmin] = React.useState([]);
   const [IsView, setIsView] = React.useState("list");
+  const [IsSearch, setIsSearch] = React.useState("");
+  console.log(IsSearch, "isearc");
 
   console.log(isAdmin, "isAdmin");
   const dispatch = useDispatch();
   const [IsOpen, setOpen] = React.useState(false);
+
+  // searching
+  const filterBySearch = isAdmin.filter((item) => {
+    return (
+      item.FirstName.toLowerCase().includes(IsSearch.toLowerCase()) ||
+      item?.LastName?.toLowerCase().includes(IsSearch.toLowerCase()) ||
+      item?.Email?.toLowerCase()?.includes(IsSearch?.toLowerCase())
+    );
+  });
+
+// 
 
   const GetAllAdmins = async () => {
     try {
@@ -50,7 +65,6 @@ function Adminpage() {
     GetAllAdmins();
   }, [0]);
 
-
   // Tabs component
   const tabsheadr = [{ title: "Admin Dashboard" }, { title: "Admin Details" }];
   const Tabsbody = [
@@ -58,7 +72,25 @@ function Adminpage() {
       content: (
         <>
           <section className="admin_wrapper">
-            <Button onclick={() => setOpen(true)}>add admin</Button>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <Button onclick={() => setOpen(true)}>add admin</Button>
+              <div className="input_bar">
+                <label for="cars">Sorting</label>
+                <select name="" id="">
+                  <option value="Asc">Acending</option>
+                  <option value="desacending">desacending</option>
+                  <option value="FirstName">FirstName</option>
+                  <option value="LastName">FirstName</option>
+                  <option value="Email">Email</option>
+                </select>
+              </div>
+            </Box>
             {IsOpen && (
               <AdminDrawer
                 GetAllAdmins={GetAllAdmins}
@@ -66,6 +98,13 @@ function Adminpage() {
                 setOpen={setOpen}
               />
             )}
+
+            <Input
+              onchange={(e) => setIsSearch(e.target.value)}
+              value={IsSearch}
+              placeholder={"Search"}
+            />
+
             <PanoramaOutlinedIcon onClick={() => setIsView("view")} />
             <ViewListIcon onClick={() => setIsView("list")} />
             {IsView === "list" && (
@@ -80,7 +119,7 @@ function Adminpage() {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {isAdmin.map((row, index) => (
+                    {filterBySearch?.map((row, index) => (
                       <TableRow key={index}>
                         <TableCell>{row.FirstName}</TableCell>
                         <TableCell>{row?.LastName}</TableCell>
@@ -104,7 +143,7 @@ function Adminpage() {
                   justifyContent: "Center",
                 }}
               >
-                {isAdmin.map((row, index) => {
+                {filterBySearch?.map((row, index) => {
                   return (
                     <>
                       <Card

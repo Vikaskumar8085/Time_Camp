@@ -1,6 +1,10 @@
 import React from "react";
+import Image from "../../../Image/Image";
+import { useSelector } from "react-redux";
 
-function Header(GetUserData) {
+function Header() {
+  const GetUserData = useSelector((state) => state.auth.values);
+
   return (
     <header className="header_wrapper">
       <div className="header_box">
@@ -8,8 +12,18 @@ function Header(GetUserData) {
           <img src="https://d2w2i7rp1a0wob.cloudfront.net/static/images/logos/KekaLogoBlack.svg" />
         </div>
         <div className="head_profile">
-          <img src="https://i.ibb.co/4pDNDk1/avatar.png" />
-          <p>Admin</p>
+          <img src={GetUserData?.message?.Photo} alt="no-img" />
+          <button
+            onClick={() => {
+              if (sessionStorage.getItem("token")) {
+                sessionStorage.clear();
+                window.location.href = "/login";
+              } else {
+              }
+            }}
+          >
+            logout
+          </button>
         </div>
       </div>
     </header>
