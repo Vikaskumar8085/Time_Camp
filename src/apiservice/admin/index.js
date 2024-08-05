@@ -13,7 +13,7 @@ export const getSingleClient = async (palyoad) => {
 };
 
 // get client
-export const GetClient = async () => {
+export const GetClientApiCall = async () => {
   const response = await apiInstance.get("/v1/get-all-client");
   return response;
 };

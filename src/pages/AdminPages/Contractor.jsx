@@ -2,7 +2,15 @@ import React from "react";
 import TabComp from "../../common/TabComp";
 import Proutes from "../../common/Proutes";
 import Layout from "../../common/dashboard/Layout";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@mui/material";
 import Button from "../../common/Button";
 import ContractorDrawer from "../../components/AdminComponent/ContractoreComponent/ContractorDrawer";
 
@@ -14,7 +22,11 @@ function Contractor() {
     { name: "Emily Johnson", age: 22, city: "Chicago" },
   ];
 
-  const tabsheadr = [{ title: "Contractor" }, { title: "Contractor Details" }];
+  const tabsheadr = [
+    { title: "Contractor" },
+    { title: "Active Contractor" },
+    { title: "In Active Contractor" },
+  ];
   const Tabsbody = [
     {
       content: (

@@ -16,7 +16,6 @@ import Employee from "./pages/AdminPages/Employee";
 import Profile from "./pages/DashboardPages/Profile";
 import ForgetPassword from "./pages/AuthPages/ForgetPassword";
 import ChangePassword from "./pages/AuthPages/ChangePassword";
-import ProfilePage from "./pages/DashboardPages/ProfilePage";
 import Company from "./pages/AdminPages/Company";
 import VerifyToken from "./pages/VerifyToken";
 import Contractor from "./pages/AdminPages/Contractor";
@@ -43,6 +42,7 @@ function App() {
         <Route path="/" index element={<Home />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/company" element={<Company/>}/>
         <Route path="/client" element={<Client />} />
         <Route path="/admin" element={<Adminpage />} />
         <Route path="/contractor" element={<Contractor />} />

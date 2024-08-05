@@ -11,7 +11,7 @@ import { setLoader } from "../../../redux/slices/loaderSlice";
 import { createClient } from "../../../apiservice/admin";
 import toast from "react-hot-toast";
 
-function ClientDrawer({ setOpen, IsOpen }) {
+function ClientDrawer({ setOpen, IsOpen ,GetAllClients}) {
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -33,6 +33,7 @@ function ClientDrawer({ setOpen, IsOpen }) {
         if (response?.data?.success) {
           dispatch(setLoader(false));
           toast.success(response?.data?.message);
+          GetAllClients()
           formik.resetForm();
           setOpen(false);
         }

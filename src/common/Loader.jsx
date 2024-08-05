@@ -1,14 +1,16 @@
-import React from 'react'
-import { ScaleLoader } from 'react-spinners'
+import React from "react";
+import { ScaleLoader } from "react-spinners";
 
 function Loader() {
   return (
     <div className="Loader_container">
       <div className="Loader_row">
-        <ScaleLoader color='#ffffff' />
+        <div className="loader_content">
+          <ScaleLoader color="#ffffff" />
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Loader
+export default Loader;

@@ -1,26 +1,32 @@
-import { Button, Drawer } from "@mui/material";
+import { Drawer } from "@mui/material";
 import React, { useState } from "react";
+import Button from "../../common/Button";
+import Layout from "../../common/dashboard/Layout";
+import Proutes from "../../common/Proutes";
+import TabComp from "../../common/TabComp";
+import CompanyAddDrawer from "../../components/AdminComponent/Company/CompanyAddDrawer";
 
 function Company() {
-  const [IsOpen, setIsOpen] = useState(false);
+  const [IsOpen, setOpen] = useState(false);
+  const TabHeader = [{ title: "Company" }];
+  const Tabsbody = [
+    {
+      content: (
+        <>
+          <Button onclick={()=>setOpen(true)}>Add Company</Button>
+          {IsOpen && <CompanyAddDrawer IsOpen={IsOpen} setOpen={setOpen} />}
+        </>
+      ),
+    },
+  ];
   return (
-    <div>
-      <Button variant="contained" onClick={() => setIsOpen(true)}>
-        Add Company
-      </Button>
-
-      <Drawer open={IsOpen} anchor="right">
-        <form>
-          <input
-            type="text"
-            name=""
-            placeholder="Please enter your Name"
-            id=""
-          />
-          <button>submit</button>
-        </form>
-      </Drawer>
-    </div>
+    <>
+      <Proutes>
+        <Layout>
+          <TabComp Tabsheader={TabHeader} TabsBody={Tabsbody} />
+        </Layout>
+      </Proutes>
+    </>
   );
 }
 

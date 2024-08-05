@@ -44,7 +44,7 @@ function Adminpage() {
     );
   });
 
-// 
+// searching
 
   const GetAllAdmins = async () => {
     try {

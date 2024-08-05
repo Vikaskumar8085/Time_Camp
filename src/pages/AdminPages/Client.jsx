@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../common/dashboard/Layout";
 import Proutes from "../../common/Proutes";
 import Button from "../../common/Button";
 import ClientDrawer from "../../components/AdminComponent/Clientcomponent/ClientDrawer";
-import TabComponent from "../../common/TabComponent";
 import TabComp from "../../common/TabComp";
 import {
   Table,
@@ -14,44 +13,101 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
+import { setLoader } from "../../redux/slices/loaderSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { GetClientApiCall } from "../../apiservice/admin";
+import { setClients } from "../../redux/slices/AdminSlice/adminSlice";
+import toast from "react-hot-toast";
+import Input from "../../common/Input/Input";
 
 function Client() {
   const [IsOpen, setOpen] = React.useState(false);
-  const [activeTab, setActiveTab] = React.useState(0);
+  const dispatch = useDispatch();
+  const [IsSearch, setIsSearch] = useState("");
+  const getClients = useSelector((state) => state.admin.clientValue);
 
-  const handleTabChange = (index) => {
-    setActiveTab(index);
+  // searching
+  const filterBySearch = getClients.filter((item) => {
+    return (
+      item?.Company_Name.toLowerCase().includes(IsSearch.toLowerCase()) ||
+      item?.Client_Name?.toLowerCase().includes(IsSearch.toLowerCase()) ||
+      item?.Client_Email?.toLowerCase().includes(IsSearch.toLowerCase()) ||
+      item?.Client_Address?.toLowerCase()?.includes(IsSearch?.toLowerCase())
+    );
+  });
+
+  // searching
+
+  // get all clients
+  const GetAllClients = async () => {
+    try {
+      dispatch(setLoader(true));
+      const response = await GetClientApiCall();
+      if (response?.data?.success) {
+        dispatch(setLoader(false));
+        dispatch(setClients(response?.data?.message));
+      }
+    } catch (error) {
+      dispatch(setLoader(false));
+      toast.error(error?.response?.data?.message);
+    }
   };
-  const rows = [
-    { name: "John Doe", age: 28, city: "New York" },
-    { name: "Jane Smith", age: 34, city: "Los Angeles" },
-    { name: "Emily Johnson", age: 22, city: "Chicago" },
-  ];
 
-  const tabsheadr = [{ title: "Clients" }, { title: "Client Block" }];
+  // get all clients
+  useEffect(() => {
+    GetAllClients();
+  }, [0]);
+
+  const tabsheadr = [
+    { title: "Clients" },
+    { title: "Active Clients" },
+    { title: "In Active Clients" },
+    { title: "Dead Clients" },
+  ];
   const Tabsbody = [
     {
       content: (
         <>
           <section className="client_wrapper">
             <Button onclick={() => setOpen(true)}>add client</Button>
-            {IsOpen && <ClientDrawer IsOpen={IsOpen} setOpen={setOpen} />}
+            {IsOpen && (
+              <ClientDrawer
+                IsOpen={IsOpen}
+                GetAllClients={GetAllClients}
+                setOpen={setOpen}
+              />
+            )}
           </section>
+          <Input
+            onchange={(e) => setIsSearch(e.target.value)}
+            value={IsSearch}
+            placeholder={"Search"}
+          />
+
           <TableContainer component={Paper}>
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Age</TableCell>
-                  <TableCell>City</TableCell>
+                  <TableCell>Company Name</TableCell>
+                  <TableCell>Client Name</TableCell>
+                  <TableCell>Client Email</TableCell>
+                  <TableCell>Client Phone</TableCell>
+                  <TableCell>Client Address</TableCell>
+                  <TableCell>Client Postal Code</TableCell>
+                  <TableCell>Gst Number</TableCell>
+                  <TableCell>Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row, index) => (
+                {filterBySearch.map((items, index) => (
                   <TableRow key={index}>
-                    <TableCell>{row.name}</TableCell>
-                    <TableCell>{row.age}</TableCell>
-                    <TableCell>{row.city}</TableCell>
+                    <TableCell>{items.Company_Name}</TableCell>
+                    <TableCell>{items.Client_Name}</TableCell>
+                    <TableCell>{items.Client_Email}</TableCell>
+                    <TableCell>{items.Client_Phone}</TableCell>
+                    <TableCell>{items.Client_Address}</TableCell>
+                    <TableCell>{items.Client_Postal_Code}</TableCell>
+                    <TableCell>{items.GstNumber}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

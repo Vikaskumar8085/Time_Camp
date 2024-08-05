@@ -1,31 +1,25 @@
 import React from "react";
 import Proutes from "../../common/Proutes";
 import Layout from "../../common/dashboard/Layout";
-import Box from "@mui/material/Box";
-import Tab from "@mui/material/Tab";
-import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
-import TabPanel from "@mui/lab/TabPanel";
 import TabComp from "../../common/TabComp";
 
 function Dashboard() {
-  const [value, setValue] = React.useState("1");
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  const tabsheadr = [{ title: "Dashboard" }, { title: "Employee Details" }];
+  const tabsheadr = [{ title: "Dashboard" }];
   const Tabsbody = [
     {
       content: (
         <>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Id amet
-            repellat animi dolorum quaerat consequuntur velit quisquam
-            voluptates? Consequatur aspernatur perferendis corrupti neque error
-            rerum eaque eligendi quo et iure?
-          </p>
+          {/* dashboard header section */}
+          <section className="dashboard_wrapper">
+            <div className="dashboard_count">
+              <div className="active">1</div>
+              <div className="active">1</div>
+              <div className="active">1</div>
+              <div className="active">1</div>
+            </div>
+          </section>
+
+          <section className="dashboard_Charts"></section>
         </>
       ),
     },

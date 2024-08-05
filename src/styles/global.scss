@@ -20,12 +20,10 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  overflow: auto;
 }
 
-body {
-  max-height: 100vh;
-  min-height: 100vh;
-}
+
 
 h1,
 h2,

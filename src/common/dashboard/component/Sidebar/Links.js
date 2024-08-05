@@ -19,6 +19,7 @@ export const Super_Admin = [
     icon: <BiImageAdd />,
     path: "/profile",
   },
+
   //   {
   //     title: "Account",
   //     icon: <FaRegChartBar />,
@@ -70,6 +71,11 @@ export const Admin = [
     title: "Profile",
     icon: <CgProfile />,
     path: "/profile",
+  },
+  {
+    title: "Company",
+    icon: <CgProfile />,
+    path: "/company",
   },
   {
     title: "Our Client",

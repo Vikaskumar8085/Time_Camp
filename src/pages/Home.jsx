@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import Wrapper from "../common/wrapper/Wrapper";
 import TabComp from "../common/TabComp";
+import Loader from "../common/Loader";
 
 // import GridListTable from "./GridListTable";
 
@@ -33,6 +34,7 @@ function Home() {
   ];
   return (
     <>
+    <Loader/>
       <Helmet>
         <title> Time Camp</title>
         <link rel="canonical" href="https://www.tacobell.com/" />

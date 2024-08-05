@@ -22,7 +22,11 @@ function Employee() {
     { name: "Emily Johnson", age: 22, city: "Chicago" },
   ];
 
-  const tabsheadr = [{ title: "Employee" }, { title: "Employee Details" }];
+  const tabsheadr = [
+    { title: "Employee" },
+    { title: "Active Employee" },
+    { title: "InActive Employee" },
+  ];
   const Tabsbody = [
     {
       content: (
