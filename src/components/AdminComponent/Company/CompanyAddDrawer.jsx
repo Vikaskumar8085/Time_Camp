@@ -1,10 +1,19 @@
 import { Box, Container, Drawer, Grid, Typography } from "@mui/material";
+import { useFormik } from "formik";
 import React from "react";
 import Button from "../../../common/Button";
 import Input from "../../../common/Input/Input";
 import InputPassword from "../../../common/Input/InputPassword";
 
 function CompanyAddDrawer({ IsOpen, setOpen }) {
+  const formik = useFormik({
+    initialValues: {
+      Company_Name: "",
+      Company_Email: "",
+      Address:"",
+    },
+  });
+
   return (
     <>
       <Drawer open={IsOpen} onClose={() => setOpen(false)} anchor={"right"}>

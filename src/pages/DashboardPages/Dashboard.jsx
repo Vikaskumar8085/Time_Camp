@@ -3,10 +3,7 @@ import Proutes from "../../common/Proutes";
 import Layout from "../../common/dashboard/Layout";
 import TabComp from "../../common/TabComp";
 import {
-  PieChart,
-  Pie,
   Tooltip,
-  Cell,
   Area,
   AreaChart,
   XAxis,
