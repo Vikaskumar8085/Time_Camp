@@ -15,8 +15,16 @@ import {
 } from "@mui/material";
 import { setLoader } from "../../redux/slices/loaderSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { GetClientApiCall } from "../../apiservice/admin";
-import { setClients } from "../../redux/slices/AdminSlice/adminSlice";
+import {
+  createClient,
+  EditClientApiCall,
+  GetClientApiCall,
+  RemoveClientApiCall,
+} from "../../apiservice/admin";
+import {
+  setClients,
+  SetSingleClientsFunc,
+} from "../../redux/slices/AdminSlice/adminSlice";
 import toast from "react-hot-toast";
 import Input from "../../common/Input/Input";
 
@@ -25,6 +33,7 @@ function Client() {
   const dispatch = useDispatch();
   const [IsSearch, setIsSearch] = useState("");
   const getClients = useSelector((state) => state.admin.clientValue);
+  const CItems = useSelector((state) => state.admin.ClinetSingleValue);
 
   // searching
   const filterBySearch = getClients.filter((item) => {
@@ -35,8 +44,42 @@ function Client() {
       item?.Client_Address?.toLowerCase()?.includes(IsSearch?.toLowerCase())
     );
   });
-
   // searching
+  // Client Handle Add
+  const ClienthandleSubmit = async (value) => {
+    try {
+      dispatch(setLoader(true));
+      const response = await createClient(value);
+      console.log(response);
+      if (response?.data?.success) {
+        dispatch(setLoader(false));
+        toast.success(response?.data?.message);
+        GetAllClients();
+        setOpen(false);
+      }
+    } catch (error) {
+      dispatch(setLoader(false));
+      toast.error(error?.response?.data?.message);
+    }
+  };
+
+  // Client Remove handle
+  const handleDelete = async (value) => {
+    try {
+      console.log(value, "delete value");
+      dispatch(setLoader(true));
+      const response = await RemoveClientApiCall(value);
+      console.log(response, "repsonse");
+      if (response.status === 200) {
+        dispatch(setLoader(false));
+        GetAllClients();
+        toast.success("delete data successfully");
+      }
+    } catch (error) {
+      dispatch(setLoader(false));
+      toast.error(error?.response.data);
+    }
+  };
 
   // get all clients
   const GetAllClients = async () => {
@@ -54,6 +97,38 @@ function Client() {
   };
 
   // get all clients
+  // Edit handle
+  const handleEdit = (Item) => {
+    dispatch(SetSingleClientsFunc(Item));
+    setOpen(true);
+  };
+  // Edit handle
+
+  const ClientEditHandle = async (value) => {
+    try {
+      const Val = {
+        id: CItems._id,
+        payload: value,
+      };
+      console.log("Val", Val);
+
+      dispatch(setLoader(true));
+      const response = await EditClientApiCall(Val);
+      console.log(response, "response");
+      if (response.status === 200) {
+        dispatch(setLoader(false));
+        dispatch(SetSingleClientsFunc(null));
+        setOpen(false);
+        GetAllClients();
+        toast.success("Edit Data successfully");
+      }
+    } catch (error) {
+      setOpen(false);
+      dispatch(setLoader(false));
+      toast.error(error?.response?.data);
+    }
+  };
+
   useEffect(() => {
     GetAllClients();
   }, [0]);
@@ -73,8 +148,10 @@ function Client() {
             {IsOpen && (
               <ClientDrawer
                 IsOpen={IsOpen}
-                GetAllClients={GetAllClients}
+                CItems={CItems}
                 setOpen={setOpen}
+                ClienthandleSubmit={ClienthandleSubmit}
+                ClientEditHandle={ClientEditHandle}
               />
             )}
           </section>
@@ -108,6 +185,12 @@ function Client() {
                     <TableCell>{items.Client_Address}</TableCell>
                     <TableCell>{items.Client_Postal_Code}</TableCell>
                     <TableCell>{items.GstNumber}</TableCell>
+                    <TableCell>
+                      <button onClick={() => handleDelete(items._id)}>
+                        Delete
+                      </button>
+                      <button onClick={() => handleEdit(items)}>Edit</button>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

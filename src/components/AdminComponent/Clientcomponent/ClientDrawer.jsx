@@ -1,52 +1,52 @@
 import { Drawer } from "@mui/material";
 import React from "react";
 import { Grid, Box, Typography, Container } from "@mui/material";
-import InputPassword from "../../../common/Input/InputPassword";
 import Input from "../../../common/Input/Input";
 import Button from "../../../common/Button";
 import { useFormik } from "formik";
 import { validate } from "./clientdrawerValidation";
 import { useDispatch } from "react-redux";
-import { setLoader } from "../../../redux/slices/loaderSlice";
-import { createClient } from "../../../apiservice/admin";
-import toast from "react-hot-toast";
+import { SetSingleClientsFunc } from "../../../redux/slices/AdminSlice/adminSlice";
 
-function ClientDrawer({ setOpen, IsOpen ,GetAllClients}) {
+function ClientDrawer({
+  setOpen,
+  IsOpen,
+  ClienthandleSubmit,
+  CItems,
+  ClientEditHandle,
+}) {
   const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
-      Company_Name: "",
-      Client_Name: "",
-      Client_Email: "",
-      Client_Phone: "",
-      Client_Postal_Code: "",
-      Client_Address: "",
-      GstNumber: "",
+      Company_Name: CItems !== null ? CItems?.Company_Name : "",
+      Client_Name: CItems !== null ? CItems?.Client_Name : "",
+      Client_Email: CItems !== null ? CItems?.Client_Email : "",
+      Client_Phone: CItems !== null ? CItems?.Client_Phone : "",
+      Client_Postal_Code: CItems !== null ? CItems?.Client_Postal_Code : "",
+      Client_Address: CItems !== null ? CItems?.Client_Address : "",
+      GstNumber: CItems !== null ? CItems?.GstNumber : "",
     },
     validate: validate,
     onSubmit: async (value) => {
-      try {
-        dispatch(setLoader(true));
-        const response = await createClient(value);
-        console.log(response);
-        if (response?.data?.success) {
-          dispatch(setLoader(false));
-          toast.success(response?.data?.message);
-          GetAllClients()
-          formik.resetForm();
-          setOpen(false);
-        }
-      } catch (error) {
-        dispatch(setLoader(false));
-        toast.error(error?.response?.data?.message);
+      if (CItems !== null) {
+        ClientEditHandle(value);
+      } else {
+        ClienthandleSubmit(value);
         formik.resetForm();
       }
     },
   });
   return (
     <>
-      <Drawer open={IsOpen} onClose={() => setOpen(false)} anchor={"right"}>
+      <Drawer
+        open={IsOpen}
+        onClose={() => {
+          setOpen(false);
+          dispatch(SetSingleClientsFunc(null));
+        }}
+        anchor={"right"}
+      >
         <div className="ClientDrawer_box">
           <Container component="main" maxWidth="sm">
             <Box
@@ -58,7 +58,7 @@ function ClientDrawer({ setOpen, IsOpen ,GetAllClients}) {
             >
               <div className="clientDrawer_title">
                 <Typography variant="h6" component={"h1"}>
-                  Add Client
+                  {CItems !== null ? "Edit Client" : "Add Client"}
                 </Typography>
               </div>
               {/* <Box component="form" sx={{ mt: 0 }}> */}

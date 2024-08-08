@@ -16,11 +16,6 @@ import {
 
 function Employee() {
   const [IsOpen, setOpen] = React.useState(false);
-  const rows = [
-    { name: "John Doe", age: 28, city: "New York" },
-    { name: "Jane Smith", age: 34, city: "Los Angeles" },
-    { name: "Emily Johnson", age: 22, city: "Chicago" },
-  ];
 
   const tabsheadr = [
     { title: "Employee" },
@@ -45,13 +40,11 @@ function Employee() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row, index) => (
-                  <TableRow key={index}>
-                    <TableCell>{row.name}</TableCell>
-                    <TableCell>{row.age}</TableCell>
-                    <TableCell>{row.city}</TableCell>
-                  </TableRow>
-                ))}
+                <TableRow>
+                  <TableCell></TableCell>
+                  <TableCell></TableCell>
+                  <TableCell></TableCell>
+                </TableRow>
               </TableBody>
             </Table>
           </TableContainer>

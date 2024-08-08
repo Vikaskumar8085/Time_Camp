@@ -1,31 +1,31 @@
-import { Box, Container, Drawer, Grid, Typography } from "@mui/material";
-import React from "react";
-import Input from "../../../common/Input/Input";
-import Button from "../../../common/Button";
+import { Drawer, Grid, Typography } from "@mui/material";
+import { Box, Container } from "@mui/system";
 import { useFormik } from "formik";
+import React from "react";
 import { useDispatch } from "react-redux";
+import Button from "../../../common/Button";
+import Input from "../../../common/Input/Input";
 import { GetDepartmentFunc } from "../../../redux/slices/Department/DepartmentSlice";
-import { getDesignation } from "../../../redux/slices/Designation/DesignationSlice";
 
-function DesignationForm({
-  EdithandleSubmit,
+function DepartmentDrawer({
+  DEdithandle,
   IsOpen,
   setOpen,
-  DhandleSubmit,
-  Items,
-  
+  DItems,
+  DephandleSubmit,
 }) {
-  console.log(Items, "designation drawer");
   const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
-      Desig_Name: Items !== null ? Items.Desig_Name : "",
+      Dep_Name: DItems !== null ? DItems.Dep_Name : "",
+      Remark: DItems !== null ? DItems.Remark : "",
     },
-    onSubmit: (values) => {
-      if (Items !== null) {
-        EdithandleSubmit(values);
+    onSubmit: (value) => {
+      if (DItems !== null) {
+        DEdithandle(value);
       } else {
-        DhandleSubmit(values);
+        DephandleSubmit(value);
       }
     },
   });
@@ -33,11 +33,11 @@ function DesignationForm({
   return (
     <>
       <Drawer
-        open={IsOpen}
         anchor="right"
+        open={IsOpen}
         onClose={() => {
           setOpen(false);
-          dispatch(getDesignation(null));
+          dispatch(GetDepartmentFunc(null));
         }}
       >
         <div className="Designation_Form">
@@ -51,17 +51,24 @@ function DesignationForm({
             >
               <div className="clientDrawer_title">
                 <Typography variant="h6" component={"h1"}>
-                  {Items !== null ? "Edit Designation " : "Add Designation"}
+                  {DItems !== null ? "Edit Department" : "Add Department"}
                 </Typography>
               </div>
               {/* <Box component="form" sx={{ mt: 0 }}> */}
               <form onSubmit={formik.handleSubmit}>
                 <Grid container spacing={2}>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} sm={6}>
                     <Input
-                      labelText="Designation Name"
-                      {...formik.getFieldProps("Desig_Name")}
-                      placeholder={"Please enter your password"}
+                      labelText="Department Name"
+                      {...formik.getFieldProps("Dep_Name")}
+                      placeholder={"Please enter your Department Name"}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Input
+                      labelText="Remark"
+                      {...formik.getFieldProps("Remark")}
+                      placeholder={"Please enter Remarks"}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -77,4 +84,4 @@ function DesignationForm({
   );
 }
 
-export default DesignationForm;
+export default DepartmentDrawer;
