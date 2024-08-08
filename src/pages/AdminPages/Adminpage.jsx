@@ -44,7 +44,7 @@ function Adminpage() {
     );
   });
 
-// searching
+// 
 
   const GetAllAdmins = async () => {
     try {
@@ -61,6 +61,8 @@ function Adminpage() {
     }
   };
 
+
+  
   useEffect(() => {
     GetAllAdmins();
   }, [0]);

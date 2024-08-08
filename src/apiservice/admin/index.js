@@ -29,3 +29,26 @@ export const GetallAdminApiCall = async () => {
   const response = await apiInstance.get("/v1/get-all-admin");
   return response;
 };
+
+//  @Designation
+
+// add Designation
+
+export const addDesingationApiCall = async (value) => {
+  const response = await apiInstance.post("/v1/add-designation", value);
+  return response.data;
+};
+
+export const GetAllDesignationApiCall = async (value) => {
+  const response = await apiInstance.get("/v1/get-all-designation");
+  return response.data;
+};
+
+export const EditDesignationApiCall = async (value) => {
+  console.log("??????????????????///",value, "value");
+  const response = await apiInstance.put(
+    `/v1/edit-designation/${value.id}`,
+    value.payload
+  );
+  return response;
+};
