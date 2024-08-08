@@ -32,8 +32,8 @@ function ContractorDrawer({
       Person_Name: CSItems !== null ? CSItems.Person_Name : "",
       Remark: CSItems !== null ? CSItems.Remark : "",
       Created_Date:
-        CSItems !== null
-          ? moment(CSItems.Created_Dat).format("DD/MM/YYYY")
+        CSItems && CSItems.Created_Date
+          ? moment(CSItems.Created_Date).format("YYYY-MM-DD")
           : "",
       Created_Time: CSItems !== null ? CSItems.Created_Time : time,
     },
@@ -98,6 +98,7 @@ function ContractorDrawer({
                   <Grid item xs={12} sm={6}>
                     <Input
                       labelText="Person Name"
+                      
                       {...formik.getFieldProps("Person_Name")}
                       placeholder={"Please enter Person Name "}
                     />
@@ -112,10 +113,12 @@ function ContractorDrawer({
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText="Date"
-                      type="Date"
+                      labelText={"Date"}
+                      id="Created_Date"
+                      name="Created_Date"
+                      type="date"
                       {...formik.getFieldProps("Created_Date")}
-                      placeholder={"Please enter Date "}
+                      placeholder="Please enter Date"
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>

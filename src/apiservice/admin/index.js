@@ -137,3 +137,28 @@ export const EditContractorApiCall = async (value) => {
   );
   return response;
 };
+
+// <============================================= Employee ===================================================================>
+
+export const CreateEmployeeApiCall = async (value) => {
+  const response = await apiInstance.post("/v1/add-employee", value);
+  return response;
+};
+
+export const GetAllEmployeeApiCall = async () => {
+  const response = await apiInstance.get("/v1/get-all-employee");
+  return response;
+};
+
+export const RemoveEmployeeApiCall = async (value) => {
+  const response = await apiInstance.delete(`/v1/reomve-employee/${value}`);
+  return response;
+};
+
+export const EditEmployeeApiCall = async (value) => {
+  const response = await apiInstance.put(
+    `/v1/edit-Employee/${value.id}`,
+    value.payload
+  );
+  return response;
+};
