@@ -228,6 +228,7 @@ function Contractor() {
   // Contractor Handle submit
   const ContractorHandleSubmit = async (values) => {
     try {
+      console.log(values, "values");
       dispatch(setLoader(true));
       const response = await AddContractorApiCall(values);
       console.log(response, "response");
@@ -277,15 +278,24 @@ function Contractor() {
   //  Contractor Update
 
   const UpdatecontractorhandleSubmit = async (value) => {
+    console.log(value, "values data edit");
     try {
       const Val = {
-        id: value._id,
+        id: CSItems._id,
         payload: value,
       };
+      console.log(Val, "values update");
 
       dispatch(setLoader(true));
       const response = await EditContractorApiCall(Val);
-      console.log("edit contractor", response);
+      console.log(response, "response");
+      if (response.status === 200) {
+        setOpen(false);
+        dispatch(setLoader(false));
+        dispatch(getContractor(null));
+        GetAllContractorData();
+        toast.success("Update Contractor successfully");
+      }
     } catch (error) {
       dispatch(setLoader(false));
       toast.error(error?.response?.data);

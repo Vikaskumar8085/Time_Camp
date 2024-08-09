@@ -46,7 +46,6 @@ function EmployeeDrawer({
         UpdateEmployeeHandle(data);
       } else {
         EmployeeHandleSubmit(data);
-        formik.resetForm();
       }
     },
   });
@@ -134,7 +133,7 @@ function EmployeeDrawer({
                   </Grid>
                   <Grid item xs={12}>
                     <Button type={"submit"}>
-                      {ESItems !== null ?"Update Employee":"Add Employee"}
+                      {ESItems !== null ? "Update Employee" : "Add Employee"}
                     </Button>
                   </Grid>
                 </Grid>

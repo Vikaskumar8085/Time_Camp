@@ -45,7 +45,7 @@ function Employee() {
         setOpen(false);
         GetAllEmployeeData();
         dispatch(setLoader(false));
-        toast?.success("data created successfully");
+        toast.success("data created successfully");
       }
     } catch (error) {
       dispatch(setLoader(false));

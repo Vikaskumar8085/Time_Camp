@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { GetDepartmentFunc } from "../../../redux/slices/Department/DepartmentSlice";
 import { getDesignation } from "../../../redux/slices/Designation/DesignationSlice";
+import { validateDesignation } from "./DesignationValidation";
 
 function DesignationForm({
   EdithandleSubmit,
@@ -13,13 +14,20 @@ function DesignationForm({
   setOpen,
   DhandleSubmit,
   Items,
-  
 }) {
   console.log(Items, "designation drawer");
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       Desig_Name: Items !== null ? Items.Desig_Name : "",
+    },
+    validate: (values) => {
+      const errors = {};
+      const desigNameError = validateDesignation(values.Desig_Name);
+      if (desigNameError) {
+        errors.Desig_Name = desigNameError;
+      }
+      return errors;
     },
     onSubmit: (values) => {
       if (Items !== null) {
@@ -63,9 +71,23 @@ function DesignationForm({
                       {...formik.getFieldProps("Desig_Name")}
                       placeholder={"Please enter your password"}
                     />
+                    {formik.errors.Desig_Name && formik.touched.Desig_Name && (
+                      <div
+                        style={{
+                          color: "red",
+                          fontSize: "12px",
+                          marginTop: "4px",
+                          fontFamily: "Arial, sans-serif",
+                        }}
+                      >
+                        {formik.errors.Desig_Name}
+                      </div>
+                    )}
                   </Grid>
                   <Grid item xs={12}>
-                    <Button type={"submit"}>Submit</Button>
+                    <Button type={"submit"}>
+                      {Items !== null ? "Update Designation" : "Submit"}
+                    </Button>
                   </Grid>
                 </Grid>
               </form>

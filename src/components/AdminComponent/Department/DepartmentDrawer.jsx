@@ -6,6 +6,11 @@ import { useDispatch } from "react-redux";
 import Button from "../../../common/Button";
 import Input from "../../../common/Input/Input";
 import { GetDepartmentFunc } from "../../../redux/slices/Department/DepartmentSlice";
+import {
+  validateDepName,
+  validateDesigName,
+  validateRemark,
+} from "./DepartmentValidation";
 
 function DepartmentDrawer({
   DEdithandle,
@@ -20,6 +25,20 @@ function DepartmentDrawer({
     initialValues: {
       Dep_Name: DItems !== null ? DItems.Dep_Name : "",
       Remark: DItems !== null ? DItems.Remark : "",
+    },
+    validate: (values) => {
+      const errors = {};
+      // Validate Dep_Name field
+      const depNameError = validateDepName(values.Dep_Name);
+      if (depNameError) {
+        errors.Dep_Name = depNameError;
+      }
+      // Validate Remark field
+      const remarkError = validateRemark(values.Remark);
+      if (remarkError) {
+        errors.Remark = remarkError;
+      }
+      return errors;
     },
     onSubmit: (value) => {
       if (DItems !== null) {
@@ -62,7 +81,20 @@ function DepartmentDrawer({
                       labelText="Department Name"
                       {...formik.getFieldProps("Dep_Name")}
                       placeholder={"Please enter your Department Name"}
-                    />
+                    />{" "}
+                    {formik.errors.Dep_Name && formik.touched.Dep_Name && (
+                      <div
+                        className="error-message"
+                        style={{
+                          color: "red",
+                          fontSize: "12px",
+                          marginTop: "4px",
+                          fontFamily: "Arial, sans-serif",
+                        }}
+                      >
+                        {formik.errors.Dep_Name}
+                      </div>
+                    )}
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
@@ -70,9 +102,24 @@ function DepartmentDrawer({
                       {...formik.getFieldProps("Remark")}
                       placeholder={"Please enter Remarks"}
                     />
+                    {formik.errors.Remark && formik.touched.Remark && (
+                      <div
+                        className="error-message"
+                        style={{
+                          color: "red",
+                          fontSize: "12px",
+                          marginTop: "4px",
+                          fontFamily: "Arial, sans-serif",
+                        }}
+                      >
+                        {formik.errors.Remark}
+                      </div>
+                    )}
                   </Grid>
                   <Grid item xs={12}>
-                    <Button type={"submit"}>Submit</Button>
+                    <Button type={"submit"}>
+                      {DItems !== null ? "Update" : "Submit"}
+                    </Button>
                   </Grid>
                 </Grid>
               </form>
