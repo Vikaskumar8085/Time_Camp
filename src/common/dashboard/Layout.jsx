@@ -44,7 +44,7 @@ function Layout({ children }) {
       }
       console.log(response);
     } catch (error) {
-      dispatch(setLoader(true));
+      dispatch(setLoader(false));
       throw new Error(error?.response?.message);
     }
   };

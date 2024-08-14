@@ -5,7 +5,6 @@ import Input from "../../../common/Input/Input";
 import Button from "../../../common/Button";
 import { setLoader } from "../../../redux/slices/loaderSlice";
 import { EditUserApiCall } from "../../../apiservice/auth";
-import { Navigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 function EditForm() {

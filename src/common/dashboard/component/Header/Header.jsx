@@ -15,8 +15,8 @@ function Header() {
           <img src={GetUserData?.message?.Photo} alt="no-img" />
           <button
             onClick={() => {
-              if (sessionStorage.getItem("token")) {
-                sessionStorage.clear();
+              if (localStorage.getItem("token")) {
+                localStorage.clear();
                 window.location.href = "/login";
               } else {
               }

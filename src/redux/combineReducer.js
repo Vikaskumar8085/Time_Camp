@@ -6,6 +6,7 @@ import DesignationSlice from "./slices/Designation/DesignationSlice";
 import DepartmentSlice from "./slices/Department/DepartmentSlice";
 import contractorSlice from "./slices/ContractorSlice/contractorSlice";
 import EmployeeSlice from "./slices/Employee/EmployeeSlice";
+import TimesheetSlice from "./slices/Timesheet/TimesheetSlice";
 
 const rootReducer = combineReducers({
   loader: loaderSlice,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   Department: DepartmentSlice,
   Contractor: contractorSlice,
   employee: EmployeeSlice,
+  timesheet: TimesheetSlice,
 });
 
 export default rootReducer;

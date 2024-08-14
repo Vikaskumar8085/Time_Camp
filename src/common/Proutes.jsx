@@ -5,7 +5,7 @@ function Proutes({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!sessionStorage.getItem("token")) {
+    if (!localStorage.getItem("token")) {
       navigate("/login");
     } 
   }, [0]);

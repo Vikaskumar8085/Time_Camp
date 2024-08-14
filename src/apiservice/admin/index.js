@@ -162,3 +162,28 @@ export const EditEmployeeApiCall = async (value) => {
   );
   return response;
 };
+
+// Time Sheet api call
+
+export const addTimesheetApiCall = async (value) => {
+  const response = await apiInstance.post("/v1/add-timesheet", value);
+  return response;
+};
+
+export const GetallTimesheetapicall = async () => {
+  const response = await apiInstance.get("/v1/get-all-timesheet");
+  return response;
+};
+
+export const removetimesheetapicall = async (value) => {
+  const response = await apiInstance.delete(`/v1/remove-timesheet/${value}`);
+  return response;
+};
+
+export const edittimesheetapicall = async (value) => {
+  const response = await apiInstance.put(
+    `/v1/edit-timesheet/${value.id}`,
+    value.payload
+  );
+  return response;
+};

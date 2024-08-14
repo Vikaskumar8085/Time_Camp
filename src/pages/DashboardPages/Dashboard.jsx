@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 import Proutes from "../../common/Proutes";
 import Layout from "../../common/dashboard/Layout";
 import TabComp from "../../common/TabComp";
@@ -10,6 +10,7 @@ import {
   CartesianGrid,
   YAxis,
 } from "recharts";
+import TimeSheet from "./SubPage/DashboardSubPages/TimeSheet";
 
 const data = [
   {
@@ -56,7 +57,7 @@ const data = [
   },
 ];
 function Dashboard() {
-  const tabsheadr = [{ title: "Dashboard" }];
+  const tabsheadr = [{ title: "Dashboard" }, { title: "TimeSheet" }];
   const Tabsbody = [
     {
       content: (
@@ -114,13 +115,7 @@ function Dashboard() {
     {
       content: (
         <>
-          <p>
-            {" "}
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
-            aspernatur eligendi culpa accusantium quos quisquam facere facilis
-            suscipit ipsum, ratione placeat unde distinctio alias, dolor porro
-            id! Reprehenderit, aliquid. Doloremque.
-          </p>
+          <TimeSheet />
         </>
       ),
     },
