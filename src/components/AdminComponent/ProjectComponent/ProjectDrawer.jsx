@@ -5,7 +5,7 @@ import Button from "../../../common/Button";
 import Input from "../../../common/Input/Input";
 import { validateForm } from "./ProjectValidation";
 
-function ProjectDrawer({ IsOpen, setIsOpen }) {
+function ProjectDrawer({ IsOpen, setIsOpen, PhandleSubmit }) {
   const formik = useFormik({
     initialValues: {
       Project_Name: "",
@@ -18,270 +18,217 @@ function ProjectDrawer({ IsOpen, setIsOpen }) {
       Role: "",
       Employee: "",
     },
-    validate: validateForm,
-    onSubmit: (values, { setSubmitting }) => {
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
-        setSubmitting(false);
-      }, 400);
+    // validate: validateForm,
+    onSubmit: (values) => {
+      PhandleSubmit(values);
     },
   });
 
   return (
-    <>
-      <Drawer anchor="right" open={IsOpen} onClose={() => setIsOpen(false)}>
-        <Container component="main" maxWidth="sm">
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              mt: 2,
-              p: 2,
-            }}
-          >
-            <Typography variant="h6" component={"h1"}>
-              Add Project
-            </Typography>
+    <Drawer anchor="right" open={IsOpen} onClose={() => setIsOpen(false)}>
+      <Container component="main" maxWidth="sm">
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            mt: 2,
+            p: 2,
+          }}
+        >
+          <Typography variant="h6" component={"h1"}>
+            Add Project
+          </Typography>
 
-            <form onSubmit={formik.handleSubmit}>
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    labelText="Project Name"
-                    {...formik.getFieldProps("ProjectName")}
-                    placeholder={"Please enter your Project Name"}
-                  />
-                  {formik.touched.ProjectName && formik.errors.ProjectName && (
-                    <div
-                      style={{
-                        color: "red",
-                        fontSize: "12px",
-                        marginTop: "4px",
-                        fontFamily: "Arial, sans-serif",
-                      }}
-                    >
-                      {formik.errors.ProjectName}
-                    </div>
-                  )}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    labelText="Company"
-                    {...formik.getFieldProps("Company")}
-                    placeholder={"Please enter your Company"}
-                  />
-                  {formik.touched.Company && formik.errors.Company && (
-                    <div
-                      style={{
-                        color: "red",
-                        fontSize: "12px",
-                        marginTop: "4px",
-                        fontFamily: "Arial, sans-serif",
-                      }}
-                    >
-                      {formik.errors.Company}
-                    </div>
-                  )}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    labelText="Task Description"
-                    {...formik.getFieldProps("Task_Description")}
-                    placeholder={"Please enter your Task Description"}
-                  />
-                  {formik.touched.Task_Description &&
-                    formik.errors.Task_Description && (
-                      <div
-                        style={{
-                          color: "red",
-                          fontSize: "12px",
-                          marginTop: "4px",
-                          fontFamily: "Arial, sans-serif",
-                        }}
-                      >
-                        {formik.errors.Task_Description}
-                      </div>
-                    )}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    labelText="Description"
-                    {...formik.getFieldProps("Description")}
-                    placeholder={"Please enter your Description"}
-                  />
-                  {formik.touched.Description && formik.errors.Description && (
-                    <div
-                      style={{
-                        color: "red",
-                        fontSize: "12px",
-                        marginTop: "4px",
-                        fontFamily: "Arial, sans-serif",
-                      }}
-                    >
-                      {formik.errors.Description}
-                    </div>
-                  )}
-                </Grid>
-
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    labelText={"Bill Status"}
-                    {...formik.getFieldProps("Bill_Status")}
-                    placeholder={"Please enter Bill Status"}
-                  />
-                  {formik.touched.Bill_Status && formik.errors.Bill_Status && (
-                    <div
-                      style={{
-                        color: "red",
-                        fontSize: "12px",
-                        marginTop: "4px",
-                        fontFamily: "Arial, sans-serif",
-                      }}
-                    >
-                      {formik.errors.Bill_Status}
-                    </div>
-                  )}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    labelText={"Resource"}
-                    {...formik.getFieldProps("Resource")}
-                    placeholder={"Please enter Resource"}
-                  />
-                  {formik.touched.Resource && formik.errors.Resource && (
-                    <div
-                      style={{
-                        color: "red",
-                        fontSize: "12px",
-                        marginTop: "4px",
-                        fontFamily: "Arial, sans-serif",
-                      }}
-                    >
-                      {formik.errors.Resource}
-                    </div>
-                  )}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    labelText="StartTime"
-                    type="time"
-                    {...formik.getFieldProps("StartTime")}
-                    placeholder={"Please enter your StartTime"}
-                  />
-                  {formik.touched.StartTime && formik.errors.StartTime && (
-                    <div
-                      style={{
-                        color: "red",
-                        fontSize: "12px",
-                        marginTop: "4px",
-                        fontFamily: "Arial, sans-serif",
-                      }}
-                    >
-                      {formik.errors.StartTime}
-                    </div>
-                  )}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    labelText="Endtime"
-                    type="time"
-                    {...formik.getFieldProps("Endtime")}
-                    placeholder={"Please enter your Endtime"}
-                  />
-                  {formik.touched.Endtime && formik.errors.Endtime && (
-                    <div
-                      style={{
-                        color: "red",
-                        fontSize: "12px",
-                        marginTop: "4px",
-                        fontFamily: "Arial, sans-serif",
-                      }}
-                    >
-                      {formik.errors.Endtime}
-                    </div>
-                  )}
-                </Grid>
-
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    labelText={"Approvel"}
-                    {...formik.getFieldProps("Approvel")}
-                    placeholder={"Please enter Approvel"}
-                  />
-                  {formik.touched.Approvel && formik.errors.Approvel && (
-                    <div
-                      style={{
-                        color: "red",
-                        fontSize: "12px",
-                        marginTop: "4px",
-                        fontFamily: "Arial, sans-serif",
-                      }}
-                    >
-                      {formik.errors.Approvel}
-                    </div>
-                  )}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    labelText={"Create Date"}
-                    type="date"
-                    {...formik.getFieldProps("CreateDate")}
-                    placeholder={"Please enter your Date"}
-                  />
-                  {formik.touched.CreateDate && formik.errors.CreateDate && (
-                    <div
-                      style={{
-                        color: "red",
-                        fontSize: "12px",
-                        marginTop: "4px",
-                        fontFamily: "Arial, sans-serif",
-                      }}
-                    >
-                      {formik.errors.CreateDate}
-                    </div>
-                  )}
-                </Grid>
-
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    labelText={"Approvel_Date"}
-                    {...formik.getFieldProps("Approvel_Date")}
-                    type="date"
-                    placeholder={"Please Enter Approvel date"}
-                  />
-                  {formik.touched.Approvel_Date &&
-                    formik.errors.Approvel_Date && (
-                      <div
-                        style={{
-                          color: "red",
-                          fontSize: "12px",
-                          marginTop: "4px",
-                          fontFamily: "Arial, sans-serif",
-                        }}
-                      >
-                        {formik.errors.Approvel_Date}
-                      </div>
-                    )}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Input
-                    labelText="Hours"
-                    type="time"
-                    disabled
-                    {...formik.getFieldProps("Hours")}
-                    placeholder={"Please enter your Hours"}
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <Button type={"submit"}>Add Project</Button>
-                </Grid>
+          <form onSubmit={formik.handleSubmit}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <Input
+                  labelText="Project Name"
+                  {...formik.getFieldProps("Project_Name")}
+                  placeholder={"Please enter your Project Name"}
+                />
+                {formik.touched.Project_Name && formik.errors.Project_Name && (
+                  <div
+                    style={{
+                      color: "red",
+                      fontSize: "12px",
+                      marginTop: "4px",
+                      fontFamily: "Arial, sans-serif",
+                    }}
+                  >
+                    {formik.errors.Project_Name}
+                  </div>
+                )}
               </Grid>
-            </form>
-          </Box>
-        </Container>
-      </Drawer>
-    </>
+              <Grid item xs={12} sm={6}>
+                <Input
+                  labelText="Project Code"
+                  {...formik.getFieldProps("Project_Code")}
+                  placeholder={"Please enter your Project Code"}
+                />
+                {formik.touched.Project_Code && formik.errors.Project_Code && (
+                  <div
+                    style={{
+                      color: "red",
+                      fontSize: "12px",
+                      marginTop: "4px",
+                      fontFamily: "Arial, sans-serif",
+                    }}
+                  >
+                    {formik.errors.Project_Code}
+                  </div>
+                )}
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Input
+                  labelText="Client Name"
+                  {...formik.getFieldProps("Client_Name")}
+                  placeholder={"Please enter your Client Name"}
+                />
+                {formik.touched.Client_Name && formik.errors.Client_Name && (
+                  <div
+                    style={{
+                      color: "red",
+                      fontSize: "12px",
+                      marginTop: "4px",
+                      fontFamily: "Arial, sans-serif",
+                    }}
+                  >
+                    {formik.errors.Client_Name}
+                  </div>
+                )}
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Input
+                  labelText="Start Date"
+                  type="date"
+                  {...formik.getFieldProps("Start_Date")}
+                  placeholder={"Please enter your Start Date"}
+                />
+                {formik.touched.Start_Date && formik.errors.Start_Date && (
+                  <div
+                    style={{
+                      color: "red",
+                      fontSize: "12px",
+                      marginTop: "4px",
+                      fontFamily: "Arial, sans-serif",
+                    }}
+                  >
+                    {formik.errors.Start_Date}
+                  </div>
+                )}
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <Input
+                  labelText="End Date"
+                  type="date"
+                  {...formik.getFieldProps("End_Date")}
+                  placeholder={"Please enter End Date"}
+                />
+                {formik.touched.End_Date && formik.errors.End_Date && (
+                  <div
+                    style={{
+                      color: "red",
+                      fontSize: "12px",
+                      marginTop: "4px",
+                      fontFamily: "Arial, sans-serif",
+                    }}
+                  >
+                    {formik.errors.End_Date}
+                  </div>
+                )}
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Input
+                  labelText="Project Type"
+                  {...formik.getFieldProps("Project_Type")}
+                  placeholder={"Please enter Project Type"}
+                />
+                {formik.touched.Project_Type && formik.errors.Project_Type && (
+                  <div
+                    style={{
+                      color: "red",
+                      fontSize: "12px",
+                      marginTop: "4px",
+                      fontFamily: "Arial, sans-serif",
+                    }}
+                  >
+                    {formik.errors.Project_Type}
+                  </div>
+                )}
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <Input
+                  labelText="Project Managers"
+                  type="text"
+                  {...formik.getFieldProps("Project_Managers")}
+                  placeholder={"Please enter your Project Managers"}
+                />
+                {formik.touched.Project_Managers &&
+                  formik.errors.Project_Managers && (
+                    <div
+                      style={{
+                        color: "red",
+                        fontSize: "12px",
+                        marginTop: "4px",
+                        fontFamily: "Arial, sans-serif",
+                      }}
+                    >
+                      {formik.errors.Project_Managers}
+                    </div>
+                  )}
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <Input
+                  labelText="Role"
+                  {...formik.getFieldProps("Role")}
+                  placeholder={"Please enter Role"}
+                />
+                {formik.touched.Role && formik.errors.Role && (
+                  <div
+                    style={{
+                      color: "red",
+                      fontSize: "12px",
+                      marginTop: "4px",
+                      fontFamily: "Arial, sans-serif",
+                    }}
+                  >
+                    {formik.errors.Role}
+                  </div>
+                )}
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Input
+                  labelText="Employee"
+                  type="text"
+                  {...formik.getFieldProps("Employee")}
+                  placeholder={"Please enter your Employee Name"}
+                />
+                {formik.touched.Employee && formik.errors.Employee && (
+                  <div
+                    style={{
+                      color: "red",
+                      fontSize: "12px",
+                      marginTop: "4px",
+                      fontFamily: "Arial, sans-serif",
+                    }}
+                  >
+                    {formik.errors.Employee}
+                  </div>
+                )}
+              </Grid>
+
+              <Grid item xs={12}>
+                <Button type="submit">Add Project</Button>
+              </Grid>
+            </Grid>
+          </form>
+        </Box>
+      </Container>
+    </Drawer>
   );
 }
 
