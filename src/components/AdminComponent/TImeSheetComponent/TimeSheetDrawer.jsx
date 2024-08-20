@@ -124,7 +124,7 @@ function TimeSheetDrawer({
           }}
         >
           <Typography variant="h6" component={"h1"}>
-            Add TimeSheet
+            {TSItems !== null ? "Edit TimeSheet" : "Add TimeSheet"}
           </Typography>
 
           <form onSubmit={formik.handleSubmit}>
@@ -358,7 +358,9 @@ function TimeSheetDrawer({
               </Grid>
 
               <Grid item xs={12}>
-                <Button type={"submit"}>Add Employee</Button>
+                <Button type={"submit"}>
+                  {TSItems !== null ? "update Timesheet" : "Add Timesheet"}
+                </Button>
               </Grid>
             </Grid>
           </form>

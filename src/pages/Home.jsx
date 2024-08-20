@@ -8,6 +8,7 @@ import {
   useMapEvents,
 } from "react-leaflet";
 import Wrapper from "../common/wrapper/Wrapper";
+import TButton from "../common/TButton";
 function LocationMarker() {
   const [position, setPosition] = useState(null);
   const map = useMapEvents({
@@ -25,7 +26,7 @@ function LocationMarker() {
       <Popup>You are here</Popup>
     </Marker>
   );
-} 
+}
 
 function Home() {
   return (
@@ -46,6 +47,8 @@ function Home() {
           />
           <LocationMarker />
         </MapContainer>
+
+        <TButton id="two">Btn</TButton>
       </Wrapper>
     </>
   );

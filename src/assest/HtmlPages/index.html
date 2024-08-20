@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="btn-container">
+      <button id="one">hover</button>
+      <button id="two">hover</button>
+      <button id="three">hover</button>
+      <button id="four">hover</button>
+      <button id="five">hover</button>
+      <button id="six">hover</button>
+      <button id="seven">hover</button>
+    </div>
+  </body>
+</html>
+
+<style>
+  * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: teal;
+  }
+  .btn-container {
+    padding: 20px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: transparent;
+    border: none;
+    margin: 1em;
+    color: #fff;
+  }
+
+  #one {
+    background-color: #fff;
+    color: teal;
+    transition-property: all;
+    border: 3px solid transparent;
+    transition-duration: 0.3s;
+  }
+  #one:hover {
+    background-color: transparent;
+    color: #fff;
+    border: 3px solid #fff;
+  }
+  #two {
+    position: relative;
+  }
+  #two:hover::before {
+    width: 100%;
+  }
+  #two::before {
+    content: " ";
+    height: 3px;
+    width: 0%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: width 0.3s;
+  }
+
+  #three {
+    position: relative;
+  }
+
+  #three::before {
+    content: " ";
+    height: 3px;
+    width: 0%;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: width 0.3s;
+  }
+  #three::after {
+    content: " ";
+    height: 3px;
+    width: 0%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s;
+  }
+  #three:hover:after {
+    width: 100%;
+  }
+  #three:hover:before {
+    width: 100%;
+  }
+
+  #four {
+    position: relative;
+  }
+  #four::before {
+    content: "";
+    height: 20px;
+    width: 20px;
+    border: 2px solid #fff;
+    border-color: #fff #fff transparent transparent;
+    position: absolute;
+    top: 0px;
+    transition: all linear 0.3s;
+
+    right: 0px;
+  }
+  #four::after {
+    content: "";
+    height: 20px;
+    width: 20px;
+    border: 2px solid #fff;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    transition: all linear 0.3s;
+    border-color: transparent transparent #fff #fff;
+  }
+  #four:hover:after {
+    width: 110%;
+    height: 110%;
+  }
+  #four:hover:before {
+    width: 110%;
+    height: 110%;
+  }
+
+  #five {
+    border: 1px solid #fff;
+    transition: box-shadow 0.4s;
+    position: relative;
+  }
+  #five:hover {
+    box-shadow: inset 0px 0px 1px #fff;
+  }
+  #five::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    border: 1px solid #fff;
+    left: 0;
+    transition: all linear 0.4s;
+  }
+  #five:hover:before {
+    transform: scale(1.3);
+    border-color: transparent !important;
+  }
+  #six {
+    border: 1px solid #fff;
+    position: relative;
+    transition: color 0.3s;
+  }
+  #six::before {
+    content: "";
+    height: 100%;
+    width: 0%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #fff;
+    transition: width 0.3s cubic-bezier(1, 0.03, 0.74, 0.32);
+    z-index: -1;
+  }
+
+  #six:hover:before {
+    width: 100%;
+  }
+  #six:hover {
+    color: teal;
+  }
+
+  #seven {
+    border: 1px solid #fff;
+    position: relative;
+    overflow: hidden;
+    transition: all ease-in-out 0.3s;
+    z-index: 1;
+  }
+  #seven::before {
+    content: "";
+    width: 50%;
+    height: 150%;
+    position: absolute;
+    background-color: #fff;
+    top: -18px;
+    left: -70px;
+    transform: rotate(10deg);
+    transition: width cubic-bezier(1, 0.01, 0.74, 0.32) 0.3s;
+    z-index: -1;
+  }
+  #seven:hover:before {
+    width: 200%;
+  }
+  #sever:hover {
+    color: teal;
+  }
+</style>

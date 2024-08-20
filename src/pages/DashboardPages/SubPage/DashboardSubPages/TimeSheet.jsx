@@ -90,19 +90,23 @@ function TimeSheet() {
 
   const updatetimesheetservice = async (value) => {
     try {
-        console.log(value,"edit value")
+      console.log(value, "edit value");
       const Val = {
         id: TSItems._id,
         payload: value,
       };
       dispatch(setLoader(true));
       const response = await edittimesheetapicall(Val);
-      console.log(response);
-      dispatch(setLoader(false));
+      if (response.status === 200) {
+        dispatch(setLoader(false));
+        setIsOpen(false);
+        getalltimesheetservice();
+        toast.success("updated timeSheet successfully");
+      }
     } catch (error) {
       dispatch(setLoader(false));
-
-      console.log(error?.response?.data);
+      setIsOpen(false);
+      toast.error(error?.response?.data);
     }
   };
   useEffect(() => {

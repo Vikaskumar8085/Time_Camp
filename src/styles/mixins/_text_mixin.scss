@@ -6,3 +6,51 @@
     color          : $color;
 
 }
+
+// basic text mixins 
+@mixin text-basic($size, $color, $weight: normal, $line-height: 1.5) {
+    font-size  : $size;
+    color      : $color;
+    font-weight: $weight;
+    line-height: $line-height;
+}
+
+@mixin responsive-text($size-small, $size-medium, $size-large) {
+    font-size: $size-small;
+
+    @media (min-width: 768px) {
+        font-size: $size-medium;
+    }
+
+    @media (min-width: 1024px) {
+        font-size: $size-large;
+    }
+}
+
+
+@mixin text-shadow($x: 1px, $y: 1px, $blur: 2px, $color: rgba(0, 0, 0, 0.5)) {
+    text-shadow: $x $y $blur $color;
+}
+
+@mixin text-transform($transform: none) {
+    text-transform: $transform;
+}
+
+
+@mixin text-align($alignment: left) {
+    text-align: $alignment;
+}
+
+
+// Text mixins Example
+// p {
+//   @include text-basic(16px, #333, bold);
+//   @include text-shadow();
+//   @include text-transform(uppercase);
+//   @include text-align(center);
+// }
+
+// h1 {
+//   @include responsive-text(24px, 32px, 40px);
+//   @include text-shadow(2px, 2px, 4px, rgba(0, 0, 0, 0.7));
+// }
