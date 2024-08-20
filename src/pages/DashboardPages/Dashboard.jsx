@@ -11,6 +11,7 @@ import {
   YAxis,
 } from "recharts";
 import TimeSheet from "./SubPage/DashboardSubPages/TimeSheet";
+import Project from "./SubPage/DashboardSubPages/Project";
 
 const data = [
   {
@@ -57,7 +58,11 @@ const data = [
   },
 ];
 function Dashboard() {
-  const tabsheadr = [{ title: "Dashboard" }, { title: "TimeSheet" }];
+  const tabsheadr = [
+    { title: "Dashboard" },
+    { title: "TimeSheet" },
+    { title: "Project" },
+  ];
   const Tabsbody = [
     {
       content: (
@@ -116,6 +121,13 @@ function Dashboard() {
       content: (
         <>
           <TimeSheet />
+        </>
+      ),
+    },
+    {
+      content: (
+        <>
+          <Project />
         </>
       ),
     },
