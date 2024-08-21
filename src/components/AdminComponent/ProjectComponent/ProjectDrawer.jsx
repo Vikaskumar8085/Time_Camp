@@ -1,31 +1,54 @@
 import { Container, Box, Grid, Typography, Drawer } from "@mui/material";
 import { useFormik } from "formik";
+import moment from "moment";
 import React from "react";
+import { useDispatch } from "react-redux";
 import Button from "../../../common/Button";
 import Input from "../../../common/Input/Input";
-import { validateForm } from "./ProjectValidation";
+import { setSingelProject } from "../../../redux/slices/ProjectSlice/projectslice";
+import projectvalidation from "./ProjectValidation";
 
-function ProjectDrawer({ IsOpen, setIsOpen, PhandleSubmit }) {
+function ProjectDrawer({
+  IsOpen,
+  setIsOpen,
+  PhandleSubmit,
+  PItems,
+  EPhandleSubmit,
+}) {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
-      Project_Name: "",
-      Project_Code: "",
-      Client_Name: "",
-      Start_Date: "",
-      End_Date: "",
-      Project_Type: "",
-      Project_Managers: "",
-      Role: "",
-      Employee: "",
+      Project_Name: PItems ? PItems.Project_Name : "",
+      Project_Code: PItems ? PItems?.Project_Code : "",
+      Client_Name: PItems ? PItems?.Client_Name : "",
+      Start_Date: PItems ? moment(PItems.Start_Date).format("MM/DD/YYYY") : "",
+      End_Date: PItems ? moment(PItems?.End_Date).format("MM/DD/YYYY") : "",
+      Project_Type: PItems ? PItems?.Project_Type : "",
+      Project_Managers: PItems ? PItems?.Project_Managers : "",
+      Role: PItems ? PItems?.Role : "",
+      Employee: PItems ? PItems?.Employee : "",
     },
-    // validate: validateForm,
+    validate: projectvalidation,
     onSubmit: (values) => {
-      PhandleSubmit(values);
+      try {
+        if (PItems !== null) {
+          EPhandleSubmit(values);
+        } else {
+          PhandleSubmit(values);
+        }
+      } catch (error) {
+        console.log(error?.message, "errorm");
+      }
     },
   });
+  const handleClose = () => {
+    setIsOpen(false);
+    dispatch(setSingelProject(null));
+  };
 
   return (
-    <Drawer anchor="right" open={IsOpen} onClose={() => setIsOpen(false)}>
+    <Drawer anchor="right" open={IsOpen} onClose={handleClose}>
       <Container component="main" maxWidth="sm">
         <Box
           sx={{
@@ -36,7 +59,7 @@ function ProjectDrawer({ IsOpen, setIsOpen, PhandleSubmit }) {
           }}
         >
           <Typography variant="h6" component={"h1"}>
-            Add Project
+            {PItems !== null ? "Edit Project " : "Add Project"}
           </Typography>
 
           <form onSubmit={formik.handleSubmit}>

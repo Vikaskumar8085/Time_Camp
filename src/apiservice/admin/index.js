@@ -187,3 +187,25 @@ export const edittimesheetapicall = async (value) => {
   );
   return response;
 };
+
+export const getallprojectsapicall = async () => {
+  const response = await apiInstance.get("/v1/get-all-project");
+  return response;
+};
+
+export const addprojectapicall = async (values) => {
+  const response = await apiInstance.post("/v1/add-project", values);
+  return response;
+};
+export const removeprojectapicall = async (value) => {
+  const response = await apiInstance.delete(`/v1/remove-project/${value}`);
+  return response;
+};
+
+export const editprojectapicall = async (values) => {
+  const response = await apiInstance.post(
+    `/v1/edit-project/${values.id}`,
+    values.palyoad
+  );
+  return response;
+};

@@ -1,89 +1,77 @@
 import moment from 'moment';
 
-// Define your accepted date formats
-const dateFormats = ["YYYY-MM-DD", "MM/DD/YYYY", "DD-MM-YYYY"];
+// Define strong regular expressions for validation
+const alphanumericCodeRegex = /^[A-Z0-9]{2,10}$/; // Alphanumeric codes 2-10 characters long
+const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // YYYY-MM-DD format
 
-// Validation Functions
-const validateProjectName = (value) => {
-  if (!value) return "Project Name is required";
-  if (value.length < 3) return "Project Name must be at least 3 characters long";
-  return undefined;
+// Validate if a date is valid according to the YYYY-MM-DD format
+const isValidDate = (date) => {
+  return moment(date, "YYYY-MM-DD", true).isValid();
 };
 
-const validateProjectCode = (value) => {
-  const regex = /^[A-Z0-9]{2,10}$/; // Alphanumeric codes 2-10 characters long
-  if (!value) return "Project Code is required";
-  if (!regex.test(value))
-    return "Project Code must be alphanumeric and 2-10 characters long";
-  return undefined;
-};
+// Validation Function
+const projectvalidation = (values) => {
+  const errors = {};
 
-const validateClientName = (value) => {
-  if (!value) return "Client Name is required";
-  return undefined;
-};
+  // Check if required fields are filled
+  if (!values.Project_Name) {
+    errors.Project_Name = "Project Name is required";
+  } else if (values.Project_Name.length < 3) {
+    errors.Project_Name = "Project Name must be at least 3 characters long";
+  }
 
-const validateDate = (value) => {
-  if (!value) return "Date is required";
-  
-  // Check if the date is in any of the accepted formats
-  const isValid = dateFormats.some(format => moment(value, format, true).isValid());
-  if (!isValid) return `Date must be in one of the following formats: ${dateFormats.join(", ")}`;
-  
-  return undefined;
-};
+  if (!values.Project_Code) {
+    errors.Project_Code = "Project Code is required";
+  } else if (!alphanumericCodeRegex.test(values.Project_Code)) {
+    errors.Project_Code = "Project Code must be alphanumeric and 2-10 characters long";
+  }
 
-const validateDateRange = (startDate, endDate) => {
-  if (!startDate || !endDate) return;
-  
-  const start = moment(startDate, dateFormats);
-  const end = moment(endDate, dateFormats);
-  
-  if (!start.isValid() || !end.isValid()) return;
-  
-  if (end.isBefore(start)) return "End Date cannot be before Start Date";
-};
+  if (!values.Client_Name) {
+    errors.Client_Name = "Client Name is required";
+  } else if (values.Client_Name.length < 3) {
+    errors.Client_Name = "Client Name must be at least 3 characters long";
+  }
 
-const validateProjectType = (value) => {
-  if (!value) return "Project Type is required";
-  if (value.length < 3) return "Project Type must be at least 3 characters long";
-  return undefined;
-};
+  if (!values.Start_Date) {
+    errors.Start_Date = "Start Date is required";
+  } else if (!dateRegex.test(values.Start_Date) || !isValidDate(values.Start_Date)) {
+    errors.Start_Date = "Start Date must be in YYYY-MM-DD format and be a valid date";
+  }
 
-const validateProjectManagers = (value) => {
-  if (!value) return "Project Managers are required";
-  return undefined;
-};
+  if (!values.End_Date) {
+    errors.End_Date = "End Date is required";
+  } else if (!dateRegex.test(values.End_Date) || !isValidDate(values.End_Date)) {
+    errors.End_Date = "End Date must be in YYYY-MM-DD format and be a valid date";
+  }
 
-const validateRole = (value) => {
-  if (!value) return "Role is required";
-  return undefined;
-};
+  if (!values.Project_Type) {
+    errors.Project_Type = "Project Type is required";
+  } else if (values.Project_Type.length < 3) {
+    errors.Project_Type = "Project Type must be at least 3 characters long";
+  }
 
-const validateEmployee = (value) => {
-  if (!value) return "Employee is required";
-  return undefined;
-};
+  if (!values.Project_Managers) {
+    errors.Project_Managers = "Project Managers are required";
+  }
 
-// Custom Validation Hook
-export const validateForm = (values) => {
-  const errors = {
-    Project_Name: validateProjectName(values.Project_Name),
-    Project_Code: validateProjectCode(values.Project_Code),
-    Client_Name: validateClientName(values.Client_Name),
-    Start_Date: validateDate(values.Start_Date),
-    End_Date: validateDate(values.End_Date),
-    Project_Type: validateProjectType(values.Project_Type),
-    Project_Managers: validateProjectManagers(values.Project_Managers),
-    Role: validateRole(values.Role),
-    Employee: validateEmployee(values.Employee),
-  };
+  if (!values.Role) {
+    errors.Role = "Role is required";
+  }
 
-  // Additional validation for date relationship
-  const dateRangeError = validateDateRange(values.Start_Date, values.End_Date);
-  if (dateRangeError) {
-    errors.End_Date = dateRangeError;
+  if (!values.Employee) {
+    errors.Employee = "Employee is required";
+  }
+
+  // Additional validation for date range
+  if (values.Start_Date && values.End_Date) {
+    const start = moment(values.Start_Date, "YYYY-MM-DD");
+    const end = moment(values.End_Date, "YYYY-MM-DD");
+    if (end.isBefore(start)) {
+      errors.End_Date = "End Date cannot be before Start Date";
+    }
   }
 
   return errors;
 };
+
+export default projectvalidation;
