@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "../../../Image/Image";
+import { CiLogout } from "react-icons/ci";
 import { useSelector } from "react-redux";
 
 function Header() {
@@ -13,17 +14,17 @@ function Header() {
         </div>
         <div className="head_profile">
           <img src={GetUserData?.message?.Photo} alt="no-img" />
-          <button
-            onClick={() => {
-              if (localStorage.getItem("token")) {
-                localStorage.clear();
-                window.location.href = "/login";
-              } else {
-              }
-            }}
-          >
-            logout
-          </button>
+          <span>
+            <CiLogout
+              onClick={() => {
+                if (localStorage.getItem("token")) {
+                  localStorage.clear();
+                  window.location.href = "/login";
+                } else {
+                }
+              }}
+            />
+          </span>
         </div>
       </div>
     </header>

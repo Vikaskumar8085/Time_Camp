@@ -1,16 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans");
 /*Variables*/
-* {
-  box-sizing: border-box;
-}
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
+
 body {
   font-family: "Fira Sans", sans-serif;
-  color: #f5f6fa;
+}
+.heading {
+  color: white;
 }
 .background {
   position: absolute;

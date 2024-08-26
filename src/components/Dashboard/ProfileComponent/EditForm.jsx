@@ -6,7 +6,7 @@ import Button from "../../../common/Button";
 import { setLoader } from "../../../redux/slices/loaderSlice";
 import { EditUserApiCall } from "../../../apiservice/auth";
 import toast from "react-hot-toast";
-
+import "./Editform.scss"
 function EditForm() {
   const dispatch = useDispatch();
   const GetUserData = useSelector((state) => state.auth.values);
@@ -36,7 +36,7 @@ function EditForm() {
   });
 
   return (
-    <div className="register_form">
+    <div className="edit_form">
       <form onSubmit={formik.handleSubmit}>
         <Input
           labelText={"First Name"}

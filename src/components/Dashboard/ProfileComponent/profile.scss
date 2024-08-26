@@ -1,0 +1,80 @@
+// Variables for easy theme adjustments
+$primary-color: #333;
+$background-color: #f9f9f9;
+$border-radius: 8px;
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+$img-size: 120px; // Default image size
+
+.Profile_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 600px;
+  background-color: $background-color;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  text-align: center; // Center-align text for a consistent look
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    img {
+      border-radius: 50%;
+      width: $img-size;
+      height: $img-size;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid $primary-color; // Border for better visibility
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      margin: 10px 0;
+      color: $primary-color;
+      line-height: 1.4; // Improve readability
+      font-weight: normal; // Use normal weight for readability
+    }
+  }
+}
+
+// Media Queries for responsiveness
+@media (max-width: 768px) {
+  .Profile_wrapper {
+    padding: 15px;
+    max-width: 90%;
+    margin: 10px auto;
+
+    section {
+      img {
+        width: 100px;
+        height: 100px;
+      }
+
+      h1 {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .Profile_wrapper {
+    padding: 10px;
+    margin: 5px auto;
+
+    section {
+      img {
+        width: 80px;
+        height: 80px;
+      }
+
+      h1 {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

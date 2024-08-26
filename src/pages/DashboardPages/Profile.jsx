@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import EditForm from "../../components/Dashboard/ProfileComponent/EditForm";
 import ChangePass from "../../components/Dashboard/ProfileComponent/ChangePass";
 import Loader from "../../common/Loader";
+import ProfileComponent from "../../components/Dashboard/ProfileComponent/ProfileComponent";
 
 function Profile() {
   const GetUserData = useSelector((state) => state.auth.values);
@@ -20,12 +21,7 @@ function Profile() {
     {
       content: (
         <>
-          <div>
-            <img src={GetUserData?.message?.Photo} />
-            <h1>FirstName :- {GetUserData?.message?.FirstName}</h1>
-            <h1>LastName :- {GetUserData?.message?.LastName}</h1>
-            <h1>Email :- {GetUserData?.message?.Email}</h1>
-          </div>
+          <ProfileComponent GetUserData={GetUserData} />
         </>
       ),
     },

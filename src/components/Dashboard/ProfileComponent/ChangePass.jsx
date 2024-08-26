@@ -1,7 +1,7 @@
 import { Box } from "@mui/system";
 import React from "react";
 import Button from "../../../common/Button";
-import Card from "../../../common/Card";
+import "./ChangePass.scss";
 import InputPassword from "../../../common/Input/InputPassword";
 
 function ChangePass() {
