@@ -19,6 +19,7 @@ import ChangePassword from "./pages/AuthPages/ChangePassword";
 import Company from "./pages/AdminPages/Company";
 import VerifyToken from "./pages/VerifyToken";
 import Contractor from "./pages/AdminPages/Contractor";
+import ErrorPage from "./pages/Error/ErrorPage";
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -54,6 +55,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/verify/:id" element={<VerifyToken />} />
+        <Route path="*" element={<ErrorPage/>} />
       </Routes>
       <Toaster />
     </>

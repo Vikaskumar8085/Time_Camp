@@ -13,7 +13,7 @@ function Company() {
     {
       content: (
         <>
-          <Button onclick={()=>setOpen(true)}>Add Company</Button>
+          <Button onclick={() => setOpen(true)}>Add Company</Button>
           {IsOpen && <CompanyAddDrawer IsOpen={IsOpen} setOpen={setOpen} />}
         </>
       ),

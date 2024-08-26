@@ -1,8 +1,9 @@
-import React, { lazy, useState } from "react";
+import React, { lazy } from "react";
 import { Container, Grid, Typography } from "@mui/material";
-import InputPassword from "../../common/Input/InputPassword";
-import Button from "../../common/Button";
-const CPForm = lazy(() => import("../../components/AuthComponent/ChangePassword/CPForm"));
+import Card from "../../common/Card";
+const CPForm = lazy(() =>
+  import("../../components/AuthComponent/ChangePassword/CPForm")
+);
 
 function ChangePassword() {
   const ChangePasswordHandleSubmit = (values) => {
@@ -27,10 +28,11 @@ function ChangePassword() {
                   {" "}
                   Reset Password
                 </Typography>
-
-                <CPForm
-                  ChangePasswordHandleSubmit={ChangePasswordHandleSubmit}
-                />
+                <Card>
+                  <CPForm
+                    ChangePasswordHandleSubmit={ChangePasswordHandleSubmit}
+                  />
+                </Card>{" "}
               </div>
             </Grid>
           </Grid>
