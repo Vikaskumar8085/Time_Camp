@@ -27,6 +27,7 @@ import {
 } from "../../redux/slices/AdminSlice/adminSlice";
 import toast from "react-hot-toast";
 import Input from "../../common/Input/Input";
+import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
 
 function Client() {
   const [IsOpen, setOpen] = React.useState(false);
@@ -186,10 +187,16 @@ function Client() {
                     <TableCell>{items.Client_Postal_Code}</TableCell>
                     <TableCell>{items.GstNumber}</TableCell>
                     <TableCell>
-                      <button onClick={() => handleDelete(items._id)}>
-                        Delete
-                      </button>
-                      <button onClick={() => handleEdit(items)}>Edit</button>
+                      <span onClick={() => handleDelete(items._id)}>
+                        <MdOutlineDelete
+                          style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                        />
+                      </span>
+                      <span onClick={() => handleEdit(items)}>
+                        <MdOutlineEdit
+                          style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                        />
+                      </span>
                     </TableCell>
                   </TableRow>
                 ))}

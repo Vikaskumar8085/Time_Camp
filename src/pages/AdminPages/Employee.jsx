@@ -27,6 +27,7 @@ import {
   setSingleEmployee,
 } from "../../redux/slices/Employee/EmployeeSlice";
 import moment from "moment";
+import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
 
 function Employee() {
   const dispatch = useDispatch();
@@ -178,18 +179,20 @@ function Employee() {
                       <TableCell>{items?.Employee_Designation}</TableCell>
                       <TableCell>{items?.Employee_Address}</TableCell>
                       <TableCell>
-                        <button
-                          onClick={() => EmployeehandleDelete(items?._id)}
-                        >
-                          delete
-                        </button>
-                        <button
+                        <span onClick={() => EmployeehandleDelete(items?._id)}>
+                          <MdOutlineDelete
+                            style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                          />
+                        </span>
+                        <span
                           onClick={() => {
                             EmployeeEdithandle(items);
                           }}
                         >
-                          Edit
-                        </button>
+                         <MdOutlineEdit
+                            style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                          />
+                        </span>
                       </TableCell>
                     </TableRow>
                   );

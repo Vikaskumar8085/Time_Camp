@@ -24,6 +24,7 @@ import {
   TableRow,
   TableCell,
 } from "@mui/material";
+import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
 
 function Project() {
   const [IsOpen, setIsOpen] = useState(false);
@@ -150,10 +151,16 @@ function Project() {
                     <TableCell>{item?.Role}</TableCell>
                     <TableCell>{item?.Employee}</TableCell>
                     <TableCell>
-                      <button onClick={() => RemoveProjects(item?.Project_Id)}>
-                        delete
-                      </button>
-                      <button onClick={() => handleEdit(item)}>Edit</button>
+                      <span onClick={() => RemoveProjects(item?.Project_Id)}>
+                        <MdOutlineDelete
+                          style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                        />
+                      </span>
+                      <span onClick={() => handleEdit(item)}>
+                        <MdOutlineEdit
+                          style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                        />
+                      </span>
                     </TableCell>
                   </TableRow>
                 </>

@@ -10,6 +10,7 @@ import {
 import moment from "moment";
 import React, { Suspense, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addTimesheetApiCall,
@@ -174,17 +175,21 @@ function TimeSheet() {
                       </TableCell>
                       <TableCell>{item?.Hours}</TableCell>
                       <TableCell>
-                        <button onClick={() => handleRemove(item?._id)}>
-                          Delete
-                        </button>
-                        <button
+                        <span onClick={() => handleRemove(item?._id)}>
+                          <MdOutlineDelete
+                            style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                          />
+                        </span>
+                        <span
                           onClick={() => {
                             setIsOpen(true);
                             dispatch(setSingleTimesheet(item));
                           }}
                         >
-                          Edit
-                        </button>
+                          <MdOutlineEdit
+                            style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                          />
+                        </span>
                       </TableCell>
                     </TableRow>
                   </>

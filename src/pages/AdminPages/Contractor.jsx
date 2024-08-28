@@ -45,6 +45,7 @@ import {
   setContractor,
 } from "../../redux/slices/ContractorSlice/contractorSlice";
 import moment from "moment";
+import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
 
 function Contractor() {
   const dispatch = useDispatch();
@@ -61,6 +62,7 @@ function Contractor() {
   const ContractorItems = useSelector(
     (state) => state.Contractor.contractorValues
   );
+  console.log(ContractorItems, "contractor get items");
 
   // contract single items
   const CSItems = useSelector(
@@ -249,9 +251,11 @@ function Contractor() {
     try {
       dispatch(setLoader(true));
       const response = await GetAllContractorApiCall();
+      console.log("response", response, "response");
       if (response.status === 200) {
         dispatch(setLoader(false));
-        dispatch(setContractor(response.data));
+
+        dispatch(setContractor(response?.data?.data));
       }
     } catch (error) {
       dispatch(setLoader(false));
@@ -339,9 +343,14 @@ function Contractor() {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Age</TableCell>
-                  <TableCell>City</TableCell>
+                  <TableCell>ID</TableCell>
+                  <TableCell>Contractor Name</TableCell>
+                  <TableCell>Contractor Number</TableCell>
+                  <TableCell>Person Name</TableCell>
+                  <TableCell>Remark</TableCell>
+                  <TableCell>Create Date</TableCell>
+                  <TableCell>Create Time</TableCell>
+                  <TableCell>Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -358,12 +367,16 @@ function Contractor() {
                       </TableCell>
                       <TableCell>{item.Created_Time}</TableCell>
                       <TableCell>
-                        <button onClick={() => ContHandleDelete(item._id)}>
-                          Delete
-                        </button>
-                        <button onClick={() => ContractorhandleEdit(item)}>
-                          Edit
-                        </button>
+                        <span onClick={() => ContHandleDelete(item._id)}>
+                          <MdOutlineDelete
+                            style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                          />
+                        </span>
+                        <span onClick={() => ContractorhandleEdit(item)}>
+                        <MdOutlineEdit
+                            style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                          />
+                        </span>
                       </TableCell>
                     </TableRow>
                   );
@@ -411,10 +424,16 @@ function Contractor() {
                       <TableCell key={index}>{index + 1}</TableCell>
                       <TableCell>{item.Desig_Name}</TableCell>
                       <TableCell>
-                        <button onClick={() => handleDelete(item._id)}>
-                          Delete
-                        </button>
-                        <button onClick={() => handleEdit(item)}>Edit</button>
+                        <span onClick={() => handleDelete(item._id)}>
+                          <MdOutlineDelete
+                            style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                          />
+                        </span>
+                        <span onClick={() => handleEdit(item)}>
+                          <MdOutlineEdit
+                            style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                          />
+                        </span>
                       </TableCell>
                     </TableRow>
                   );
@@ -459,12 +478,16 @@ function Contractor() {
                       <TableCell>{item.Dep_Name}</TableCell>
                       <TableCell>{item.Remark}</TableCell>
                       <TableCell>
-                        <button onClick={() => DephandleDelete(item._id)}>
-                          Delete
-                        </button>
-                        <button onClick={() => DephandleEdit(item)}>
-                          Edit
-                        </button>
+                        <span onClick={() => DephandleDelete(item._id)}>
+                          <MdOutlineDelete
+                            style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                          />
+                        </span>
+                        <span onClick={() => DephandleEdit(item)}>
+                          <MdOutlineEdit
+                            style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                          />
+                        </span>
                       </TableCell>
                     </TableRow>
                   );
