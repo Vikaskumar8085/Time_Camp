@@ -55,6 +55,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/verify/:id" element={<VerifyToken />} />
+        
         <Route path="*" element={<ErrorPage/>} />
       </Routes>
       <Toaster />

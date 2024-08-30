@@ -26,13 +26,13 @@ function Header() {
                   <Link to="/blog">Blog</Link>
                 </li>{" "}
                 <li>
+                  <Link to="/About">About Us</Link>
+                </li>
+                <li>
                   <Link to="/contact">Contact</Link>
                 </li>
                 <li>
                   <Link to="/login">login</Link>
-                </li>
-                <li>
-                  <Link to="/signup">signup</Link>
                 </li>
               </ul>
             </nav>
