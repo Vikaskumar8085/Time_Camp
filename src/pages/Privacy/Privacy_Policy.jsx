@@ -12,10 +12,13 @@ function Privacy_Policy() {
               <article>
                 <h1>Privacy & Policy</h1>
                 <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusantium nihil, molestias illo dicta officiis perspiciatis
-                  asperiores labore fugit debitis enim doloribus quae deserunt
-                  nostrum, veniam quasi quas temporibus hic eum.
+                  we are committed to safeguarding your personal information and
+                  ensuring transparency in how we handle your data. This privacy
+                  policy outlines our practices regarding the collection, use,
+                  sharing, and protection of your information. We strive to
+                  provide a secure and respectful environment for our users and
+                  are dedicated to maintaining the highest standards of data
+                  privacy
                 </p>
               </article>
             </section>
