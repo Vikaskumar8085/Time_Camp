@@ -20,6 +20,10 @@ import Company from "./pages/AdminPages/Company";
 import VerifyToken from "./pages/VerifyToken";
 import Contractor from "./pages/AdminPages/Contractor";
 import ErrorPage from "./pages/Error/ErrorPage";
+import Privacy_Policy from "./pages/Privacy/Privacy_Policy";
+import Term_Condition from "./pages/Term-Condition/Term_Condition";
+import About from "./pages/About/About";
+import Pricing from "./pages/Pricing/Pricing";
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -55,8 +59,14 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/verify/:id" element={<VerifyToken />} />
-        
-        <Route path="*" element={<ErrorPage/>} />
+        <Route path="/about" element={<About />} />
+        <Route path="/price" element={<Pricing />} />
+        {/* Term and condition and privacy policy */}
+        <Route path="/privacy-policy" element={<Privacy_Policy />} />
+        <Route path="/term-and-condition" element={<Term_Condition />} />
+        {/* Term and condition and privacy policy */}
+
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Toaster />
     </>

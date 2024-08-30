@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -20,19 +20,22 @@ function Header() {
             <nav>
               <ul>
                 <li>
-                  <Link to="/">Home</Link>
+                  <NavLink to="/">Home</NavLink>
                 </li>{" "}
                 <li>
-                  <Link to="/blog">Blog</Link>
+                  <NavLink to="/blog">Blog</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/price">Price</NavLink>
                 </li>{" "}
                 <li>
-                  <Link to="/About">About Us</Link>
+                  <NavLink to="/About">About Us</NavLink>
                 </li>
                 <li>
-                  <Link to="/contact">Contact</Link>
+                  <NavLink to="/contact">Contact</NavLink>
                 </li>
                 <li>
-                  <Link to="/login">login</Link>
+                  <NavLink to="/login">login</NavLink>
                 </li>
               </ul>
             </nav>

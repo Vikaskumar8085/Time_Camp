@@ -1,6 +1,9 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import Wrapper from "../common/wrapper/Wrapper";
+import ContactHeader from "../components/ContactComponent/ContactHeader";
+import Howcanwehelp from "../components/ContactComponent/Howcanwehelp";
+import LocationMap from "../components/ContactComponent/LocationMap";
 
 function Contact() {
   return (
@@ -9,7 +12,9 @@ function Contact() {
         <title>Contact</title>
       </Helmet>
       <Wrapper>
-        <h1>contact</h1>
+        <ContactHeader />
+        <Howcanwehelp />
+        <LocationMap />
       </Wrapper>
     </>
   );
