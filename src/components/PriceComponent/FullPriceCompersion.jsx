@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
 
 function FullPriceCompersion() {
-  return (
-    <div>FullPriceCompersion</div>
-  )
+  return <>
+  Full Price Compersion
+  
+  </>;
 }
 
-export default FullPriceCompersion
+export default FullPriceCompersion;
