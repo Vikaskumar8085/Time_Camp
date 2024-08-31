@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import React from "react";
 import Wrapper from "../../common/wrapper/Wrapper";
 
@@ -8,7 +8,7 @@ function Term_Condition() {
       <Wrapper>
         <div className="Term_Wrapper">
           <Container>
-            <section>
+            <section className="Term_head">
               <article>
                 <h1>Term and Condition</h1>
                 <p>
@@ -23,127 +23,30 @@ function Term_Condition() {
                 </p>
               </article>
             </section>
-            <section>
-              <article>
-                <h1>Privacy & Policy</h1>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusantium nihil, molestias illo dicta officiis perspiciatis
-                  asperiores labore fugit debitis enim doloribus quae deserunt
-                  nostrum, veniam quasi quas temporibus hic eum.
-                </p>
-              </article>
-            </section>
-            <section>
-              <article>
-                <h1>Privacy & Policy</h1>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusantium nihil, molestias illo dicta officiis perspiciatis
-                  asperiores labore fugit debitis enim doloribus quae deserunt
-                  nostrum, veniam quasi quas temporibus hic eum.
-                </p>
-              </article>
-            </section>
-            <section>
-              <article>
-                <h1>Privacy & Policy</h1>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusantium nihil, molestias illo dicta officiis perspiciatis
-                  asperiores labore fugit debitis enim doloribus quae deserunt
-                  nostrum, veniam quasi quas temporibus hic eum.
-                </p>
-              </article>
-            </section>
-            <section>
-              <article>
-                <h1>Privacy & Policy</h1>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusantium nihil, molestias illo dicta officiis perspiciatis
-                  asperiores labore fugit debitis enim doloribus quae deserunt
-                  nostrum, veniam quasi quas temporibus hic eum.
-                </p>
-              </article>
-            </section>
-            <section>
-              <article>
-                <h1>Privacy & Policy</h1>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusantium nihil, molestias illo dicta officiis perspiciatis
-                  asperiores labore fugit debitis enim doloribus quae deserunt
-                  nostrum, veniam quasi quas temporibus hic eum.
-                </p>
-              </article>
-            </section>
-            <section>
-              <article>
-                <h1>Privacy & Policy</h1>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusantium nihil, molestias illo dicta officiis perspiciatis
-                  asperiores labore fugit debitis enim doloribus quae deserunt
-                  nostrum, veniam quasi quas temporibus hic eum.
-                </p>
-              </article>
-            </section>
-            <section>
-              <article>
-                <h1>Privacy & Policy</h1>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusantium nihil, molestias illo dicta officiis perspiciatis
-                  asperiores labore fugit debitis enim doloribus quae deserunt
-                  nostrum, veniam quasi quas temporibus hic eum.
-                </p>
-              </article>
-            </section>
-            <section>
-              <article>
-                <h1>Privacy & Policy</h1>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusantium nihil, molestias illo dicta officiis perspiciatis
-                  asperiores labore fugit debitis enim doloribus quae deserunt
-                  nostrum, veniam quasi quas temporibus hic eum.
-                </p>
-              </article>
-            </section>
-            <section>
-              <article>
-                <h1>Privacy & Policy</h1>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusantium nihil, molestias illo dicta officiis perspiciatis
-                  asperiores labore fugit debitis enim doloribus quae deserunt
-                  nostrum, veniam quasi quas temporibus hic eum.
-                </p>
-              </article>
-            </section>
-            <section>
-              <article>
-                <h1>Privacy & Policy</h1>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusantium nihil, molestias illo dicta officiis perspiciatis
-                  asperiores labore fugit debitis enim doloribus quae deserunt
-                  nostrum, veniam quasi quas temporibus hic eum.
-                </p>
-              </article>
-            </section>
-            <section>
-              <article>
-                <h1>Privacy & Policy</h1>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusantium nihil, molestias illo dicta officiis perspiciatis
-                  asperiores labore fugit debitis enim doloribus quae deserunt
-                  nostrum, veniam quasi quas temporibus hic eum.
-                </p>
-              </article>
-            </section>
+            <Grid container spacing={4}>
+              <Grid item sm={12}>
+                <div className="term_content">
+                  <h1>Cookies</h1>
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Expedita aut non aperiam earum minus, assumenda doloribus
+                    maxime voluptatibus quae, ex sequi ea omnis perspiciatis quo
+                    nesciunt? Consequatur necessitatibus delectus ut.
+                  </p>
+                </div>
+              </Grid>
+              <Grid item sm={12}>
+                <div className="term_content">
+                  <h1>License</h1>
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Expedita aut non aperiam earum minus, assumenda doloribus
+                    maxime voluptatibus quae, ex sequi ea omnis perspiciatis quo
+                    nesciunt? Consequatur necessitatibus delectus ut.
+                  </p>
+                </div>
+              </Grid>
+            </Grid>
           </Container>
         </div>
       </Wrapper>

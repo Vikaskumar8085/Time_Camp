@@ -4,23 +4,23 @@
 
 :root {
   // dasboard
-  --bg-primary-color: #{$bg-white-primary};
-  --bg-secondary-color: #{$bg-white-secondary};
-  --text-primary-color: #{$text-primary-color};
+  --bg-primary-color    : #{$bg-white-primary};
+  --bg-secondary-color  : #{$bg-white-secondary};
+  --text-primary-color  : #{$text-primary-color};
   --text-secondary-color: #{$text-secondary-color};
-  --sidebar-color: #{$sidebar-primary-color};
-  --sidebar-hover: #{$sidebar-hover-color};
-  --primary-color: #{$primary-color};
-  --secondary-color: #{$secondary-color};
-  --linear-one: #{#0088d2};
-  --linear-two: #{#534288};
+  --sidebar-color       : #{$sidebar-primary-color};
+  --sidebar-hover       : #{$sidebar-hover-color};
+  --primary-color       : #{$primary-color};
+  --secondary-color     : #{$secondary-color};
+  --linear-one          : #{#0088d2};
+  --linear-two          : #{#534288};
 }
 
 * {
-  margin: 0px;
-  padding: 0px;
+  margin    : 0px;
+  padding   : 0px;
   box-sizing: border-box;
-  overflow: auto;
+  overflow  : auto;
 }
 
 h1,
@@ -30,18 +30,17 @@ h4,
 h5,
 h6 {
   font-family: "Poppins", sans-serif;
-  letter-spacing: 0.1rem;
-  font-weight: 800;
-  overflow: hidden;
-  text-transform: uppercase;
+  overflow   : hidden;
 }
 
 p,
 label {
-  font-family: "Quicksand", sans-serif;
+  font-family    : "Quicksand", sans-serif;
+  list-style     : none;
+  text-decoration: none;
 }
 
 img {
   max-width: 100%;
-  height: auto;
+  height   : auto;
 }
