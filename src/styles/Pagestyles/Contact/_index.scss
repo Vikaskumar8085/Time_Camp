@@ -1,0 +1,11 @@
+@import "../../mixins/basic_style";
+
+.contact_header {
+    @include basic_style;
+    background-color: var(--bg-primary-color);
+    width           : 100%;
+    padding         : px 0px;
+
+    @import "./contact_header";
+}
+@import "./howcanwehelp";

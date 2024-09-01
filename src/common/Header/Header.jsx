@@ -1,46 +1,56 @@
 import { Container } from "@mui/material";
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
     <>
       <div className="header_wrapper">
-        <header>
-          <Container
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
+        <Container>
+          <header>
             <div className="logo">
               <h1>Logo</h1>
             </div>
-            <nav>
-              <ul>
-                <li>
-                  <NavLink to="/">Home</NavLink>
-                </li>{" "}
-                <li>
-                  <NavLink to="/blog">Blog</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/price">Price</NavLink>
-                </li>{" "}
-                <li>
-                  <NavLink to="/About">About Us</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/contact">Contact</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/login">login</NavLink>
-                </li>
-              </ul>
+            <nav className="Navbar">
+              <NavLink
+                className={({ isActive }) => (isActive ? "Navbaractive" : "")}
+                to="/"
+              >
+                Home
+              </NavLink>
+              <NavLink
+                className={({ isActive }) => (isActive ? "Navbaractive" : "")}
+                to="/blog"
+              >
+                Blog
+              </NavLink>
+              <NavLink
+                className={({ isActive }) => (isActive ? "Navbaractive" : "")}
+                to="/price"
+              >
+                Price
+              </NavLink>
+              <NavLink
+                className={({ isActive }) => (isActive ? "Navbaractive" : "")}
+                to="/about"
+              >
+                About
+              </NavLink>
+              <NavLink
+                className={({ isActive }) => (isActive ? "Navbaractive" : "")}
+                to="/contact"
+              >
+                contact
+              </NavLink>
+              <NavLink
+                className={({ isActive }) => (isActive ? "Navbaractive" : "")}
+                to="/login"
+              >
+                Login
+              </NavLink>
             </nav>
-          </Container>
-        </header>
+          </header>
+        </Container>
       </div>
     </>
   );

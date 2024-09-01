@@ -3,6 +3,7 @@
 .ScrollUp {
     position: fixed;
     z-index : 1111;
+    overflow: hidden;
     top     : 90%;
     left    : 95%;
 

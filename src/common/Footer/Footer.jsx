@@ -10,7 +10,7 @@ const Footer = () => (
         {/* Company Info Section */}
         <Grid item xs={12} sm={6} md={4} className="footer-section">
           <Typography variant="h6" className="title">
-            Company Name
+            TimeCamp
           </Typography>
           <Typography variant="body2" className="text">
             Your company description goes here. Lorem ipsum dolor sit amet,
@@ -25,22 +25,31 @@ const Footer = () => (
           </Typography>
           <ul className="links">
             <li>
-              <Link href="#" variant="body2">
+              <Link to="/" variant="body2">
                 Home
               </Link>
             </li>
             <li>
-              <Link href="#" variant="body2">
-                About Us
+              <Link to="/blog" variant="body2">
+                blog
               </Link>
             </li>
             <li>
-              <Link href="#" variant="body2">
-                Services
+              <Link to="/price">Price</Link>
+            </li>
+            <li>
+              <Link to="/About" variant="body2">
+                About
               </Link>
             </li>
             <li>
-              <Link href="#" variant="body2">
+              <Link to="/term-and-condition">Term</Link>
+            </li>
+            <li>
+              <Link to="/privacy-policy">privacy</Link>
+            </li>
+            <li>
+              <Link to="/contact" variant="body2">
                 Contact
               </Link>
             </li>
@@ -68,13 +77,10 @@ const Footer = () => (
     <Container>
       <div className="footer-copyrights">
         <div className="copyright_box">
-          <div className="copyright_left">
-            Copyright &copy; {new Date()?.getFullYear()}
-            All Rights Reserved
-          </div>
-          <div className="copyright_right">
-            <Link to="/term-and-condition">Term & Condition</Link>
-            <Link to="/privacy-policy">Privacy Policy</Link>
+          <div className="copyright_content">
+            <h1>
+              Copyright &copy; {new Date()?.getFullYear()} All Rights Reserved
+            </h1>
           </div>
         </div>
       </div>
