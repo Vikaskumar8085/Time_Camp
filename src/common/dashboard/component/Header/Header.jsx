@@ -1,5 +1,4 @@
-import React from "react";
-import Image from "../../../Image/Image";
+import React, { useState } from "react";
 import { CiLogout } from "react-icons/ci";
 import { useSelector } from "react-redux";
 
@@ -12,9 +11,15 @@ function Header() {
         <div className="head_logo">
           <img src="https://d2w2i7rp1a0wob.cloudfront.net/static/images/logos/KekaLogoBlack.svg" />
         </div>
-        <div className="head_profile" >
+        <div className="head_profile">
           <img src={GetUserData?.message?.Photo} alt="no-img" />
-          <span style={{ display: "flex", justifyContent: "center" ,alignItems:"center" }}>
+          <span
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <h2
               style={{ margin: "0px 5px", fontSize: "1em", fontWeight: "350" }}
             >

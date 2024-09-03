@@ -1,0 +1,52 @@
+/* src/TeamSection.css */
+.team-section {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.team-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: #333;
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.team-member {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    max-width: 250px;
+    text-align: center;
+}
+
+.team-image {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.team-name {
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+.team-position {
+    font-size: 1rem;
+    color: #666;
+}
+
+.team-bio {
+    font-size: 0.875rem;
+    color: #555;
+}

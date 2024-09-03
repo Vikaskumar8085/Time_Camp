@@ -30,7 +30,8 @@ function According({ items }) {
             display: "flex",
             justifyContent: "space-between",
             padding: "3px",
-            backgroundColor: "gray",
+            backgroundColor: "white",
+            margin: "10px 0px",
             alignItems: "center",
           }}
           className="flex justify-between p-3 bg-gray-50 border-b items-center cursor-pointer"

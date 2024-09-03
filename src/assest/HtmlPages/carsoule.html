@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carousel Example</title>
+    <style>
+      /* styles.css */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .carousel {
+        width: 100vw; /* Full viewport width */
+        height: 300px; /* Adjust height as needed */
+        overflow: hidden;
+        position: relative;
+      }
+
+      .carousel-wrapper {
+        display: flex;
+        width: 100%; /* 100% width per item times number of items */
+        height: 100%;
+        animation: slide 12s infinite;
+      }
+
+      .carousel-item {
+        flex: 0 0 100%; /* Each item takes up 100% of the container width */
+        height: 100%;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: #333;
+        scroll-snap-align: center;
+      }
+
+      /* Optional styles to improve appearance */
+      .carousel-item:nth-child(odd) {
+        background-color: #e0e0e0;
+      }
+
+      /* Keyframes for automatic sliding */
+      @keyframes slide {
+        0% {
+          transform: translateX(0%);
+        }
+        20% {
+          transform: translateX(0%);
+        } /* Stay for 10 seconds */
+        25% {
+          transform: translateX(-100%);
+        } /* Slide to the next item */
+        45% {
+          transform: translateX(-100%);
+        } /* Stay for 10 seconds */
+        50% {
+          transform: translateX(-200%);
+        } /* Slide to the next item */
+        70% {
+          transform: translateX(-200%);
+        } /* Stay for 10 seconds */
+        75% {
+          transform: translateX(-300%);
+        } /* Slide to the next item */
+        95% {
+          transform: translateX(-300%);
+        } /* Stay for 10 seconds */
+        100% {
+          transform: translateX(0%);
+        } /* Return to the start */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="carousel">
+      <div class="carousel-wrapper">
+        <div class="carousel-item">1</div>
+        <div class="carousel-item">2</div>
+        <div class="carousel-item">3</div>
+        <div class="carousel-item">4</div>
+      </div>
+    </div>
+  </body>
+</html>

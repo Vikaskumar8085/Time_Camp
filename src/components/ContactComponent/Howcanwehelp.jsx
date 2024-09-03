@@ -43,6 +43,13 @@ function Howcanwehelp() {
                     />
                   </Grid>
                   <Grid item sm={12}>
+                    <textarea
+                      cols={2}
+                      rows={10}
+                      style={{ width: "100%", margin: "auto" }}
+                    />
+                  </Grid>
+                  <Grid item sm={12}>
                     <Button>submit</Button>
                   </Grid>
                 </Grid>

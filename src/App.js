@@ -23,6 +23,7 @@ import ErrorPage from "./pages/Error/ErrorPage";
 import Privacy_Policy from "./pages/Privacy/Privacy_Policy";
 import Term_Condition from "./pages/Term-Condition/Term_Condition";
 import About from "./pages/About/About";
+
 import Pricing from "./pages/Pricing/Pricing";
 function App() {
   const [isScroll, setIsScroll] = useState(false);

@@ -1,8 +1,17 @@
 import { Container } from "@mui/material";
 import React from "react";
+import { useState } from "react";
+import { CiMenuFries } from "react-icons/ci";
+import { IoMdClose } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 
 function Header() {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const Icons = isNavOpen ? <IoMdClose /> : <CiMenuFries />;
+  const NavbarHandler = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
   return (
     <>
       <div className="header_wrapper">
@@ -11,7 +20,11 @@ function Header() {
             <div className="logo">
               <h1>Logo</h1>
             </div>
-            <nav className="Navbar">
+            <div className="header_icon">
+              <span onClick={NavbarHandler}>{Icons}</span>
+            </div>
+
+            <nav className={isNavOpen ? "Navbar" : ""}>
               <NavLink
                 className={({ isActive }) => (isActive ? "Navbaractive" : "")}
                 to="/"

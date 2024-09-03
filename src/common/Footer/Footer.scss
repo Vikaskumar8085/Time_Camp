@@ -1,102 +1,130 @@
 /* Footer.scss */
 /* Variables for theming */
 $footer-background-light: #f4f4f4;
-$footer-background-dark : #424242;
-$text-secondary         : #757575;
-$link-color             : #3466a7;
-$link-hover-color       : #0056b3;
+$footer-background-dark: #424242;
+$text-secondary: #757575;
+$link-color: #3466a7;
+$link-hover-color: #0056b3;
 
 /* General footer styling */
 .footer {
-    padding         : 16px 24px;
-    margin-top      : auto;
-    background-color: $footer-background-light;
+  padding: 16px 24px;
+  margin-top: auto;
+  background-color: $footer-background-light;
 
-    @media (prefers-color-scheme: dark) {
-        background-color: $footer-background-light;
-    }
+  @media (prefers-color-scheme: dark) {
+    background-color: $footer-background-light;
+  }
 }
 
 /* Container styling */
 .footer-container {
-    max-width      : 1200px;
-    margin         : 0 auto;
-    display        : flex;
-    flex-wrap      : wrap;
-    gap            : 24px;
-    justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
 }
 
 /* Section styling */
 .footer-section {
-    flex     : 1;
-    min-width: 250px;
+  flex: 1;
+  min-width: 250px;
 
-    .title {
-        font-size    : 1.25rem;
-        font-weight  : bold;
-        margin-bottom: 16px;
-    }
+  .ul_box {
+    display: block;
+    overflow: hidden;
+    position: relative;
 
-    .text {
-        font-size: 0.875rem;
-        color    : $text-secondary;
-    }
+    li {
+      list-style-type: none;
+      display: inline-block;
+      padding: 10px 0px;
 
-    .links {
-        list-style: none;
-        padding   : 0;
-        margin    : 0;
+      a {
+        margin-right: 20px;
+        color: #ffffff;
+        width: 30px;
+        height: 30px;
+        background: linear-gradient(
+          45deg,
+          rgba(0, 92, 95, 0.576),
+          #ff7171
+        );
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.459);
+        font-size: 14px;
+        transition: 0.3s;
 
-        li {
-            margin-bottom: 8px;
-
-
-            a {
-                color          : $link-color;
-                text-decoration: none;
-                transition     : all 0.3s ease;
-
-
-                &:hover {
-                    color      : var(--primary-color);
-                    margin-left: 10px;
-                }
-
-            }
+        &:hover{
+            background-color: red;
         }
+      }
     }
+  }
+
+  .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+
+  .text {
+    font-size: 0.875rem;
+    color: $text-secondary;
+  }
+
+  .links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 8px;
+
+      a {
+        color: $link-color;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: var(--primary-color);
+          margin-left: 10px;
+        }
+      }
+    }
+  }
 }
 
-
 .footer-copyrights {
-    width     : 100%;
-    position  : relative;
-    display   : block;
-    overflow  : hidden;
-    padding   : 20px 0px;
-    border-top: 2px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 20px 0px;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
 
-    .copyright_box {
-        display        : flex;
-        justify-content: space-between;
-        flex-wrap      : wrap;
-        align-items    : center;
+  .copyright_box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
 
-        .copyright_content {
-            position: relative;
-            width   : 100%;
+    .copyright_content {
+      position: relative;
+      width: 100%;
 
-            h1 {
-                text-decoration: none;
-                text-transform : capitalize;
-                font-weight    : 300;
-                font-size      : .8em;
-                text-align     : center;
-            }
-        }
-
-
+      h1 {
+        text-decoration: none;
+        text-transform: capitalize;
+        font-weight: 300;
+        font-size: 0.8em;
+        text-align: center;
+      }
     }
-
+  }
 }
