@@ -1,0 +1,27 @@
+.contact_head {
+  display: block;
+  position: relative;
+  background-color: var(--primary-color);
+  padding: 40px 0px;
+
+  .head_section {
+    display: grid;
+    place-items: center;
+
+    h1 {
+      font-weight: 700;
+      font-size: 2em;
+      margin: 10px 0px;
+      color: var(--text-primary-color);
+    }
+    p {
+      margin: 10px 0px;
+      font-size: 0.8em;
+      letter-spacing: 0.7px;
+      word-spacing: 1px;
+      text-align: center;
+      color: var(--text-primary-color);
+      text-transform: capitalize;
+    }
+  }
+}
