@@ -27,7 +27,7 @@ const Footer = () => {
 
   return (
     <>
-      <Box component="footer" className="footer">
+      <Box sx={{backgroundColor:"#192734"}} component="footer" className="footer">
         <Container className="footer-container">
           <Grid container spacing={4}>
             {/* Company Info Section */}

@@ -1,14 +1,14 @@
 /* OurValues.css */
 .our-values {
   padding: 2rem;
-  background-color: #f4f4f4;
+  background-color: #192734;
 }
 
 .our-values h2 {
   text-align: center;
   margin-bottom: 2rem;
   font-size: 2rem;
-  color: #333;
+  color: #fff;
 }
 
 .values-list {
@@ -19,27 +19,25 @@
 }
 
 .value-card {
-  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #192734f8 !important;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  padding: 1rem;
   max-width: 350px;
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.value-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  /* transition: transform 0.3s, box-shadow 0.3s; */
 }
 
 .value-title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #333;
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  color: #fff;
 }
 
 .value-description {
-  font-size: 1rem;
-  color: #666;
+  font-size: 0.8em;
+  letter-spacing: 0.8px;
+  text-align: center;
+  word-spacing: 2px;
+  color: #fff;
 }

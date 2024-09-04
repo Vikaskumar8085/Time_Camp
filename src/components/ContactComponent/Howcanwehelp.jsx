@@ -10,14 +10,12 @@ function Howcanwehelp() {
         <Grid container spacing={4}>
           <Grid item md={6} display={{ sm: "none", md: "block" }}>
             <div className="howcanwehelp_left_box">
-              <q>
-                <h1>Get in Touch with Us</h1>
-                <p>
-                  if you Have any kind of questions Either about our company
-                  services or some other. please feel free to contact us and
-                  message Us.
-                </p>
-              </q>
+              <h1> Get in Touch with Us</h1>
+              <p>
+                if you Have any kind of questions Either about our company
+                services or some other. please feel free to contact us and
+                message Us.
+              </p>
             </div>
           </Grid>
           <Grid item md={6}>
@@ -45,12 +43,13 @@ function Howcanwehelp() {
                   <Grid item sm={12}>
                     <textarea
                       cols={2}
+                      placeholder={"Please Enter Your Message"}
                       rows={10}
                       style={{ width: "100%", margin: "auto" }}
                     />
                   </Grid>
                   <Grid item sm={12}>
-                    <Button>submit</Button>
+                    <Button className={"form_button"}>submit</Button>
                   </Grid>
                 </Grid>
               </form>

@@ -13,7 +13,8 @@ function About() {
       <AboutHead />
       <OurVision />
       <OurValues />
-      <TeamSection /> <FAQ />
+      <TeamSection />
+      <FAQ />
     </Wrapper>
   );
 }

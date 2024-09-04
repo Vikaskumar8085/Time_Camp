@@ -1,14 +1,14 @@
 /* src/TeamSection.css */
 .team-section {
     padding: 2rem;
-    background-color: #f8f9fa;
+    background-color: #192734f8;
     text-align: center;
 }
 
 .team-section h2 {
     margin-bottom: 1.5rem;
     font-size: 2rem;
-    color: #333;
+    color: #fff;
 }
 
 .team-container {

@@ -5,7 +5,7 @@ function AboutHead() {
   return (
     <div className="about_header_wrapper">
       <Container>
-        <section>
+        <section className="about_head_box">
           <h1>About </h1>
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia
