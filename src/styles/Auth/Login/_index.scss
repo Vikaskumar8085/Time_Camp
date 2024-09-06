@@ -5,6 +5,7 @@
   @include basic_style;
   background-color: var(--bg-primary-color);
   height: 100vh;
+  overflow: scroll;
   width: 100%;
 
   .login_box {
@@ -46,6 +47,26 @@
             color: blue;
           }
         }
+      }
+    }
+
+    .btn-google-auto {
+      display: flex;
+      justify-content: center;
+      background-color: var(--primary-color);
+
+      width: 85%;
+      margin: auto auto;
+      align-items: center;
+      img {
+        margin: 0px 10px;
+        width: 20px;
+        height: 20px;
+      }
+      span {
+        font-weight: 550;
+        letter-spacing: 0.8px;
+        color: var(--text-primary-color);
       }
     }
   }

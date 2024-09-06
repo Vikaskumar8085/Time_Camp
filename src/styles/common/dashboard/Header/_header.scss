@@ -1,0 +1,44 @@
+.dash_header_wrapper {
+  position: relative;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  height: 100%;
+
+  .dash_header_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 10px;
+
+    .head_logo {
+      background-color: var(--bg-primary-color);
+    }
+    .dash_header_profile {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+
+      .dash_header_notification {
+        margin: 0px 15px;
+        .icons {
+          font-size: 1.8em;
+          color: var(--primary-color);
+        }
+      }
+      img {
+        border-radius: 50%;
+        width: 50px;
+        margin: 0px 10px;
+        height: 50px;
+      }
+      .dash_head_logout {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}

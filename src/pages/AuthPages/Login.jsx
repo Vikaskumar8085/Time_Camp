@@ -11,6 +11,7 @@ import Loader from "../../common/Loader";
 import LoginTitle from "../../components/AuthComponent/Login/LoginTitle";
 import LoginForm from "../../components/AuthComponent/Login/LoginForm";
 import { GoogleLoginAuth, loginauth } from "../../apiservice/auth";
+import GoogleIcons from "../../assest/icons/loginIcons/google.png";
 import Button from "../../common/Button";
 function Login() {
   const dispatch = useDispatch();
@@ -67,14 +68,14 @@ function Login() {
   return (
     <>
       <Suspense fallback={<Loader />}>
-        <Helmet>
-          <title>Login</title>
-        </Helmet>
         <div className="login_wrapper">
           <div className="login_box">
             <LoginTitle />
             <LoginForm handleSubmit={handleSubmit} />
-            <Button onClick={() => login()}>Google Login</Button>
+            <Button onClick={() => login()} className={"btn-google-auto"}>
+              <img src={GoogleIcons} alt="no-image" />
+              <span> Login with google </span>
+            </Button>
           </div>
         </div>
       </Suspense>

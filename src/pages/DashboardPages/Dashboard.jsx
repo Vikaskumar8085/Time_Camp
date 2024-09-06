@@ -12,6 +12,7 @@ import {
 } from "recharts";
 import TimeSheet from "./SubPage/DashboardSubPages/TimeSheet";
 import Project from "./SubPage/DashboardSubPages/Project";
+import DashHeadSection from "../../components/Dashboard/dashComponent/DashHeadSection";
 
 const data = [
   {
@@ -68,14 +69,8 @@ function Dashboard() {
       content: (
         <>
           {/* dashboard header section */}
-          <section className="dashboard_wrapper">
-            <div className="dashboard_count">
-              <div className="active">1</div>
-              <div className="active">1</div>
-              <div className="active">1</div>
-              <div className="active">1</div>
-            </div>
-          </section>
+          <DashHeadSection />
+
           <section className="dashboard_Charts">
             <AreaChart
               style={{ overflow: "hidden" }}

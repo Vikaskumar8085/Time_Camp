@@ -1,26 +1,93 @@
 @import "../../mixins/basic_style";
 @import "../../mixins/center";
+// .forget-password-wrapper {
+//   @include basic_style;
+//   min-height: 100vh;
+//   height: 100vh;
+//   width: 100%;
+//   max-height: 100vh;
+//   background-color: var(--bg-primary-color);
+//   .forget-password-box {
+//     @include absolute_center;
+//     background-color: var(--bg-secondary-color);
+//     padding: 20px;
+//     width: 320px;
+//     button {
+//       background-color: var(--primary-color);
+//       color: var(--text-primary-color);
+//       transition: all linear 0.3s;
+
+//       &:hover{
+//         background-color: var(--secondary-color);
+//         color: var(--text-primary-color);
+
+//       }
+//     }
+//   }
+// }
+
 .forget-password-wrapper {
   @include basic_style;
+  display: flex;
+  background-color: var(--primary-color);
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: auto;
   min-height: 100vh;
   height: 100vh;
-  width: 100%;
-  max-height: 100vh;
-  background-color: var(--bg-primary-color);
-  .forget-password-box {
-    @include absolute_center;
-    background-color: var(--bg-secondary-color);
-    padding: 20px;
-    width: 320px;
-    button {
-      background-color: var(--primary-color);
-      color: var(--text-primary-color);
-      transition: all linear 0.3s;
+  @media (max-width: 768px) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .forget_password_container {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-shadow: 0px 1px 8px 0px rgba($color: #000000, $alpha: 0.2);
+    @media (max-width: 768px) {
+      box-shadow: none;
+    }
 
-      &:hover{
-        background-color: var(--secondary-color);
-        color: var(--text-primary-color);
-          
+    .forget-password-anmiation {
+      padding: 30px;
+      width: fit-content;
+      @media (max-width: 600px) {
+        display: none;
+      }
+    }
+    .forget_password_box {
+      background-color: rgba(253, 253, 253, 0.1);
+      height: 100%;
+      width: 100%;
+      @media (max-width: 600px) {
+        background-color: transparent;
+      }
+
+      .forget_password_heading {
+        padding: 20px 10px;
+        display: block;
+        overflow: hidden;
+        position: relative;
+
+        h1 {
+          font-weight: 600;
+          margin: 20px 0px;
+          font-size: 2em;
+          color: white;
+        }
+        p {
+          font-size: 0.8em;
+          color: white;
+          letter-spacing: 0.6px;
+          word-spacing: 5px;
+          text-transform: capitalize;
+        }
+      }
+
+      form {
+        padding: 10px;
       }
     }
   }

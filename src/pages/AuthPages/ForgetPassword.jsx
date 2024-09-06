@@ -6,7 +6,8 @@ import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { ForgetPasswordUser } from "../../apiservice/auth";
 import Loader from "../../common/Loader";
-
+import Lottie from "react-lottie-player";
+import ForgetGif from "../../assest/lollitejson/ForgetPassword.json";
 function ForgetPassword() {
   const dispatch = useDispatch();
 
@@ -29,25 +30,27 @@ function ForgetPassword() {
       <Suspense fallback={<Loader />}>
         <div className="forget-password-wrapper">
           <Container>
-            <Grid container spacing={5}>
-              <Grid item xs={12}>
-                <div className="forget-password-box">
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      margin: "10px 0px",
-                      fontSize: "15px",
-                      textAlign: "center",
-                    }}
-                  >
-                    {" "}
-                    Forget Password
-                  </Typography>
-
-                  <ForgetForm hsubmit={hsubmit} />
-                </div>
+            <div className={"forget_password_container"}>
+              <Grid container spacing={5}>
+                <Grid item xs={12} sm={6} md={6} xl={6} xxl={6}>
+                  <div className="forget-password-anmiation">
+                    <Lottie loop animationData={ForgetGif} play />
+                  </div>
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} xl={6} xxl={6}>
+                  <div className="forget_password_box">
+                    <div className="forget_password_heading">
+                      <h1>Forget Password</h1>
+                      <p>
+                        enter your email and we'll send you a link to reset your
+                        password
+                      </p>
+                    </div>
+                    <ForgetForm hsubmit={hsubmit} />
+                  </div>
+                </Grid>
               </Grid>
-            </Grid>
+            </div>
           </Container>
         </div>
       </Suspense>

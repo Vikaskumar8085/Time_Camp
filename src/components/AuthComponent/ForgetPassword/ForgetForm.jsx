@@ -11,7 +11,7 @@ function ForgetForm({ hsubmit }) {
     },
     validate: validate,
     onSubmit: (values) => {
-     hsubmit(values)
+      hsubmit(values);
     },
   });
 
@@ -25,7 +25,9 @@ function ForgetForm({ hsubmit }) {
         {formik.touched.Email && formik.errors.Email ? (
           <div style={{ color: "red" }}>{formik.errors.Email}</div>
         ) : null}
-        <Button type={"submit"} style={{width:"100%"}}>submit</Button>
+        <Button type={"submit"} style={{ width: "100%" }}>
+          submit
+        </Button>
       </form>
     </>
   );

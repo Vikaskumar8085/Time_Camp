@@ -1,0 +1,11 @@
+@import "../../mixins/basic_style";
+
+.footer_container {
+  @include basic_style;
+  width: 100%;
+  background-color: var(--primary-color);
+  padding: 40px 0px;
+  @import "./footer_content";
+
+  @import "./footer_Copiright";
+}
