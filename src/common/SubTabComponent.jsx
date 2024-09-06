@@ -1,7 +1,6 @@
 import React from "react";
 
-function SubTabComponent({ Tabsheader, TabsBody }) {
-  const [isState, setisState] = useState(0);
+function SubTabComponent({ Tabsheader, TabsBody, isSubState, setisSubState }) {
   const handleclick = (prev) => {
     setisState(prev);
   };

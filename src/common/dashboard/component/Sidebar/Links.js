@@ -8,6 +8,13 @@ import {
   MdOutlineAdminPanelSettings,
 } from "react-icons/md";
 import { MdOutlineBugReport } from "react-icons/md";
+export const Compoany = [
+  {
+    title: "Company",
+    icons: <FaTh />,
+    path: "/company",
+  },
+];
 export const Super_Admin = [
   {
     title: "Dashboard",
