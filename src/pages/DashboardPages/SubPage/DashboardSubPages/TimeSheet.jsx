@@ -20,6 +20,7 @@ import {
 } from "../../../../apiservice/admin";
 import Button from "../../../../common/Button";
 import Loader from "../../../../common/Loader";
+import TabComp from "../../../../common/TabComp";
 import TimeSheetDrawer from "../../../../components/AdminComponent/TImeSheetComponent/TimeSheetDrawer";
 import { setLoader } from "../../../../redux/slices/loaderSlice";
 import {
@@ -113,10 +114,20 @@ function TimeSheet() {
   useEffect(() => {
     getalltimesheetservice();
   }, [dispatch]);
-
+  const tabsheadr = [
+    { title: "TimeSheets" },
+    { title: "Project Time" },
+    { title: "Time Summary" },
+  ];
+  const Tabsbody = [
+    {
+      content: <></>,
+    },
+  ];
   return (
     <>
       <Suspense fallback={<Loader />}>
+        <TabComp Tabsheader={tabsheadr} TabsBody={Tabsbody} />
         <Button type={"submit"} onclick={handleOpen}>
           Add TimeSheet
         </Button>

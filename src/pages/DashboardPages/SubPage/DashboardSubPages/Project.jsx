@@ -25,6 +25,7 @@ import {
   TableCell,
 } from "@mui/material";
 import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
+import TabComp from "../../../../common/TabComp";
 
 function Project() {
   const [IsOpen, setIsOpen] = useState(false);
@@ -100,8 +101,22 @@ function Project() {
     getallprojects();
   }, [0]);
 
+  // Project tabs
+  const tabsheadr = [
+    { title: "All Projects" },
+    { title: "Active Projects" },
+    { title: "In Active Projects" },
+  ];
+  const Tabsbody = [
+    {
+      content: <></>,
+    },
+  ];
+  //  Project tabs
   return (
     <Suspense fallback={<Loader />}>
+      <TabComp Tabsheader={tabsheadr} TabsBody={Tabsbody} />
+
       <Button type="submit" onclick={() => setIsOpen(true)}>
         Add Project
       </Button>
