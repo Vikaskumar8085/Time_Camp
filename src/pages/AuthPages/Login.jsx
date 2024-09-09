@@ -27,7 +27,7 @@ function Login() {
         dispatch(setLoader(false));
         dispatch(setLogin(response?.data?.data));
         toast.success(response?.data?.message);
-        window.location.href = "/dashboard";
+        window.location.href = "/company";
       } else {
         toast.error(response?.data?.message);
       }
@@ -43,7 +43,7 @@ function Login() {
   // check authentication
   const isAuth = () => {
     if (sessionStorage.getItem("token")) {
-      navigate("/dashboard");
+      navigate("/company");
     } else {
       navigate("/login");
     }
@@ -56,7 +56,7 @@ function Login() {
       if (response?.data?.success) {
         dispatch(setLogin(response?.data?.message));
         dispatch(setLoader(false));
-        navigate("/dashboard");
+        navigate("/company");
       }
     },
   });

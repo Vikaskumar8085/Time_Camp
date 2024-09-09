@@ -4,8 +4,12 @@ import TotalWorkhourIcon from "../../../assest/DashboardIcons/TotalWorkHours.png
 import TotalClientIcon from "../../../assest/DashboardIcons/TotalClient.png";
 import TotalProjectIcon from "../../../assest/DashboardIcons/project.png";
 import TotalEmployeeIcon from "../../../assest/DashboardIcons/Employess.png";
+import { useSelector } from "react-redux";
 
 function DashHeadSection() {
+  const totalEmployee = useSelector((state) => state.employee?.EmployeeValues);
+  const totalClient = useSelector((state) => state?.admin?.clientValue);
+
   return (
     <>
       <section className="dashboard_wrapper">
@@ -30,8 +34,8 @@ function DashHeadSection() {
                   <img src={TotalClientIcon} alt="" srcset="" />
                 </div>
                 <div className="active_content">
-                  <h1>Total Time Hour</h1>
-                  <p>0</p>
+                  <h1>Total Client</h1>
+                  <p>{totalClient.length}</p>
                 </div>
               </div>
             </div>
@@ -43,8 +47,8 @@ function DashHeadSection() {
                   <img src={TotalProjectIcon} alt="" srcset="" />
                 </div>
                 <div className="active_content">
-                  <h1>Total Time Hour</h1>
-                  <p>0</p>
+                  <h1>Total Project</h1>
+                  <p>{totalClient.length}</p>
                 </div>
               </div>
             </div>
@@ -56,8 +60,8 @@ function DashHeadSection() {
                   <img src={TotalEmployeeIcon} alt="" srcset="" />
                 </div>
                 <div className="active_content">
-                  <h1>Total Time Hour</h1>
-                  <p>0</p>
+                  <h1>Total Employee</h1>
+                  <p>{totalEmployee?.length}</p>
                 </div>
               </div>
             </div>

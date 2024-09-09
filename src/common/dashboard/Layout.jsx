@@ -32,6 +32,10 @@ function Layout({ children }) {
   // };
 
   // get User role based
+  const GetCompany = async () => {
+    try {
+    } catch (error) {}
+  };
 
   const GetUser = async () => {
     try {
@@ -60,6 +64,7 @@ function Layout({ children }) {
 
   useEffect(() => {
     GetUser();
+    GetCompany();
   }, [dispatch]);
 
   return (

@@ -4,9 +4,12 @@ import { useSelector } from "react-redux";
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import { useEffect } from "react";
 
 function Header() {
   const GetUserData = useSelector((state) => state.auth.values);
+
+
 
   return (
     <header className="dash_header_wrapper">

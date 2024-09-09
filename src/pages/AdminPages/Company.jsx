@@ -8,6 +8,7 @@ import CompanyAddDrawer from "../../components/AdminComponent/Company/CompanyAdd
 
 function Company() {
   const [IsOpen, setOpen] = useState(false);
+  const [IsCompany, setIsCompany] = useState(false);
   const TabHeader = [{ title: "Company" }];
   const Tabsbody = [
     {
