@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../common/dashboard/Layout";
-import Proutes from "../../common/Proutes";
-import Button from "../../common/Button";
-import ClientDrawer from "../../components/AdminComponent/Clientcomponent/ClientDrawer";
-import TabComp from "../../common/TabComp";
+import Layout from "../../../common/dashboard/Layout";
+import Proutes from "../../../common/Proutes";
+import Button from "../../../common/Button";
+import ClientDrawer from "../../../components/AdminComponent/Clientcomponent/ClientDrawer";
+import TabComp from "../../../common/TabComp";
 import {
   Table,
   TableBody,
@@ -13,20 +13,20 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import { setLoader } from "../../redux/slices/loaderSlice";
+import { setLoader } from "../../../redux/slices/loaderSlice";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createClient,
   EditClientApiCall,
   GetClientApiCall,
   RemoveClientApiCall,
-} from "../../apiservice/admin";
+} from "../../../apiservice/admin";
 import {
   setClients,
   SetSingleClientsFunc,
-} from "../../redux/slices/AdminSlice/adminSlice";
+} from "../../../redux/slices/AdminSlice/adminSlice";
 import toast from "react-hot-toast";
-import Input from "../../common/Input/Input";
+import Input from "../../../common/Input/Input";
 import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
 
 function Client() {
@@ -218,6 +218,16 @@ function Client() {
           </p>
         </>
       ),
+    },
+    {
+      content: (
+        <>
+          <p>InActive</p>
+        </>
+      ),
+    },
+    {
+      content: <>Dead Clients</>,
     },
   ];
   return (

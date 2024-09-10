@@ -10,21 +10,22 @@ import Dashboard from "./pages/DashboardPages/Dashboard";
 import SiginUp from "./pages/AuthPages/SiginUp";
 import Contact from "./pages/Contact";
 import { Toaster } from "react-hot-toast";
-import Client from "./pages/AdminPages/Client";
-import Adminpage from "./pages/AdminPages/Adminpage";
-import Employee from "./pages/AdminPages/Employee";
+import Client from "./pages/AdminPages/Client/Client";
+import Adminpage from "./pages/AdminPages/Admin/Adminpage";
+import Employee from "./pages/AdminPages/Employee/Employee";
 import Profile from "./pages/DashboardPages/Profile";
 import ForgetPassword from "./pages/AuthPages/ForgetPassword";
 import ChangePassword from "./pages/AuthPages/ChangePassword";
-import Company from "./pages/AdminPages/Company";
+import Company from "./pages/AdminPages/Company/Company";
 import VerifyToken from "./pages/VerifyToken";
-import Contractor from "./pages/AdminPages/Contractor";
+import Contractor from "./pages/AdminPages/Contractor/Contractor";
 import ErrorPage from "./pages/Error/ErrorPage";
 import Privacy_Policy from "./pages/Privacy/Privacy_Policy";
 import Term_Condition from "./pages/Term-Condition/Term_Condition";
 import About from "./pages/About/About";
 
 import Pricing from "./pages/Pricing/Pricing";
+import ProductivityLeaderBoardPage from "./pages/DashboardPages/ProductivityLeaderBoardPage";
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -62,6 +63,10 @@ function App() {
         <Route path="/verify/:id" element={<VerifyToken />} />
         <Route path="/about" element={<About />} />
         <Route path="/price" element={<Pricing />} />
+        <Route
+          path="/productivity-leader-baord"
+          element={<ProductivityLeaderBoardPage />}
+        />
         {/* Term and condition and privacy policy */}
         <Route path="/privacy-policy" element={<Privacy_Policy />} />
         <Route path="/term-and-condition" element={<Term_Condition />} />

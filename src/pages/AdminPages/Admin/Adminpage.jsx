@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import Layout from "../../common/dashboard/Layout";
-import Proutes from "../../common/Proutes";
-import Button from "../../common/Button";
-import AdminDrawer from "../../components/AdminComponent/adminComp/AdminDrawer";
-import TabComp from "../../common/TabComp";
+import Layout from "../../../common/dashboard/Layout";
+import Proutes from "../../../common/Proutes";
+import Button from "../../../common/Button";
+import AdminDrawer from "../../../components/AdminComponent/adminComp/AdminDrawer";
+import TabComp from "../../../common/TabComp";
 import { useDispatch } from "react-redux";
-import { setLoader } from "../../redux/slices/loaderSlice";
+import { setLoader } from "../../../redux/slices/loaderSlice";
 import toast from "react-hot-toast";
 import ViewListIcon from "@mui/icons-material/ViewList";
-import { GetallAdminApiCall } from "../../apiservice/admin";
+import { GetallAdminApiCall } from "../../../apiservice/admin";
 import PanoramaOutlinedIcon from "@mui/icons-material/PanoramaOutlined";
 import {
   Table,
@@ -24,7 +24,7 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import Input from "../../common/Input/Input";
+import Input from "../../../common/Input/Input";
 function Adminpage() {
   const [isAdmin, setIsAdmin] = React.useState([]);
   const [IsView, setIsView] = React.useState("list");

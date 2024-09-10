@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import Layout from "../../common/dashboard/Layout";
-import Proutes from "../../common/Proutes";
-import Button from "../../common/Button";
-import EmployeeDrawer from "../../components/AdminComponent/EmployeeComponent/EmployeeDrawer";
-import TabComp from "../../common/TabComp";
+import Layout from "../../../common/dashboard/Layout";
+import Proutes from "../../../common/Proutes";
+import Button from "../../../common/Button";
+import EmployeeDrawer from "../../../components/AdminComponent/EmployeeComponent/EmployeeDrawer";
+import TabComp from "../../../common/TabComp";
 import {
   Table,
   TableBody,
@@ -13,19 +13,19 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import { setLoader } from "../../redux/slices/loaderSlice";
+import { setLoader } from "../../../redux/slices/loaderSlice";
 import { useDispatch, useSelector } from "react-redux";
 import {
   CreateEmployeeApiCall,
   EditEmployeeApiCall,
   GetAllEmployeeApiCall,
   RemoveEmployeeApiCall,
-} from "../../apiservice/admin";
+} from "../../../apiservice/admin";
 import toast from "react-hot-toast";
 import {
   setEmployee,
   setSingleEmployee,
-} from "../../redux/slices/Employee/EmployeeSlice";
+} from "../../../redux/slices/Employee/EmployeeSlice";
 import moment from "moment";
 import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
 

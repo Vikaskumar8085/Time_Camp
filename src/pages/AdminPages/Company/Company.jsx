@@ -1,10 +1,10 @@
 import { Drawer } from "@mui/material";
 import React, { useState } from "react";
-import Button from "../../common/Button";
-import Layout from "../../common/dashboard/Layout";
-import Proutes from "../../common/Proutes";
-import TabComp from "../../common/TabComp";
-import CompanyAddDrawer from "../../components/AdminComponent/Company/CompanyAddDrawer";
+import Button from "../../../common/Button";
+import Layout from "../../../common/dashboard/Layout";
+import Proutes from "../../../common/Proutes";
+import TabComp from "../../../common/TabComp";
+import CompanyAddDrawer from "../../../components/AdminComponent/Company/CompanyAddDrawer";
 
 function Company() {
   const [IsOpen, setOpen] = useState(false);

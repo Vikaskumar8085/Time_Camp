@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import TabComp from "../../common/TabComp";
-import Proutes from "../../common/Proutes";
-import Layout from "../../common/dashboard/Layout";
+import TabComp from "../../../common/TabComp";
+import Proutes from "../../../common/Proutes";
+import Layout from "../../../common/dashboard/Layout";
 import {
   Table,
   TableBody,
@@ -11,11 +11,11 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import Button from "../../common/Button";
-import ContractorDrawer from "../../components/AdminComponent/ContractoreComponent/ContractorDrawer";
-import DesignationForm from "../../components/AdminComponent/Designation/DesignationForm";
+import Button from "../../../common/Button";
+import ContractorDrawer from "../../../components/AdminComponent/ContractoreComponent/ContractorDrawer";
+import DesignationForm from "../../../components/AdminComponent/Designation/DesignationForm";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoader } from "../../redux/slices/loaderSlice";
+import { setLoader } from "../../../redux/slices/loaderSlice";
 import {
   AddContractorApiCall,
   AddDepartmentApiCall,
@@ -29,21 +29,21 @@ import {
   RemoveContractorApiCall,
   RemoveDepartmentApiCall,
   RemoveDesignationApiCall,
-} from "../../apiservice/admin";
+} from "../../../apiservice/admin";
 import toast from "react-hot-toast";
 import {
   getDesignation,
   setDesignation,
-} from "../../redux/slices/Designation/DesignationSlice";
-import DepartmentDrawer from "../../components/AdminComponent/Department/DepartmentDrawer";
+} from "../../../redux/slices/Designation/DesignationSlice";
+import DepartmentDrawer from "../../../components/AdminComponent/Department/DepartmentDrawer";
 import {
   GetDepartmentFunc,
   setDepartment,
-} from "../../redux/slices/Department/DepartmentSlice";
+} from "../../../redux/slices/Department/DepartmentSlice";
 import {
   getContractor,
   setContractor,
-} from "../../redux/slices/ContractorSlice/contractorSlice";
+} from "../../../redux/slices/ContractorSlice/contractorSlice";
 import moment from "moment";
 import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
 
