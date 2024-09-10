@@ -16,12 +16,12 @@ function DashboardCharts() {
           </Grid>
           <Grid item md={6} xl={6} sm={12} xs={12}>
             <section className="dashboard_Charts">
-              <EmployeeTimeHourChars />
+              <ProductivityLeadearboardChart />
             </section>
           </Grid>
           <Grid item md={6} xl={6} sm={12} xs={12}>
             <section className="dashboard_Charts">
-              <TotalTimeSheetsChart />
+              <ProductivityLeadearboardChart />
             </section>
           </Grid>
         </Grid>

@@ -28,6 +28,9 @@ import {
 import toast from "react-hot-toast";
 import Input from "../../../common/Input/Input";
 import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
+import InActiveClient from "./ClientSubPages/InActiveClient";
+import ActiveClients from "./ClientSubPages/ActiveClients";
+import DeadClients from "./ClientSubPages/DeadClients";
 
 function Client() {
   const [IsOpen, setOpen] = React.useState(false);
@@ -209,25 +212,19 @@ function Client() {
     {
       content: (
         <>
-          <p>
-            {" "}
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
-            aspernatur eligendi culpa accusantium quos quisquam facere facilis
-            suscipit ipsum, ratione placeat unde distinctio alias, dolor porro
-            id! Reprehenderit, aliquid. Doloremque.
-          </p>
+          <ActiveClients />
         </>
       ),
     },
     {
       content: (
         <>
-          <p>InActive</p>
+          <InActiveClient />
         </>
       ),
     },
     {
-      content: <>Dead Clients</>,
+      content: <DeadClients />,
     },
   ];
   return (

@@ -28,6 +28,8 @@ import {
 } from "../../../redux/slices/Employee/EmployeeSlice";
 import moment from "moment";
 import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
+import ActiveEmployee from "./EmployeeSubPages/ActiveEmployee";
+import InActiveEmployee from "./EmployeeSubPages/InActiveEmployee";
 
 function Employee() {
   const dispatch = useDispatch();
@@ -189,7 +191,7 @@ function Employee() {
                             EmployeeEdithandle(items);
                           }}
                         >
-                         <MdOutlineEdit
+                          <MdOutlineEdit
                             style={{ fontSize: "1.2em", margin: "0px 3px" }}
                           />
                         </span>
@@ -206,13 +208,14 @@ function Employee() {
     {
       content: (
         <>
-          <p>
-            {" "}
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
-            aspernatur eligendi culpa accusantium quos quisquam facere facilis
-            suscipit ipsum, ratione placeat unde distinctio alias, dolor porro
-            id! Reprehenderit, aliquid. Doloremque.
-          </p>
+          <ActiveEmployee />
+        </>
+      ),
+    },
+    {
+      content: (
+        <>
+          <InActiveEmployee />
         </>
       ),
     },

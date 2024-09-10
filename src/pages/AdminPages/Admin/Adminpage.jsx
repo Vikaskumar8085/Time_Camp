@@ -25,6 +25,7 @@ import {
   Box,
 } from "@mui/material";
 import Input from "../../../common/Input/Input";
+import InActiveAdmins from "./AdminSubpages/InActiveAdmins";
 function Adminpage() {
   const [isAdmin, setIsAdmin] = React.useState([]);
   const [IsView, setIsView] = React.useState("list");
@@ -44,7 +45,7 @@ function Adminpage() {
     );
   });
 
-// 
+  //
 
   const GetAllAdmins = async () => {
     try {
@@ -61,8 +62,6 @@ function Adminpage() {
     }
   };
 
-
-  
   useEffect(() => {
     GetAllAdmins();
   }, [0]);
@@ -179,13 +178,7 @@ function Adminpage() {
     {
       content: (
         <>
-          <p>
-            {" "}
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
-            aspernatur eligendi culpa accusantium quos quisquam facere facilis
-            suscipit ipsum, ratione placeat unde distinctio alias, dolor porro
-            id! Reprehenderit, aliquid. Doloremque.
-          </p>
+          <InActiveAdmins />
         </>
       ),
     },
