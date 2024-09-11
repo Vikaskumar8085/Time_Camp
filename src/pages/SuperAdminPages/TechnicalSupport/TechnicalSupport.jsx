@@ -5,8 +5,8 @@ import Loader from "../../../common/Loader";
 import Proutes from "../../../common/Proutes";
 import TabComp from "../../../common/TabComp";
 
-function Subscription() {
-  const tabsheadr = [{ title: "Payment" }];
+function TechnicalSupport() {
+  const tabsheadr = [{ title: "Employeemanagement" }];
   const Tabsbody = [
     {
       content: <>h1</>,
@@ -27,4 +27,4 @@ function Subscription() {
   );
 }
 
-export default Subscription;
+export default TechnicalSupport;
