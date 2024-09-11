@@ -8,7 +8,10 @@ function Sidebar({ Role }) {
     return (
       <>
         <li key={index}>
-          <NavLink to={item?.path}>
+          <NavLink
+            to={item?.path}
+            className={({ isActive }) => (isActive ? "activesidebarlink" : "")}
+          >
             <span>{item?.icon}</span>
             {item?.title}
           </NavLink>
@@ -38,8 +41,13 @@ function Sidebar({ Role }) {
     return (
       <>
         <li key={index}>
-          <span>{item?.icon}</span>
-          <NavLink to={item?.path}>{item?.title}</NavLink>
+          <NavLink
+            to={item?.path}
+            className={({ isActive }) => (isActive ? "activesidebarlink" : "")}
+          >
+            <span>{item?.icon}</span>
+            {item?.title}
+          </NavLink>
         </li>
       </>
     );
@@ -49,8 +57,13 @@ function Sidebar({ Role }) {
     return (
       <>
         <li key={index}>
-          <span>{item?.icon}</span>
-          <NavLink to={item?.path}>{item?.title}</NavLink>
+          <NavLink
+            to={item?.path}
+            className={({ isActive }) => (isActive ? "activesidebarlink" : "")}
+          >
+            <span>{item?.icon}</span>
+            {item?.title}
+          </NavLink>
         </li>
       </>
     );
@@ -66,9 +79,9 @@ function Sidebar({ Role }) {
       </div>
       <aside>
         <ul>
-          {IsRole === "super_admin" && <>{IsSuperAdmin}</>}
+          {IsRole === "SuperAdmin" && <>{IsSuperAdmin}</>}
           {IsRole === "Admin" && <>{IsAdmin}</>}
-          {IsRole === "employee" && <>{IsEmployee}</>}
+          {IsRole === "Employee" && <>{IsEmployee}</>}
           {IsRole === "contractor" && <>{IsContractor}</>}
         </ul>
       </aside>

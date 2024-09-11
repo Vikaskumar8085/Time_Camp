@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import { Container } from "@mui/system";
+import "./TImeSheetHead.scss";
 import React from "react";
 
 function TImeSheetHead() {
@@ -7,24 +7,16 @@ function TImeSheetHead() {
     <div className="timeSheethead">
       <Grid container spacing={2}>
         <Grid item md={3} xl={3} sm={6} xs={12}>
-          <div style={{ background: "white" }} className="timesheethead_box">
-            1
-          </div>
+          <div className="timesheethead_box active-one">1</div>
         </Grid>
         <Grid item md={3} xl={3} sm={6} xs={12}>
-          <div style={{ background: "white" }} className="timesheethead_box">
-            1
-          </div>
+          <div className="timesheethead_box active-two">1</div>
         </Grid>
         <Grid item md={3} xl={3} sm={6} xs={12}>
-          <div style={{ background: "white" }} className="timesheethead_box">
-            1
-          </div>
+          <div className="timesheethead_box active-three">1</div>
         </Grid>
         <Grid item md={3} xl={3} sm={6} xs={12}>
-          <div style={{ background: "white" }} className="timesheethead_box">
-            1
-          </div>
+          <div className="timesheethead_box active-four">1</div>
         </Grid>
       </Grid>
     </div>

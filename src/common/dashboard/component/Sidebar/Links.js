@@ -19,7 +19,7 @@ export const Super_Admin = [
   {
     title: "Dashboard",
     icon: <FaTh />,
-    path: "/dashboard",
+    path: "/super-admin-dashboard",
   },
   {
     title: "Profile",
@@ -113,16 +113,26 @@ export const Admin = [
 
 export const Employee = [
   {
-    title: "Employee",
-    icon: <FaCommentAlt />,
-    path: "/contact-us",
+    title: "Dashboard",
+    icon: <MdDashboard />,
+    path: "/Employee-dashboard",
+  },
+  {
+    title: "Profile",
+    icon: <CgProfile />,
+    path: "/Employee-profile",
+  },
+  {
+    title: "Company",
+    icon: <CgProfile />,
+    path: "/Employee-company",
   },
 ];
 
 export const Contractor = [
   {
-    title: "contractor",
+    title: "/Contractor-dashboard",
     icon: <FaCommentAlt />,
-    path: "/contact-us",
+    path: "/",
   },
 ];

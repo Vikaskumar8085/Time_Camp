@@ -26,6 +26,9 @@ import About from "./pages/About/About";
 
 import Pricing from "./pages/Pricing/Pricing";
 import ProductivityLeaderBoardPage from "./pages/DashboardPages/ProductivityLeaderBoardPage";
+import SuperAdminDashboard from "./pages/SuperAdminPages/SuperAdminDashboard/SuperAdminDashboard";
+import SuperAdminEmployeeManagement from "./pages/SuperAdminPages/SuperAdminEmployeeManagement/SuperAdminEmployeeManagement";
+import EmployeeDashboard from "./pages/EmployeePages/EmployeeDashboard/EmployeeDashboard";
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -71,6 +74,21 @@ function App() {
         <Route path="/privacy-policy" element={<Privacy_Policy />} />
         <Route path="/term-and-condition" element={<Term_Condition />} />
         {/* Term and condition and privacy policy */}
+
+        {/* Super Admin */}
+        <Route
+          path={"/super-admin-dashboard"}
+          element={<SuperAdminDashboard />}
+        />
+        <Route
+          path="/Employee-management"
+          element={<SuperAdminEmployeeManagement />}
+        />
+
+        {/* Super Admin */}
+        {/* Employee Pages */}
+        <Route path={"/employee-dashboard"} element={<EmployeeDashboard />} />
+        {/* Employee Pages */}
 
         <Route path="*" element={<ErrorPage />} />
       </Routes>
