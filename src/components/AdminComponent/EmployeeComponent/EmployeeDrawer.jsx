@@ -90,6 +90,7 @@ function EmployeeDrawer({
                       placeholder={"Please enter your LastName"}
                     />
                   </Grid>
+
                   <Grid item xs={12} sm={6}>
                     <Input
                       labelText="Employee Email"
@@ -129,6 +130,13 @@ function EmployeeDrawer({
                       type="text"
                       {...formik.getFieldProps("Employee_Address")}
                       placeholder={"Please enter your password"}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Input
+                      labelText="Employee Password"
+                      {...formik.getFieldProps("Employee_LastName")}
+                      placeholder={"Please enter Employee Password"}
                     />
                   </Grid>
                   <Grid item xs={12}>

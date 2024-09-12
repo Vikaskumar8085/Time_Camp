@@ -6,7 +6,7 @@ import Proutes from "../../../common/Proutes";
 import TabComp from "../../../common/TabComp";
 
 function TechnicalSupport() {
-  const tabsheadr = [{ title: "Employeemanagement" }];
+  const tabsheadr = [{ title: "Technical support" }];
   const Tabsbody = [
     {
       content: <>h1</>,

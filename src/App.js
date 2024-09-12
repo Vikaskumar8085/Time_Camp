@@ -23,12 +23,24 @@ import ErrorPage from "./pages/Error/ErrorPage";
 import Privacy_Policy from "./pages/Privacy/Privacy_Policy";
 import Term_Condition from "./pages/Term-Condition/Term_Condition";
 import About from "./pages/About/About";
-
 import Pricing from "./pages/Pricing/Pricing";
 import ProductivityLeaderBoardPage from "./pages/DashboardPages/ProductivityLeaderBoardPage";
 import SuperAdminDashboard from "./pages/SuperAdminPages/SuperAdminDashboard/SuperAdminDashboard";
 import SuperAdminEmployeeManagement from "./pages/SuperAdminPages/SuperAdminEmployeeManagement/SuperAdminEmployeeManagement";
 import EmployeeDashboard from "./pages/EmployeePages/EmployeeDashboard/EmployeeDashboard";
+import Reports from "./pages/SuperAdminPages/Report/Reports";
+import Subscription from "./pages/SuperAdminPages/Subscription/Subscription";
+import TechnicalSupport from "./pages/SuperAdminPages/TechnicalSupport/TechnicalSupport";
+import PaymentActivitiy from "./pages/SuperAdminPages/PaymentActivity/PaymentActivitiy";
+import EmployeeTimeSheet from "./pages/EmployeePages/EmployeeTimeSheet/EmployeeTimeSheet";
+import EmployeeTeam from "./pages/EmployeePages/EmployeeTeam/EmployeeTeam";
+import EmployeeProject from "./pages/EmployeePages/EmployeeProject/EmployeeProject";
+import ContractorProjects from "./pages/ContractorPages/ContractorProjects/ContractorProjects";
+import ContractorTeam from "./pages/ContractorPages/ContractorTeam/ContractorTeam";
+import ContractorDashboard from "./pages/ContractorPages/ContaractorDashboard/ContractorDashboard";
+import Managerdashboard from "./pages/ManagerPage/Managerdashboard/Managerdashboard";
+import Managerproject from "./pages/ManagerPage/Managerproject/Managerproject";
+import Settings from "./pages/AdminPages/Settings/Settings";
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -50,15 +62,9 @@ function App() {
 
       <Routes>
         <Route path="/" index element={<Home />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/company" element={<Company />} />
-        <Route path="/client" element={<Client />} />
-        <Route path="/admin" element={<Adminpage />} />
-        <Route path="/contractor" element={<Contractor />} />
-        <Route path="/employee" element={<Employee />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SiginUp />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/contact" element={<Contact />} />
@@ -74,6 +80,15 @@ function App() {
         <Route path="/privacy-policy" element={<Privacy_Policy />} />
         <Route path="/term-and-condition" element={<Term_Condition />} />
         {/* Term and condition and privacy policy */}
+        {/* Admin */}
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/company" element={<Company />} />
+        <Route path="/client" element={<Client />} />
+        <Route path="/admin" element={<Adminpage />} />
+        <Route path="/contractor" element={<Contractor />} />
+        <Route path="/employee" element={<Employee />} />
+        <Route path="/settings" element={<Settings />} />
+        {/* Admin */}
 
         {/* Super Admin */}
         <Route
@@ -84,11 +99,37 @@ function App() {
           path="/Employee-management"
           element={<SuperAdminEmployeeManagement />}
         />
-
+        <Route
+          path="/company-management"
+          element={<SuperAdminEmployeeManagement />}
+        />
+        <Route path="/Report" element={<Reports />} />
+        <Route path={"/subscription"} element={<Subscription />} />
+        <Route path={"/technical-supports"} element={<TechnicalSupport />} />
+        <Route path={"/payment"} element={<PaymentActivitiy />} />
         {/* Super Admin */}
         {/* Employee Pages */}
-        <Route path={"/employee-dashboard"} element={<EmployeeDashboard />} />
+        <Route path={"/Employee-dashboard"} element={<EmployeeDashboard />} />
+        <Route path={"/Employee-Project"} element={<EmployeeProject />} />
+        <Route path={"/Employee-team"} element={<EmployeeTeam />} />
+        <Route path={"/Employee-timesheet"} element={<EmployeeTimeSheet />} />
         {/* Employee Pages */}
+        {/* Manager Pages */}
+        <Route path={""} element={""} />
+        {/* Manager Pages */}
+        {/* Contractor Pages */}
+        <Route
+          path={"/contractor-dashboard"}
+          element={<ContractorDashboard />}
+        />
+        <Route path={"/contractor-project"} element={<ContractorProjects />} />
+        <Route path={"/contractor-project"} element={<ContractorProjects />} />
+        <Route path={"/contractor-team"} element={<ContractorTeam />} />
+
+        {/* contractor Page */}
+        {/* Manager Pages */}
+        <Route path={"/manager-dashboard"} element={<Managerdashboard />} />
+        <Route path="/manager-project" element={<Managerproject />} />
 
         <Route path="*" element={<ErrorPage />} />
       </Routes>

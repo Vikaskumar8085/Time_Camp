@@ -6,10 +6,10 @@ import Proutes from "../../../common/Proutes";
 import TabComp from "../../../common/TabComp";
 
 function EmployeeTeam() {
-  const tabsheadr = [{ title: "Payment" }];
+  const tabsheadr = [{ title: "Employee Team" }];
   const Tabsbody = [
     {
-      content: <>h1</>,
+      content: <>Employee Team</>,
     },
   ];
   return (

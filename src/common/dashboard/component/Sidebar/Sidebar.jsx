@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Admin, Contractor, Employee, Super_Admin } from "./Links";
+import { Admin, Contractor, Employee, Manager, Super_Admin } from "./Links";
 
 function Sidebar({ Role }) {
   const IsRole = Role.message?.Role;
@@ -68,6 +68,23 @@ function Sidebar({ Role }) {
       </>
     );
   });
+
+  // Manager
+  const IsManager = Manager?.map((item, index) => {
+    return (
+      <>
+        <li key={index}>
+          <NavLink
+            to={item?.path}
+            className={({ isActive }) => (isActive ? "activesidebarlink" : "")}
+          >
+            <span>{item?.icon}</span>
+            {item?.title}
+          </NavLink>
+        </li>
+      </>
+    );
+  });
   return (
     <div className="sidebar">
       <div className="side_logo">
@@ -82,7 +99,8 @@ function Sidebar({ Role }) {
           {IsRole === "SuperAdmin" && <>{IsSuperAdmin}</>}
           {IsRole === "Admin" && <>{IsAdmin}</>}
           {IsRole === "Employee" && <>{IsEmployee}</>}
-          {IsRole === "contractor" && <>{IsContractor}</>}
+          {IsRole === "Contractor" && <>{IsContractor}</>}
+          {IsRole === "Manager" && <>{IsManager}</>}
         </ul>
       </aside>
     </div>

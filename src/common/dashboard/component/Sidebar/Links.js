@@ -8,13 +8,7 @@ import {
   MdOutlineAdminPanelSettings,
 } from "react-icons/md";
 import { MdOutlineBugReport } from "react-icons/md";
-export const Compoany = [
-  {
-    title: "Company",
-    icons: <FaTh />,
-    path: "/company",
-  },
-];
+
 export const Super_Admin = [
   {
     title: "Dashboard",
@@ -49,22 +43,22 @@ export const Super_Admin = [
   {
     title: "Payment Activity",
     icon: <FaCommentAlt />,
-    path: "/contact-us",
+    path: "/payment",
   },
   {
     title: "Reports Bug",
     icon: <FaCommentAlt />,
-    path: "/contact-us",
+    path: "/Report",
   },
   {
     title: "Subscription",
     icon: <FaCommentAlt />,
-    path: "/contact-us",
+    path: "/subscription",
   },
   {
     title: "technical supports",
     icon: <FaCommentAlt />,
-    path: "/contact-us",
+    path: "/technical-supports",
   },
 ];
 
@@ -120,19 +114,57 @@ export const Employee = [
   {
     title: "Profile",
     icon: <CgProfile />,
-    path: "/Employee-profile",
+    path: "/profile",
   },
   {
-    title: "Company",
+    title: "Employee project",
     icon: <CgProfile />,
-    path: "/Employee-company",
+    path: "/Employee-project",
+  },
+  {
+    title: "Employee Team",
+    icon: <CgProfile />,
+    path: "/Employee-team",
+  },
+  {
+    title: "Employee TimeSheet",
+    icon: <CgProfile />,
+    path: "/Employee-timesheet",
   },
 ];
 
 export const Contractor = [
   {
-    title: "/Contractor-dashboard",
+    title: "Contractor dashboard",
     icon: <FaCommentAlt />,
-    path: "/",
+    path: "/contractor-dashboard",
+  },
+  {
+    title: "Profile",
+    icon: <FaCommentAlt />,
+    path: "/profile",
+  },
+  {
+    title: "Contractor projects",
+    icon: <FaCommentAlt />,
+    path: "/contractor-project",
+  },
+];
+
+export const Manager = [
+  {
+    title: "Manager dashboard",
+    icon: <FaCommentAlt />,
+    path: "/manager-dashboard",
+  },
+  {
+    title: "Profile",
+    icon: <FaCommentAlt />,
+    path: "/profile",
+  },
+  {
+    title: "Manager projects",
+    icon: <FaCommentAlt />,
+    path: "/manager-project",
   },
 ];

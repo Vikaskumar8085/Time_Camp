@@ -6,7 +6,7 @@ import Proutes from "../../../common/Proutes";
 import TabComp from "../../../common/TabComp";
 
 function Subscription() {
-  const tabsheadr = [{ title: "Payment" }];
+  const tabsheadr = [{ title: "Subscription" }];
   const Tabsbody = [
     {
       content: <>h1</>,

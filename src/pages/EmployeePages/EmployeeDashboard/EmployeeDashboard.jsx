@@ -4,12 +4,17 @@ import Layout from "../../../common/dashboard/Layout";
 import Loader from "../../../common/Loader";
 import Proutes from "../../../common/Proutes";
 import TabComp from "../../../common/TabComp";
+import EmployeeDashboardPage from "./SubPages/EmployeeDashboardPage";
 
 function EmployeeDashboard() {
-  const tabsheadr = [{ title: "Payment" }];
+  const tabsheadr = [{ title: "Employee Dashboard" }];
   const Tabsbody = [
     {
-      content: <>h1</>,
+      content: (
+        <>
+          <EmployeeDashboardPage />
+        </>
+      ),
     },
   ];
   return (

@@ -4,12 +4,11 @@ import Layout from "../../../common/dashboard/Layout";
 import Loader from "../../../common/Loader";
 import Proutes from "../../../common/Proutes";
 import TabComp from "../../../common/TabComp";
-
-function Managerproject() {
-  const tabsheadr = [{ title: "Employee Project" }];
+function Settings() {
+  const tabsheadr = [{ title: "Settings" }];
   const Tabsbody = [
     {
-      content: <>Employee Project</>,
+      content: <>Settings</>,
     },
   ];
   return (
@@ -25,4 +24,4 @@ function Managerproject() {
   );
 }
 
-export default Managerproject;
+export default Settings;
