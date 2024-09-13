@@ -31,19 +31,6 @@ function TImeSheets({
   return (
     <>
       <TImeSheetHead />
-      <Button type={"submit"} onclick={handleOpen}>
-        Add TimeSheet
-      </Button>
-      {IsOpen && (
-        <TimeSheetDrawer
-          IsOpen={IsOpen}
-          setIsOpen={setIsOpen}
-          AddTimesheets={AddTimesheets}
-          TSItems={TSItems}
-          updatetimesheetservice={updatetimesheetservice}
-        />
-      )}
-
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
