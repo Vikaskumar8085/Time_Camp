@@ -12,6 +12,15 @@ function Profile() {
   const GetUserData = useSelector((state) => state.auth.values);
   console.log(GetUserData, "useget");
 
+  // change Password
+
+  const handlechangePassword = async (values) => {
+    try {
+    } catch (error) {
+      console.log(error?.message);
+    }
+  };
+
   const tabsheadr = [
     { title: "Profile" },
     { title: "Edit Profile" },
@@ -35,7 +44,7 @@ function Profile() {
     {
       content: (
         <>
-          <ChangePass />
+          <ChangePass handlechangePassword={handlechangePassword} />
         </>
       ),
     },

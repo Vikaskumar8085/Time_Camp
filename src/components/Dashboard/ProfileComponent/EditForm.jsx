@@ -6,7 +6,7 @@ import Button from "../../../common/Button";
 import { setLoader } from "../../../redux/slices/loaderSlice";
 import { EditUserApiCall } from "../../../apiservice/auth";
 import toast from "react-hot-toast";
-import "./Editform.scss"
+import "./Editform.scss";
 function EditForm() {
   const dispatch = useDispatch();
   const GetUserData = useSelector((state) => state.auth.values);
@@ -16,6 +16,7 @@ function EditForm() {
       FirstName: GetUserData?.message?.FirstName || "",
       LastName: GetUserData?.message?.LastName,
       Email: GetUserData?.message?.Email,
+      Photo: GetUserData?.message?.Photo,
     },
     onSubmit: async (values) => {
       try {
@@ -69,6 +70,19 @@ function EditForm() {
           placeholder={"Please enter Your email"}
           {...formik.getFieldProps("Email")}
         />
+        <Input
+          labelText={"Picture"}
+          type="file"
+          autocomplete="off"
+          placeholder={"Please enter Your email"}
+        />
+        {/* <img
+          src={
+            "https://lh3.googleusercontent.com/a/ACg8ocIXj8A3lRnmjzTMWiPhwWknZ-r39QXUORgrZyDGmSfjA8vwgQ=s96-c"
+          }
+          // style={{ height: "200px ", width: "200px",margin:"auto auto",borderRadius:"50%" }}
+          alt=""
+        /> */}
         {formik.touched.Email && formik.errors.Email ? (
           <div style={{ color: "red", marginTop: "5px" }}>
             {formik.errors.Email}
