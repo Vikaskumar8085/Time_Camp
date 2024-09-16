@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React  from "react";
 import Proutes from "../../common/Proutes";
 import Layout from "../../common/dashboard/Layout";
 import TabComp from "../../common/TabComp";

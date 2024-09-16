@@ -1,8 +1,6 @@
 import { Grid } from "@mui/material";
 import React from "react";
-import EmployeeTimeHourChars from "../../../../../components/Dashboard/dashComponent/EmployeeTimeHour/EmployeeTimeHourChars";
 import ProductivityLeadearboardChart from "../../../../../components/Dashboard/dashComponent/ProductivityLeaderBoard/ProductivityLeadearboardChart";
-import TotalTimeSheetsChart from "../../../../../components/Dashboard/dashComponent/TotalTimeSheets/TotalTimeSheetsChart";
 
 function DashboardCharts() {
   return (

@@ -33,25 +33,18 @@
 
 // export default Company;
 import React from "react";
-import { useState } from "react";
-import MultiStep from "react-multistep";
-
+import Layout from "../../../common/dashboard/Layout";
+import Proutes from "../../../common/Proutes";
 function Company() {
-  const [Isstep, setIsstep] = useState(0);
-
   return (
     <>
-      <div className="company_wrapper">
-        <div className="company_box">
-          <span>{Isstep}</span>
-          {Isstep === 0 && <h1>one</h1>}
-          {Isstep === 1 && <h1>two</h1>}
-          {Isstep === 2 && <h1>three</h1>}
-
-          <button onClick={() => setIsstep(Isstep + 1)}>click</button>
-          <button onClick={() => setIsstep(Isstep - 1)}>click</button>
-        </div>
-      </div>
+      <Proutes>
+        <Layout>
+          <div className="company_wrapper">
+            <div className="company_box"></div>
+          </div>
+        </Layout>
+      </Proutes>
     </>
   );
 }

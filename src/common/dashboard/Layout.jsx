@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { fetchCompanyapicall } from "../../apiservice/admin/companyapicall";
 import { getUserdata, LoginStatus } from "../../apiservice/auth";
 import {
   setGetUser,
@@ -33,8 +34,19 @@ function Layout({ children }) {
 
   // get User role based
   const GetCompany = async () => {
+    console.log("hllo??????????????????????????????");
     try {
-    } catch (error) {}
+      dispatch(setLoader(true));
+      const response = await fetchCompanyapicall();
+      console.log("response company", response?.data);
+      if (response?.success) {
+        dispatch(setLoader(false));
+        console.log(response, "response company");
+        localStorage.setItem("company", response?.success);
+      }
+    } catch (error) {
+      dispatch(setLoader(false));
+    }
   };
 
   const GetUser = async () => {
@@ -42,7 +54,6 @@ function Layout({ children }) {
       dispatch(setLoader(true));
       const response = await getUserdata();
       if (response.status === 200) {
-        console.log("response", response?.data?.message);
         dispatch(setLoader(false));
         dispatch(setGetUser(response?.data));
       }
@@ -63,8 +74,8 @@ function Layout({ children }) {
   // };
 
   useEffect(() => {
-    GetUser();
     GetCompany();
+    GetUser();
   }, [dispatch]);
 
   return (
