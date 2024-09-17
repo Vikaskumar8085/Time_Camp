@@ -33,21 +33,6 @@ function Layout({ children }) {
   // };
 
   // get User role based
-  const GetCompany = async () => {
-    console.log("hllo??????????????????????????????");
-    try {
-      dispatch(setLoader(true));
-      const response = await fetchCompanyapicall();
-      console.log("response company", response?.data);
-      if (response?.success) {
-        dispatch(setLoader(false));
-        console.log(response, "response company");
-        localStorage.setItem("company", response?.success);
-      }
-    } catch (error) {
-      dispatch(setLoader(false));
-    }
-  };
 
   const GetUser = async () => {
     try {
@@ -74,7 +59,6 @@ function Layout({ children }) {
   // };
 
   useEffect(() => {
-    GetCompany();
     GetUser();
   }, [dispatch]);
 

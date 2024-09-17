@@ -1,5 +1,10 @@
 import apiInstance from "../apiInstance";
 
+export const fetchclientapicall = async () => {
+  const response = await apiInstance.get("/v1/get-client");
+  return response?.data;
+};
+
 export const activeclientapicall = async () => {
   const response = await apiInstance.get("/v1/get-Active-client");
   return response;
