@@ -29,12 +29,12 @@ function ClientDrawer({
     },
     validate: validate,
     onSubmit: async (value) => {
-      if (CItems !== null) {
-        ClientEditHandle(value);
-      } else {
+      // if (CItems !== null) {
+        // ClientEditHandle(value);
+      // } else {
         ClienthandleSubmit(value);
         formik.resetForm();
-      }
+      // }
     },
   });
   return (
@@ -43,7 +43,7 @@ function ClientDrawer({
         open={IsOpen}
         onClose={() => {
           setOpen(false);
-          dispatch(SetSingleClientsFunc(null));
+          // dispatch(SetSingleClientsFunc(null));
         }}
         anchor={"right"}
       >
@@ -57,8 +57,8 @@ function ClientDrawer({
               }}
             >
               <div className="clientDrawer_title">
-                <Typography variant="h6" component={"h1"}>
-                  {CItems !== null ? "Edit Client" : "Add Client"}
+                <Typography variant="h6" component={"h1"}>Add Client
+                  {/* {CItems !== null ? "Edit Client" : "Add Client"} */}
                 </Typography>
               </div>
               {/* <Box component="form" sx={{ mt: 0 }}> */}

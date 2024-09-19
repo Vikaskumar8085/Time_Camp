@@ -9,7 +9,7 @@ function InActiveClient() {
     try {
       const response = await inactiveclientapicall();
       if (response) {
-        setIsActiveclient(response?.data?.message);
+        setIsActiveclient(response?.result);
       }
     } catch (error) {
       console.log(error?.message);

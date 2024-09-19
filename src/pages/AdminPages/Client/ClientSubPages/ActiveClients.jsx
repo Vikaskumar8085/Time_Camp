@@ -7,8 +7,8 @@ function ActiveClients() {
     try {
       const response = await activeclientapicall();
 
-      if (response) {
-        setIsactivedata(response?.data?.message);
+      if (response?.success) {
+        setIsactivedata(response?.result);
       }
     } catch (error) {
       console.log(error?.message);

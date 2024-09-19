@@ -54,7 +54,7 @@ function Adminpage() {
       const response = await GetallAdminApiCall();
       if (response?.data?.success) {
         dispatch(setLoader(false));
-        setIsAdmin(response?.data?.message);
+        setIsAdmin(response?.data?.result);
       }
     } catch (error) {
       dispatch(setLoader(false));
@@ -128,7 +128,7 @@ function Adminpage() {
                         <TableCell>
                           <img src={row?.Photo} />
                         </TableCell>
-                        <TableCell>{row?.Activity}</TableCell>
+                        <TableCell>{row?.Role}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

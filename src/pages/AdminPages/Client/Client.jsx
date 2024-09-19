@@ -244,6 +244,10 @@ import React from "react";
 import Proutes from "../../../common/Proutes";
 import Layout from "../../../common/dashboard/Layout";
 import TabComp from "../../../common/TabComp";
+import ClientPage from "./ClientSubPages/ClientPage";
+import ActiveClients from "./ClientSubPages/ActiveClients";
+import InActiveClient from "./ClientSubPages/InActiveClient";
+import DeadClients from "./ClientSubPages/DeadClients";
 
 function Client() {
   const TabsHeader = [
@@ -259,16 +263,32 @@ function Client() {
 
   const Tabsbody = [
     {
-      content: <></>,
+      content: (
+        <>
+          <ClientPage />
+        </>
+      ),
     },
     {
-      content: <>active clients</>,
+      content: (
+        <>
+          <ActiveClients />
+        </>
+      ),
     },
     {
-      content: <>In Active Clients</>,
+      content: (
+        <>
+          <InActiveClient />
+        </>
+      ),
     },
     {
-      content: <>Dead Clients</>,
+      content: (
+        <>
+          <DeadClients />
+        </>
+      ),
     },
   ];
 

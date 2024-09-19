@@ -1,21 +1,26 @@
 import apiInstance from "../apiInstance";
 
+export const createClientapicall = async (values) => {
+  const response = await apiInstance.post("/v1/add-client", values);
+  return response.data;
+};
+
 export const fetchclientapicall = async () => {
   const response = await apiInstance.get("/v1/get-client");
   return response?.data;
 };
 
 export const activeclientapicall = async () => {
-  const response = await apiInstance.get("/v1/get-Active-client");
-  return response;
+  const response = await apiInstance.get("/v1/get-active-client");
+  return response?.data;
 };
 
 export const inactiveclientapicall = async () => {
-  const response = await apiInstance.get("/v1/get-InActive-client");
-  return response;
+  const response = await apiInstance.get("/v1/get-inactive-client");
+  return response?.data;
 };
 
 export const deadclientapicall = async () => {
   const response = await apiInstance.get("/v1/get-dead-client");
-  return response;
+  return response?.data;
 };

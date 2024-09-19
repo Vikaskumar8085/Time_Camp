@@ -7,8 +7,8 @@ function DeadClients() {
   const getdeadclient = async () => {
     try {
       const response = await deadclientapicall();
-      if (response) {
-        setIsDeadClient(response?.data?.message);
+      if (response.success) {
+        setIsDeadClient(response?.result);
       }
     } catch (error) {
       console.log(error?.message);
