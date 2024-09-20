@@ -1,7 +1,12 @@
 import React from "react";
+import EmployeeHeader from "../../../../components/EmployeeComponents/EmployeeDashboardComponent/EmployeeHeader";
 
 function EmployeeDashboardPage() {
-  return <div>EmployeeDashboardPage</div>;
+  return (
+    <div>
+      <EmployeeHeader />
+    </div>
+  );
 }
 
 export default EmployeeDashboardPage;

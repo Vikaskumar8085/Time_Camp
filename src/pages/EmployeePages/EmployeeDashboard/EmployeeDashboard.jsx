@@ -4,6 +4,7 @@ import Layout from "../../../common/dashboard/Layout";
 import Loader from "../../../common/Loader";
 import Proutes from "../../../common/Proutes";
 import TabComp from "../../../common/TabComp";
+import EmployeeProject from "../EmployeeProject/EmployeeProject";
 import EmployeeDashboardPage from "./SubPages/EmployeeDashboardPage";
 
 function EmployeeDashboard() {

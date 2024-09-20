@@ -10,7 +10,14 @@ function CompanyAddDrawer({ IsOpen, setOpen }) {
     initialValues: {
       Company_Name: "",
       Company_Email: "",
-      Address:"",
+      Address: "",
+      Postal_Code: "",
+      Phone: "",
+      Company_Logo: "",
+      Employee_No: "",
+      Established_date: "",
+      CompanyWesite: "",
+      Tex_Number: "",
     },
   });
 

@@ -4,16 +4,7 @@ import { TextField, Button, Grid, Typography, Container } from "@mui/material";
 const CompanyForm = () => {
   const [formData, setFormData] = useState({
     Company_Id: "",
-    Company_Name: "",
-    Company_Email: "",
-    Address: "",
-    Postal_Code: "",
-    Phone: "",
-    Company_Logo: "",
-    Employee_No: "",
-    Established_date: "",
-    CompanyWesite: "",
-    Tex_Number: "",
+
     UserId: [],
   });
 

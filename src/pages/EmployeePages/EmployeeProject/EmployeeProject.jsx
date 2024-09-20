@@ -6,10 +6,20 @@ import Proutes from "../../../common/Proutes";
 import TabComp from "../../../common/TabComp";
 
 function EmployeeProject() {
-  const tabsheadr = [{ title: "Employee Project" }];
+  const tabsheadr = [
+    { title: "All Project" },
+    { title: "Active Project" },
+    { title: "InActive Project" },
+  ];
   const Tabsbody = [
     {
       content: <>Employee Project</>,
+    },
+    {
+      content: <>Active Project</>,
+    },
+    {
+      content: <> In Active Project</>,
     },
   ];
   return (

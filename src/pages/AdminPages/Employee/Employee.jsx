@@ -164,42 +164,7 @@ function Employee() {
                   <TableCell>Actions</TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody>
-                {EmployeeItems?.map((items, index) => {
-                  return (
-                    <TableRow>
-                      <TableCell key={index}>{index + 1}</TableCell>
-                      <TableCell>{items?.Employee_FirstName}</TableCell>
-                      <TableCell>{items?.Employee_LastName}</TableCell>
-                      <TableCell>{items?.Employee_Email}</TableCell>
-                      <TableCell>{items?.Employee_Phone}</TableCell>
-                      <TableCell>
-                        {moment(items?.Employee_JoiningDate).format(
-                          "DD/MM/YYYY"
-                        )}
-                      </TableCell>
-                      <TableCell>{items?.Employee_Designation}</TableCell>
-                      <TableCell>{items?.Employee_Address}</TableCell>
-                      <TableCell>
-                        <span onClick={() => EmployeehandleDelete(items?._id)}>
-                          <MdOutlineDelete
-                            style={{ fontSize: "1.2em", margin: "0px 3px" }}
-                          />
-                        </span>
-                        <span
-                          onClick={() => {
-                            EmployeeEdithandle(items);
-                          }}
-                        >
-                          <MdOutlineEdit
-                            style={{ fontSize: "1.2em", margin: "0px 3px" }}
-                          />
-                        </span>
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
+              <TableBody>employee</TableBody>
             </Table>
           </TableContainer>
         </>

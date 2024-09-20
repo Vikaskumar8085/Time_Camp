@@ -38,9 +38,10 @@ import EmployeeProject from "./pages/EmployeePages/EmployeeProject/EmployeeProje
 import ContractorProjects from "./pages/ContractorPages/ContractorProjects/ContractorProjects";
 import ContractorTeam from "./pages/ContractorPages/ContractorTeam/ContractorTeam";
 import ContractorDashboard from "./pages/ContractorPages/ContaractorDashboard/ContractorDashboard";
-import Managerdashboard from "./pages/ManagerPage/Managerdashboard/Managerdashboard";
-import Managerproject from "./pages/ManagerPage/Managerproject/Managerproject";
+
 import Settings from "./pages/AdminPages/Settings/Settings";
+import Project from "./pages/AdminPages/Project/Project";
+import EmployeeInfo from "./pages/AdminPages/Employee/Employeeinfo/EmployeeInfo";
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -88,6 +89,9 @@ function App() {
         <Route path="/contractor" element={<Contractor />} />
         <Route path="/employee" element={<Employee />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/project/:id" element={<Project />} />
+        <Route path={"/employeeinfo/:id"} element={<EmployeeInfo />} />
+
         {/* Admin */}
 
         {/* Super Admin */}
@@ -114,9 +118,6 @@ function App() {
         <Route path={"/Employee-team"} element={<EmployeeTeam />} />
         <Route path={"/Employee-timesheet"} element={<EmployeeTimeSheet />} />
         {/* Employee Pages */}
-        {/* Manager Pages */}
-        <Route path={""} element={""} />
-        {/* Manager Pages */}
         {/* Contractor Pages */}
         <Route
           path={"/contractor-dashboard"}
@@ -128,8 +129,6 @@ function App() {
 
         {/* contractor Page */}
         {/* Manager Pages */}
-        <Route path={"/manager-dashboard"} element={<Managerdashboard />} />
-        <Route path="/manager-project" element={<Managerproject />} />
 
         <Route path="*" element={<ErrorPage />} />
       </Routes>
