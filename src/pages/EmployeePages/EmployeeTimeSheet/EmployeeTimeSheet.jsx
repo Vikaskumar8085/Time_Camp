@@ -4,22 +4,27 @@ import Layout from "../../../common/dashboard/Layout";
 import Loader from "../../../common/Loader";
 import Proutes from "../../../common/Proutes";
 import TabComp from "../../../common/TabComp";
+import EmployeeTimesheetPage from "./Subpages/EmployeeTimesheetPage";
 
 function EmployeeTimeSheet() {
   const tabsheadr = [{ title: "Employee TimeSheet" }];
   const Tabsbody = [
     {
-      content: <>Employee TimeSheet</>,
+      content: (
+        <>
+          <EmployeeTimesheetPage />
+        </>
+      ),
     },
   ];
   return (
     <>
       <Suspense fallback={<Loader />}>
-        <Proutes>
-          <Layout>
-            <TabComp Tabsheader={tabsheadr} TabsBody={Tabsbody} />
-          </Layout>
-        </Proutes>
+        {/* <Proutes> */}
+        {/* <Layout> */}
+        <TabComp Tabsheader={tabsheadr} TabsBody={Tabsbody} />
+        {/* </Layout> */}
+        {/* </Proutes> */}
       </Suspense>
     </>
   );

@@ -4,23 +4,30 @@ import Layout from "../../../common/dashboard/Layout";
 import Loader from "../../../common/Loader";
 import Proutes from "../../../common/Proutes";
 import TabComp from "../../../common/TabComp";
+import Dashheader from "../../../components/ContractorComponent/ContractorDashboard/Dashheader";
+import ContractorCharts from "../../../components/ContractorComponent/ContractorDashboard/ContractorCharts";
 
 function ContractorDashboard() {
-  const tabsheadr = [{ title: "Payment" }];
+  const tabsheadr = [{ title: "Contractor Dashboard" }];
   const Tabsbody = [
     {
-      content: <>h1</>,
+      content: (
+        <>
+          <Dashheader />
+          <ContractorCharts/>
+        </>
+      ),
     },
   ];
   return (
     <>
       <div>
         <Suspense fallback={<Loader />}>
-          <Proutes>
-            <Layout>
-              <TabComp Tabsheader={tabsheadr} TabsBody={Tabsbody} />
-            </Layout>
-          </Proutes>
+          {/* <Proutes>
+            <Layout> */}
+          <TabComp Tabsheader={tabsheadr} TabsBody={Tabsbody} />
+          {/* </Layout>
+          </Proutes> */}
         </Suspense>
       </div>
     </>

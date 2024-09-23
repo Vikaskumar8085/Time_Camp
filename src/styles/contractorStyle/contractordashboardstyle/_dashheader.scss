@@ -1,0 +1,20 @@
+.contractor-dash-header-section {
+    position: relative;
+    padding : 10px 0px;
+    display : block;
+
+    .contractor-dash-header-box {
+        width           : 100%;
+        background-color: white;
+        height          : 100px;
+        border-radius   : 4px;
+        padding         : 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .dash-header-content{
+            margin: 0px 10px;
+        }
+    }
+}

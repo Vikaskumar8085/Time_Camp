@@ -82,4 +82,21 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 
+<!-- 
 
+const handleFileChange = (event) => {
+    //get the file selected
+    const file = event.currentTarget.files[0];
+    //Limit file size
+    if (file.size > 1048576) {
+      setImageErr("File size exceed 1MB");
+      return;
+    }
+    // limit the file types
+    if (!["image/jpeg", "image/jpg", "image/png"].includes(file.type)) {
+      setImageErr("Invalid file type");
+    }
+    //set the image preview
+    formik.setFieldValue("image", file);
+    setImagePreview(URL.createObjectURL(file));
+  }; -->

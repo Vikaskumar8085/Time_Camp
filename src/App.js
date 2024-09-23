@@ -36,12 +36,11 @@ import EmployeeTimeSheet from "./pages/EmployeePages/EmployeeTimeSheet/EmployeeT
 import EmployeeTeam from "./pages/EmployeePages/EmployeeTeam/EmployeeTeam";
 import EmployeeProject from "./pages/EmployeePages/EmployeeProject/EmployeeProject";
 import ContractorProjects from "./pages/ContractorPages/ContractorProjects/ContractorProjects";
-import ContractorTeam from "./pages/ContractorPages/ContractorTeam/ContractorTeam";
 import ContractorDashboard from "./pages/ContractorPages/ContaractorDashboard/ContractorDashboard";
-
 import Settings from "./pages/AdminPages/Settings/Settings";
 import Project from "./pages/AdminPages/Project/Project";
 import EmployeeInfo from "./pages/AdminPages/Employee/Employeeinfo/EmployeeInfo";
+import ContractorTimeSheets from "./pages/ContractorPages/ContractorTimeSheets/ContractorTimeSheets";
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -124,9 +123,10 @@ function App() {
           element={<ContractorDashboard />}
         />
         <Route path={"/contractor-project"} element={<ContractorProjects />} />
-        <Route path={"/contractor-project"} element={<ContractorProjects />} />
-        <Route path={"/contractor-team"} element={<ContractorTeam />} />
-
+        <Route
+          path="/contractor-timesheets"
+          element={<ContractorTimeSheets />}
+        />
         {/* contractor Page */}
         {/* Manager Pages */}
 

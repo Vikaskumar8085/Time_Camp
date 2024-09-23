@@ -4,6 +4,9 @@ import Layout from "../../../common/dashboard/Layout";
 import Loader from "../../../common/Loader";
 import Proutes from "../../../common/Proutes";
 import TabComp from "../../../common/TabComp";
+import EmployeeallProjects from "./Subpages/EmployeeallProjects";
+import EmployeeActiveprojects from "./Subpages/EmployeeActiveprojects";
+import EmployeeInActiveProjects from "./Subpages/EmployeeInActiveProjects";
 
 function EmployeeProject() {
   const tabsheadr = [
@@ -13,23 +16,36 @@ function EmployeeProject() {
   ];
   const Tabsbody = [
     {
-      content: <>Employee Project</>,
+      content: (
+        <>
+          <EmployeeallProjects />
+        </>
+      ),
     },
     {
-      content: <>Active Project</>,
+      content: (
+        <>
+          <EmployeeActiveprojects />
+        </>
+      ),
     },
     {
-      content: <> In Active Project</>,
+      content: (
+        <>
+          {" "}
+          <EmployeeInActiveProjects />
+        </>
+      ),
     },
   ];
   return (
     <>
       <Suspense fallback={<Loader />}>
-        <Proutes>
-          <Layout>
+        {/* <Proutes> */}
+          {/* <Layout> */}
             <TabComp Tabsheader={tabsheadr} TabsBody={Tabsbody} />
-          </Layout>
-        </Proutes>
+          {/* </Layout> */}
+        {/* </Proutes> */}
       </Suspense>
     </>
   );

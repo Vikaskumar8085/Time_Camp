@@ -122,11 +122,6 @@ export const Employee = [
     path: "/Employee-project",
   },
   {
-    title: "Employee Team",
-    icon: <CgProfile />,
-    path: "/Employee-team",
-  },
-  {
     title: "Employee TimeSheet",
     icon: <CgProfile />,
     path: "/Employee-timesheet",
@@ -148,6 +143,11 @@ export const Contractor = [
     title: "Contractor projects",
     icon: <FaCommentAlt />,
     path: "/contractor-project",
+  },
+  {
+    title: "Contractor TimeSheets",
+    icon: <FaCommentAlt />,
+    path: "/contractor-timesheets",
   },
 ];
 
