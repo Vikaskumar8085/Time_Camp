@@ -1,4 +1,4 @@
-import { Drawer } from "@mui/material";
+import { Drawer, TextField } from "@mui/material";
 import React from "react";
 import { Grid, Box, Typography, Container } from "@mui/material";
 import InputPassword from "../../../common/Input/InputPassword";
@@ -31,6 +31,8 @@ function EmployeeDrawer({
       Employee_Phone: ESItems !== null ? ESItems?.Employee_Phone : "",
       Employee_Designation:
         ESItems !== null ? ESItems?.Employee_Designation : "",
+      Profile_Image: "",
+      managerId: "",
     },
     onSubmit: async (values) => {
       const formattedDate = moment(values.Employee_JoiningDate).format(
@@ -49,6 +51,11 @@ function EmployeeDrawer({
       }
     },
   });
+  const managers = [
+    { id: 1, name: "Manager 1" },
+    { id: 2, name: "Manager 2" },
+    { id: 3, name: "Manager 3" },
+  ];
   return (
     <>
       <Drawer
@@ -134,10 +141,39 @@ function EmployeeDrawer({
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
+                      labelText="Profile Image"
+                      onChange={(event) => {
+                        formik.setFieldValue(
+                          "Profile_Image",
+                          event.currentTarget.files[0]
+                        );
+                      }}
+                      type="file"
+                      placeholder={"Please enter your  Image"}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Input
                       labelText="Employee Password"
                       {...formik.getFieldProps("Employee_LastName")}
                       placeholder={"Please enter Employee Password"}
                     />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      select
+                      {...formik.getFieldProps("managerId")}
+                      placeholder="Select Manager *"
+                    >
+                      <option value="">
+                        <em>Select Manager</em>
+                      </option>
+                      {managers.map((manager) => (
+                        <option key={manager.id} value={manager.id}>
+                          {manager.name}
+                        </option>
+                      ))}
+                    </TextField>
                   </Grid>
                   <Grid item xs={12}>
                     <Button type={"submit"}>

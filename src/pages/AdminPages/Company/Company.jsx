@@ -4,6 +4,7 @@ import Layout from "../../../common/dashboard/Layout";
 import Proutes from "../../../common/Proutes";
 import CompanyPage from "./Subpage/CompanyPage";
 import CompanyForm from "../../../components/AdminComponent/Company/CompanyForm";
+import Companyregistration from "../../../components/AdminComponent/Company/Companyregistration";
 
 function Company() {
   const TabHeader = [{ title: "Company" }];
@@ -28,7 +29,7 @@ function Company() {
         <Proutes>
           <div className="company_wrapper">
             <div className="company_box">
-              <CompanyForm/>
+              <Companyregistration />
             </div>
           </div>
         </Proutes>

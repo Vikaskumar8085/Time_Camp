@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { inactiveclientapicall } from "../../../../apiservice/admin/clientApiCall";
+import InactiveClientTable from "../../../../components/AdminComponent/Clientcomponent/clientpagecomponent/InactiveClientTable";
 
 function InActiveClient() {
-  const [isInActiveclient, setIsActiveclient] = useState([]);
+  const [inactiveclients, setIsActiveclient] = useState([]);
 
   const getInactiveclient = async () => {
     try {
@@ -19,16 +20,9 @@ function InActiveClient() {
     getInactiveclient();
   }, []);
   return (
-    <div>
-      {isInActiveclient?.map((item, index) => {
-        console.log(item);
-        return (
-          <ul>
-            <li>{item?.Client_Status}</li>
-          </ul>
-        );
-      })}
-    </div>
+    <>
+      <InactiveClientTable inactiveclients={inactiveclients} />
+    </>
   );
 }
 

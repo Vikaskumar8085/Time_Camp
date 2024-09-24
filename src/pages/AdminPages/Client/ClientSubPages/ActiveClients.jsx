@@ -1,8 +1,9 @@
 import React from "react";
 import { activeclientapicall } from "../../../../apiservice/admin/clientApiCall";
+import ActiveclientTable from "../../../../components/AdminComponent/Clientcomponent/clientpagecomponent/ActiveclientTable";
 
 function ActiveClients() {
-  const [isActivedata, setIsactivedata] = React.useState([]);
+  const [activeclients, setIsactivedata] = React.useState([]);
   const getactileclient = async () => {
     try {
       const response = await activeclientapicall();
@@ -20,15 +21,9 @@ function ActiveClients() {
   }, [0]);
 
   return (
-    <div>
-      {isActivedata?.map((item, index) => {
-        return (
-          <ul>
-            <li>{item?.Client_Status}</li>
-          </ul>
-        );
-      })}
-    </div>
+    <>
+      <ActiveclientTable activeclients={activeclients} />
+    </>
   );
 }
 

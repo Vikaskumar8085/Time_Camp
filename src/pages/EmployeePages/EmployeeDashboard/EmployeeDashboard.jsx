@@ -21,11 +21,11 @@ function EmployeeDashboard() {
   return (
     <>
       <Suspense fallback={<Loader />}>
-        {/* <Proutes> */}
-          {/* <Layout> */}
+        <Proutes> 
+           <Layout>
             <TabComp Tabsheader={tabsheadr} TabsBody={Tabsbody} />
-          {/* </Layout> */}
-        {/* </Proutes> */}
+           </Layout> 
+        </Proutes>
       </Suspense>
     </>
   );

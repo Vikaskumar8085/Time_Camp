@@ -9,7 +9,7 @@ import {
   Paper,
 } from "@mui/material";
 
-function ActiveEmployee() {
+function Employeepage() {
   return (
     <div>
       <TableContainer component={Paper}>
@@ -24,6 +24,7 @@ function ActiveEmployee() {
               <TableCell> Joining Date</TableCell>
               <TableCell> Designation</TableCell>
               <TableCell> Address</TableCell>
+              <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody></TableBody>
@@ -33,4 +34,4 @@ function ActiveEmployee() {
   );
 }
 
-export default ActiveEmployee;
+export default Employeepage;

@@ -4,15 +4,6 @@ import Proutes from "../../../common/Proutes";
 import Button from "../../../common/Button";
 import EmployeeDrawer from "../../../components/AdminComponent/EmployeeComponent/EmployeeDrawer";
 import TabComp from "../../../common/TabComp";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-} from "@mui/material";
 import { setLoader } from "../../../redux/slices/loaderSlice";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -30,6 +21,7 @@ import moment from "moment";
 import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
 import ActiveEmployee from "./EmployeeSubPages/ActiveEmployee";
 import InActiveEmployee from "./EmployeeSubPages/InActiveEmployee";
+import Employeepage from "./EmployeeSubPages/Employeepage";
 
 function Employee() {
   const dispatch = useDispatch();
@@ -149,24 +141,7 @@ function Employee() {
               />
             )}
           </section>
-          <TableContainer component={Paper}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Employee ID</TableCell>
-                  <TableCell>Employee FirstName</TableCell>
-                  <TableCell>Employee LastName</TableCell>
-                  <TableCell>Employee Email</TableCell>
-                  <TableCell> Phone Number</TableCell>
-                  <TableCell> Joining Date</TableCell>
-                  <TableCell> Designation</TableCell>
-                  <TableCell> Address</TableCell>
-                  <TableCell>Actions</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>employee</TableBody>
-            </Table>
-          </TableContainer>
+          <Employeepage/>
         </>
       ),
     },

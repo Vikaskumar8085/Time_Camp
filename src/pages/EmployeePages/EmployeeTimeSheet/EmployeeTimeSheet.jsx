@@ -20,11 +20,11 @@ function EmployeeTimeSheet() {
   return (
     <>
       <Suspense fallback={<Loader />}>
-        {/* <Proutes> */}
-        {/* <Layout> */}
-        <TabComp Tabsheader={tabsheadr} TabsBody={Tabsbody} />
-        {/* </Layout> */}
-        {/* </Proutes> */}
+        <Proutes>
+          <Layout>
+            <TabComp Tabsheader={tabsheadr} TabsBody={Tabsbody} />
+          </Layout>
+        </Proutes>
       </Suspense>
     </>
   );

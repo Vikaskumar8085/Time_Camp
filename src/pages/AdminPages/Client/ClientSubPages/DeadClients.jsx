@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { deadclientapicall } from "../../../../apiservice/admin/clientApiCall";
+import DeadclientTable from "../../../../components/AdminComponent/Clientcomponent/clientpagecomponent/DeadclientTable";
 
 function DeadClients() {
-  const [isDeadClient, setIsDeadClient] = React.useState([]);
+  const [deadclients, setIsDeadClient] = React.useState([]);
 
   const getdeadclient = async () => {
     try {
@@ -17,18 +18,7 @@ function DeadClients() {
   useEffect(() => {
     getdeadclient();
   }, [0]);
-  return (
-    <div>
-      {isDeadClient?.map((item, index) => {
-        console.log(item);
-        return (
-          <ul>
-            <li>{item?.Client_Status}</li>
-          </ul>
-        );
-      })}
-    </div>
-  );
+  return <DeadclientTable deadclients={deadclients} />;
 }
 
 export default DeadClients;

@@ -6,7 +6,15 @@ import ContractorPage from "./subpage/ContractorPage";
 
 function Contractor() {
   const Tabheader = [{ title: "Contractor" }];
-  const tabbody = [{ content: <><ContractorPage/></> }];
+  const tabbody = [
+    {
+      content: (
+        <>
+          <ContractorPage />
+        </>
+      ),
+    },
+  ];
   return (
     <>
       <Proutes>

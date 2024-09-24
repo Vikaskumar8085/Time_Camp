@@ -32,9 +32,7 @@ function Proutes({ children }) {
 
   useEffect(() => {
     GetCompany();
-    if (!localStorage.getItem("company")) {
-      navigate("/company");
-    } else if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem("token")) {
       navigate("/login");
     }
   }, [0]);
