@@ -18,21 +18,15 @@ import { useEffect } from "react";
 function ContractorPage() {
   const dispatch = useDispatch();
   const [IsOpen, setOpen] = useState(false);
-  const [fetchcontractor, setcontractor] = useState([]);
-  console.log(fetchcontractor, "fetchcontractor");
+  const [iscontractor, setcontractor] = useState([]);
+  console.log(iscontractor, "contractor");
   const getallcontractor = async () => {
     try {
-      console.log(
-        "-------------------------- contractor ---------------------"
-      );
       dispatch(setLoader(true));
       const response = await fetchcontractorapicall();
-      console.log(response, "data");
-
-      console.log(response, "[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[response");
       if (response.success) {
         dispatch(setLoader(false));
-        setcontractor(response);
+        setcontractor(response.result);
       }
     } catch (error) {
       dispatch(setLoader(false));
@@ -57,14 +51,23 @@ function ContractorPage() {
               <TableCell>Contractor ID</TableCell>
               <TableCell>Contractor FirstName</TableCell>
               <TableCell>Contractor LastName</TableCell>
-              <TableCell>Contractor Email</TableCell>
               <TableCell> Phone Number</TableCell>
               <TableCell> Joining Date</TableCell>
-              <TableCell> Designation</TableCell>
-              <TableCell> Address</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody></TableBody>
+          <TableBody>
+            {iscontractor?.map((item, index) => {
+              return (
+                <TableRow>
+                  <TableCell key={item.Contractor_Id}>{index + 1}</TableCell>
+                  <TableCell>{item?.Contractor_FirstName}</TableCell>
+                  <TableCell>{item?.Contaractor_LastName}</TableCell>
+                  <TableCell>{item?.Contractor_Number}</TableCell>
+                  <TableCell>{item?.Created_Date}</TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
         </Table>
       </TableContainer>
     </div>

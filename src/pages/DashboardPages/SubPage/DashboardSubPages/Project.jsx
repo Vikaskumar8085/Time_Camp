@@ -1,14 +1,14 @@
-import React, { Suspense, useState } from "react";
+import React, {Suspense, useState} from "react";
 import Loader from "../../../../common/Loader";
-import { useDispatch, useSelector } from "react-redux";
-import { setLoader } from "../../../../redux/slices/loaderSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {setLoader} from "../../../../redux/slices/loaderSlice";
 import {
   addprojectapicall,
   getallprojectsapicall,
   removeprojectapicall,
 } from "../../../../apiservice/admin";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
+import {useEffect} from "react";
 import {
   setProjectValues,
   setSingelProject,
@@ -47,7 +47,7 @@ function Project() {
   const getallprojects = async () => {
     try {
       dispatch(setLoader(true));
-      const response = await getallprojectsapicall();
+      const response = await getallprojects();
       if (response?.status === 200) {
         dispatch(setProjectValues(response?.data));
         dispatch(setLoader(false));
@@ -95,9 +95,9 @@ function Project() {
 
   // Project tabs
   const tabsheadr = [
-    { title: "All Projects" },
-    { title: "Active Projects" },
-    { title: "In Active Projects" },
+    {title: "All Projects"},
+    {title: "Active Projects"},
+    {title: "In Active Projects"},
   ];
   const Tabsbody = [
     {

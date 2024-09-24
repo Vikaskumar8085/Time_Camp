@@ -20,7 +20,7 @@ function Project() {
     <>
       <Proutes>
         <Layout>
-          <h1>{id}</h1>
+  
         </Layout>
       </Proutes>
     </>

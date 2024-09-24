@@ -13,7 +13,6 @@ import { memo } from "react";
 import { useState } from "react";
 
 function ClientTable({ fetchclients }) {
-  const [modalOpen, setModalOpen] = useState(false);
   return (
     <div>
       <TableContainer component={Paper}>
@@ -42,25 +41,7 @@ function ClientTable({ fetchclients }) {
                     <TableCell>{item?.Client_Address}</TableCell>
                     <TableCell>{item?.Client_Postal_Code}</TableCell>
                     <TableCell>{item?.GstNumber}</TableCell>
-                    <TableCell>
-                      <button
-                        onClick={() => {
-                          setModalOpen(true);
-                        }}
-                      >
-                        view
-                      </button>
-                      {modalOpen && (
-                        <Modal
-                          open={modalOpen}
-                          onClose={() => {
-                            setModalOpen(false);
-                          }}
-                        >
-                          view
-                        </Modal>
-                      )}
-                    </TableCell>
+                    <TableCell></TableCell>
                   </TableRow>
                 </>
               );

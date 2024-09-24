@@ -45,74 +45,6 @@ export const GetallAdminApiCall = async () => {
   return response;
 };
 
-//  @Designation <===================================== Designation ===========================>
-
-// add Designation
-
-export const addDesingationApiCall = async (value) => {
-  const response = await apiInstance.post("/v1/add-designation", value);
-  return response.data;
-};
-
-// Get all Designation
-
-export const GetAllDesignationApiCall = async (value) => {
-  const response = await apiInstance.get("/v1/get-all-designation");
-  return response.data;
-};
-
-// Edit designation api Call
-export const EditDesignationApiCall = async (value) => {
-  console.log("??????????????????///", value, "value");
-  const response = await apiInstance.put(
-    `/v1/edit-designation/${value.id}`,
-    value.payload
-  );
-  return response;
-};
-
-// rmeove Designation api call
-
-export const RemoveDesignationApiCall = async (value) => {
-  const response = await apiInstance.delete(`/v1/remove-designation/${value}`);
-  return response;
-};
-
-// @ Department <=================================================Department=================================>
-// Department
-
-// add Department
-
-export const AddDepartmentApiCall = async (value) => {
-  const response = await apiInstance.post("/v1/add-department", value);
-  return response;
-};
-
-// Get all Department
-export const GetAllDepartmentApiCall = async () => {
-  const response = await apiInstance.get("/v1/get-all-department");
-  return response;
-};
-
-// Delete Department
-
-export const RemoveDepartmentApiCall = async (value) => {
-  const response = await apiInstance.delete(`/v1/remove-department/${value}`);
-  return response;
-};
-
-//  Edit Department
-
-export const EditDepartmentApiCall = async (value) => {
-  const repsonse = await apiInstance.put(
-    `/v1/edit-department/${value.id}`,
-    value.payload
-  );
-  return repsonse;
-};
-//  <=================================================Department=================================>
-// <=================================================Contractor =================================>
-
 // add contractor
 export const AddContractorApiCall = async (values) => {
   const response = await apiInstance.post("/v1/add-contractor", values);
@@ -189,7 +121,7 @@ export const edittimesheetapicall = async (value) => {
 };
 
 export const getallprojectsapicall = async () => {
-  const response = await apiInstance.get("/v1/get-all-project");
+  const response = await apiInstance.get("/v1/get-project");
   return response;
 };
 
