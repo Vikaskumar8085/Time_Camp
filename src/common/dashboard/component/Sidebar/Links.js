@@ -64,6 +64,11 @@ export const Super_Admin = [
 
 export const Admin = [
   {
+    title: "Company",
+    icon: <CgProfile />,
+    path: "/company",
+  },
+  {
     title: "Dashboard",
     icon: <MdDashboard />,
     path: "/dashboard",
@@ -72,11 +77,6 @@ export const Admin = [
     title: "Profile",
     icon: <CgProfile />,
     path: "/profile",
-  },
-  {
-    title: "Company",
-    icon: <CgProfile />,
-    path: "/company",
   },
   {
     title: "Our Client",

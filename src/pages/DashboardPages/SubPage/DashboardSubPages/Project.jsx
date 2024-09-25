@@ -1,13 +1,13 @@
-import React, {Suspense, useState} from "react";
+import React, { Suspense, useState } from "react";
 import Loader from "../../../../common/Loader";
-import {useDispatch, useSelector} from "react-redux";
-import {setLoader} from "../../../../redux/slices/loaderSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoader } from "../../../../redux/slices/loaderSlice";
 // import {
 //   addprojectapicall,
 //   removeprojectapicall,
 // } from "../../../../apiservice/admin";
 import toast from "react-hot-toast";
-import {useEffect} from "react";
+import { useEffect } from "react";
 import {
   setProjectValues,
   setSingelProject,
@@ -17,7 +17,7 @@ import TabComp from "../../../../common/TabComp";
 import AllProjects from "./Projects/AllProjects";
 import ActiveProjects from "./Projects/ActiveProjects";
 import InActiveProjects from "./Projects/InActiveProjects";
-import {addprojects} from "../../../../apiservice/admin/projectapiservice";
+import { addprojects } from "../../../../apiservice/admin/projectapiservice";
 
 function Project() {
   const [IsOpen, setIsOpen] = useState(false);
@@ -28,16 +28,15 @@ function Project() {
   // project add data
   const PhandleSubmit = async (values) => {
     try {
+      console.log(values,'values')
       dispatch(setLoader(true));
       const response = await addprojects(values);
-      console.log(response,'response')
-      // if (response?.status === 201) {
-      //   console.log("response", response?.data);
-      //   dispatch(setLoader(false));
-      //   setIsOpen(false);
-      //   getallprojects();
-      //   toast.success(response?.data?.message);
-      // }
+      console.log(response, "response");
+      if (response?.success) {
+        dispatch(setLoader(false));
+        setIsOpen(false);
+        toast.success(response?.message);
+      }
     } catch (error) {
       console.log(error?.response?.data);
       dispatch(setLoader(false));
@@ -96,9 +95,9 @@ function Project() {
 
   // Project tabs
   const tabsheadr = [
-    {title: "All Projects"},
-    {title: "Active Projects"},
-    {title: "In Active Projects"},
+    { title: "All Projects" },
+    { title: "Active Projects" },
+    { title: "In Active Projects" },
   ];
   const Tabsbody = [
     {

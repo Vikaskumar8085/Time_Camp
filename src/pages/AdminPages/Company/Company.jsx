@@ -29,6 +29,8 @@ function Company() {
     }
   };
 
+
+
   const TabHeader = [{title: "Company"}];
   const Tabsbody = [
     {

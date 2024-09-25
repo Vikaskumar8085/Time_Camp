@@ -19,9 +19,13 @@ function AllProjects({
   RemoveProjects,
   EPhandleSubmit,
   handleEdit,
+
   setIsOpen,
   PItems,
 }) {
+  const handleClose = () => {
+    setIsOpen(false);
+  };
   return (
     <>
       <Button type="submit" onclick={() => setIsOpen(true)}>
@@ -33,6 +37,7 @@ function AllProjects({
           setIsOpen={setIsOpen}
           PhandleSubmit={PhandleSubmit}
           EPhandleSubmit={EPhandleSubmit}
+          handleClose={handleClose}
           PItems={PItems}
         />
       )}
