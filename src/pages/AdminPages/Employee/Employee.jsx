@@ -1,27 +1,24 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import Layout from "../../../common/dashboard/Layout";
 import Proutes from "../../../common/Proutes";
 import Button from "../../../common/Button";
 import EmployeeDrawer from "../../../components/AdminComponent/EmployeeComponent/EmployeeDrawer";
 import TabComp from "../../../common/TabComp";
-import { setLoader } from "../../../redux/slices/loaderSlice";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  CreateEmployeeApiCall,
-  EditEmployeeApiCall,
-  GetAllEmployeeApiCall,
-  RemoveEmployeeApiCall,
-} from "../../../apiservice/admin";
+import {setLoader} from "../../../redux/slices/loaderSlice";
+import {useDispatch, useSelector} from "react-redux";
+
 import toast from "react-hot-toast";
 import {
   setEmployee,
   setSingleEmployee,
 } from "../../../redux/slices/Employee/EmployeeSlice";
-import moment from "moment";
-import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
 import ActiveEmployee from "./EmployeeSubPages/ActiveEmployee";
 import InActiveEmployee from "./EmployeeSubPages/InActiveEmployee";
 import Employeepage from "./EmployeeSubPages/Employeepage";
+import {
+  addemployeeapicall,
+  fetchemployeedataapicall,
+} from "../../../apiservice/admin/employeeapiservice";
 
 function Employee() {
   const dispatch = useDispatch();
@@ -34,30 +31,31 @@ function Employee() {
   const EmployeeHandleSubmit = async (value) => {
     try {
       dispatch(setLoader(true));
-      const resp = await CreateEmployeeApiCall(value);
-      console.log(resp, "resp");
-      if (resp?.status === 201) {
+      const resp = await addemployeeapicall(value);
+      console.log(value, "resp");
+      if (resp.success) {
         setOpen(false);
-        GetAllEmployeeData();
+        getallemployee();
         dispatch(setLoader(false));
-        toast.success("data created successfully");
+        toast.success(resp?.message);
       }
     } catch (error) {
       dispatch(setLoader(false));
-      toast.error(error?.response?.data);
+      toast.error(error?.response?.data?.message);
     }
   };
 
   // GetAllEmployee
 
-  const GetAllEmployeeData = async () => {
+  const getallemployee = async () => {
     try {
       dispatch(setLoader(true));
-      const response = await GetAllEmployeeApiCall();
+      const response = await fetchemployeedataapicall();
       console.log(response, "");
-      if (response.status === 200) {
-        dispatch(setEmployee(response.data));
+      if (response.success) {
+        dispatch(setEmployee(response.result));
         dispatch(setLoader(false));
+        toast.success(response?.message);
       }
     } catch (error) {
       dispatch(setLoader(true));
@@ -69,14 +67,13 @@ function Employee() {
 
   const EmployeehandleDelete = async (value) => {
     try {
-      dispatch(setLoader(true));
-      const response = await RemoveEmployeeApiCall(value);
-      console.log(response, "response");
-      if (response.status === 200) {
-        dispatch(setLoader(false));
-        toast.success("delete Employee successfully");
-        GetAllEmployeeData();
-      }
+      // dispatch(setLoader(true));
+      // const response = await console.log(response, "response");
+      // if (response.status === 200) {
+      //   dispatch(setLoader(false));
+      //   toast.success("delete Employee successfully");
+      //   GetAllEmployeeData();
+      // }
     } catch (error) {
       console.log(error?.response?.data);
       dispatch(setLoader(false));
@@ -93,22 +90,20 @@ function Employee() {
 
   const UpdateEmployeeHandle = async (value) => {
     try {
-      const Val = {
-        id: ESItems._id,
-        payload: value,
-      };
-      console.log(Val, "Value");
-
-      dispatch(setLoader(true));
-
-      const response = await EditEmployeeApiCall(Val);
-      if (response.status === 200) {
-        dispatch(setLoader(false));
-        GetAllEmployeeData();
-        setOpen(false);
-        dispatch(setSingleEmployee(null));
-        toast.success("Employee Update Successfully");
-      }
+      // const Val = {
+      //   id: ESItems._id,
+      //   payload: value,
+      // };
+      // console.log(Val, "Value");
+      // dispatch(setLoader(true));
+      // const response = await EditEmployeeApiCall(Val);
+      // if (response.status === 200) {
+      //   dispatch(setLoader(false));
+      //   GetAllEmployeeData();
+      //   setOpen(false);
+      //   dispatch(setSingleEmployee(null));
+      //   toast.success("Employee Update Successfully");
+      // }
     } catch (error) {
       dispatch(setLoader(false));
 
@@ -117,13 +112,16 @@ function Employee() {
   };
 
   useEffect(() => {
-    GetAllEmployeeData();
-  }, []);
+    getallemployee();
+    if (!localStorage.getItem("company")) {
+      window.location.href = "/company";
+    }
+  }, [0]);
 
   const tabsheadr = [
-    { title: "Employee" },
-    { title: "Active Employee" },
-    { title: "InActive Employee" },
+    {title: "Employee"},
+    {title: "Active Employee"},
+    {title: "InActive Employee"},
   ];
   const Tabsbody = [
     {
@@ -141,7 +139,7 @@ function Employee() {
               />
             )}
           </section>
-          <Employeepage/>
+          <Employeepage />
         </>
       ),
     },

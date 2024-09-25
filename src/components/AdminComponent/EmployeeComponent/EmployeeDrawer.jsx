@@ -1,13 +1,13 @@
-import { Drawer, TextField } from "@mui/material";
+import {Drawer, TextField} from "@mui/material";
 import React from "react";
-import { Grid, Box, Typography, Container } from "@mui/material";
+import {Grid, Box, Typography, Container} from "@mui/material";
 import InputPassword from "../../../common/Input/InputPassword";
 import Input from "../../../common/Input/Input";
 import Button from "../../../common/Button";
-import { useFormik } from "formik";
+import {useFormik} from "formik";
 import moment from "moment";
-import { setSingleEmployee } from "../../../redux/slices/Employee/EmployeeSlice";
-import { useDispatch } from "react-redux";
+import {setSingleEmployee} from "../../../redux/slices/Employee/EmployeeSlice";
+import {useDispatch} from "react-redux";
 
 function EmployeeDrawer({
   setOpen,
@@ -19,29 +19,26 @@ function EmployeeDrawer({
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      Employee_FirstName: ESItems !== null ? ESItems?.Employee_FirstName : "",
-      Employee_LastName: ESItems !== null ? ESItems?.Employee_LastName : "",
-      Employee_Email: ESItems !== null ? ESItems?.Employee_Email : "",
-      Employee_JoiningDate:
-        ESItems && ESItems.Employee_JoiningDate
-          ? moment(ESItems.Employee_JoiningDate).format("YYYY-MM-DD")
+      FirstName: ESItems !== null ? ESItems?.FirstName : "",
+      LastName: ESItems !== null ? ESItems?.LastName : "",
+      Email: ESItems !== null ? ESItems?.Email : "",
+      JoiningDate:
+        ESItems && ESItems.JoiningDate
+          ? moment(ESItems.JoiningDate).format("YYYY-MM-DD")
           : "",
 
-      Employee_Address: ESItems !== null ? ESItems?.Employee_Address : "",
-      Employee_Phone: ESItems !== null ? ESItems?.Employee_Phone : "",
-      Employee_Designation:
-        ESItems !== null ? ESItems?.Employee_Designation : "",
-      Profile_Image: "",
-      managerId: "",
+      Address: ESItems !== null ? ESItems?.Address : "",
+      Phone: ESItems !== null ? ESItems?.Phone : "",
+      Designation: ESItems !== null ? ESItems?.Designation : "",
+      // Profile_Image: "",
+      // managerId: "",
     },
     onSubmit: async (values) => {
-      const formattedDate = moment(values.Employee_JoiningDate).format(
-        "DD/MM/YYYY"
-      );
+      const formattedDate = moment(values.JoiningDate).format("DD/MM/YYYY");
 
       const data = {
         ...values,
-        Employee_JoiningDate: formattedDate,
+        JoiningDate: formattedDate,
       };
 
       if (ESItems !== null) {
@@ -51,11 +48,11 @@ function EmployeeDrawer({
       }
     },
   });
-  const managers = [
-    { id: 1, name: "Manager 1" },
-    { id: 2, name: "Manager 2" },
-    { id: 3, name: "Manager 3" },
-  ];
+  // const managers = [
+  //   {id: 1, name: "Manager 1"},
+  //   {id: 2, name: "Manager 2"},
+  //   {id: 3, name: "Manager 3"},
+  // ];
   return (
     <>
       <Drawer
@@ -86,14 +83,14 @@ function EmployeeDrawer({
                   <Grid item xs={12} sm={6}>
                     <Input
                       labelText="Employee FirstName"
-                      {...formik.getFieldProps("Employee_FirstName")}
+                      {...formik.getFieldProps("FirstName")}
                       placeholder={"Please enter your FirstName"}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
                       labelText="Employee LastName"
-                      {...formik.getFieldProps("Employee_LastName")}
+                      {...formik.getFieldProps("LastName")}
                       placeholder={"Please enter your LastName"}
                     />
                   </Grid>
@@ -101,7 +98,7 @@ function EmployeeDrawer({
                   <Grid item xs={12} sm={6}>
                     <Input
                       labelText="Employee Email"
-                      {...formik.getFieldProps("Employee_Email")}
+                      {...formik.getFieldProps("Email")}
                       type="email"
                       placeholder={"Please enter your Email"}
                     />
@@ -110,16 +107,16 @@ function EmployeeDrawer({
                     <Input
                       labelText="Employee Phone"
                       type="text"
-                      {...formik.getFieldProps("Employee_Phone")}
-                      placeholder={"Please enter your password"}
+                      {...formik.getFieldProps("Phone")}
+                      placeholder={"Please enter your Phone"}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
                       labelText="Employee JoiningDate"
                       type="date"
-                      {...formik.getFieldProps("Employee_JoiningDate")}
-                      placeholder={"Please enter your password"}
+                      {...formik.getFieldProps("Joining_Date")}
+                      placeholder={"Please enter your Joining_Date"}
                     />
                   </Grid>
 
@@ -127,19 +124,19 @@ function EmployeeDrawer({
                     <Input
                       labelText="Employee Designation"
                       type="text"
-                      {...formik.getFieldProps("Employee_Designation")}
-                      placeholder={"Please enter your password"}
+                      {...formik.getFieldProps("Designation")}
+                      placeholder={"Please enter your Designation"}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
                       labelText="Employee Address"
                       type="text"
-                      {...formik.getFieldProps("Employee_Address")}
-                      placeholder={"Please enter your password"}
+                      {...formik.getFieldProps("Address")}
+                      placeholder={"Please enter your Address"}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  {/* <Grid item xs={12} sm={6}>
                     <Input
                       labelText="Profile Image"
                       onChange={(event) => {
@@ -151,15 +148,15 @@ function EmployeeDrawer({
                       type="file"
                       placeholder={"Please enter your  Image"}
                     />
-                  </Grid>
+                  </Grid> */}
                   <Grid item xs={12} sm={6}>
                     <Input
                       labelText="Employee Password"
-                      {...formik.getFieldProps("Employee_LastName")}
+                      {...formik.getFieldProps("Password")}
                       placeholder={"Please enter Employee Password"}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  {/* <Grid item xs={12} sm={6}>
                     <TextField
                       select
                       {...formik.getFieldProps("managerId")}
@@ -174,7 +171,7 @@ function EmployeeDrawer({
                         </option>
                       ))}
                     </TextField>
-                  </Grid>
+                  </Grid> */}
                   <Grid item xs={12}>
                     <Button type={"submit"}>
                       {ESItems !== null ? "Update Employee" : "Add Employee"}

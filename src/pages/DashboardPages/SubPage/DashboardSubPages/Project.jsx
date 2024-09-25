@@ -2,11 +2,10 @@ import React, {Suspense, useState} from "react";
 import Loader from "../../../../common/Loader";
 import {useDispatch, useSelector} from "react-redux";
 import {setLoader} from "../../../../redux/slices/loaderSlice";
-import {
-  addprojectapicall,
-  getallprojectsapicall,
-  removeprojectapicall,
-} from "../../../../apiservice/admin";
+// import {
+//   addprojectapicall,
+//   removeprojectapicall,
+// } from "../../../../apiservice/admin";
 import toast from "react-hot-toast";
 import {useEffect} from "react";
 import {
@@ -18,6 +17,7 @@ import TabComp from "../../../../common/TabComp";
 import AllProjects from "./Projects/AllProjects";
 import ActiveProjects from "./Projects/ActiveProjects";
 import InActiveProjects from "./Projects/InActiveProjects";
+import {addprojects} from "../../../../apiservice/admin/projectapiservice";
 
 function Project() {
   const [IsOpen, setIsOpen] = useState(false);
@@ -29,14 +29,15 @@ function Project() {
   const PhandleSubmit = async (values) => {
     try {
       dispatch(setLoader(true));
-      const response = await addprojectapicall(values);
-      if (response?.status === 201) {
-        console.log("response", response?.data);
-        dispatch(setLoader(false));
-        setIsOpen(false);
-        getallprojects();
-        toast.success(response?.data?.message);
-      }
+      const response = await addprojects(values);
+      console.log(response,'response')
+      // if (response?.status === 201) {
+      //   console.log("response", response?.data);
+      //   dispatch(setLoader(false));
+      //   setIsOpen(false);
+      //   getallprojects();
+      //   toast.success(response?.data?.message);
+      // }
     } catch (error) {
       console.log(error?.response?.data);
       dispatch(setLoader(false));
@@ -46,12 +47,12 @@ function Project() {
   // project get data
   const getallprojects = async () => {
     try {
-      dispatch(setLoader(true));
-      const response = await getallprojects();
-      if (response?.status === 200) {
-        dispatch(setProjectValues(response?.data));
-        dispatch(setLoader(false));
-      }
+      // dispatch(setLoader(true));
+      // const response = await getallprojects();
+      // if (response?.status === 200) {
+      //   dispatch(setProjectValues(response?.data));
+      //   dispatch(setLoader(false));
+      // }
     } catch (error) {
       console.log(error?.response?.data);
       dispatch(setLoader(false));
@@ -60,14 +61,14 @@ function Project() {
 
   const RemoveProjects = async (value) => {
     try {
-      console.log(value, "value");
-      dispatch(setLoader(true));
-      const response = await removeprojectapicall(value);
-      if (response?.status === 200) {
-        console.log(response);
-        dispatch(setLoader(false));
-        getallprojects();
-      }
+      // console.log(value, "value");
+      // dispatch(setLoader(true));
+      // const response = await removeprojectapicall(value);
+      // if (response?.status === 200) {
+      //   console.log(response);
+      //   dispatch(setLoader(false));
+      //   getallprojects();
+      // }
     } catch (error) {
       console.log(error?.response?.data);
       dispatch(setLoader(false));

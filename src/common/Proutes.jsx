@@ -1,28 +1,19 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { setLoader } from "../redux/slices/loaderSlice";
-import { useDispatch } from "react-redux";
-import { fetchCompanyapicall } from "../apiservice/admin/companyapicall";
+import React, {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
+import {setLoader} from "../redux/slices/loaderSlice";
+import {useDispatch} from "react-redux";
+import {fetchCompanyapicall} from "../apiservice/admin/companyapiservice";
 
-function Proutes({ children }) {
+function Proutes({children}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (IsCompany === true) {
-  //     window.location.href = "/company";
-  //   }
-  // }, [0]);
-
   const GetCompany = async () => {
-    console.log("hllo??????????????????????????????");
     try {
       dispatch(setLoader(true));
       const response = await fetchCompanyapicall();
-      console.log("response company", response?.data);
       if (response?.success) {
         dispatch(setLoader(false));
-        console.log(response, "response company");
         localStorage.setItem("company", response?.companydata);
       }
     } catch (error) {

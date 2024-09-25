@@ -1,15 +1,15 @@
 import React from "react";
-import { Grid, Drawer, Box, Typography, Container } from "@mui/material";
+import {Grid, Drawer, Box, Typography, Container} from "@mui/material";
 import InputPassword from "../../../common/Input/InputPassword";
 import Input from "../../../common/Input/Input";
 import Button from "../../../common/Button";
-import { useFormik } from "formik";
-import { validate } from "./adminDrawerValidation";
-import { createAdmin } from "../../../apiservice/admin";
-import { useDispatch } from "react-redux";
-import { setLoader } from "../../../redux/slices/loaderSlice";
+import {useFormik} from "formik";
+import {validate} from "./adminDrawerValidation";
+import {createAdmin} from "../../../apiservice/admin/adminapiservice";
+import {useDispatch} from "react-redux";
+import {setLoader} from "../../../redux/slices/loaderSlice";
 import toast from "react-hot-toast";
-function AdminDrawer({ IsOpen, setOpen, GetAllAdmins }) {
+function AdminDrawer({IsOpen, setOpen, GetAllAdmins}) {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -34,14 +34,14 @@ function AdminDrawer({ IsOpen, setOpen, GetAllAdmins }) {
 
         dispatch(setLoader(true));
         const response = await createAdmin(Payload);
-        if (response?.data?.success) {
+        if (response.success) {
           dispatch(setLoader(false));
-          toast.success(response?.data?.message);
+          toast.success(response.message);
           GetAllAdmins();
         }
       } catch (error) {
         dispatch(setLoader(false));
-        toast.error(error?.response?.data?.message);
+        toast.error(error?.response?.message);
       }
     },
   });
@@ -71,7 +71,7 @@ function AdminDrawer({ IsOpen, setOpen, GetAllAdmins }) {
                     {...formik.getFieldProps("FirstName")}
                   />
                   {formik.touched.FirstName && formik.errors.FirstName ? (
-                    <div style={{ color: "red", marginLeft: "5px" }}>
+                    <div style={{color: "red", marginLeft: "5px"}}>
                       {formik.errors.FirstName}
                     </div>
                   ) : null}
@@ -83,7 +83,7 @@ function AdminDrawer({ IsOpen, setOpen, GetAllAdmins }) {
                     {...formik.getFieldProps("LastName")}
                   />
                   {formik.touched.LastName && formik.errors.LastName ? (
-                    <div style={{ color: "red", marginLeft: "5px" }}>
+                    <div style={{color: "red", marginLeft: "5px"}}>
                       {formik.errors.LastName}
                     </div>
                   ) : null}
@@ -95,7 +95,7 @@ function AdminDrawer({ IsOpen, setOpen, GetAllAdmins }) {
                     {...formik.getFieldProps("Phone")}
                   />
                   {formik.touched.Phone && formik.errors.Phone ? (
-                    <div style={{ color: "red", marginLeft: "5px" }}>
+                    <div style={{color: "red", marginLeft: "5px"}}>
                       {formik.errors.Phone}
                     </div>
                   ) : null}
@@ -107,7 +107,7 @@ function AdminDrawer({ IsOpen, setOpen, GetAllAdmins }) {
                     {...formik.getFieldProps("Email")}
                   />
                   {formik.touched.Email && formik.errors.Email ? (
-                    <div style={{ color: "red", marginLeft: "5px" }}>
+                    <div style={{color: "red", marginLeft: "5px"}}>
                       {formik.errors.Email}
                     </div>
                   ) : null}
@@ -120,7 +120,7 @@ function AdminDrawer({ IsOpen, setOpen, GetAllAdmins }) {
                     {...formik.getFieldProps("Password")}
                   />
                   {formik.touched.Password && formik.errors.Password ? (
-                    <div style={{ color: "red", marginLeft: "5px" }}>
+                    <div style={{color: "red", marginLeft: "5px"}}>
                       {formik.errors.Password}
                     </div>
                   ) : null}
@@ -134,7 +134,7 @@ function AdminDrawer({ IsOpen, setOpen, GetAllAdmins }) {
                   />
                   {formik.touched.ConfirmPassword &&
                   formik.errors.ConfirmPassword ? (
-                    <div style={{ color: "red", marginLeft: "5px" }}>
+                    <div style={{color: "red", marginLeft: "5px"}}>
                       {formik.errors.ConfirmPassword}
                     </div>
                   ) : null}

@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { Suspense, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
-import { setLoader } from "../../redux/slices/loaderSlice";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useState} from "react";
+import {Suspense, useEffect} from "react";
+import {Helmet} from "react-helmet-async";
+import {setLoader} from "../../redux/slices/loaderSlice";
+import {useDispatch, useSelector} from "react-redux";
 import toast from "react-hot-toast";
-import { setLogin } from "../../redux/slices/authslices/authslice";
-import { useNavigate } from "react-router-dom";
-import { useGoogleLogin } from "@react-oauth/google";
+import {setLogin} from "../../redux/slices/authslices/authslice";
+import {useNavigate} from "react-router-dom";
+import {useGoogleLogin} from "@react-oauth/google";
 import Loader from "../../common/Loader";
 import LoginTitle from "../../components/AuthComponent/Login/LoginTitle";
 import LoginForm from "../../components/AuthComponent/Login/LoginForm";
-import { GoogleLoginAuth, loginauth } from "../../apiservice/auth";
+import {GoogleLoginAuth, loginauth} from "../../apiservice/auth";
 import GoogleIcons from "../../assest/icons/loginIcons/google.png";
 import Button from "../../common/Button";
 function Login() {
@@ -22,12 +22,11 @@ function Login() {
     try {
       dispatch(setLoader(true));
       const response = await loginauth(values);
-      console.log(response, "response");
       if (response?.data?.success) {
         dispatch(setLoader(false));
         dispatch(setLogin(response?.data?.data));
         toast.success(response?.data?.message);
-        window.location.href = "/company";
+        window.location.href = "/dashboard";
       } else {
         toast.error(response?.data?.message);
       }
@@ -38,12 +37,10 @@ function Login() {
     }
   };
 
-  // handle submit
-
   // check authentication
   const isAuth = () => {
-    if (sessionStorage.getItem("token")) {
-      navigate("/company");
+    if (localStorage.getItem("token")) {
+      navigate("/dashboard");
     } else {
       navigate("/login");
     }
@@ -56,7 +53,7 @@ function Login() {
       if (response?.data?.success) {
         dispatch(setLogin(response?.data?.message));
         dispatch(setLoader(false));
-        navigate("/company");
+        navigate("/dashboard");
       }
     },
   });

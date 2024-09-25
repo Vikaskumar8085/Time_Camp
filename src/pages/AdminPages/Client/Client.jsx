@@ -240,7 +240,7 @@
 
 // export default Client;
 
-import React from "react";
+import React, {useEffect} from "react";
 import Proutes from "../../../common/Proutes";
 import Layout from "../../../common/dashboard/Layout";
 import TabComp from "../../../common/TabComp";
@@ -250,12 +250,18 @@ import InActiveClient from "./ClientSubPages/InActiveClient";
 import DeadClients from "./ClientSubPages/DeadClients";
 
 function Client() {
+  useEffect(() => {
+    if (!localStorage.getItem("company")) {
+      window.location.href = "/company";
+    }
+  });
+
   const TabsHeader = [
     {
       title: "All Clients",
     },
-    { title: "Active Clients" },
-    { title: "InActive Clients" },
+    {title: "Active Clients"},
+    {title: "InActive Clients"},
     {
       title: "Dead Clients",
     },

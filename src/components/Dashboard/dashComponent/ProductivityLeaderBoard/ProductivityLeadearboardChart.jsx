@@ -9,7 +9,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { employeeTimeHourApicall } from "../../../../apiservice/admin/chartapicall";
+import { employeeTimeHourApicall } from "../../../../apiservice/admin/chartapiservice";
 
 // Utility function to format date from ISO to a readable format (e.g., 'YYYY-MM-DD')
 const formatDate = (isoString) => {

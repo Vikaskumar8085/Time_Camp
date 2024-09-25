@@ -1,5 +1,5 @@
 import React from "react";
-import { activeclientapicall } from "../../../../apiservice/admin/clientApiCall";
+import { activeclientapicall } from "../../../../apiservice/admin/clientapiservice";
 import ActiveclientTable from "../../../../components/AdminComponent/Clientcomponent/clientpagecomponent/ActiveclientTable";
 
 function ActiveClients() {

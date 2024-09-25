@@ -1,8 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { Admin, Contractor, Employee, Manager, Super_Admin } from "./Links";
+import {NavLink} from "react-router-dom";
+import {Admin, Contractor, Employee, Manager, Super_Admin} from "./Links";
 
-function Sidebar({ Role }) {
+function Sidebar({Role}) {
   const IsRole = Role.message?.Role;
   const IsSuperAdmin = Super_Admin?.map((item, index) => {
     return (
@@ -10,7 +10,7 @@ function Sidebar({ Role }) {
         <li key={index}>
           <NavLink
             to={item?.path}
-            className={({ isActive }) => (isActive ? "activesidebarlink" : "")}
+            className={({isActive}) => (isActive ? "activesidebarlink" : "")}
           >
             <span>{item?.icon}</span>
             {item?.title}
@@ -26,7 +26,7 @@ function Sidebar({ Role }) {
         <li key={index}>
           <NavLink
             to={item?.path}
-            className={({ isActive }) => (isActive ? "activesidebarlink" : "")}
+            className={({isActive}) => (isActive ? "activesidebarlink" : "")}
           >
             <span>{item?.icon}</span>
 
@@ -43,7 +43,7 @@ function Sidebar({ Role }) {
         <li key={index}>
           <NavLink
             to={item?.path}
-            className={({ isActive }) => (isActive ? "activesidebarlink" : "")}
+            className={({isActive}) => (isActive ? "activesidebarlink" : "")}
           >
             <span>{item?.icon}</span>
             {item?.title}
@@ -59,7 +59,7 @@ function Sidebar({ Role }) {
         <li key={index}>
           <NavLink
             to={item?.path}
-            className={({ isActive }) => (isActive ? "activesidebarlink" : "")}
+            className={({isActive}) => (isActive ? "activesidebarlink" : "")}
           >
             <span>{item?.icon}</span>
             {item?.title}
@@ -76,7 +76,7 @@ function Sidebar({ Role }) {
         <li key={index}>
           <NavLink
             to={item?.path}
-            className={({ isActive }) => (isActive ? "activesidebarlink" : "")}
+            className={({isActive}) => (isActive ? "activesidebarlink" : "")}
           >
             <span>{item?.icon}</span>
             {item?.title}
@@ -98,9 +98,9 @@ function Sidebar({ Role }) {
         <ul>
           {IsRole === "SuperAdmin" && <>{IsSuperAdmin}</>}
           {IsRole === "Admin" && <>{IsAdmin}</>}
-          {IsRole === "Employee" && <>{IsEmployee}</>}
+          {/* {IsRole === "Employee" && <>{IsEmployee}</>}
           {IsRole === "Contractor" && <>{IsContractor}</>}
-          {IsRole === "Manager" && <>{IsManager}</>}
+          {IsRole === "Manager" && <>{IsManager}</>} */}
         </ul>
       </aside>
     </div>

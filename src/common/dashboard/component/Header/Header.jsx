@@ -1,16 +1,13 @@
-import React, { useState } from "react";
-import { CiLogout } from "react-icons/ci";
-import { useSelector } from "react-redux";
+import React, {useState} from "react";
+import {CiLogout} from "react-icons/ci";
+import {useSelector} from "react-redux";
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
-import { IoMdNotificationsOutline } from "react-icons/io";
-import { useEffect } from "react";
+import {IoMdNotificationsOutline} from "react-icons/io";
+import {useEffect} from "react";
 
 function Header() {
   const GetUserData = useSelector((state) => state.auth.values);
-
-
-
   return (
     <header className="dash_header_wrapper">
       <div className="dash_header_box">
@@ -26,9 +23,7 @@ function Header() {
 
           <img src={GetUserData?.message?.Photo} alt="no-img" />
           <div className="dash_head_logout">
-            <h2
-              style={{ margin: "0px 5px", fontSize: "1em", fontWeight: "350" }}
-            >
+            <h2 style={{margin: "0px 5px", fontSize: "1em", fontWeight: "350"}}>
               {GetUserData?.message?.FirstName}
             </h2>
             <CiLogout

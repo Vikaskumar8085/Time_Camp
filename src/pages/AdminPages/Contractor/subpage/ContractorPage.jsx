@@ -9,12 +9,12 @@ import {
   Paper,
 } from "@mui/material";
 import Button from "../../../../common/Button";
-import { useState } from "react";
+import {useState} from "react";
 import ContractorDrawer from "../../../../components/AdminComponent/ContractoreComponent/ContractorDrawer";
-import { setLoader } from "../../../../redux/slices/loaderSlice";
-import { useDispatch } from "react-redux";
-import { fetchcontractorapicall } from "../../../../apiservice/admin/contractorapicall";
-import { useEffect } from "react";
+import {setLoader} from "../../../../redux/slices/loaderSlice";
+import {useDispatch} from "react-redux";
+import {fetchcontractorapicall} from "../../../../apiservice/admin/contractorapiservice";
+import {useEffect} from "react";
 function ContractorPage() {
   const dispatch = useDispatch();
   const [IsOpen, setOpen] = useState(false);

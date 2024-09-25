@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import Layout from "../../../common/dashboard/Layout";
 import Proutes from "../../../common/Proutes";
 import Button from "../../../common/Button";
 import AdminDrawer from "../../../components/AdminComponent/adminComp/AdminDrawer";
 import TabComp from "../../../common/TabComp";
-import { useDispatch } from "react-redux";
-import { setLoader } from "../../../redux/slices/loaderSlice";
+import {useDispatch} from "react-redux";
+import {setLoader} from "../../../redux/slices/loaderSlice";
 import toast from "react-hot-toast";
 import ViewListIcon from "@mui/icons-material/ViewList";
-import { GetallAdminApiCall } from "../../../apiservice/admin";
+import {GetallAdminApiCall} from "../../../apiservice/admin/adminapiservice";
 import PanoramaOutlinedIcon from "@mui/icons-material/PanoramaOutlined";
 import {
   Table,
@@ -30,12 +30,8 @@ function Adminpage() {
   const [isAdmin, setIsAdmin] = React.useState([]);
   const [IsView, setIsView] = React.useState("list");
   const [IsSearch, setIsSearch] = React.useState("");
-  console.log(IsSearch, "isearc");
-
-  console.log(isAdmin, "isAdmin");
   const dispatch = useDispatch();
   const [IsOpen, setOpen] = React.useState(false);
-
   // searching
   const filterBySearch = isAdmin.filter((item) => {
     return (
@@ -44,17 +40,15 @@ function Adminpage() {
       item?.Email?.toLowerCase()?.includes(IsSearch?.toLowerCase())
     );
   });
-
   //
-
   const GetAllAdmins = async () => {
     try {
       dispatch(setLoader(true));
-
       const response = await GetallAdminApiCall();
-      if (response?.data?.success) {
+      console.log(response, "response");
+      if (response?.success) {
         dispatch(setLoader(false));
-        setIsAdmin(response?.data?.result);
+        setIsAdmin(response?.result);
       }
     } catch (error) {
       dispatch(setLoader(false));
@@ -65,9 +59,8 @@ function Adminpage() {
   useEffect(() => {
     GetAllAdmins();
   }, [0]);
-
   // Tabs component
-  const tabsheadr = [{ title: "Admin Dashboard" }, { title: "Admin Details" }];
+  const tabsheadr = [{title: "Admin Dashboard"}, {title: "Admin Details"}];
   const Tabsbody = [
     {
       content: (
@@ -147,9 +140,7 @@ function Adminpage() {
                 {filterBySearch?.map((row, index) => {
                   return (
                     <>
-                      <Card
-                        sx={{ maxWidth: 345, minWidth: 320, margin: "20px" }}
-                      >
+                      <Card sx={{maxWidth: 345, minWidth: 320, margin: "20px"}}>
                         <CardMedia
                           component="img"
                           height="140"

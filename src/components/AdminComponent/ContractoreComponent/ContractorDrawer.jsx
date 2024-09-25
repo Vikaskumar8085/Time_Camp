@@ -1,12 +1,12 @@
-import { Drawer } from "@mui/material";
+import {Drawer} from "@mui/material";
 import React from "react";
-import { Grid, Box, Typography, Container } from "@mui/material";
+import {Grid, Box, Typography, Container} from "@mui/material";
 import moment from "moment";
 import Input from "../../../common/Input/Input";
 import Button from "../../../common/Button";
-import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
-import { getContractor } from "../../../redux/slices/ContractorSlice/contractorSlice";
+import {useFormik} from "formik";
+import {useDispatch} from "react-redux";
+import {getContractor} from "../../../redux/slices/ContractorSlice/contractorSlice";
 
 function ContractorDrawer({
   IsOpen,
@@ -27,15 +27,17 @@ function ContractorDrawer({
   const time = formatter.format(now);
   const formik = useFormik({
     initialValues: {
-      Contractor_Name: CSItems !== null ? CSItems.Contractor_Name : "",
-      Contractor_Number: CSItems !== null ? CSItems.Contractor_Number : "",
-      Person_Name: CSItems !== null ? CSItems.Person_Name : "",
-      Remark: CSItems !== null ? CSItems.Remark : "",
-      Created_Date:
-        CSItems && CSItems.Created_Date
-          ? moment(CSItems.Created_Date).format("YYYY-MM-DD")
+      FirstName: CSItems !== null ? CSItems?.FirstName : "",
+      LastName: CSItems !== null ? CSItems?.LastName : "",
+      Email: CSItems !== null ? CSItems?.Email : "",
+      JoiningDate:
+        CSItems && CSItems.JoiningDate
+          ? moment(CSItems.JoiningDate).format("YYYY-MM-DD")
           : "",
-      Created_Time: CSItems !== null ? CSItems.Created_Time : time,
+
+      Address: CSItems !== null ? CSItems?.Address : "",
+      Phone: CSItems !== null ? CSItems?.Phone : "",
+      Designation: CSItems !== null ? CSItems?.Designation : "",
     },
     onSubmit: async (values) => {
       const formattedDate = moment(values.Created_Date).format("DD/MM/YYYY");
@@ -98,7 +100,6 @@ function ContractorDrawer({
                   <Grid item xs={12} sm={6}>
                     <Input
                       labelText="Person Name"
-                      
                       {...formik.getFieldProps("Person_Name")}
                       placeholder={"Please enter Person Name "}
                     />

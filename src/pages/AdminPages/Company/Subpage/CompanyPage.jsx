@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import CompanyAddDrawer from "../../../../components/AdminComponent/Company/CompanyAddDrawer";
 import Button from "../../../../common/Button";
-import { useDispatch } from "react-redux";
+import {useDispatch} from "react-redux";
 import {
   Table,
   TableBody,
@@ -11,8 +11,8 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import { setLoader } from "../../../../redux/slices/loaderSlice";
-import { getcompanyapicall } from "../../../../apiservice/admin/companyapicall";
+import {setLoader} from "../../../../redux/slices/loaderSlice";
+import {getcompanyapicall} from "../../../../apiservice/admin/companyapiservice";
 
 function CompanyPage() {
   const [IsOpen, setOpen] = useState(false);

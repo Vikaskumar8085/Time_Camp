@@ -1,11 +1,11 @@
-import { Grid } from "@mui/material";
-import { useFormik } from "formik";
+import {Grid} from "@mui/material";
+import {useFormik} from "formik";
 
 import React from "react";
 import Button from "../../../common/Button";
 import Input from "../../../common/Input/Input";
 
-function Companyregistration() {
+function Companyregistration({companyhandlesubmit}) {
   const formik = useFormik({
     initialValues: {
       Company_Name: "",
@@ -20,7 +20,7 @@ function Companyregistration() {
       Tex_Number: "",
     },
     onSubmit: async (values) => {
-      console.log(values);
+      companyhandlesubmit(values);
     },
   });
 
@@ -124,6 +124,7 @@ function Companyregistration() {
             </Grid>
             <Grid item md={6} sm={12} xs={12} lg={6}>
               <Input
+                type="date"
                 labelText={"Established Date"}
                 {...formik.getFieldProps("Established_date")}
               />

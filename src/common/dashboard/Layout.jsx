@@ -1,38 +1,20 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { fetchCompanyapicall } from "../../apiservice/admin/companyapicall";
-import { getUserdata, LoginStatus } from "../../apiservice/auth";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {getUserdata, LoginStatus} from "../../apiservice/auth";
 import {
   setGetUser,
   setLoginStatus,
 } from "../../redux/slices/authslices/authslice";
-import { setLoader } from "../../redux/slices/loaderSlice";
+import {setLoader} from "../../redux/slices/loaderSlice";
 import Header from "./component/Header/Header";
 import Sidebar from "./component/Sidebar/Sidebar";
 
-function Layout({ children }) {
+function Layout({children}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const GetUserData = useSelector((state) => state.auth.values);
   const isRole = GetUserData?.message?.Role;
-
-  // login Status
-  // const loginstatus = async () => {
-  //   try {
-  //     dispatch(setLoader(true));
-  //     const response = await LoginStatus();
-  //     if (response) {
-  //       dispatch(setLoader(false));
-  //       dispatch(setLoginStatus(response?.data?.message));
-  //     }
-  //   } catch (error) {
-  //     dispatch(setLoader(false));
-  //     console.log(error?.response?.data);
-  //   }
-  // };
-
-  // get User role based
 
   const GetUser = async () => {
     try {
@@ -48,15 +30,6 @@ function Layout({ children }) {
       throw new Error(error?.response?.message);
     }
   };
-
-  // login auth
-  // const isAuth = () => {
-  //   if (sessionStorage.getItem("isLoginStatus")) {
-  //     navigate("/dashboard");
-  //   } else {
-  //     navigate("/login");
-  //   }
-  // };
 
   useEffect(() => {
     GetUser();

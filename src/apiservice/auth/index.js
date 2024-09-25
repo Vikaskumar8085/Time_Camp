@@ -7,7 +7,6 @@ export const registerauth = async (payload) => {
 };
 
 // login
-
 export const loginauth = async (payload) => {
   const response = await apiInstance.post("/user/login", payload);
   return response;
@@ -19,14 +18,12 @@ export const LoginStatus = async () => {
   return response;
 };
 //get user
-
 export const getUserdata = async () => {
   const response = await apiInstance.get("/user/get-user");
   return response;
 };
 
 // Edit user
-
 export const EditAuthUser = async (value) => {
   const response = await apiInstance.post("/user/Edit-user", value);
   return response;
@@ -39,7 +36,6 @@ export const ForgetPasswordUser = async (value) => {
 };
 
 // change password
-
 export const ChangePasswordAuth = async (value) => {
   const response = await apiInstance.post("/user/change-password", value);
   return response;
@@ -58,7 +54,6 @@ export const verifyMail = async (value) => {
 };
 
 // edit User
-
 export const EditUserApiCall = async (value) => {
   const respons = await apiInstance.post("/user/edit-user", value);
   return respons;

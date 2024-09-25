@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { inactiveclientapicall } from "../../../../apiservice/admin/clientApiCall";
+import React, {useState} from "react";
+import {useEffect} from "react";
+import {inactiveclientapicall} from "../../../../apiservice/admin/clientapiservice";
 import InactiveClientTable from "../../../../components/AdminComponent/Clientcomponent/clientpagecomponent/InactiveClientTable";
 
 function InActiveClient() {

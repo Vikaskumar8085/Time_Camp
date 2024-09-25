@@ -258,18 +258,18 @@ import Input from "../../../common/Input/Input";
 // export default ProjectDrawer;
 
 import React from "react";
-import { useFormik } from "formik";
-import {   Grid, Typography, Box } from "@mui/material";
+import moment from "moment";
+import {useFormik} from "formik";
 
-const ProjectDrawer = () => {
+const ProjectDrawer = ({PhandleSubmit}) => {
   const formik = useFormik({
     initialValues: {
       CompanyId: "",
       ProjectId: "",
       Project_Code: "",
       Project_Name: "",
-      Start_Date: "",
-      End_Date: "",
+      Start_Date: moment().format("DD/MM/YYYY"),
+      End_Date: moment().format("DD/MM/YYYY"),
       client: {
         clientId: "",
         clientName: "",
@@ -291,198 +291,206 @@ const ProjectDrawer = () => {
       },
     },
     onSubmit: (values) => {
-      console.log("Form Data", values);
-      // Handle form submission here
+      console.log(values);
+      // Add your form submission logic here
+      PhandleSubmit(values);
     },
   });
-
   return (
     <form onSubmit={formik.handleSubmit}>
-      <Box sx={{ padding: 2 }}>
-        <Typography variant="h5" gutterBottom>
-          Create Project
-        </Typography>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <Input
-              fullWidth
-              name="CompanyId"
-              placeholder="Company ID"
-              value={formik.values.CompanyId}
+      <div>
+        <label>Company ID</label>
+        <input
+          type="number"
+          name="CompanyId"
+          onChange={formik.handleChange}
+          value={formik.values.CompanyId}
+        />
+      </div>
+
+      <div>
+        <label>Project ID</label>
+        <input
+          type="number"
+          name="ProjectId"
+          onChange={formik.handleChange}
+          value={formik.values.ProjectId}
+        />
+      </div>
+
+      <div>
+        <label>Project Code</label>
+        <input
+          type="text"
+          name="Project_Code"
+          onChange={formik.handleChange}
+          value={formik.values.Project_Code}
+        />
+      </div>
+
+      <div>
+        <label>Project Name</label>
+        <input
+          type="text"
+          name="Project_Name"
+          onChange={formik.handleChange}
+          value={formik.values.Project_Name}
+        />
+      </div>
+
+      <div>
+        <label>Start Date</label>
+        <input
+          type="text"
+          name="Start_Date"
+          onChange={formik.handleChange}
+          value={formik.values.Start_Date}
+        />
+      </div>
+
+      <div>
+        <label>End Date</label>
+        <input
+          type="text"
+          name="End_Date"
+          onChange={formik.handleChange}
+          value={formik.values.End_Date}
+        />
+      </div>
+
+      <div>
+        <label>Client ID</label>
+        <input
+          type="number"
+          name="client.clientId"
+          onChange={formik.handleChange}
+          value={formik.values.client.clientId}
+        />
+      </div>
+
+      <div>
+        <label>Client Name</label>
+        <input
+          type="text"
+          name="client.clientName"
+          onChange={formik.handleChange}
+          value={formik.values.client.clientName}
+        />
+      </div>
+
+      <div>
+        <label>Project Name</label>
+        <input
+          type="text"
+          name="ProjectName"
+          onChange={formik.handleChange}
+          value={formik.values.ProjectName}
+        />
+      </div>
+
+      <div>
+        <label>Project Type</label>
+        <input
+          type="text"
+          name="Project_Type"
+          onChange={formik.handleChange}
+          value={formik.values.Project_Type}
+        />
+      </div>
+
+      <div>
+        <label>Project Managers</label>
+        <input
+          type="text"
+          name="Project_Managers"
+          onChange={formik.handleChange}
+          value={formik.values.Project_Managers}
+        />
+      </div>
+
+      <div>
+        <label>Project Status</label>
+        <select
+          name="Project_Status"
+          onChange={formik.handleChange}
+          value={formik.values.Project_Status}
+        >
+          <option value="InActive">InActive</option>
+          <option value="Active">Active</option>
+        </select>
+      </div>
+
+      {/* RoleResource Field */}
+      <h3>Role Resources</h3>
+      {formik.values.RoleResource.map((resource, index) => (
+        <div key={index}>
+          <div>
+            <label>Role Resource ID</label>
+            <input
+              type="number"
+              name={`RoleResource[${index}].RRId`}
               onChange={formik.handleChange}
+              value={resource.RRId}
             />
-          </Grid>
+          </div>
 
-          <Grid item xs={12} sm={6}>
-            <Input
-              fullWidth
-              name="ProjectId"
-              placeholder="Project ID"
-              value={formik.values.ProjectId}
+          <div>
+            <label>Role Resource Name</label>
+            <input
+              type="text"
+              name={`RoleResource[${index}].RRName`}
               onChange={formik.handleChange}
+              value={resource.RRName}
             />
-          </Grid>
+          </div>
 
-          <Grid item xs={12} sm={6}>
-            <Input
-              fullWidth
-              name="Project_Code"
-              placeholder="Project Code"
-              value={formik.values.Project_Code}
+          <div>
+            <label>Role Resource Employee</label>
+            <input
+              type="text"
+              name={`RoleResource[${index}].RRemployee`}
               onChange={formik.handleChange}
+              value={resource.RRemployee}
             />
-          </Grid>
+          </div>
+        </div>
+      ))}
 
-          <Grid item xs={12} sm={6}>
-            <Input
-              fullWidth
-              name="Project_Name"
-              placeholder="Project Name"
-              value={formik.values.Project_Name}
-              onChange={formik.handleChange}
-            />
-          </Grid>
+      <button
+        type="button"
+        onClick={() => {
+          formik.setFieldValue("RoleResource", [
+            ...formik.values.RoleResource,
+            {RRId: "", RRName: "", RRemployee: ""},
+          ]);
+        }}
+      >
+        Add Role Resource
+      </button>
 
-          <Grid item xs={12} sm={6}>
-            <Input
-              fullWidth
-              name="Start_Date"
-              type="date"
-              value={formik.values.Start_Date}
-              onChange={formik.handleChange}
-            />
-          </Grid>
+      {/* Project Manager Field */}
+      <h3>Project Manager</h3>
+      <div>
+        <label>Project Manager ID</label>
+        <input
+          type="number"
+          name="Project_Manager.PId"
+          onChange={formik.handleChange}
+          value={formik.values.Project_Manager.PId}
+        />
+      </div>
 
-          <Grid item xs={12} sm={6}>
-            <Input
-              fullWidth
-              name="End_Date"
-              type="date"
-              value={formik.values.End_Date}
-              onChange={formik.handleChange}
-            />
-          </Grid>
+      <div>
+        <label>Project Manager Name</label>
+        <input
+          type="text"
+          name="Project_Manager.Project_Manager_Name"
+          onChange={formik.handleChange}
+          value={formik.values.Project_Manager.Project_Manager_Name}
+        />
+      </div>
 
-          <Grid item xs={12} sm={6}>
-            <Input
-              fullWidth
-              name="client.clientId"
-              placeholder="Client ID"
-              value={formik.values.client.clientId}
-              onChange={formik.handleChange}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <Input
-              fullWidth
-              name="client.clientName"
-              placeholder="Client Name"
-              value={formik.values.client.clientName}
-              onChange={formik.handleChange}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <Input
-              fullWidth
-              name="ProjectName"
-              placeholder="Project Name"
-              value={formik.values.ProjectName}
-              onChange={formik.handleChange}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <Input
-              fullWidth
-              name="Project_Type"
-              placeholder="Project Type"
-              value={formik.values.Project_Type}
-              onChange={formik.handleChange}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <Input
-              fullWidth
-              name="Project_Managers"
-              placeholder="Project Managers"
-              value={formik.values.Project_Managers}
-              onChange={formik.handleChange}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <Input
-              fullWidth
-              name="Project_Status"
-              placeholder="Project Status"
-              value={formik.values.Project_Status}
-              onChange={formik.handleChange}
-            />
-          </Grid>
-
-          {/* Role Resource Inputs */}
-          {formik.values.RoleResource.map((_, index) => (
-            <React.Fragment key={index}>
-              <Grid item xs={12} sm={4}>
-                <Input
-                  fullWidth
-                  name={`RoleResource[${index}].RRId`}
-                  placeholder="Role Resource ID"
-                  value={formik.values.RoleResource[index].RRId}
-                  onChange={formik.handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <Input
-                  fullWidth
-                  name={`RoleResource[${index}].RRName`}
-                  placeholder="Role Resource Name"
-                  value={formik.values.RoleResource[index].RRName}
-                  onChange={formik.handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <Input
-                  fullWidth
-                  name={`RoleResource[${index}].RRemployee`}
-                  placeholder="Role Resource Employee"
-                  value={formik.values.RoleResource[index].RRemployee}
-                  onChange={formik.handleChange}
-                />
-              </Grid>
-            </React.Fragment>
-          ))}
-
-          <Grid item xs={12} sm={6}>
-            <Input
-              fullWidth
-              name="Project_Manager.PId"
-              placeholder="Project Manager ID"
-              value={formik.values.Project_Manager.PId}
-              onChange={formik.handleChange}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <Input
-              fullWidth
-              name="Project_Manager.Project_Manager_Name"
-              placeholder="Project Manager Name"
-              value={formik.values.Project_Manager.Project_Manager_Name}
-              onChange={formik.handleChange}
-            />
-          </Grid>
-
-          <Grid item xs={12}>
-            <Button variant="contained" color="primary" type="submit">
-              Create Project
-            </Button>
-          </Grid>
-        </Grid>
-      </Box>
+      <button type="submit">Submit</button>
     </form>
   );
 };
