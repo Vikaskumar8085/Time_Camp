@@ -19,7 +19,6 @@ function AllProjects({
   RemoveProjects,
   EPhandleSubmit,
   handleEdit,
-
   setIsOpen,
   PItems,
 }) {

@@ -22,9 +22,10 @@ import {
 
 function Employee() {
   const dispatch = useDispatch();
-  const EmployeeItems = useSelector((state) => state?.employee?.EmployeeValues);
+  const fetchemployees = useSelector(
+    (state) => state?.employee?.EmployeeValues
+  );
   const ESItems = useSelector((state) => state?.employee?.EmployeeSingleValues);
-  console.log(ESItems, "EmployeeValues");
   const [IsOpen, setOpen] = React.useState(false);
 
   // Create Employee
@@ -139,7 +140,7 @@ function Employee() {
               />
             )}
           </section>
-          <Employeepage />
+          <Employeepage fetchemployees={fetchemployees} />
         </>
       ),
     },

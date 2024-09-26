@@ -9,7 +9,7 @@ import {
   Paper,
 } from "@mui/material";
 
-function Employeepage() {
+function Employeepage({fetchemployees}) {
   return (
     <div>
       <TableContainer component={Paper}>
@@ -27,7 +27,18 @@ function Employeepage() {
               <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody></TableBody>
+          <TableBody>
+            {fetchemployees?.map((item, index) => {
+              return (
+                <TableRow>
+                  <TableCell key={item.EmployeeId}>{index + 1}</TableCell>
+                  <TableCell>{item?.FirstName}</TableCell>
+                  <TableCell>{item?.LastName}</TableCell>
+                  <TableCell>{item?.Email}</TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
         </Table>
       </TableContainer>
     </div>

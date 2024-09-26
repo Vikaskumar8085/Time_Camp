@@ -9,24 +9,52 @@ import {
   Paper,
 } from "@mui/material";
 import Button from "../../../../common/Button";
+import toast from "react-hot-toast";
 import {useState} from "react";
 import ContractorDrawer from "../../../../components/AdminComponent/ContractoreComponent/ContractorDrawer";
 import {setLoader} from "../../../../redux/slices/loaderSlice";
-import {useDispatch} from "react-redux";
-import {fetchcontractorapicall} from "../../../../apiservice/admin/contractorapiservice";
+import {useDispatch, useSelector} from "react-redux";
+import {
+  addcontractorapicall,
+  fetchcontractorapicall,
+} from "../../../../apiservice/admin/contractorapiservice";
 import {useEffect} from "react";
+import {setContractor} from "../../../../redux/slices/ContractorSlice/contractorSlice";
+
 function ContractorPage() {
   const dispatch = useDispatch();
   const [IsOpen, setOpen] = useState(false);
-  const [iscontractor, setcontractor] = useState([]);
-  console.log(iscontractor, "contractor");
+  const fetchcontractor = useSelector(
+    (state) => state.contractor.contractorValues
+  );
+  console.log(fetchcontractor, "fetchcontractor");
+
+  // contractor handle submit
+
+  const ContractorHandleSubmit = async (values) => {
+    try {
+      dispatch(setLoader(true));
+      const response = await addcontractorapicall(values);
+      if (response.success) {
+        dispatch(setLoader(false));
+        toast.success(response?.message);
+      }
+    } catch (error) {
+      dispatch(setLoader(false));
+      toast.error(error?.response?.error?.message);
+      console.log(error?.message);
+    }
+  };
+
   const getallcontractor = async () => {
     try {
       dispatch(setLoader(true));
       const response = await fetchcontractorapicall();
+      console.log(response, "contracotr");
       if (response.success) {
         dispatch(setLoader(false));
-        setcontractor(response.result);
+        // setcontractor(response.result);
+        dispatch(setContractor(response.result));
       }
     } catch (error) {
       dispatch(setLoader(false));
@@ -42,7 +70,13 @@ function ContractorPage() {
       <Button type="submit" onclick={() => setOpen(true)}>
         Add Contractor
       </Button>
-      {IsOpen && <ContractorDrawer IsOpen={IsOpen} setOpen={setOpen} />}
+      {IsOpen && (
+        <ContractorDrawer
+          IsOpen={IsOpen}
+          setOpen={setOpen}
+          ContractorHandleSubmit={ContractorHandleSubmit}
+        />
+      )}
 
       <TableContainer component={Paper}>
         <Table>
@@ -56,14 +90,13 @@ function ContractorPage() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {iscontractor?.map((item, index) => {
+            {fetchcontractor?.map((item, index) => {
               return (
                 <TableRow>
-                  <TableCell key={item.Contractor_Id}>{index + 1}</TableCell>
-                  <TableCell>{item?.Contractor_FirstName}</TableCell>
-                  <TableCell>{item?.Contaractor_LastName}</TableCell>
-                  <TableCell>{item?.Contractor_Number}</TableCell>
-                  <TableCell>{item?.Created_Date}</TableCell>
+                  <TableCell key={item.EmployeeId}>{index + 1}</TableCell>
+                  <TableCell>{item?.FirstName}</TableCell>
+                  <TableCell>{item?.LastName}</TableCell>
+                  <TableCell>{item?.Email}</TableCell>
                 </TableRow>
               );
             })}

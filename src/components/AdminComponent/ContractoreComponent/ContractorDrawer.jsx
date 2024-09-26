@@ -27,32 +27,30 @@ function ContractorDrawer({
   const time = formatter.format(now);
   const formik = useFormik({
     initialValues: {
-      FirstName: CSItems !== null ? CSItems?.FirstName : "",
-      LastName: CSItems !== null ? CSItems?.LastName : "",
-      Email: CSItems !== null ? CSItems?.Email : "",
-      JoiningDate:
-        CSItems && CSItems.JoiningDate
-          ? moment(CSItems.JoiningDate).format("YYYY-MM-DD")
-          : "",
-
-      Address: CSItems !== null ? CSItems?.Address : "",
-      Phone: CSItems !== null ? CSItems?.Phone : "",
-      Designation: CSItems !== null ? CSItems?.Designation : "",
+      FirstName: "",
+      LastName: "",
+      Email: "",
+      JoiningDate: "",
+      Address: "",
+      Phone: "",
+      Designation: "",
     },
     onSubmit: async (values) => {
-      const formattedDate = moment(values.Created_Date).format("DD/MM/YYYY");
-      const formattedTime = time;
+      // const formattedDate = moment(values.Created_Date).format("DD/MM/YYYY");
+      // const formattedTime = time;
+      // const data = {
+      //   ...values,
+      //   Created_Date: formattedDate,
+      //   Created_Time: formattedTime,
+      // };
+      const formattedDate = moment(values.JoiningDate).format("DD/MM/YYYY");
+
       const data = {
         ...values,
-        Created_Date: formattedDate,
-        Created_Time: formattedTime,
+        JoiningDate: formattedDate,
       };
 
-      if (CSItems !== null) {
-        UpdatecontractorhandleSubmit(data);
-      } else {
-        ContractorHandleSubmit(data);
-      }
+      ContractorHandleSubmit(data);
     },
   });
 
@@ -85,54 +83,98 @@ function ContractorDrawer({
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText="Contractor Name"
-                      placeholder={"Please enter your Contractor Name"}
-                      {...formik.getFieldProps("Contractor_Name")}
+                      labelText="Contractor FirstName"
+                      {...formik.getFieldProps("FirstName")}
+                      placeholder={"Please enter your FirstName"}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText="Contact Number"
-                      {...formik.getFieldProps("Contractor_Number")}
-                      placeholder={"Please enter your Contact Number"}
+                      labelText="Contractor LastName"
+                      {...formik.getFieldProps("LastName")}
+                      placeholder={"Please enter your LastName"}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={6}>
+                    <Input
+                      labelText="Contractor Email"
+                      {...formik.getFieldProps("Email")}
+                      type="email"
+                      placeholder={"Please enter your Email"}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText="Person Name"
-                      {...formik.getFieldProps("Person_Name")}
-                      placeholder={"Please enter Person Name "}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Input
-                      labelText="Remark"
+                      labelText="Contractor Phone"
                       type="text"
-                      {...formik.getFieldProps("Remark")}
-                      placeholder={"Please enter Remark "}
+                      {...formik.getFieldProps("Phone")}
+                      placeholder={"Please enter your Phone"}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText={"Date"}
-                      id="Created_Date"
-                      name="Created_Date"
+                      labelText="Contractor JoiningDate"
                       type="date"
-                      {...formik.getFieldProps("Created_Date")}
-                      placeholder="Please enter Date"
+                      {...formik.getFieldProps("Joining_Date")}
+                      placeholder={"Please enter your Joining_Date"}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={6}>
+                    <Input
+                      labelText="Contractor Designation"
+                      type="text"
+                      {...formik.getFieldProps("Designation")}
+                      placeholder={"Please enter your Designation"}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText="Time"
-                      type="Time"
-                      {...formik.getFieldProps("Created_Time")}
-                      placeholder={"Please enter Date "}
-                      disabled={disabled}
+                      labelText="Contractor Address"
+                      type="text"
+                      {...formik.getFieldProps("Address")}
+                      placeholder={"Please enter your Address"}
                     />
                   </Grid>
+                  {/* <Grid item xs={12} sm={6}>
+                    <Input
+                      labelText="Profile Image"
+                      onChange={(event) => {
+                        formik.setFieldValue(
+                          "Profile_Image",
+                          event.currentTarget.files[0]
+                        );
+                      }}
+                      type="file"
+                      placeholder={"Please enter your  Image"}
+                    />
+                  </Grid> */}
+                  <Grid item xs={12} sm={6}>
+                    <Input
+                      labelText="Contractor Password"
+                      {...formik.getFieldProps("Password")}
+                      placeholder={"Please enter Contractor Password"}
+                    />
+                  </Grid>
+                  {/* <Grid item xs={12} sm={6}>
+                    <TextField
+                      select
+                      {...formik.getFieldProps("managerId")}
+                      placeholder="Select Manager *"
+                    >
+                      <option value="">
+                        <em>Select Manager</em>
+                      </option>
+                      {managers.map((manager) => (
+                        <option key={manager.id} value={manager.id}>
+                          {manager.name}
+                        </option>
+                      ))}
+                    </TextField>
+                  </Grid> */}
                   <Grid item xs={12}>
-                    <Button type={"submit"}>Submit</Button>
+                    <Button type={"submit"}>Add Contractor</Button>
                   </Grid>
                 </Grid>
                 {/* </Box> */}
