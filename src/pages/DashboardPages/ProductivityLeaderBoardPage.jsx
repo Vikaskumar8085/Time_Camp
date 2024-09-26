@@ -6,6 +6,7 @@ import Proutes from "../../common/Proutes";
 import ProductivityLeaderBoardHead from "../../components/Dashboard/ProductivityleaderBoardComponent/ProductivityLeaderBoardHead";
 
 function ProductivityLeaderBoardPage() {
+
   return (
     <>
       <Suspense fallback={<Loader />}>

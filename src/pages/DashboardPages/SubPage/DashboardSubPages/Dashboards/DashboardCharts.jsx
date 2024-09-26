@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import {Grid} from "@mui/material";
 import React from "react";
 import ProductivityLeadearboardChart from "../../../../../components/Dashboard/dashComponent/ProductivityLeaderBoard/ProductivityLeadearboardChart";
 
@@ -13,14 +13,10 @@ function DashboardCharts() {
             </section>
           </Grid>
           <Grid item md={6} xl={6} sm={12} xs={12}>
-            <section className="dashboard_Charts">
-              <ProductivityLeadearboardChart />
-            </section>
+            <section className="dashboard_Charts"></section>
           </Grid>
           <Grid item md={6} xl={6} sm={12} xs={12}>
-            <section className="dashboard_Charts">
-              <ProductivityLeadearboardChart />
-            </section>
+            <section className="dashboard_Charts"></section>
           </Grid>
         </Grid>
       </div>

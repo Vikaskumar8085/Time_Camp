@@ -1,4 +1,5 @@
 import React from "react";
+import {useSelector} from "react-redux";
 import {
   Bar,
   BarChart,
@@ -9,55 +10,44 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import moment from "moment";
 
 function HourByProjectChart() {
+  const totalprojects = useSelector(
+    (state) => state.charts.totalprojectscharts
+  );
+  const dateFormatter = (date) => {
+    // return moment(date).unix();
+    return moment(date).format("DD/MM/YY HH:mm");
+  };
+
+  const startdata = totalprojects.map((item) => item?.Start_Date);
+  const enddata = totalprojects.map((item) => item?.End_Date);
+  const Projectname = totalprojects.map((item) => item?.Project_Name);
+
+  console.log(totalprojects, "totalprojects");
   const data = [
     {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-    },
-    {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-    },
-    {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-    },
-    {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-    },
-    {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-    },
-    {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
+      name: totalprojects?.Project_Name,
+      uv: startdata,
+      pv: enddata,
     },
   ];
   return (
     <ResponsiveContainer width={"100%"} height={400}>
-      <BarChart width={730} height={250} data={data}>
+      <BarChart
+        width={730}
+        height={250}
+        data={totalprojects}
+        tickFormatter={dateFormatter}
+      >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey="Projectname" />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="pv" fill="#8884d8" />
-        <Bar dataKey="uv" fill="#82ca9d" />
+        <Bar dataKey="startdata" fill="#8884d8" />
+        <Bar dataKey="enddata" fill="#82ca9d" />
       </BarChart>
     </ResponsiveContainer>
   );
