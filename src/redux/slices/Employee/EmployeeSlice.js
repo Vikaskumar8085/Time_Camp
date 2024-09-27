@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 const EmployeeSlice = createSlice({
   name: "EmployeeSlice",
@@ -16,5 +16,5 @@ const EmployeeSlice = createSlice({
   },
 });
 
-export const { setEmployee, setSingleEmployee } = EmployeeSlice.actions;
+export const {setEmployee, setSingleEmployee} = EmployeeSlice.actions;
 export default EmployeeSlice.reducer;

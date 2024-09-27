@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import {useState} from "react";
+import {useSelector} from "react-redux";
+import {Route, Routes} from "react-router-dom";
 import ScrollUp from "./common/ScrollUp/ScrollUp";
 import Loader from "./common/Loader";
 import Home from "./pages/Home";
@@ -9,7 +9,7 @@ import Blog from "./pages/Blog";
 import Dashboard from "./pages/DashboardPages/Dashboard";
 import SiginUp from "./pages/AuthPages/SiginUp";
 import Contact from "./pages/Contact";
-import { Toaster } from "react-hot-toast";
+import {Toaster} from "react-hot-toast";
 import Client from "./pages/AdminPages/Client/Client";
 import Adminpage from "./pages/AdminPages/Admin/Adminpage";
 import Employee from "./pages/AdminPages/Employee/Employee";
@@ -41,6 +41,8 @@ import Settings from "./pages/AdminPages/Settings/Settings";
 import Project from "./pages/AdminPages/Project/Project";
 import EmployeeInfo from "./pages/AdminPages/Employee/Employeeinfo/EmployeeInfo";
 import ContractorTimeSheets from "./pages/ContractorPages/ContractorTimeSheets/ContractorTimeSheets";
+import ClientInfo from "./pages/AdminPages/Client/ClientInfo";
+import Contractorinfo from "./pages/AdminPages/Contractor/Contractorinfo";
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -89,7 +91,9 @@ function App() {
         <Route path="/employee" element={<Employee />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/project/:id" element={<Project />} />
+        <Route path="/clientinfo/:id" element={<ClientInfo />} />
         <Route path={"/employeeinfo/:id"} element={<EmployeeInfo />} />
+        <Route path={"/contractorinfo/:id"} element={<Contractorinfo />} />
 
         {/* Admin */}
 

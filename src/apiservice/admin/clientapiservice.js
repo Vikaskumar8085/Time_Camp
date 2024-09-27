@@ -24,3 +24,18 @@ export const deadclientapicall = async () => {
   const response = await apiInstance.get("/v1/get-dead-client");
   return response?.data;
 };
+
+// fetch single client
+export const fetchsingleclientapicall = async (payload) => {
+  const response = await apiInstance.get(`/v1/fetch-single-client/${payload}`);
+  return response.data;
+};
+// fetch client projects
+
+export const fetchclientprojectsapicall = async (payload) => {
+  console.log(payload, "payload");
+  const repsonse = await apiInstance.get(
+    `/v1//fetch-client-projects/${payload}`
+  );
+  return repsonse.data;
+};

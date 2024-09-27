@@ -20,6 +20,7 @@ import {
 } from "../../../../apiservice/admin/contractorapiservice";
 import {useEffect} from "react";
 import {setContractor} from "../../../../redux/slices/ContractorSlice/contractorSlice";
+import { Link } from "react-router-dom";
 
 function ContractorPage() {
   const dispatch = useDispatch();
@@ -97,6 +98,9 @@ function ContractorPage() {
                   <TableCell>{item?.FirstName}</TableCell>
                   <TableCell>{item?.LastName}</TableCell>
                   <TableCell>{item?.Email}</TableCell>
+                  <TableCell>
+                    <Link to={`/contractorinfo/${item?.EmployeeId}`}>view</Link>
+                  </TableCell>
                 </TableRow>
               );
             })}

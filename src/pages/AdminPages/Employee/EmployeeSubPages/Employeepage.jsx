@@ -8,6 +8,7 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
+import {Link} from "react-router-dom";
 
 function Employeepage({fetchemployees}) {
   return (
@@ -20,10 +21,6 @@ function Employeepage({fetchemployees}) {
               <TableCell>Employee FirstName</TableCell>
               <TableCell>Employee LastName</TableCell>
               <TableCell>Employee Email</TableCell>
-              <TableCell> Phone Number</TableCell>
-              <TableCell> Joining Date</TableCell>
-              <TableCell> Designation</TableCell>
-              <TableCell> Address</TableCell>
               <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
@@ -35,6 +32,9 @@ function Employeepage({fetchemployees}) {
                   <TableCell>{item?.FirstName}</TableCell>
                   <TableCell>{item?.LastName}</TableCell>
                   <TableCell>{item?.Email}</TableCell>
+                  <TableCell>
+                    <Link to={`/employeeinfo/${item?.EmployeeId}`}>view</Link>
+                  </TableCell>
                 </TableRow>
               );
             })}

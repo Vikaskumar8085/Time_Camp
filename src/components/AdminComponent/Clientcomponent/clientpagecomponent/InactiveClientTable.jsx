@@ -8,9 +8,9 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import { memo } from "react";
+import {memo} from "react";
 
-function InactiveClientTable({ inactiveclients }) {
+function InactiveClientTable({inactiveclients}) {
   return (
     <>
       <div>

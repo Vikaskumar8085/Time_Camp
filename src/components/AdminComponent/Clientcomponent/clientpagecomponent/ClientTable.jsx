@@ -9,10 +9,11 @@ import {
   Paper,
   Modal,
 } from "@mui/material";
-import { memo } from "react";
-import { useState } from "react";
+import {memo} from "react";
+import {useState} from "react";
+import {Link} from "react-router-dom";
 
-function ClientTable({ fetchclients }) {
+function ClientTable({fetchclients}) {
   return (
     <div>
       <TableContainer component={Paper}>
@@ -41,7 +42,9 @@ function ClientTable({ fetchclients }) {
                     <TableCell>{item?.Client_Address}</TableCell>
                     <TableCell>{item?.Client_Postal_Code}</TableCell>
                     <TableCell>{item?.GstNumber}</TableCell>
-                    <TableCell></TableCell>
+                    <TableCell>
+                      <Link to={`/clientInfo/${item?.Client_Id}`}>view </Link>
+                    </TableCell>
                   </TableRow>
                 </>
               );
