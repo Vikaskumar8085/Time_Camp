@@ -99,6 +99,11 @@ export const Admin = [
     path: "/contractor",
   },
   {
+    title: "Task",
+    icon: <MdSettings />,
+    path: "/Task",
+  },
+  {
     title: "Settings",
     icon: <MdSettings />,
     path: "/settings",
