@@ -43,6 +43,7 @@ import EmployeeInfo from "./pages/AdminPages/Employee/Employeeinfo/EmployeeInfo"
 import ContractorTimeSheets from "./pages/ContractorPages/ContractorTimeSheets/ContractorTimeSheets";
 import ClientInfo from "./pages/AdminPages/Client/ClientInfo";
 import Contractorinfo from "./pages/AdminPages/Contractor/Contractorinfo";
+import Task from "./pages/Task/Task";
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -90,6 +91,7 @@ function App() {
         <Route path="/contractor" element={<Contractor />} />
         <Route path="/employee" element={<Employee />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/task" element={<Task />} />
         <Route path="/project/:id" element={<Project />} />
         <Route path="/clientinfo/:id" element={<ClientInfo />} />
         <Route path={"/employeeinfo/:id"} element={<EmployeeInfo />} />

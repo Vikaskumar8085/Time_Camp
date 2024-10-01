@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 
-function TabComp({ Tabsheader, TabsBody }) {
+function TabComp({Tabsheader, TabsBody}) {
   const [isState, setisState] = useState(0);
   const handleclick = (prev) => {
     setisState(prev);
