@@ -58,3 +58,4 @@ export const EditUserApiCall = async (value) => {
   const respons = await apiInstance.post("/user/edit-user", value);
   return respons;
 };
+

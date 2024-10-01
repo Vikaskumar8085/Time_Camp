@@ -11,9 +11,11 @@ import chartsSlice from "./slices/chartsSlice/chartsSlice";
 import clientinfoslice from "./slices/clientslice/clientinfoslice";
 import employeeinfoslice from "./slices/Employee/employeeinfoslice";
 import contractorinfoSlice from "./slices/ContractorSlice/contractorinfoSlice";
+import resourceslice from "./slices/authslices/resourceslice";
 
 const rootReducer = combineReducers({
   loader: loaderSlice,
+  resource: resourceslice,
   admin: adminSlice,
   clientinfo: clientinfoslice,
   auth: authslice,

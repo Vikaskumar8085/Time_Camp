@@ -16,24 +16,30 @@ import Button from "../../common/Button";
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isdata, setisdata] = useState(false);
 
   // handle submit
   const handleSubmit = async (values) => {
-    try {
-      dispatch(setLoader(true));
-      const response = await loginauth(values);
-      if (response?.data?.success) {
+    if (isdata) {
+      navigate("/Employee-dashboard");
+      setisdata("");
+    } else {
+      try {
+        dispatch(setLoader(true));
+        const response = await loginauth(values);
+        if (response?.data?.success) {
+          dispatch(setLoader(false));
+          dispatch(setLogin(response?.data?.data));
+          toast.success(response?.data?.message);
+          window.location.href = "/dashboard";
+        } else {
+          toast.error(response?.data?.message);
+        }
+      } catch (error) {
         dispatch(setLoader(false));
-        dispatch(setLogin(response?.data?.data));
-        toast.success(response?.data?.message);
-        window.location.href = "/dashboard";
-      } else {
-        toast.error(response?.data?.message);
+        toast.error(error?.response?.data?.message);
+        navigate("/login");
       }
-    } catch (error) {
-      dispatch(setLoader(false));
-      toast.error(error?.response?.data?.message);
-      navigate("/login");
     }
   };
 
@@ -73,6 +79,8 @@ function Login() {
               <img src={GoogleIcons} alt="no-image" />
               <span> Login with google </span>
             </Button>
+
+            <button onClick={() => setisdata(true)}>employee</button>
           </div>
         </div>
       </Suspense>
