@@ -21,7 +21,7 @@ function TaskDrawer({IsOpen, setOpen}) {
           <Typography variant="h6">Upload Task</Typography>
         </div>
         <form onSubmit={formik.handleSubmit}>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} style={{padding: "16px"}}>
             <Grid item md={12} lg={12} sm={12} xs={12}>
               <Input
                 type="file"

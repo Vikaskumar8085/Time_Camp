@@ -29,8 +29,6 @@ function Company() {
     }
   };
 
-
-
   const TabHeader = [{title: "Company"}];
   const Tabsbody = [
     {
@@ -52,6 +50,10 @@ function Company() {
         </Proutes>
       ) : (
         <Proutes>
+          <button onClick={() => {
+            localStorage.clear();
+            window.location.href="/login"
+          }}> logout </button>
           <div className="company_wrapper">
             <div className="company_box">
               <Companyregistration companyhandlesubmit={companyhandlesubmit} />

@@ -7,7 +7,7 @@ import TabComp from "../../common/TabComp";
 import TaskPages from "./Subpages/TaskPages";
 
 function Task() {
-  const tabsheader = [{title: "ALl Tasks"}, {title: "Task List"}];
+  const tabsheader = [{title: "ALl Tasks"}];
 
   const tbody = [
     {

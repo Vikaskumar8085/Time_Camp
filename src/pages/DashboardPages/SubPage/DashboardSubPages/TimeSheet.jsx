@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux";
 import Loader from "../../../../common/Loader";
 import TabComp from "../../../../common/TabComp";
 import ProjectTime from "../TImeSheet/ProjectTime";
+import TImeSheets from "../TImeSheet/TImeSheets";
 import TImeSummary from "../TImeSheet/TImeSummary";
 
 function TimeSheet() {
@@ -20,7 +21,7 @@ function TimeSheet() {
   ];
   const Tabsbody = [
     {
-      content: <>timesheet</>,
+      content: <><TImeSheets/></>,
     },
     {
       content: (

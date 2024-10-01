@@ -8,7 +8,7 @@ import {
   TableRow,
   TableCell,
 } from "@mui/material";
-import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
+import {MdOutlineDelete, MdOutlineEdit} from "react-icons/md";
 import Button from "../../../../../common/Button";
 import ProjectDrawer from "../../../../../components/AdminComponent/ProjectComponent/ProjectDrawer";
 
@@ -43,7 +43,7 @@ function AllProjects({
 
       {/* table project */}
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{minWidth: 650}} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>ID</TableCell>
@@ -64,7 +64,7 @@ function AllProjects({
               return (
                 <>
                   <TableRow
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    sx={{"&:last-child td, &:last-child th": {border: 0}}}
                   >
                     <TableCell key={index}>{index + 1}</TableCell>
                     <TableCell>{item?.Project_Name}</TableCell>
@@ -79,12 +79,12 @@ function AllProjects({
                     <TableCell>
                       <span onClick={() => RemoveProjects(item?.Project_Id)}>
                         <MdOutlineDelete
-                          style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                          style={{fontSize: "1.2em", margin: "0px 3px"}}
                         />
                       </span>
                       <span onClick={() => handleEdit(item)}>
                         <MdOutlineEdit
-                          style={{ fontSize: "1.2em", margin: "0px 3px" }}
+                          style={{fontSize: "1.2em", margin: "0px 3px"}}
                         />
                       </span>
                     </TableCell>
