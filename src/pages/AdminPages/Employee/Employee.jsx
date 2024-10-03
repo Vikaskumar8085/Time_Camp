@@ -6,7 +6,6 @@ import EmployeeDrawer from "../../../components/AdminComponent/EmployeeComponent
 import TabComp from "../../../common/TabComp";
 import {setLoader} from "../../../redux/slices/loaderSlice";
 import {useDispatch, useSelector} from "react-redux";
-
 import toast from "react-hot-toast";
 import {
   setEmployee,
@@ -112,6 +111,11 @@ function Employee() {
     }
   };
 
+  const handleOpen = (value) => {
+    console.log(value,"vlaue")
+    setOpen(true);
+  };
+
   useEffect(() => {
     getallemployee();
     if (!localStorage.getItem("company")) {
@@ -140,7 +144,10 @@ function Employee() {
               />
             )}
           </section>
-          <Employeepage fetchemployees={fetchemployees} />
+          <Employeepage
+            handleOpen={handleOpen}
+            fetchemployees={fetchemployees}
+          />
         </>
       ),
     },

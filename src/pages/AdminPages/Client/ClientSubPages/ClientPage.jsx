@@ -49,6 +49,11 @@ function ClientPage() {
     }
   };
 
+  const handleOpen = (value) => {
+    setOpen(true);
+    console.log(value, "Lvlauelsf");
+  };
+
   React.useEffect(() => {
     fetchallclients();
   }, [0]);
@@ -67,7 +72,7 @@ function ClientPage() {
           />
         )}
       </section>
-      <ClientTable fetchclients={fetchclients} />
+      <ClientTable fetchclients={fetchclients} handleOpen={handleOpen} />
     </>
   );
 }

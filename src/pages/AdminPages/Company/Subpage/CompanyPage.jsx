@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import CompanyAddDrawer from "../../../../components/AdminComponent/Company/CompanyAddDrawer";
 import Button from "../../../../common/Button";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {
   Table,
   TableBody,
@@ -11,24 +11,39 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
+
+import {CiEdit} from "react-icons/ci";
 import {setLoader} from "../../../../redux/slices/loaderSlice";
 import {getcompanyapicall} from "../../../../apiservice/admin/companyapiservice";
+import {
+  setcompany,
+  setSingleCompany,
+} from "../../../../redux/slices/companyslice/companyslice";
 
 function CompanyPage() {
   const [IsOpen, setOpen] = useState(false);
-  const [iscompanydata, setiscompanydata] = useState([]);
+
   const dispatch = useDispatch();
+  const companydata = useSelector((state) => state.company.values);
+  const CValue = useSelector((state) => state.company.singlevalues);
+  console.log(CValue, "Companysingledata");
 
   const fetchcompanyfunction = async () => {
     try {
       const response = await getcompanyapicall();
       console.log(response, "c");
       if (response?.success) {
-        setiscompanydata(response?.companydata);
+        dispatch(setcompany(response?.companydata));
       }
     } catch (error) {
       dispatch(setLoader(false));
     }
+  };
+
+  const handleOpne = (values) => {
+    console.log(values, "values");
+    setOpen(true);
+    dispatch(setSingleCompany(values));
   };
 
   useEffect(() => {
@@ -38,7 +53,9 @@ function CompanyPage() {
   return (
     <div>
       {/* <Button onclick={() => setOpen(true)}>Edit Company</Button> */}
-      {IsOpen && <CompanyAddDrawer IsOpen={IsOpen} setOpen={setOpen} />}
+      {IsOpen && (
+        <CompanyAddDrawer IsOpen={IsOpen} setOpen={setOpen} CValue={CValue} />
+      )}
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -56,16 +73,19 @@ function CompanyPage() {
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell>{iscompanydata?.Company_Name}</TableCell>
-              <TableCell>{iscompanydata?.CompanyWesite}</TableCell>
-              <TableCell>{iscompanydata?.Company_Email}</TableCell>
-              <TableCell>{iscompanydata?.Employee_No}</TableCell>
-              <TableCell>{iscompanydata?.Established_date}</TableCell>
-              <TableCell>{iscompanydata?.Phone}</TableCell>
-              <TableCell>{iscompanydata?.Postal_Code}</TableCell>
-              <TableCell>{iscompanydata?.Tex_Number}</TableCell>
+              <TableCell>{companydata?.Company_Name}</TableCell>
+              <TableCell>{companydata?.CompanyWesite}</TableCell>
+              <TableCell>{companydata?.Company_Email}</TableCell>
+              <TableCell>{companydata?.Employee_No}</TableCell>
+              <TableCell>{companydata?.Established_date}</TableCell>
+              <TableCell>{companydata?.Phone}</TableCell>
+              <TableCell>{companydata?.Postal_Code}</TableCell>
+              <TableCell>{companydata?.Tex_Number}</TableCell>
               <TableCell>
-                <button>Edit</button>
+                <CiEdit
+                  style={{fontSize: "1.5em"}}
+                  onClick={() => handleOpne(companydata)}
+                />
               </TableCell>
             </TableRow>
           </TableBody>

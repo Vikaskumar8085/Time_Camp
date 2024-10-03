@@ -6,6 +6,7 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Typography,
 } from "@mui/material";
 import React from "react";
 import {useEffect} from "react";
@@ -37,11 +38,37 @@ function EmployeeallProjects() {
   }, [0]);
   return (
     <>
+      <selection>
+        <h1>selection</h1>
+      </selection>
       <TableContainer component={Paper}>
-        <Table>
+        <Table stickyHeader>
           <TableHead>
             <TableRow>
-              <TableCell>head</TableCell>
+              <TableCell>
+                <Typography variant="h6">Project Code</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">Project Name</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">Project Managers</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">Project Status</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">Project Type</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">Start Date</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">Roles</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="h6">Client Name</Typography>
+              </TableCell>
             </TableRow>
           </TableHead>
 
@@ -55,7 +82,11 @@ function EmployeeallProjects() {
                   <TableCell>{item.Project_Status}</TableCell>
                   <TableCell>{item.Project_Typ}</TableCell>
                   <TableCell>{item.Start_Dat}</TableCell>
-                  <TableCell>{item?.RoleResource?.map((item,index)=>{return item?.RRName})}</TableCell>
+                  <TableCell>
+                    {item?.RoleResource?.map((item, index) => {
+                      return item?.RRName;
+                    })}
+                  </TableCell>
                   <TableCell>{item.client?.clientName}</TableCell>
                 </TableRow>
               );

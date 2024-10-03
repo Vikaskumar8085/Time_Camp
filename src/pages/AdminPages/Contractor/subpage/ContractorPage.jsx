@@ -20,7 +20,9 @@ import {
 } from "../../../../apiservice/admin/contractorapiservice";
 import {useEffect} from "react";
 import {setContractor} from "../../../../redux/slices/ContractorSlice/contractorSlice";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import {CiEdit} from "react-icons/ci";
+import {IoEyeOutline} from "react-icons/io5";
 
 function ContractorPage() {
   const dispatch = useDispatch();
@@ -62,6 +64,13 @@ function ContractorPage() {
     }
   };
 
+  // handle Open
+
+  const handleOpen = (value) => {
+    console.log("llllllllllllllllllll", value);
+    setOpen(true);
+  };
+
   useEffect(() => {
     getallcontractor();
   }, [0]);
@@ -99,7 +108,16 @@ function ContractorPage() {
                   <TableCell>{item?.LastName}</TableCell>
                   <TableCell>{item?.Email}</TableCell>
                   <TableCell>
-                    <Link to={`/contractorinfo/${item?.EmployeeId}`}>view</Link>
+                    <Link
+                      to={`/contractorinfo/${item?.EmployeeId}`}
+                      style={{textDecoration: "none"}}
+                    >
+                      <IoEyeOutline style={{fontSize: "1.5em"}} />
+                    </Link>
+                    <CiEdit
+                      style={{fontSize: "1.5rem", marginLeft: "10px"}}
+                      onClick={() => handleOpen(item)}
+                    />
                   </TableCell>
                 </TableRow>
               );

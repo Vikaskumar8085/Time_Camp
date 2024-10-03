@@ -10,10 +10,11 @@ import {
   Modal,
 } from "@mui/material";
 import {memo} from "react";
-import {useState} from "react";
+import {CiEdit} from "react-icons/ci";
+import {IoEyeOutline} from "react-icons/io5";
 import {Link} from "react-router-dom";
 
-function ClientTable({fetchclients}) {
+function ClientTable({fetchclients, handleOpen}) {
   return (
     <div>
       <TableContainer component={Paper}>
@@ -43,7 +44,16 @@ function ClientTable({fetchclients}) {
                     <TableCell>{item?.Client_Postal_Code}</TableCell>
                     <TableCell>{item?.GstNumber}</TableCell>
                     <TableCell>
-                      <Link to={`/clientInfo/${item?.Client_Id}`}>view </Link>
+                      <Link
+                        to={`/clientinfo/${item?.Client_Id}`}
+                        style={{textDecoration: "none"}}
+                      >
+                        <IoEyeOutline style={{fontSize: "1.5em"}} />
+                      </Link>
+                      <CiEdit
+                        style={{fontSize: "1.5rem", marginLeft: "10px"}}
+                        onClick={() => handleOpen(item)}
+                      />
                     </TableCell>
                   </TableRow>
                 </>

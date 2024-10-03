@@ -9,6 +9,7 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Typography,
 } from "@mui/material";
 import {
   setActiveEmpProjects,
@@ -41,9 +42,39 @@ function EmployeeInActiveProjects() {
   }, [0]);
 
   return (
-    <div>
-      {" "}
+    <>
+      <selection>
+        <h1>selection</h1>
+      </selection>
       <TableContainer component={Paper}>
+        <TableHead>
+          <TableRow>
+            <TableCell>
+              <Typography variant="h6">Project Code</Typography>
+            </TableCell>
+            <TableCell>
+              <Typography variant="h6">Project Name</Typography>
+            </TableCell>
+            <TableCell>
+              <Typography variant="h6">Project Managers</Typography>
+            </TableCell>
+            <TableCell>
+              <Typography variant="h6">Project Status</Typography>
+            </TableCell>
+            <TableCell>
+              <Typography variant="h6">Project Type</Typography>
+            </TableCell>
+            <TableCell>
+              <Typography variant="h6">Start Date</Typography>
+            </TableCell>
+            <TableCell>
+              <Typography variant="h6">Roles</Typography>
+            </TableCell>
+            <TableCell>
+              <Typography variant="h6">Client Name</Typography>
+            </TableCell>
+          </TableRow>
+        </TableHead>
         <TableBody>
           {employeeinactiveprojects.map((item, index) => {
             return (
@@ -59,7 +90,7 @@ function EmployeeInActiveProjects() {
           })}
         </TableBody>
       </TableContainer>
-    </div>
+    </>
   );
 }
 

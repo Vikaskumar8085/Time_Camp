@@ -12,10 +12,14 @@ import clientinfoslice from "./slices/clientslice/clientinfoslice";
 import employeeinfoslice from "./slices/Employee/employeeinfoslice";
 import contractorinfoSlice from "./slices/ContractorSlice/contractorinfoSlice";
 import resourceslice from "./slices/authslices/resourceslice";
+import employeetimesheetslice from "./employeeslices/employeeTimeSheets/employeetimesheetslice";
+import employeeteamslice from "./employeeslices/employeeTeamslice/employeeteamslice";
+import companyslice from "./slices/companyslice/companyslice";
 
 const rootReducer = combineReducers({
   loader: loaderSlice,
   resource: resourceslice,
+  company: companyslice,
   admin: adminSlice,
   clientinfo: clientinfoslice,
   auth: authslice,
@@ -27,6 +31,8 @@ const rootReducer = combineReducers({
   project: projectslice,
   timesheet: TimesheetSlice,
   employeeproject: employeeprojectslice,
+  employeetimesheet: employeetimesheetslice,
+  employeeteam: employeeteamslice,
 });
 
 export default rootReducer;

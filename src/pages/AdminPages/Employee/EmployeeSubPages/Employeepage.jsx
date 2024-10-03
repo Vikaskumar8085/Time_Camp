@@ -9,8 +9,9 @@ import {
   Paper,
 } from "@mui/material";
 import {Link} from "react-router-dom";
-
-function Employeepage({fetchemployees}) {
+import {IoEyeOutline} from "react-icons/io5";
+import {CiEdit} from "react-icons/ci";
+function Employeepage({handleOpen, fetchemployees}) {
   return (
     <div>
       <TableContainer component={Paper}>
@@ -33,7 +34,16 @@ function Employeepage({fetchemployees}) {
                   <TableCell>{item?.LastName}</TableCell>
                   <TableCell>{item?.Email}</TableCell>
                   <TableCell>
-                    <Link to={`/employeeinfo/${item?.EmployeeId}`}>view</Link>
+                    <Link
+                      to={`/employeeinfo/${item?.EmployeeId}`}
+                      style={{textDecoration: "none"}}
+                    >
+                      <IoEyeOutline style={{fontSize: "1.5em"}} />
+                    </Link>
+                    <CiEdit
+                      style={{fontSize: "1.5rem", marginLeft: "10px"}}
+                      onClick={() => handleOpen(item.EmployeeId)}
+                    />
                   </TableCell>
                 </TableRow>
               );

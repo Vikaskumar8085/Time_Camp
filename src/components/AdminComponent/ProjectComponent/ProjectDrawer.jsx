@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import {Drawer} from "@mui/material";
 import {useFormik} from "formik";
+import ProjectForm from "./ProjectForm";
 const ProjectDrawer = ({PhandleSubmit, IsOpen, handleClose}) => {
   const formik = useFormik({
     initialValues: {
@@ -35,7 +36,9 @@ const ProjectDrawer = ({PhandleSubmit, IsOpen, handleClose}) => {
   });
   return (
     <>
-      <Drawer anchor="right" open={IsOpen} onClose={handleClose}></Drawer>
+      <Drawer anchor="right" open={IsOpen} onClose={handleClose}>
+        <ProjectForm />
+      </Drawer>
     </>
   );
 };

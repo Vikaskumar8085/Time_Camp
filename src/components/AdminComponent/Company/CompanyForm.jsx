@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { TextField, Button, Grid, Typography, Container } from "@mui/material";
+import React, {useState} from "react";
+import {TextField, Button, Grid, Typography, Container} from "@mui/material";
 
 const CompanyForm = () => {
   const [formData, setFormData] = useState({
@@ -9,8 +9,8 @@ const CompanyForm = () => {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const {name, value} = e.target;
+    setFormData({...formData, [name]: value});
   };
 
   const handleSubmit = (e) => {
