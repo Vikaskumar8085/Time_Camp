@@ -98,9 +98,7 @@ function Sidebar({Role}) {
         <ul>
           {IsRole === "SuperAdmin" && <>{IsSuperAdmin}</>}
           {IsRole === "Admin" && <>{IsAdmin}</>}
-          {/* {IsRole === "Employee" && <>{IsEmployee}</>}
-          {IsRole === "Contractor" && <>{IsContractor}</>}
-          {IsRole === "Manager" && <>{IsManager}</>} */}
+     
         </ul>
       </aside>
     </div>

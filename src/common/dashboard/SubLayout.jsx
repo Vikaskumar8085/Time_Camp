@@ -22,8 +22,6 @@ function SubLayout({children}) {
       : "";
   });
 
-  console.log(roleextract, "ol");
-
   const fetchresourcedata = async () => {
     try {
       dispatch(setLoader(true));
@@ -58,3 +56,74 @@ function SubLayout({children}) {
 }
 
 export default SubLayout;
+
+// import React from "react";
+// import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+
+// function App() {
+//   const [roletype, setRoletype] = React.useState([
+//     "Employee",
+//     "Contractor",
+//     "Manager",
+//   ]);
+
+//   console.log("roletype", roletype[0]);
+
+//   const TypeofRole = {
+//     Employee: "Employee",
+//     Contractor: "Contractor",
+//     Manager: "Manager",
+//   };
+
+//   // Create links based on roles
+//   const roleLinks = roletype.map((item) => {
+//     if (item === TypeofRole.Employee) {
+//       return (
+//         <li key={item}>
+//           <Link to="/employee">Employee Dashboard</Link>
+//         </li>
+//       );
+//     } else if (item === TypeofRole.Manager) {
+//       return (
+//         <li key={item}>
+//           <Link to="/manager">Manager Dashboard</Link>
+//         </li>
+//       );
+//     } else if (item === TypeofRole.Contractor) {
+//       return (
+//         <li key={item}>
+//           <Link to="/contractor">Contractor Dashboard</Link>
+//         </li>
+//       );
+//     }
+//     return null; // Ensure to return null for unmatched items
+//   });
+
+//   return (
+//     <>
+//       <div>
+//         <button onClick={() => setRoletype(["Contractor","Manager"])}>
+//           Set Type
+//         </button>
+//         <ul>{roleLinks}</ul> {/* Display links here */}
+//         <Routes>
+//           <Route
+//             path="/employee"
+//             element={<div>Welcome to the Employee Dashboard</div>}
+//           />
+//           <Route
+//             path="/manager"
+//             element={<div>Welcome to the Manager Dashboard</div>}
+//           />
+//           <Route
+//             path="/contractor"
+//             element={<div>Welcome to the Contractor Dashboard</div>}
+//           />
+//           {/* Add more routes as needed */}
+//         </Routes>
+//       </div>
+//     </>
+//   );
+// }
+
+// export default App;
