@@ -44,6 +44,7 @@ import ContractorTimeSheets from "./pages/ContractorPages/ContractorTimeSheets/C
 import ClientInfo from "./pages/AdminPages/Client/ClientInfo";
 import Contractorinfo from "./pages/AdminPages/Contractor/Contractorinfo";
 import Task from "./pages/Task/Task";
+import ContractorTeam from "./pages/ContractorPages/ContractorTeam/ContractorTeam";
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -133,6 +134,8 @@ function App() {
           path="/contractor-timesheets"
           element={<ContractorTimeSheets />}
         />
+
+        <Route path={"/contractor-team"} element={<ContractorTeam />} />
         {/* contractor Page */}
         {/* Manager Pages */}
 

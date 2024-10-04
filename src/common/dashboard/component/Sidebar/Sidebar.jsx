@@ -37,54 +37,54 @@ function Sidebar({Role}) {
     );
   });
 
-  const IsEmployee = Employee?.map((item, index) => {
-    return (
-      <>
-        <li key={index}>
-          <NavLink
-            to={item?.path}
-            className={({isActive}) => (isActive ? "activesidebarlink" : "")}
-          >
-            <span>{item?.icon}</span>
-            {item?.title}
-          </NavLink>
-        </li>
-      </>
-    );
-  });
+  // const IsEmployee = Employee?.map((item, index) => {
+  //   return (
+  //     <>
+  //       <li key={index}>
+  //         <NavLink
+  //           to={item?.path}
+  //           className={({isActive}) => (isActive ? "activesidebarlink" : "")}
+  //         >
+  //           <span>{item?.icon}</span>
+  //           {item?.title}
+  //         </NavLink>
+  //       </li>
+  //     </>
+  //   );
+  // });
 
-  const IsContractor = Contractor?.map((item, index) => {
-    return (
-      <>
-        <li key={index}>
-          <NavLink
-            to={item?.path}
-            className={({isActive}) => (isActive ? "activesidebarlink" : "")}
-          >
-            <span>{item?.icon}</span>
-            {item?.title}
-          </NavLink>
-        </li>
-      </>
-    );
-  });
+  // const IsContractor = Contractor?.map((item, index) => {
+  //   return (
+  //     <>
+  //       <li key={index}>
+  //         <NavLink
+  //           to={item?.path}
+  //           className={({isActive}) => (isActive ? "activesidebarlink" : "")}
+  //         >
+  //           <span>{item?.icon}</span>
+  //           {item?.title}
+  //         </NavLink>
+  //       </li>
+  //     </>
+  //   );
+  // });
 
-  // Manager
-  const IsManager = Manager?.map((item, index) => {
-    return (
-      <>
-        <li key={index}>
-          <NavLink
-            to={item?.path}
-            className={({isActive}) => (isActive ? "activesidebarlink" : "")}
-          >
-            <span>{item?.icon}</span>
-            {item?.title}
-          </NavLink>
-        </li>
-      </>
-    );
-  });
+  // // Manager
+  // const IsManager = Manager?.map((item, index) => {
+  //   return (
+  //     <>
+  //       <li key={index}>
+  //         <NavLink
+  //           to={item?.path}
+  //           className={({isActive}) => (isActive ? "activesidebarlink" : "")}
+  //         >
+  //           <span>{item?.icon}</span>
+  //           {item?.title}
+  //         </NavLink>
+  //       </li>
+  //     </>
+  //   );
+  // });
   return (
     <div className="sidebar">
       <div className="side_logo">
@@ -98,7 +98,6 @@ function Sidebar({Role}) {
         <ul>
           {IsRole === "SuperAdmin" && <>{IsSuperAdmin}</>}
           {IsRole === "Admin" && <>{IsAdmin}</>}
-     
         </ul>
       </aside>
     </div>
