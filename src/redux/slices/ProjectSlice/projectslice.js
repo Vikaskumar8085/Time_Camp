@@ -1,10 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 const Projectslice = createSlice({
   name: "Projectslice",
   initialState: {
     value: [],
     singleValue: null,
+    resources: [],
   },
   reducers: {
     setProjectValues: (state, action) => {
@@ -13,8 +14,12 @@ const Projectslice = createSlice({
     setSingelProject: (state, action) => {
       state.singleValue = action.payload;
     },
+    setResources: (state, action) => {
+      state.resources = action.payload;
+    },
   },
 });
 
-export const { setProjectValues, setSingelProject } = Projectslice.actions;
+export const {setProjectValues, setSingelProject, setResources} =
+  Projectslice.actions;
 export default Projectslice.reducer;

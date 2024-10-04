@@ -26,6 +26,8 @@ import {
 } from "@mui/material";
 import Input from "../../../common/Input/Input";
 import InActiveAdmins from "./AdminSubpages/InActiveAdmins";
+import {IoEyeOutline} from "react-icons/io5";
+import { CiEdit } from "react-icons/ci";
 function Adminpage() {
   const [isAdmin, setIsAdmin] = React.useState([]);
   const [IsView, setIsView] = React.useState("list");
@@ -110,6 +112,7 @@ function Adminpage() {
                       <TableCell>LastName</TableCell>
                       <TableCell>Email</TableCell>
                       <TableCell>Photo</TableCell>
+                      <TableCell>Actions</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -122,6 +125,10 @@ function Adminpage() {
                           <img src={row?.Photo} />
                         </TableCell>
                         <TableCell>{row?.Role}</TableCell>
+                        <TableCell>
+                          <IoEyeOutline />
+                          <CiEdit/>
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

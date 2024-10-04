@@ -1,14 +1,18 @@
-import { Grid } from "@mui/material";
+import {Grid} from "@mui/material";
 import React from "react";
 import TotalWorkhourIcon from "../../../assest/DashboardIcons/TotalWorkHours.png";
 import TotalClientIcon from "../../../assest/DashboardIcons/TotalClient.png";
 import TotalProjectIcon from "../../../assest/DashboardIcons/project.png";
 import TotalEmployeeIcon from "../../../assest/DashboardIcons/Employess.png";
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 
 function DashHeadSection() {
   const totalEmployee = useSelector((state) => state.employee?.EmployeeValues);
   const totalClient = useSelector((state) => state?.admin?.clientValue);
+  const total_employee = useSelector((state) => state?.project?.resources);
+  const total_project = useSelector((state) => state?.project?.value);
+  console.log(total_employee, "adlfals");
+  console.log(total_project, "total projects");
 
   return (
     <>
@@ -48,7 +52,7 @@ function DashHeadSection() {
                 </div>
                 <div className="active_content">
                   <h1>Total Project</h1>
-                  <p>{totalClient.length}</p>
+                  <p>{Number(total_project.length)}</p>
                 </div>
               </div>
             </div>

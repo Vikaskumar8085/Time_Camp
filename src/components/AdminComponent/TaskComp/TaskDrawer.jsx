@@ -3,6 +3,7 @@ import {Drawer, Grid, Typography} from "@mui/material";
 import {useFormik} from "formik";
 import Button from "../../../common/Button";
 import Input from "../../../common/Input/Input";
+import TaskForm from "./TaskForm";
 
 function TaskDrawer({IsOpen, setOpen}) {
   const formik = useFormik({
@@ -17,7 +18,7 @@ function TaskDrawer({IsOpen, setOpen}) {
   return (
     <>
       <Drawer anchor="right" open={IsOpen} onClose={() => setOpen(false)}>
-        <div className="task_box">
+        {/* <div className="task_box">
           <Typography variant="h6">Upload Task</Typography>
         </div>
         <form onSubmit={formik.handleSubmit}>
@@ -33,7 +34,8 @@ function TaskDrawer({IsOpen, setOpen}) {
               <Button type="submit">Add Task</Button>
             </Grid>
           </Grid>
-        </form>
+        </form> */}
+        <TaskForm/>
       </Drawer>
     </>
   );

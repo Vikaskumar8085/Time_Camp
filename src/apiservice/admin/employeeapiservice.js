@@ -27,3 +27,10 @@ export const fetchemployeeprojectsapicall = async (payload) => {
   );
   return response.data;
 };
+
+// fetch all resources
+
+export const fetchallresources = async () => {
+  const response = await apiInstance.get("/v1/fetch-all-resources");
+  return response.data;
+};

@@ -48,7 +48,7 @@ function Project() {
     try {
       dispatch(setLoader(true));
       const response = await getallprojects();
-      console.log(response)
+      console.log(response);
       if (response.success) {
         dispatch(setProjectValues(response?.data));
         dispatch(setLoader(false));

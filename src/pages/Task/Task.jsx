@@ -5,9 +5,10 @@ import Loader from "../../common/Loader";
 import Proutes from "../../common/Proutes";
 import TabComp from "../../common/TabComp";
 import TaskPages from "./Subpages/TaskPages";
+import TaskUploadPages from "./Subpages/TaskUploadPages";
 
 function Task() {
-  const tabsheader = [{title: "ALl Tasks"}];
+  const tabsheader = [{title: "ALl Tasks"}, {title: "Upload Tasks"}];
 
   const tbody = [
     {
@@ -17,7 +18,14 @@ function Task() {
         </>
       ),
     },
-    {content: <> all tasks</>},
+    {
+      content: (
+        <>
+          {" "}
+          <TaskUploadPages />
+        </>
+      ),
+    },
   ];
   return (
     <Suspense fallback={<Loader />}>
