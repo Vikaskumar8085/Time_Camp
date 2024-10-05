@@ -1,5 +1,6 @@
-import {combineReducers} from "@reduxjs/toolkit";
+import { combineReducers } from "@reduxjs/toolkit";
 import loaderSlice from "./slices/loaderSlice";
+import clientslice from "./slices/clientslice/clientslices";
 import authslice from "./slices/authslices/authslice";
 import adminSlice from "./slices/AdminSlice/adminSlice";
 import contractorSlice from "./slices/ContractorSlice/contractorSlice";
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   resource: resourceslice,
   company: companyslice,
   admin: adminSlice,
+  client: clientslice,
   clientinfo: clientinfoslice,
   auth: authslice,
   contractor: contractorSlice,

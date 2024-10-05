@@ -9,7 +9,7 @@ import {
   Paper,
 } from "@mui/material";
 import { memo } from "react";
-function ActiveclientTable({ activeclients }) {
+function ActiveclientTable({ fetchactiveclients }) {
   return (
     <>
       <div>
@@ -27,7 +27,7 @@ function ActiveclientTable({ activeclients }) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {activeclients?.map((item, index) => {
+              {fetchactiveclients?.map((item, index) => {
                 return (
                   <>
                     <TableRow>

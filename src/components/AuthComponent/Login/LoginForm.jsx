@@ -12,7 +12,7 @@ function LoginForm({ handleSubmit }) {
       Email: "",
       Password: "",
     },
-    validate,
+    // validate,
     onSubmit: (values) => {
       handleSubmit(values);
       formik.resetForm();

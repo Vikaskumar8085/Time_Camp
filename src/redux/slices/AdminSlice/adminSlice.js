@@ -7,14 +7,11 @@ const adminSlice = createSlice({
     ClinetSingleValue: null,
   },
   reducers: {
-    setClients: (state, action) => {
-      state.clientValue = action.payload;
-    },
     SetSingleClientsFunc: (state, action) => {
       state.ClinetSingleValue = action.payload;
     },
   },
 });
 
-export const { setClients, SetSingleClientsFunc } = adminSlice.actions;
+export const { SetSingleClientsFunc } = adminSlice.actions;
 export default adminSlice.reducer;

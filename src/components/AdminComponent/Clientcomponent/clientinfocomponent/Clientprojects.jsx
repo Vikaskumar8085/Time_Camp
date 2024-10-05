@@ -1,5 +1,5 @@
 import React from "react";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import Card from "../../../../common/Card";
 
 function Clientprojects() {
@@ -7,7 +7,6 @@ function Clientprojects() {
     (state) => state.clientinfo.clientprojects
   );
 
-  console.log(clientprojectsdata, "client project data");
   return (
     <div>
       <Card>

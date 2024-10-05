@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const EmployeeSlice = createSlice({
   name: "employeeslice",
@@ -8,7 +8,6 @@ const EmployeeSlice = createSlice({
   },
   reducers: {
     setEmployeeprojects: (state, action) => {
-      console.log("action payload employee projects", action.payload);
       state.employeeprojects = action.payload;
     },
     setEmployeeprofile: (state, action) => {
@@ -17,6 +16,7 @@ const EmployeeSlice = createSlice({
   },
 });
 
-export const {setEmployeeprofile, setEmployeeprojects} = EmployeeSlice.actions;
+export const { setEmployeeprofile, setEmployeeprojects } =
+  EmployeeSlice.actions;
 
 export default EmployeeSlice.reducer;

@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const clientinfoslice = createSlice({
   name: "clientinfo",
@@ -16,5 +16,5 @@ const clientinfoslice = createSlice({
   },
 });
 
-export const {setClientProfile, setClientProjects} = clientinfoslice.actions;
+export const { setClientProfile, setClientProjects } = clientinfoslice.actions;
 export default clientinfoslice.reducer;

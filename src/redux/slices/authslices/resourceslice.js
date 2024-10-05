@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const resourceslice = createSlice({
   name: "resourceslice",
@@ -7,10 +7,9 @@ const resourceslice = createSlice({
   },
   reducers: {
     setfetchResource: (state, action) => {
-        console.log(action.payload ,"action payload")
       state.values = action.payload;
     },
   },
 });
-export const {setfetchResource} = resourceslice.actions;
+export const { setfetchResource } = resourceslice.actions;
 export default resourceslice.reducer;

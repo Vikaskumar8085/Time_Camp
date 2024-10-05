@@ -1,11 +1,11 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Layout from "../../../common/dashboard/Layout";
 import Proutes from "../../../common/Proutes";
 import Button from "../../../common/Button";
 import EmployeeDrawer from "../../../components/AdminComponent/EmployeeComponent/EmployeeDrawer";
 import TabComp from "../../../common/TabComp";
-import {setLoader} from "../../../redux/slices/loaderSlice";
-import {useDispatch, useSelector} from "react-redux";
+import { setLoader } from "../../../redux/slices/loaderSlice";
+import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import {
   setEmployee,
@@ -112,9 +112,11 @@ function Employee() {
   };
 
   const handleOpen = (value) => {
-    console.log(value,"vlaue")
+    console.log(value, "vlaue");
     setOpen(true);
   };
+
+
 
   useEffect(() => {
     getallemployee();
@@ -124,9 +126,9 @@ function Employee() {
   }, [0]);
 
   const tabsheadr = [
-    {title: "Employee"},
-    {title: "Active Employee"},
-    {title: "InActive Employee"},
+    { title: "Employee" },
+    { title: "Active Employee" },
+    { title: "InActive Employee" },
   ];
   const Tabsbody = [
     {

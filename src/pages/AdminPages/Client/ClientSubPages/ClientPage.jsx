@@ -5,15 +5,14 @@ import {
   createClientapicall,
   fetchclientapicall,
 } from "../../../../apiservice/admin/clientapiservice";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import {setLoader} from "../../../../redux/slices/loaderSlice";
+import { setLoader } from "../../../../redux/slices/loaderSlice";
 import ClientTable from "../../../../components/AdminComponent/Clientcomponent/clientpagecomponent/ClientTable";
-import {setClients} from "../../../../redux/slices/AdminSlice/adminSlice";
+import { setClients } from "../../../../redux/slices/clientslice/clientslices";
 function ClientPage() {
   const [IsOpen, setOpen] = React.useState(false);
-  const fetchclients = useSelector((state) => state.admin.clientValue);
-
+  const fetchclients = useSelector((state) => state.client.clientvalues);
   const dispatch = useDispatch();
 
   //   add client

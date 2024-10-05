@@ -8,9 +8,9 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import {memo} from "react";
+import { memo } from "react";
 
-function InactiveClientTable({inactiveclients}) {
+function InactiveClientTable({ fetchinactiveclients }) {
   return (
     <>
       <div>
@@ -28,7 +28,7 @@ function InactiveClientTable({inactiveclients}) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {inactiveclients?.map((item, index) => {
+              {fetchinactiveclients?.map((item, index) => {
                 return (
                   <>
                     <TableRow>

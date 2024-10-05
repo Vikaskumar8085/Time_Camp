@@ -1,8 +1,8 @@
 import React from "react";
-import {useEffect} from "react";
+import { useEffect } from "react";
 import toast from "react-hot-toast";
-import {useDispatch} from "react-redux";
-import {useParams} from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import {
   fetchclientprojectsapicall,
   fetchsingleclientapicall,
@@ -14,11 +14,11 @@ import {
   setClientProfile,
   setClientProjects,
 } from "../../../redux/slices/clientslice/clientinfoslice";
-import {setLoader} from "../../../redux/slices/loaderSlice";
+import { setLoader } from "../../../redux/slices/loaderSlice";
 import ClientInfoPage from "./clientinfosubpages/ClientInfoPage";
 
 function ClientInfo() {
-  const {id} = useParams();
+  const { id } = useParams();
   const dispatch = useDispatch();
 
   // get client information
@@ -42,8 +42,6 @@ function ClientInfo() {
     try {
       dispatch(setLoader(true));
       const response = await fetchclientprojectsapicall(id);
-      // console.log(response, "???????????????????????????????????????????????????? colien info");
-
       if (response.success) {
         dispatch(setLoader(false));
         dispatch(setClientProjects(response.result));
@@ -61,7 +59,7 @@ function ClientInfo() {
     fetchclientprojecthandler();
   }, [0]);
 
-  const tabsheader = [{title: "client info"}, {title: "client Timesheet"}];
+  const tabsheader = [{ title: "client info" }, { title: "client Timesheet" }];
   const tabsbody = [
     {
       content: (
@@ -70,7 +68,7 @@ function ClientInfo() {
         </>
       ),
     },
-    {content: <>tabsdf</>},
+    { content: <>tabsdf</> },
   ];
 
   return (

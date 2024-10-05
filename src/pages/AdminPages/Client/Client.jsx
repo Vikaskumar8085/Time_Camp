@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Proutes from "../../../common/Proutes";
 import Layout from "../../../common/dashboard/Layout";
 import TabComp from "../../../common/TabComp";
@@ -15,14 +15,10 @@ function Client() {
   });
 
   const TabsHeader = [
-    {
-      title: "All Clients",
-    },
-    {title: "Active Clients"},
-    {title: "InActive Clients"},
-    {
-      title: "Dead Clients",
-    },
+    { title: "All Clients" },
+    { title: "Active Clients" },
+    { title: "InActive Clients" },
+    { title: "Dead Clients" },
   ];
 
   const Tabsbody = [

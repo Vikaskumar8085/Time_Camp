@@ -9,7 +9,7 @@ import {
   Paper,
 } from "@mui/material";
 import { memo } from "react";
-function DeadclientTable({ deadclients }) {
+function DeadclientTable({ fetchdeadclients }) {
   return (
     <>
       <div>
@@ -27,7 +27,7 @@ function DeadclientTable({ deadclients }) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {deadclients?.map((item, index) => {
+              {fetchdeadclients?.map((item, index) => {
                 return (
                   <>
                     <TableRow>

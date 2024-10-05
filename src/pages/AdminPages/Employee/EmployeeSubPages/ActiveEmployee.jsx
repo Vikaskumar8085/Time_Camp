@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Table,
   TableBody,
@@ -8,8 +8,28 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { setLoader } from "../../../../redux/slices/loaderSlice";
 
 function ActiveEmployee() {
+  const dispatch = useDispatch();
+
+  const fetchactiveEmployee = async () => {
+    try {
+      dispatch(setLoader(true));
+      const response = "response";
+      if (response) {
+      }
+    } catch (error) {
+      dispatch(setLoader(false));
+      console.log(error?.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchactiveEmployee();
+  }, [0]);
+
   return (
     <div>
       <TableContainer component={Paper}>
