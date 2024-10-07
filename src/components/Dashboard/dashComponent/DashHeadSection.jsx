@@ -1,18 +1,15 @@
-import { Grid } from "@mui/material";
+import {Grid} from "@mui/material";
 import React from "react";
 import TotalWorkhourIcon from "../../../assest/DashboardIcons/TotalWorkHours.png";
 import TotalClientIcon from "../../../assest/DashboardIcons/TotalClient.png";
 import TotalProjectIcon from "../../../assest/DashboardIcons/project.png";
 import TotalEmployeeIcon from "../../../assest/DashboardIcons/Employess.png";
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 
 function DashHeadSection() {
-  const totalEmployee = useSelector((state) => state.employee?.EmployeeValues);
-  const totalClient = useSelector((state) => state.client.clientvalues);
-  const total_employee = useSelector((state) => state?.project?.resources);
-  const total_project = useSelector((state) => state?.project?.value);
-  console.log(total_employee, "adlfals");
-  console.log(total_project, "total projects");
+  const dashboardresult = useSelector((state) => state.dashboard.values);
+
+  console.log(dashboardresult, "dashboardresult");
 
   return (
     <>
@@ -39,7 +36,7 @@ function DashHeadSection() {
                 </div>
                 <div className="active_content">
                   <h1>Total Client</h1>
-                  <p>{totalClient.length}</p>
+                  <p>{dashboardresult.totalclient}</p>
                 </div>
               </div>
             </div>
@@ -52,7 +49,7 @@ function DashHeadSection() {
                 </div>
                 <div className="active_content">
                   <h1>Total Project</h1>
-                  <p>{Number(total_project.length)}</p>
+                  <p>{Number(dashboardresult.totalproject)}</p>
                 </div>
               </div>
             </div>
@@ -65,7 +62,7 @@ function DashHeadSection() {
                 </div>
                 <div className="active_content">
                   <h1>Total Employee</h1>
-                  <p>{totalEmployee?.length}</p>
+                  <p>{dashboardresult.totalemployee}</p>
                 </div>
               </div>
             </div>

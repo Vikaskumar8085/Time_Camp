@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import {
   Table,
   TableBody,
@@ -8,18 +8,22 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { setLoader } from "../../../../redux/slices/loaderSlice";
+import {useDispatch} from "react-redux";
+import {setLoader} from "../../../../redux/slices/loaderSlice";
+import {fetchinactiveemployeeapicall} from "../../../../apiservice/admin/employeeapiservice";
+import {setinactiveEmployee} from "../../../../redux/slices/Employee/EmployeeSlice";
 
 function InActiveEmployee() {
   const dispatch = useDispatch();
 
-  const fetchinactiveEmployee = async () => {
+  const fetchinactiveEmployeehandler = async () => {
     try {
       dispatch(setLoader(true));
 
-      const response = "response";
-      if (response) {
+      const response = await fetchinactiveemployeeapicall();
+      console.log(response, "inactive response");
+      if (response.success) {
+        dispatch(setinactiveEmployee(response.result));
         dispatch(setLoader(false));
       }
     } catch (error) {
@@ -28,7 +32,7 @@ function InActiveEmployee() {
   };
 
   useEffect(() => {
-    fetchinactiveEmployee();
+    fetchinactiveEmployeehandler();
   }, [0]);
 
   return (

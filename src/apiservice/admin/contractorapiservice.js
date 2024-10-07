@@ -16,3 +16,17 @@ export const fetchcontractorinformationapicall = async (payload) => {
   );
   return response.data;
 };
+
+// fetch active contractor
+
+export const fetchactivecontractorapicall = async () => {
+  const response = await apiInstance.get("/v1/fetch-active-contractor");
+  return response.data;
+};
+
+// fetch in active contractor
+
+export const fetchinactivecontractorapicall = async () => {
+  const response = await apiInstance.get("/v1/fetch-inactive-contractor");
+  return response.data;
+};

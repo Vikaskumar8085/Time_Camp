@@ -47,12 +47,12 @@ function Project() {
   const getallprojects = async () => {
     try {
       dispatch(setLoader(true));
-      const response = await getallprojects();
-      console.log(response);
-      if (response.success) {
-        dispatch(setProjectValues(response?.data));
-        dispatch(setLoader(false));
-      }
+      // // const response = await ;
+      // console.log(response);
+      // if (response.success) {
+      //   dispatch(setProjectValues(response?.data));
+      //   dispatch(setLoader(false));
+      // }
     } catch (error) {
       console.log(error?.response?.data);
       dispatch(setLoader(false));
@@ -90,9 +90,7 @@ function Project() {
     console.log(Val);
   };
 
-  useEffect(() => {
-    getallprojects();
-  }, [0]);
+  useEffect(() => {}, [0]);
 
   // Project tabs
   const tabsheadr = [

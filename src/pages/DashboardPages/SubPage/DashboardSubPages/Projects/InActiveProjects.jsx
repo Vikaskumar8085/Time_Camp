@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
   TableContainer,
   Table,
@@ -8,7 +8,31 @@ import {
   TableRow,
   TableCell,
 } from "@mui/material";
+import {useDispatch} from "react-redux";
+import {setLoader} from "../../../../../redux/slices/loaderSlice";
+import {fetchinactiveprojectapicall} from "../../../../../apiservice/admin/projectapiservice";
+import {setinactiveprojectvalue} from "../../../../../redux/slices/ProjectSlice/projectslice";
 function InActiveProjects() {
+  const dispatch = useDispatch();
+  const fetchinactiveprojecthandler = async () => {
+    try {
+      dispatch(setLoader(true));
+      const response = await fetchinactiveprojectapicall();
+
+      if (response.success) {
+        dispatch(setLoader(false));
+        dispatch(setinactiveprojectvalue(response.result));
+      }
+    } catch (error) {
+      dispatch(setLoader(false));
+      console.log(error?.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchinactiveprojecthandler();
+  }, [0]);
+
   return (
     <div>
       {" "}

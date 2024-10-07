@@ -1,9 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 const contractorSlice = createSlice({
   name: "contractorSlice",
   initialState: {
     contractorValues: [],
+    activecontractorvalues: [],
+    inactivecontracotrvalues: [],
     singlecontractorvalues: null,
   },
   reducers: {
@@ -13,8 +15,19 @@ const contractorSlice = createSlice({
     getContractor: (state, action) => {
       state.singlecontractorvalues = action.payload;
     },
+    setactivecontractor: (state, action) => {
+      state.activecontractorvalues = action.payload;
+    },
+    setInactiveContractor: (state, action) => {
+      state.inactivecontracotrvalues = action.payload;
+    },
   },
 });
 
-export const { setContractor, getContractor } = contractorSlice.actions;
+export const {
+  setContractor,
+  getContractor,
+  setactivecontractor,
+  setInactiveContractor,
+} = contractorSlice.actions;
 export default contractorSlice.reducer;

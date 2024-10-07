@@ -8,8 +8,33 @@ import {
   TableCell,
 } from "@mui/material";
 import React from "react";
+import {useEffect} from "react";
+import {useDispatch} from "react-redux";
+import {fetchactiveprojectapicall} from "../../../../../apiservice/admin/projectapiservice";
+import {setLoader} from "../../../../../redux/slices/loaderSlice";
+import {setactiveprojects} from "../../../../../redux/slices/ProjectSlice/projectslice";
 
 const ActiveProjects = () => {
+  const dispatch = useDispatch();
+
+  const fetchactiveprojectshandler = async () => {
+    try {
+      dispatch(setLoader(true));
+
+      const response = await fetchactiveprojectapicall();
+      if (response.success) {
+        dispatch(setactiveprojects(response.result));
+        dispatch(setLoader(false));
+      }
+    } catch (error) {
+      console.log(error?.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchactiveprojectshandler();
+  }, [0]);
+
   return (
     <div>
       <div className="title">

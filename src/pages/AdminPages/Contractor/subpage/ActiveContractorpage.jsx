@@ -1,14 +1,20 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setLoader } from "../../../../redux/slices/loaderSlice";
+import React, {useEffect} from "react";
+import {useDispatch} from "react-redux";
+import {setLoader} from "../../../../redux/slices/loaderSlice";
 import Activecontractorcomponent from "../../../../components/AdminComponent/ContractoreComponent/Activecontractorcomponent";
+import {fetchactivecontractorapicall} from "../../../../apiservice/admin/contractorapiservice";
+import {setactivecontractor} from "../../../../redux/slices/ContractorSlice/contractorSlice";
 
 function ActiveContractorpage() {
   const dispatch = useDispatch();
-  const fetchactivecontractor = async () => {
+  const fetchactivecontractorhandler = async () => {
     try {
       dispatch(setLoader(true));
-      dispatch(setLoader(false));
+      const response = await fetchactivecontractorapicall();
+      if (response.success) {
+        dispatch(setLoader(false));
+        dispatch(setactivecontractor(response.result));
+      }
     } catch (error) {
       dispatch(setLoader(false));
       console.log(error?.message);
@@ -16,7 +22,7 @@ function ActiveContractorpage() {
   };
 
   useEffect(() => {
-    fetchactivecontractor();
+    fetchactivecontractorhandler();
   }, [0]);
 
   return (

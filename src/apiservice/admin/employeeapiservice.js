@@ -34,3 +34,15 @@ export const fetchallresources = async () => {
   const response = await apiInstance.get("/v1/fetch-all-resources");
   return response.data;
 };
+
+export const fetchactiveemployeesapicall = async () => {
+  const response = await apiInstance.get("/v1/fetch-active-employee");
+  return response.data;
+};
+
+// fetch in active employees
+
+export const fetchinactiveemployeeapicall = async () => {
+  const response = await apiInstance.get("/v1/fetch-inactive-employee");
+  return response.data;
+};

@@ -6,6 +6,8 @@ const Projectslice = createSlice({
     value: [],
     singleValue: null,
     resources: [],
+    activeprojectsvalue: [],
+    inactiveprojectvalue: [],
   },
   reducers: {
     setProjectValues: (state, action) => {
@@ -17,9 +19,21 @@ const Projectslice = createSlice({
     setResources: (state, action) => {
       state.resources = action.payload;
     },
+
+    setactiveprojects: (state, action) => {
+      state.activeprojectsvalue = action.payload;
+    },
+    setinactiveprojectvalue: (state, action) => {
+      state.inactiveprojectvalue = action.payload;
+    },
   },
 });
 
-export const {setProjectValues, setSingelProject, setResources} =
-  Projectslice.actions;
+export const {
+  setProjectValues,
+  setSingelProject,
+  setResources,
+  setactiveprojects,
+  setinactiveprojectvalue,
+} = Projectslice.actions;
 export default Projectslice.reducer;
