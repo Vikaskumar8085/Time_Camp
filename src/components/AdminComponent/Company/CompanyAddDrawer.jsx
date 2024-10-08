@@ -3,7 +3,6 @@ import {useFormik} from "formik";
 import React from "react";
 import Button from "../../../common/Button";
 import Input from "../../../common/Input/Input";
-import InputPassword from "../../../common/Input/InputPassword";
 
 function CompanyAddDrawer({IsOpen, setOpen, CValue}) {
   const formik = useFormik({
@@ -11,13 +10,16 @@ function CompanyAddDrawer({IsOpen, setOpen, CValue}) {
       Company_Name: CValue ? CValue.Company_Name : "",
       Company_Email: CValue ? CValue.Company_Email : "",
       Address: CValue ? CValue.Address : "",
-      Postal_Code: CValue ? CValue?.Postal_Code : "",
-      Phone: CValue ? CValue?.Phone : "",
-      Company_Logo: CValue ? CValue.Company_Logo : "",
-      Employee_No: CValue ? CValue?.Employee_No : "",
-      Established_date: CValue ? CValue?.Established_date : "",
-      CompanyWesite: CValue ? CValue?.CompanyWesite : "",
-      Tex_Number: CValue ? CValue?.Tex_Number : "",
+      Postal_Code: CValue ? CValue.Postal_Code : "",
+      Phone: CValue ? CValue.Phone : "",
+      Company_Logo: null, // Start with no file
+      Employee_No: CValue ? CValue.Employee_No : "",
+      Established_date: CValue ? CValue.Established_date : "",
+      Company_Website: CValue ? CValue.Company_Website : "",
+      Tax_Number: CValue ? CValue.Tax_Number : "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
     },
   });
 
@@ -38,83 +40,117 @@ function CompanyAddDrawer({IsOpen, setOpen, CValue}) {
                   Add Company
                 </Typography>
               </div>
-              {/* <Box component="form" sx={{ mt: 0 }}> */}
-              <form>
+              <form onSubmit={formik.handleSubmit}>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText="Company_Name"
-                      placeholder={"Please enter your FirstName"}
+                      labelText="Company Name"
+                      placeholder="Please enter the company name"
                       {...formik.getFieldProps("Company_Name")}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
                       labelText="Company Email"
-                      placeholder={"Please enter your LastName"}
+                      placeholder="Please enter the company email"
                       {...formik.getFieldProps("Company_Email")}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText=" Address"
-                      type="Address"
-                      placeholder={"Please enter your Email"}
+                      labelText="Address"
+                      placeholder="Please enter the company address"
                       {...formik.getFieldProps("Address")}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
                       labelText="Postal Code"
-                      placeholder={"Please enter your password"}
+                      placeholder="Please enter the postal code"
                       {...formik.getFieldProps("Postal_Code")}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText="Phone "
-                      placeholder={"Please enter your password"}
+                      labelText="Phone"
+                      placeholder="Please enter the phone number"
                       {...formik.getFieldProps("Phone")}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <Input
-                      labelText="Company Logo"
-                      placeholder={"Please enter your password"}
-                      {...formik.getFieldProps("Company_Logo")}
-                    />
-                  </Grid>
+                    <div>
+                      <label>Company Logo</label>
+                      {/* Display existing logo if available */}
+                      {CValue?.Company_Logo && (
+                        <img
+                          src={CValue.Company_Logo}
+                          alt="Company Logo"
+                          style={{width: 100, height: 100, marginBottom: 8}}
+                        />
+                      )}
+                      {/* File input for uploading a new logo */}
+                      <input
+                        type="file"
+                        onChange={(event) => {
+                          const file = event.currentTarget.files[0];
+                          formik.setFieldValue("Company_Logo", file);
+                          // Create a URL for the selected file
+                          if (file) {
+                            const fileURL = URL.createObjectURL(file);
+                            formik.setFieldValue("Company_Logo_URL", fileURL); // Store the URL for display
+                          }
+                        }}
+                      />
+                      {/* Display the selected file name */}
+                      {formik.values.Company_Logo && (
+                        <div>
+                          <span>
+                            Selected File: {formik.values.Company_Logo.name}
+                          </span>
+                        </div>
+                      )}
+                      {/* Display the uploaded file as an image if it's selected */}
+                      {formik.values.Company_Logo && (
+                        <img
+                          src={URL.createObjectURL(formik.values.Company_Logo)}
+                          alt="Selected Logo"
+                          style={{width: 100, height: 100, marginTop: 8}}
+                        />
+                      )}
+                    </div>
+                  </Grid> 
                   <Grid item xs={12} sm={6}>
                     <Input
                       labelText="Employee No"
-                      placeholder={"Please enter your Employee No"}
+                      placeholder="Please enter the employee number"
                       {...formik.getFieldProps("Employee_No")}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText="Established date"
-                      placeholder={"Please enter your password"}
+                      labelText="Established Date"
+                      type="date"
+                      placeholder="Please enter the established date"
                       {...formik.getFieldProps("Established_date")}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText="CompanyWesite"
-                      placeholder={"Please enter your password"}
-                      {...formik.getFieldProps("CompanyWesite")}
+                      labelText="Company Website"
+                      placeholder="Please enter the company website"
+                      {...formik.getFieldProps("Company_Website")}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Input
-                      labelText="Tex_Number"
-                      placeholder={"Please enter your password"}
-                      {...formik.getFieldProps("Tex_Number")}
+                      labelText="Tax Number"
+                      placeholder="Please enter the tax number"
+                      {...formik.getFieldProps("Tax_Number")}
                     />
                   </Grid>
 
                   <Grid item xs={12}>
-                    <Button type={"submit"}>Submit</Button>
+                    <Button type="submit">Submit</Button>
                   </Grid>
                 </Grid>
               </form>

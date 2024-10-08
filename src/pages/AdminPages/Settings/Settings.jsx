@@ -4,6 +4,9 @@ import Layout from "../../../common/dashboard/Layout";
 import Loader from "../../../common/Loader";
 import Proutes from "../../../common/Proutes";
 import TabComp from "../../../common/TabComp";
+import RolePages from "./subPages/RolePages";
+import DesignationPages from "./subPages/DesignationPages";
+import DepartmentPages from "./subPages/DepartmentPages";
 function Settings() {
   React.useEffect(() => {
     if (!localStorage.getItem("company")) {
@@ -11,10 +14,32 @@ function Settings() {
     }
   });
 
-  const tabsheadr = [{title: "Settings"}];
+  const tabsheadr = [
+    {title: "Role"},
+    {title: "Designation"},
+    {title: "Department"},
+  ];
   const Tabsbody = [
     {
-      content: <>Settings</>,
+      content: (
+        <>
+          <RolePages />
+        </>
+      ),
+    },
+    {
+      content: (
+        <>
+          <DesignationPages />
+        </>
+      ),
+    },
+    {
+      content: (
+        <>
+          <DepartmentPages />
+        </>
+      ),
     },
   ];
   return (

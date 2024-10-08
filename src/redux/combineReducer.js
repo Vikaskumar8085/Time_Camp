@@ -17,6 +17,9 @@ import employeetimesheetslice from "./employeeslices/employeeTimeSheets/employee
 import employeeteamslice from "./employeeslices/employeeTeamslice/employeeteamslice";
 import companyslice from "./slices/companyslice/companyslice";
 import dashboardSlice from "./slices/dashboardSlice/dashboardSlice";
+import roleSlice from "./slices/roleslice/roleSlice";
+import DesignationSlice from "./slices/DesignationSlice/DesignationSlice";
+import DepartmentSlice from "./slices/DepartmentSlice/DepartmentSlice";
 
 const rootReducer = combineReducers({
   loader: loaderSlice,
@@ -31,6 +34,9 @@ const rootReducer = combineReducers({
   contractorinfo: contractorinfoSlice,
   employee: EmployeeSlice,
   employeeinfo: employeeinfoslice,
+  role: roleSlice,
+  designation: DesignationSlice,
+  department: DepartmentSlice,
   charts: chartsSlice,
   project: projectslice,
   timesheet: TimesheetSlice,

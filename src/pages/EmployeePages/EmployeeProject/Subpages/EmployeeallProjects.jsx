@@ -6,7 +6,6 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Typography,
 } from "@mui/material";
 import React from "react";
 import {useEffect} from "react";
@@ -19,11 +18,13 @@ import {setLoader} from "../../../../redux/slices/loaderSlice";
 function EmployeeallProjects() {
   const dispatch = useDispatch();
   const employeeprojects = useSelector((state) => state.employeeproject.values);
+  console.log(employeeprojects, "employee projects ");
 
   const fetchallemployeeprojects = async () => {
     try {
       dispatch(setLoader(true));
       const response = await fetchemployeeprojects();
+      console.log(response, "response  data");
       if (response.success) {
         dispatch(setLoader(false));
         dispatch(setEmployee(response.result));
@@ -45,49 +46,25 @@ function EmployeeallProjects() {
         <Table stickyHeader>
           <TableHead>
             <TableRow>
-              <TableCell>
-                <Typography variant="h6">Project Code</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="h6">Project Name</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="h6">Project Managers</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="h6">Project Status</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="h6">Project Type</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="h6">Start Date</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="h6">Roles</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="h6">Client Name</Typography>
-              </TableCell>
+              <TableCell>Project Code</TableCell>
+              <TableCell>Project Name</TableCell>
+              <TableCell>Project Managers</TableCell>
+              <TableCell>Project Status</TableCell>
+              <TableCell>Project Type</TableCell>
+              <TableCell>Start Date</TableCell>
             </TableRow>
           </TableHead>
 
           <TableBody>
             {employeeprojects.map((item, index) => {
+              console.log(item, "items");
               return (
                 <TableRow>
-                  <TableCell>{item.Project_Code}</TableCell>
-                  <TableCell>{item.Project_Name}</TableCell>
-                  <TableCell>{item.Project_Managers}</TableCell>
-                  <TableCell>{item.Project_Status}</TableCell>
-                  <TableCell>{item.Project_Typ}</TableCell>
-                  <TableCell>{item.Start_Dat}</TableCell>
-                  <TableCell>
-                    {item?.RoleResource?.map((item, index) => {
-                      return item?.RRName;
-                    })}
-                  </TableCell>
-                  <TableCell>{item.client?.clientName}</TableCell>
+                  <TableCell>{item?.Project_Code}</TableCell>
+                  <TableCell>{item?.Project_Name}</TableCell>
+                  <TableCell>{item?.Project_Manager}</TableCell>
+                  <TableCell>{item?.Start_Date}</TableCell>
+                  <TableCell>{item?.End_Date}</TableCell>
                 </TableRow>
               );
             })}

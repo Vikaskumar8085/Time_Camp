@@ -11,6 +11,9 @@ import {
 import {MdOutlineDelete, MdOutlineEdit} from "react-icons/md";
 import Button from "../../../../../common/Button";
 import ProjectDrawer from "../../../../../components/AdminComponent/ProjectComponent/ProjectDrawer";
+import {fetchclientapicall} from "../../../../../apiservice/admin/clientapiservice";
+import {fetchallresources} from "../../../../../apiservice/admin/employeeapiservice";
+import {fetroleapicall} from "../../../../../apiservice/admin/roleapiservice";
 
 function AllProjects({
   IsOpen,
@@ -22,6 +25,56 @@ function AllProjects({
   setIsOpen,
   PItems,
 }) {
+  const [clientdata, setclient] = React.useState([]);
+  const [resourcedata, setresource] = React.useState([]);
+  const [roledata, setrole] = React.useState([]);
+
+
+  // fetch client data
+  const fetchclienthandler = async () => {
+    try {
+      const response = await fetchclientapicall();
+      console.log(response, "client");
+      if (response.success) {
+        setclient(response.clientdata);
+      }
+    } catch (error) {
+      console.log(error?.message);
+    }
+  };
+
+  // fetch project manager data
+  const fetchprojectmanagerhandler = async () => {
+    try {
+      const response = await fetchallresources();
+      if (response.success) {
+        setresource(response.result);
+      }
+    } catch (error) {
+      console.log(error?.message);
+    }
+  };
+
+  // fetch role
+
+  const fetchprojectrolehandler = async () => {
+    try {
+      const response = await fetroleapicall();
+      console.log(response, "response");
+      if (response.success) {
+        setrole(response.result);
+      }
+    } catch (error) {
+      console.log(error?.message);
+    }
+  };
+
+  React.useEffect(() => {
+    fetchclienthandler();
+    fetchprojectmanagerhandler();
+    fetchprojectrolehandler();
+  }, [0]);
+
   const handleClose = () => {
     setIsOpen(false);
   };
@@ -33,6 +86,9 @@ function AllProjects({
       {IsOpen && (
         <ProjectDrawer
           IsOpen={IsOpen}
+          clientdata={clientdata}
+          resourcedata={resourcedata}
+          roledata={roledata}
           setIsOpen={setIsOpen}
           PhandleSubmit={PhandleSubmit}
           EPhandleSubmit={EPhandleSubmit}

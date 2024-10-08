@@ -1,12 +1,12 @@
-import { Drawer } from "@mui/material";
+import {Drawer} from "@mui/material";
 import React from "react";
-import { Grid, Box, Typography, Container } from "@mui/material";
+import {Grid, Box, Typography, Container} from "@mui/material";
 import Input from "../../../common/Input/Input";
 import Button from "../../../common/Button";
-import { useFormik } from "formik";
-import { validate } from "./clientdrawerValidation";
-import { useDispatch } from "react-redux";
-import { SetSingleClientsFunc } from "../../../redux/slices/AdminSlice/adminSlice";
+import {useFormik} from "formik";
+import {validate} from "./clientdrawerValidation";
+import {useDispatch} from "react-redux";
+import {SetSingleClientsFunc} from "../../../redux/slices/AdminSlice/adminSlice";
 
 function ClientDrawer({
   setOpen,
@@ -30,10 +30,10 @@ function ClientDrawer({
     validate: validate,
     onSubmit: async (value) => {
       // if (CItems !== null) {
-        // ClientEditHandle(value);
+      // ClientEditHandle(value);
       // } else {
-        ClienthandleSubmit(value);
-        formik.resetForm();
+      ClienthandleSubmit(value);
+      formik.resetForm();
       // }
     },
   });
@@ -57,7 +57,8 @@ function ClientDrawer({
               }}
             >
               <div className="clientDrawer_title">
-                <Typography variant="h6" component={"h1"}>Add Client
+                <Typography variant="h6" component={"h1"}>
+                  Add Client
                   {/* {CItems !== null ? "Edit Client" : "Add Client"} */}
                 </Typography>
               </div>
@@ -72,7 +73,7 @@ function ClientDrawer({
                     />
                     {formik.touched.Company_Name &&
                     formik.errors.Company_Name ? (
-                      <div style={{ color: "red", marginLeft: "5px" }}>
+                      <div style={{color: "red", marginLeft: "5px"}}>
                         {formik.errors.Company_Name}
                       </div>
                     ) : null}
@@ -84,7 +85,7 @@ function ClientDrawer({
                       {...formik.getFieldProps("Client_Name")}
                     />
                     {formik.touched.Client_Name && formik.errors.Client_Name ? (
-                      <div style={{ color: "red", marginLeft: "5px" }}>
+                      <div style={{color: "red", marginLeft: "5px"}}>
                         {formik.errors.Client_Name}
                       </div>
                     ) : null}
@@ -98,7 +99,7 @@ function ClientDrawer({
                     />
                     {formik.touched.Client_Email &&
                     formik.errors.Client_Email ? (
-                      <div style={{ color: "red", marginLeft: "5px" }}>
+                      <div style={{color: "red", marginLeft: "5px"}}>
                         {formik.errors.Client_Email}
                       </div>
                     ) : null}
@@ -113,7 +114,7 @@ function ClientDrawer({
                     />
                     {formik.touched.Client_Address &&
                     formik.errors.Client_Address ? (
-                      <div style={{ color: "red", marginLeft: "5px" }}>
+                      <div style={{color: "red", marginLeft: "5px"}}>
                         {formik.errors.Client_Address}
                       </div>
                     ) : null}
@@ -127,7 +128,7 @@ function ClientDrawer({
                     />
                     {formik.touched.Client_Phone &&
                     formik.errors.Client_Phone ? (
-                      <div style={{ color: "red", marginLeft: "5px" }}>
+                      <div style={{color: "red", marginLeft: "5px"}}>
                         {formik.errors.Client_Phone}
                       </div>
                     ) : null}
@@ -141,7 +142,7 @@ function ClientDrawer({
                     />
                     {formik.touched.Client_Postal_Code &&
                     formik.errors.Client_Postal_Code ? (
-                      <div style={{ color: "red", marginLeft: "5px" }}>
+                      <div style={{color: "red", marginLeft: "5px"}}>
                         {formik.errors.Client_Postal_Code}
                       </div>
                     ) : null}
@@ -154,7 +155,7 @@ function ClientDrawer({
                       {...formik.getFieldProps("GstNumber")}
                     />
                     {formik.touched.GstNumber && formik.errors.GstNumber ? (
-                      <div style={{ color: "red", marginLeft: "5px" }}>
+                      <div style={{color: "red", marginLeft: "5px"}}>
                         {formik.errors.GstNumber}
                       </div>
                     ) : null}

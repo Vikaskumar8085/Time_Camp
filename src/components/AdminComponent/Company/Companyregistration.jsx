@@ -108,6 +108,7 @@ function Companyregistration({companyhandlesubmit}) {
             <Grid item md={6} sm={12} xs={12} lg={6}>
               <Input
                 labelText={"Company Logo URL"}
+                type="file"
                 {...formik.getFieldProps("Company_Logo")}
                 error={Boolean(validate().Company_Logo)}
                 helperText={validate().Company_Logo}

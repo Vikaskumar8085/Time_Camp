@@ -33,9 +33,8 @@ export const fetchsingleclientapicall = async (payload) => {
 // fetch client projects
 
 export const fetchclientprojectsapicall = async (payload) => {
-  console.log(payload, "payload");
   const repsonse = await apiInstance.get(
-    `/v1//fetch-client-projects/${payload}`
+    `/v1/fetch-client-projects/${payload}`
   );
   return repsonse.data;
 };
