@@ -1,18 +1,38 @@
 import React from "react";
 import {useFormik} from "formik";
+import {useDispatch, useSelector} from "react-redux";
+import {setLoader} from "../../../redux/slices/loaderSlice";
+import {addtimesheetsapicall} from "../../../apiservice/employee/employeeprojectapiservice";
 
-const TimesheetForm = () => {
+const TimesheetForm = ({setOpen}) => {
+  const datafilltimesheetproject = useSelector(
+    (state) => state.employeetimesheet.timesheetprojects
+  );
+
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       project: "",
-      taskDescription: "",
-      description: "",
-      startTime: "",
+      task_description: "",
+      Description: "",
+      start_time: "",
       hours: "00:00",
     },
-    onSubmit: (values, {resetForm}) => {
-      console.log("Timesheet Data Submitted:", values);
-      resetForm();
+    onSubmit: async (values, {resetForm}) => {
+      try {
+        dispatch(setLoader(true));
+        console.log(values, "values");
+        const response = await addtimesheetsapicall(values);
+        console.log(response, "add fill time sheet");
+        if (response.success) {
+          dispatch(setLoader(false));
+          resetForm();
+          setOpen(false);
+        }
+      } catch (error) {
+        console.log(error?.message);
+      }
     },
   });
 
@@ -30,18 +50,22 @@ const TimesheetForm = () => {
             required
           >
             <option value="" label="Select project" />
-            <option value="1">Project 1</option>
-            <option value="2">Project 2</option>
-            <option value="3">Project 3</option>
+            {datafilltimesheetproject.map((item, index) => {
+              return (
+                <>
+                  <option value={item?.ProjectId}>{item.Project_Name}</option>
+                </>
+              );
+            })}
           </select>
         </div>
 
         <div style={{marginBottom: "15px"}}>
-          <label htmlFor="taskDescription">Task Description</label>
+          <label htmlFor="task_description">Task Description</label>
           <textarea
-            id="taskDescription"
-            name="taskDescription"
-            value={formik.values.taskDescription}
+            id="task_description"
+            name="task_description"
+            value={formik.values.task_description}
             onChange={formik.handleChange}
             rows="4"
             required
@@ -50,13 +74,13 @@ const TimesheetForm = () => {
         </div>
 
         <div style={{marginBottom: "15px"}}>
-          <label htmlFor="description">Description</label>
+          <label htmlFor="Description">Description</label>
           <textarea
-            id="description"
-            name="description"
-            value={formik.values.description}
+            id="Description"
+            name="Description"
+            value={formik.values.Description}
             onChange={formik.handleChange}
-            rows="2"
+            rows="4"
             maxLength={5000}
             style={{width: "100%"}}
           />
@@ -68,7 +92,7 @@ const TimesheetForm = () => {
             id="startTime"
             name="startTime"
             type="date"
-            value={formik.values.startTime}
+            value={formik.values.start_time}
             onChange={formik.handleChange}
             required
           />

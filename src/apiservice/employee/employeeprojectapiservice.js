@@ -16,3 +16,19 @@ export const fetchInactiveemployeeProjects = async () => {
   );
   return response.data;
 };
+
+export const addtimesheetsapicall = async (payload) => {
+  const response = await apiInstance.post(
+    "/v3/add-employee-timesheet",
+    payload
+  );
+  return response.data;
+};
+
+export const fetchemployeetimesheetdataapicall = async () => {
+  const response = await apiInstance.get("/v3/fetch-employee-timesheet");
+  return response.data;
+};
+
+
+

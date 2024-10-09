@@ -16,6 +16,7 @@
     "aos": "^2.3.4",
     "axios": "^1.7.2",
     "chart.js": "^4.4.3",
+    "convert-excel-to-json": "^1.7.0",
     "formik": "^2.4.6",
     "leaflet": "^1.9.4",
     "moment": "^2.30.1",

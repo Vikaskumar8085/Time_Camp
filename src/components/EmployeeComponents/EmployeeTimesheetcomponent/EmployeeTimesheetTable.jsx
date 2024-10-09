@@ -139,13 +139,13 @@ const EmployeeTimesheetTable = ({timesheets}) => {
                   <TableCell padding="checkbox">
                     <Checkbox
                       color="primary"
-                      checked={selected.indexOf(item.timesheetNo) !== -1}
+                      checked={selected.indexOf(item.TaskId) !== -1}
                       onChange={(event) =>
-                        handleSelectOne(event, item.timesheetNo)
+                        handleSelectOne(event, item.TaskId)
                       }
                     />
                   </TableCell>
-                  <TableCell>{index + 1}</TableCell>
+                  <TableCell key={index} >{index + 1}</TableCell>
                   <TableCell>{item.timesheetNo}</TableCell>
                   <TableCell>{item.day}</TableCell>
                   <TableCell>{item.project}</TableCell>

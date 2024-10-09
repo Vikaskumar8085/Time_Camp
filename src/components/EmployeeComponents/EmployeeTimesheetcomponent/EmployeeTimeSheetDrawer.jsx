@@ -6,7 +6,7 @@ function EmployeeTimeSheetDrawer({IsOpen, setOpen}) {
   return (
     <>
       <Drawer anchor="right" open={IsOpen} onClose={() => setOpen(false)}>
-        <TimesheetForm />
+        <TimesheetForm setOpen={setOpen} />
       </Drawer>
     </>
   );

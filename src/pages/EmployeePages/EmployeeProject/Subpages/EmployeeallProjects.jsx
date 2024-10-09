@@ -52,7 +52,7 @@ function EmployeeallProjects() {
               <TableCell>Project Status</TableCell>
               <TableCell>Project Type</TableCell>
               <TableCell>Start Date</TableCell>
-            </TableRow>
+           8 </TableRow>
           </TableHead>
 
           <TableBody>
