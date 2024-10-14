@@ -63,13 +63,19 @@
   .contactgetintouch_section_two {
     display: block;
     overflow: hidden;
-    background-image: url("../../../assest/bgcontact.jpg");
+    background-image: 
+      url("../../../assest/bgcontact.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     width: 100%;
-    position: fixed;
 
     height: 100vh;
+
+    .contactgetintouch_section_two_box {
+      width: 100%;
+      background-color: white;
+      height: 80vh;
+    }
   }
 }

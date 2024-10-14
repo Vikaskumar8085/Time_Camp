@@ -24,9 +24,7 @@ function ContactGetIntouch() {
 
         <section className="contactgetintouch_section_two">
           <Container>
-
-
-        <h1>content</h1>
+            <div className="contactgetintouch_section_two_box"></div>
           </Container>
         </section>
       </section>
