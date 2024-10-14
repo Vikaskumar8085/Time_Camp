@@ -1,27 +1,118 @@
 .contact_head {
   display: block;
   position: relative;
-  background-color: var(--primary-color);
-  padding: 40px 0px;
+  padding: 20px 0px;
+  overflow: hidden;
+  .contact_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .content_head_left_section {
+      width: 100%;
+      display: block;
+      position: inherit;
+      .contact_head_box {
+        display: flex;
+        flex-direction: column;
+        .contact_head_box_conta {
+          display: block;
+          position: inherit;
 
-  .head_section {
-    display: grid;
-    place-items: center;
+          h1 {
+            margin: 10px 0px;
+            font-size: 1.7em;
+            text-transform: capitalize;
+            text-align: start;
+            position: relative;
+            display: inline-block;
+            font-weight: 400;
 
-    h1 {
-      font-weight: 700;
-      font-size: 2em;
-      margin: 10px 0px;
-      color: var(--text-primary-color);
+            &::first-letter {
+              font-size: 1.8em;
+              color: orange;
+            }
+            &::after {
+              content: " ";
+              height: 2px;
+              width: 35%;
+              background-color: var(--text-secondary-color);
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              transition: width 0.3s;
+            }
+            &:hover:after {
+              width: 100%;
+            }
+          }
+          p {
+            padding: 10px 0px;
+            text-align: justify;
+            line-height: 1.5em;
+            font-size: 14px;
+            letter-spacing: 1px;
+
+            color: var(--text-secondary-color);
+          }
+        }
+
+        .contact_head_box_button {
+          display: block;
+          overflow: hidden;
+          position: relative;
+
+          button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: transparent;
+            position: relative;
+            border: none;
+            margin: 1em;
+            color: rgb(40, 40, 40);
+
+            &::before {
+              content: "";
+              height: 20px;
+              width: 20px;
+              border: 2px solid teal;
+              border-color: teal teal transparent transparent;
+              position: absolute;
+              top: 0px;
+              transition: all linear 0.3s;
+              right: 0px;
+            }
+
+            &::after {
+              content: "";
+              height: 20px;
+              width: 20px;
+              border: 2px solid teal;
+              position: absolute;
+              bottom: 0px;
+              left: 0px;
+              transition: all linear 0.3s;
+              border-color: transparent transparent teal teal;
+            }
+
+            &:hover:after {
+              width: 110%;
+              height: 110%;
+            }
+            &:hover:before {
+              width: 110%;
+              height: 110%;
+            }
+          }
+        }
+      }
     }
-    p {
-      margin: 10px 0px;
-      font-size: 0.8em;
-      letter-spacing: 0.7px;
-      word-spacing: 1px;
-      text-align: center;
-      color: var(--text-primary-color);
-      text-transform: capitalize;
+
+    .content_head_right_section {
+      width: 100%;
+      img {
+        width: 100%;
+        height: auto;
+      }
     }
   }
 }

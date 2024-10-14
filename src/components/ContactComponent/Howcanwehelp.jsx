@@ -1,10 +1,10 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import {Grid} from "@mui/material";
 import Input from "../../common/Input/Input";
 import Button from "../../common/Button";
-import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
-import { contactapicall } from "../../apiservice/superadminapis/contactapicall";
+import {useFormik} from "formik";
+import {useDispatch} from "react-redux";
+import {contactapicall} from "../../apiservice/superadminapis/contactapicall";
 import axios from "axios";
 
 function Howcanwehelp() {
@@ -35,7 +35,7 @@ function Howcanwehelp() {
     <>
       <div className="howcanwehelp_wrapper">
         <Grid container spacing={4}>
-          <Grid item md={6} display={{ sm: "none", md: "block" }}>
+          <Grid item md={6} display={{sm: "none", md: "block"}}>
             <div className="howcanwehelp_left_box">
               <h1> Get in Touch with Us</h1>
               <p>
@@ -78,7 +78,7 @@ function Howcanwehelp() {
                       id="Dispcription"
                       name="Dispcription"
                       {...formik.getFieldProps("Dispcription")}
-                      style={{ width: "100%", margin: "auto" }}
+                      style={{width: "100%", margin: "auto"}}
                     />
                   </Grid>
                   <Grid item sm={12}>

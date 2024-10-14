@@ -22,7 +22,7 @@ function TaskUploadPages() {
         dispatch(setLoader(true));
         const formData = new FormData();
         formData.append("file", values.files);
-        formData.appent("type", values.type);
+
         const response = await taskupload(formData);
         if (response.success) {
           dispatch(setLoader(false));

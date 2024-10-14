@@ -1,84 +1,76 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import {TextField, Grid, Typography, Container, MenuItem} from "@mui/material";
-import axios from "axios";
+import {useFormik} from "formik";
+import * as Yup from "yup";
 import Button from "../../../common/Button";
+import {fetchallresources} from "../../../apiservice/admin/employeeapiservice";
+import {createtaskapicall} from "../../../apiservice/admin/taskapiservice";
 
 const TaskForm = () => {
-  const [task, setTask] = useState({
-    Task_Name: "",
-    Project_Code: "",
-    Milestone_Name: "",
-    Priority: "LOW",
-    Start: "",
-    End: "",
-    Status: "IN_PROGRESS",
-    Estimated_time: "",
-    Due_date: "",
-    Completed_time: "",
-    Resource_Email: "",
-    Task_description: "",
-    Attachment: null, // Changed to null for file upload
-    Description: "",
-  });
+  const [resources, setResources] = React.useState([]);
 
-  const [projects, setProjects] = useState([]);
-  const [resources, setResources] = useState([]);
+  const fetchResourcesHandler = async () => {
+    try {
+      const response = await fetchallresources();
+      if (response.success) {
+        setResources(response.result);
+      }
+    } catch (error) {
+      console.error(error?.message);
+    }
+  };
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await axios.get("/api/projects"); // Replace with your API endpoint
-        setProjects(response.data);
-      } catch (error) {
-        console.error("Error fetching projects:", error);
-      }
-    };
-
-    const fetchResources = async () => {
-      try {
-        const response = await axios.get("/api/resources"); // Replace with your API endpoint
-        setResources(response.data);
-      } catch (error) {
-        console.error("Error fetching resources:", error);
-      }
-    };
-
-    fetchProjects();
-    fetchResources();
+    fetchResourcesHandler();
   }, []);
 
-  const handleChange = (e) => {
-    const {name, type, value, checked, files} = e.target;
-    setTask((prevTask) => ({
-      ...prevTask,
-      [name]:
-        type === "checkbox" ? checked : type === "file" ? files[0] : value,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    for (const key in task) {
-      formData.append(key, task[key]);
-    }
-
-    try {
-      const response = await axios.post("/api/tasks", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      console.log("Task created:", response.data);
-      // Optionally reset the form or handle the response as needed
-    } catch (error) {
-      console.error("Error creating task:", error);
-    }
-  };
+  const formik = useFormik({
+    initialValues: {
+      Task_Name: "",
+      Project_Code: "",
+      Milestone_Name: "",
+      Priority: "LOW",
+      Start: "",
+      End: "",
+      Status: "IN_PROGRESS",
+      Estimated_time: "",
+      Due_date: "",
+      Completed_time: "",
+      Resource_Email: "",
+      Task_description: "",
+      Attachment: null,
+      Description: "",
+    },
+    validationSchema: Yup.object({
+      Task_Name: Yup.string().required("Required"),
+      Project_Code: Yup.string().required("Required"),
+      Milestone_Name: Yup.string().required("Required"),
+      Resource_Email: Yup.string().required("Required"),
+      Task_description: Yup.string().required("Required"),
+      Start: Yup.date().required("Required"),
+      End: Yup.date().required("Required"),
+      Estimated_time: Yup.number().required("Required"),
+      Due_date: Yup.date().required("Required"),
+      Completed_time: Yup.number(),
+      Description: Yup.string(),
+    }),
+    onSubmit: async (values) => {
+      const formData = new FormData();
+      for (const key in values) {
+        formData.append(key, values[key]);
+      }
+      try {
+        const response = await createtaskapicall(formData);
+        // Handle response as needed
+      } catch (error) {
+        console.error("Error creating task:", error);
+      }
+    },
+  });
 
   return (
     <Container maxWidth="sm">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <Typography variant="h4" gutterBottom>
           Create New Task
         </Typography>
@@ -87,35 +79,46 @@ const TaskForm = () => {
             <TextField
               label="Task Name"
               name="Task_Name"
-              value={task.Task_Name}
-              onChange={handleChange}
+              value={formik.values.Task_Name}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.Task_Name && Boolean(formik.errors.Task_Name)
+              }
+              helperText={formik.touched.Task_Name && formik.errors.Task_Name}
               required
               fullWidth
             />
           </Grid>
           <Grid item xs={12}>
             <TextField
-              select
               label="Project Code"
               name="Project_Code"
-              value={task.Project_Code}
-              onChange={handleChange}
+              value={formik.values.Project_Code}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.Project_Code &&
+                Boolean(formik.errors.Project_Code)
+              }
+              helperText={
+                formik.touched.Project_Code && formik.errors.Project_Code
+              }
               required
               fullWidth
-            >
-              {projects.map((project) => (
-                <MenuItem key={project.id} value={project.code}>
-                  {project.code}
-                </MenuItem>
-              ))}
-            </TextField>
+            />
           </Grid>
           <Grid item xs={12}>
             <TextField
               label="Milestone Name"
               name="Milestone_Name"
-              value={task.Milestone_Name}
-              onChange={handleChange}
+              value={formik.values.Milestone_Name}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.Milestone_Name &&
+                Boolean(formik.errors.Milestone_Name)
+              }
+              helperText={
+                formik.touched.Milestone_Name && formik.errors.Milestone_Name
+              }
               required
               fullWidth
             />
@@ -125,14 +128,21 @@ const TaskForm = () => {
               select
               label="Resource Email"
               name="Resource_Email"
-              value={task.Resource_Email}
-              onChange={handleChange}
+              value={formik.values.Resource_Email}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.Resource_Email &&
+                Boolean(formik.errors.Resource_Email)
+              }
+              helperText={
+                formik.touched.Resource_Email && formik.errors.Resource_Email
+              }
               required
               fullWidth
             >
-              {resources.map((resource) => (
-                <MenuItem key={resource.id} value={resource.email}>
-                  {resource.email}
+              {resources.map((item) => (
+                <MenuItem key={item?.Email} value={item?.Email}>
+                  {item?.Email}
                 </MenuItem>
               ))}
             </TextField>
@@ -141,8 +151,16 @@ const TaskForm = () => {
             <TextField
               label="Task Description"
               name="Task_description"
-              value={task.Task_description}
-              onChange={handleChange}
+              value={formik.values.Task_description}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.Task_description &&
+                Boolean(formik.errors.Task_description)
+              }
+              helperText={
+                formik.touched.Task_description &&
+                formik.errors.Task_description
+              }
               required
               multiline
               rows={4}
@@ -154,11 +172,11 @@ const TaskForm = () => {
               type="date"
               label="Start Date"
               name="Start"
-              value={task.Start}
-              onChange={handleChange}
-              InputLabelProps={{
-                shrink: true,
-              }}
+              value={formik.values.Start}
+              onChange={formik.handleChange}
+              error={formik.touched.Start && Boolean(formik.errors.Start)}
+              helperText={formik.touched.Start && formik.errors.Start}
+              InputLabelProps={{shrink: true}}
               fullWidth
             />
           </Grid>
@@ -167,11 +185,11 @@ const TaskForm = () => {
               type="date"
               label="End Date"
               name="End"
-              value={task.End}
-              onChange={handleChange}
-              InputLabelProps={{
-                shrink: true,
-              }}
+              value={formik.values.End}
+              onChange={formik.handleChange}
+              error={formik.touched.End && Boolean(formik.errors.End)}
+              helperText={formik.touched.End && formik.errors.End}
+              InputLabelProps={{shrink: true}}
               fullWidth
             />
           </Grid>
@@ -179,8 +197,15 @@ const TaskForm = () => {
             <TextField
               label="Estimated Time (in hours)"
               name="Estimated_time"
-              value={task.Estimated_time}
-              onChange={handleChange}
+              value={formik.values.Estimated_time}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.Estimated_time &&
+                Boolean(formik.errors.Estimated_time)
+              }
+              helperText={
+                formik.touched.Estimated_time && formik.errors.Estimated_time
+              }
               fullWidth
               placeholder="e.g., 2.5 for 2 hours 30 minutes"
             />
@@ -190,11 +215,11 @@ const TaskForm = () => {
               type="date"
               label="Due Date"
               name="Due_date"
-              value={task.Due_date}
-              onChange={handleChange}
-              InputLabelProps={{
-                shrink: true,
-              }}
+              value={formik.values.Due_date}
+              onChange={formik.handleChange}
+              error={formik.touched.Due_date && Boolean(formik.errors.Due_date)}
+              helperText={formik.touched.Due_date && formik.errors.Due_date}
+              InputLabelProps={{shrink: true}}
               fullWidth
             />
           </Grid>
@@ -202,8 +227,8 @@ const TaskForm = () => {
             <TextField
               label="Completed Time"
               name="Completed_time"
-              value={task.Completed_time}
-              onChange={handleChange}
+              value={formik.values.Completed_time}
+              onChange={formik.handleChange}
               fullWidth
               placeholder="Completed time in hours"
             />
@@ -212,7 +237,12 @@ const TaskForm = () => {
             <input
               type="file"
               name="Attachment"
-              onChange={handleChange}
+              onChange={(event) => {
+                formik.setFieldValue(
+                  "Attachment",
+                  event.currentTarget.files[0]
+                );
+              }}
               required // Make optional based on your requirements
             />
           </Grid>
@@ -220,13 +250,13 @@ const TaskForm = () => {
             <TextField
               label="Description"
               name="Description"
-              value={task.Description}
-              onChange={handleChange}
+              value={formik.values.Description}
+              onChange={formik.handleChange}
               fullWidth
             />
           </Grid>
         </Grid>
-        <Button>Create Task</Button>
+        <Button type="submit">Create Task</Button>
       </form>
     </Container>
   );

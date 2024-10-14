@@ -1,5 +1,7 @@
 @import "../../mixins/basic_style";
 @import "./contact_head";
+@import "./contactgetintouch";
+
 
 .contact_header {
   @include basic_style;

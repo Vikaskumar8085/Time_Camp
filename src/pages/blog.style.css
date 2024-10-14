@@ -1,0 +1,136 @@
+.blog_header {
+  width: 100%;
+  padding: 40px 20px;
+}
+
+.blog_header .blog_header_title {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.blog_header .blog_header_title h1 {
+  text-align: center;
+  margin: 10px 0px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 2em;
+}
+.blog_header .blog_header_contetn {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.blog_header .blog_header_contetn p {
+  text-align: center;
+  letter-spacing: 0.8px;
+  word-spacing: 3px;
+  padding: 0.7px;
+  color: rgba(53, 51, 51, 0.8);
+  font-size: 14px;
+}
+
+/* my blog wrapper */
+.my_blog_wrapper {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin: 40px 0px;
+}
+
+.my_blog_wrapper .my_blog_title {
+  margin: 10px 0px;
+  width: 100%;
+  display: block;
+}
+
+.my_blog_wrapper .my_blog_title h1 {
+  display: inline-block;
+  overflow: hidden;
+  padding: 10px;
+  width: 100%;
+  font-size: 2em;
+  position: relative;
+  font-weight: 400;
+  color: rgba(44, 44, 44, 0.8);
+  text-align: center;
+}
+.my_blog_wrapper .my_blog_title h1::after {
+  content: "";
+  margin: 10px 0px;
+  transform: translate(-50%, -50%);
+  top: 80%;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  transition: all linear 0.4s;
+  background-color: #192734;
+}
+.my_blog_wrapper .my_blog_title h1:hover:after {
+  width: 10%;
+}
+.my_blog_wrapper .my_blog_title h1 span {
+  color: orange;
+}
+
+.my_blog_wrapper .my_blog_box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.my_blog_wrapper .my_blog_box .my_blog_card {
+  margin: 10px;
+  width: 320px;
+  box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(106, 106, 106, 0.1);
+  border-radius: 4px;
+}
+
+.my_blog_card_image {
+  display: block;
+  overflow: hidden;
+  width: 310px;
+  position: relative;
+  height: 250px;
+  transition: all linear 0.4s;
+}
+
+.my_blog_card_image img {
+  width: 100%;
+  height: 100%;
+  transition: all linear 0.4s;
+}
+
+.my_blog_card_image:hover img {
+  transform: rotate(10deg) scale(1.2);
+}
+
+.my_blog_card_content {
+  margin: 10px 0px;
+  position: relative;
+  display: block;
+  padding: 10px;
+}
+
+.my_blog_card_content h1 {
+  font-size: 1.2em;
+  margin: 10px 0px;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 600;
+  text-align: start;
+}
+
+.my_blog_card_content p {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  word-spacing: 1.4px;
+  text-transform: capitalize;
+  margin: 10px 0px;
+  letter-spacing: 1px;
+  text-align: justify;
+}

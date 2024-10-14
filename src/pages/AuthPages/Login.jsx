@@ -96,7 +96,7 @@ function Login() {
       if (response?.data?.success) {
         dispatch(setLogin(response?.data?.message));
         dispatch(setLoader(false));
-        navigate("/dashboard");
+        navigate("/super-admin-dashboard");
       }
     },
   });

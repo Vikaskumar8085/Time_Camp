@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import Wrapper from "../common/wrapper/Wrapper";
+import ContactGetIntouch from "../components/ContactComponent/ContactGetIntouch";
 import ContactHead from "../components/ContactComponent/ContactHead";
 import ContactHeader from "../components/ContactComponent/ContactHeader";
 import ContactNewsLetter from "../components/ContactComponent/ContactNewsLetter/ContactNewsLetter";
@@ -15,8 +16,9 @@ function Contact() {
       </Helmet>
       <Wrapper>
         <ContactHead />
-        <ContactHeader />
-        <Howcanwehelp />
+        <ContactGetIntouch/>
+        {/* <ContactHeader />
+        <Howcanwehelp /> */}
         {/* <ContactNewsLetter /> */}
         <LocationMap />
       </Wrapper>
