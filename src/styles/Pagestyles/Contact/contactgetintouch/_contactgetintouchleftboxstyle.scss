@@ -1,0 +1,46 @@
+.contactgetintouch_section_left_box {
+    display : block;
+    overflow: hidden;
+    position: relative;
+
+    .contactgetintouch_section_left_box_lists {
+
+        ul {
+            display        : flex;
+            flex-direction : column;
+            justify-content: start;
+
+
+            li {
+                list-style-type: disc;
+
+                .contact-box {
+                    display        : flex;
+                    justify-content: start;
+                    margin         : 20px 0px;
+                    align-items    : center;
+
+                    .contact-icons {
+                        width        : 50px;
+                        height       : 50px;
+                        border-radius: 50%;
+
+                        border:1px solid black img {
+                            height: 100%;
+                            margin: 10px 10px;
+                            width : 100%;
+
+                        }
+                    }
+
+                    .contact-content {
+                        padding: 0px 20px;
+                    }
+                }
+
+
+
+            }
+        }
+    }
+}

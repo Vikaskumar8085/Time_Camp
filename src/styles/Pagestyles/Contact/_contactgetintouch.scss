@@ -1,41 +1,50 @@
 .contact_get_in_touch {
-  display: block;
-  padding: 30px 0px;
+  display : block;
+  padding : 30px 0px;
   position: relative;
-  overflow: hidden;
+  background-image: linear-gradient(0deg, rgba(226, 226, 226, 0.25262605042016806) 0%, rgba(255, 255, 255, 1) 100%),
+    url("../../../assest/bgcontact.jpg");
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position  : center;
+  background-repeat    : no-repeat;
+  background-size      : cover;
+  overflow             : hidden;
 
   .contactgetintouch_box {
-    display: flex;
+    display        : flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction : column;
 
     .contactgetintouch_title {
-      position: relative;
-      display: block;
-      overflow: hidden;
+      position  : relative;
+      display   : block;
+      overflow  : hidden;
       text-align: center;
-      width: 100%;
+      width     : 100%;
+
       h1 {
-        font-size: 2.5em;
-        text-align: center;
-        color: rgba(0, 0, 0, 0.8);
+        font-size  : 2.5em;
+        text-align : center;
+        color      : rgba(0, 0, 0, 0.8);
         font-weight: 400;
-        position: relative;
-        display: inline-block;
+        position   : relative;
+        display    : inline-block;
 
         &::first-letter {
           color: orange;
         }
 
         &::after {
-          content: " ";
-          height: 2px;
-          width: 35%;
+          content         : " ";
+          height          : 2px;
+          width           : 35%;
           background-color: var(--text-secondary-color);
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          transition: width 0.3s;
+          position        : absolute;
+          bottom          : 0;
+          left            : 0;
+          transition      : width 0.3s;
         }
 
         &:hover:after {
@@ -43,16 +52,18 @@
         }
       }
     }
+
     .contactgetintouch_paragraph {
       position: relative;
       overflow: hidden;
-      display: block;
+      display : block;
+
       p {
-        text-align: center;
-        font-size: 1em;
-        margin: 10px 0px;
+        text-align    : center;
+        font-size     : 1em;
+        margin        : 10px 0px;
         letter-spacing: 0.6px;
-        word-spacing: 0.6px;
+        word-spacing  : 0.6px;
         text-transform: capitalize;
       }
     }
@@ -61,21 +72,26 @@
   //   contact get in touch two
 
   .contactgetintouch_section_two {
-    display: block;
+    display : block;
     overflow: hidden;
-    background-image: 
-      url("../../../assest/bgcontact.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 100%;
-
-    height: 100vh;
+    position: relative;
 
     .contactgetintouch_section_two_box {
-      width: 100%;
+      width           : 100%;
       background-color: white;
-      height: 80vh;
+      border-radius   : 8px;
+      margin          : 20px 0px;
+      padding         : 20px;
+      box-shadow      : 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+
+      .contact_get_in_touch_section_wrapper {
+        display: flex;
+        @import "./contactgetintouch/contactgetintouchleftboxstyle";
+        @import "./contactgetintouch/contactgetintouchrightboxstyle";
+
+
+
+      }
     }
   }
 }
