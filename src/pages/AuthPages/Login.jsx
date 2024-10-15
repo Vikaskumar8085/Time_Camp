@@ -1,19 +1,21 @@
-import React, { useState } from "react";
-import { Suspense, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
-import { setLoader } from "../../redux/slices/loaderSlice";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useState} from "react";
+import {Suspense, useEffect} from "react";
+import {setLoader} from "../../redux/slices/loaderSlice";
+import {useDispatch} from "react-redux";
 import toast from "react-hot-toast";
-import { setLogin } from "../../redux/slices/authslices/authslice";
-import { useNavigate } from "react-router-dom";
-import { useGoogleLogin } from "@react-oauth/google";
+import {setLogin} from "../../redux/slices/authslices/authslice";
+import {useNavigate} from "react-router-dom";
+import {useGoogleLogin} from "@react-oauth/google";
 import Loader from "../../common/Loader";
 import LoginTitle from "../../components/AuthComponent/Login/LoginTitle";
 import LoginForm from "../../components/AuthComponent/Login/LoginForm";
-import { GoogleLoginAuth, loginauth } from "../../apiservice/auth";
+import {GoogleLoginAuth, loginauth} from "../../apiservice/auth";
 import GoogleIcons from "../../assest/icons/loginIcons/google.png";
 import Button from "../../common/Button";
-import { loginResourseapicall } from "../../apiservice/auth/resourseservice";
+import Lottie from "react-lottie-player";
+import {loginResourseapicall} from "../../apiservice/auth/resourseservice";
+import loginanimation from "../../assest/lollitejson/loginanimation.json";
+import {Container, Grid} from "@mui/material";
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -109,35 +111,77 @@ function Login() {
     <>
       <Suspense fallback={<Loader />}>
         <div className="login_wrapper">
-          <div className="login_box">
-            <LoginTitle />
-            <LoginForm handleSubmit={handleSubmit} />
-            <Button onClick={() => login()} className={"btn-google-auto"}>
-              <img src={GoogleIcons} alt="no-image" />
-              <span> Login with google </span>
-            </Button>
+          <Container>
+            <div className="login_box">
+              <Grid container spacing={2}>
+                <Grid
+                  item
+                  md={6}
+                  xs={12}
+                  sm={12}
+                  lg={6}
+                  sx={{display: {xs: "none", md: "block"}}}
+                >
+                  <div className="login_leftside_box">
+                    <div className="login_leftside_box_content">
+                      <div className="leftside_box_content_title">
+                        <h1>Welcome! </h1>
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                        </p>
+                      </div>
+                      <div className="leftside_box_animation">
+                        <Lottie
+                          loop
+                          animationData={loginanimation}
+                          play
+                          style={{width: "100%", height: "100%"}}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </Grid>
 
-            <div>
-              <input
-                type="radio"
-                id="employee"
-                name="role"
-                value="Employee"
-                onChange={handleRoleChange}
-              />
-              <label htmlFor="employee">Employee</label>
+                <Grid item md={6} sm={12} lg={6} xs={12}>
+                  <div className="login_rightside_box">
+                    <LoginTitle />
+                    <LoginForm handleSubmit={handleSubmit} />
+
+                    <div className="login_roles_container">
+                      <div className="login_roles">
+                        <input
+                          type="radio"
+                          id="employee"
+                          name="role"
+                          value="Employee"
+                          onChange={handleRoleChange}
+                        />
+                        <label htmlFor="employee">Employee</label>
+                      </div>
+                      <div className="login_roles">
+                        <input
+                          type="radio"
+                          id="contractor"
+                          name="role"
+                          value="Contractor"
+                          onChange={handleRoleChange}
+                        />
+                        <label htmlFor="contractor">Contractor</label>
+                      </div>
+                    </div>
+
+                    <button
+                      className={"login_google_btn"}
+                      onClick={() => login()}
+                    >
+                      <img src={GoogleIcons} alt="no-image" />
+                      <span> Login with google </span>
+                    </button>
+                  </div>
+                </Grid>
+              </Grid>
             </div>
-            <div>
-              <input
-                type="radio"
-                id="contractor"
-                name="role"
-                value="Contractor"
-                onChange={handleRoleChange}
-              />
-              <label htmlFor="contractor">Contractor</label>
-            </div>
-          </div>
+          </Container>
         </div>
       </Suspense>
     </>

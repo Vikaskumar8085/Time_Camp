@@ -16,7 +16,7 @@ function Contact() {
       <Wrapper>
         <ContactHead />
         <ContactGetIntouch />
-        <ContactNewsLetter />
+        {/* <ContactNewsLetter /> */}
         <LocationMap />
       </Wrapper>
     </>

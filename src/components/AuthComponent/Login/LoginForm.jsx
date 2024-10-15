@@ -1,12 +1,12 @@
 import React from "react";
 import Input from "../../../common/Input/Input";
 import Button from "../../../common/Button";
-import { Link } from "react-router-dom";
-import { useFormik } from "formik";
+import {Link} from "react-router-dom";
+import {useFormik} from "formik";
 import InputPassword from "../../../common/Input/InputPassword";
-import { validate } from "./validation";
+import {validate} from "./validation";
 
-function LoginForm({ handleSubmit }) {
+function LoginForm({handleSubmit}) {
   const formik = useFormik({
     initialValues: {
       Email: "",
@@ -32,7 +32,7 @@ function LoginForm({ handleSubmit }) {
             value={formik.values.Email}
           />
           {formik.touched.Email && formik.errors.Email ? (
-            <div style={{ color: "red", marginLeft: "5px" }}>
+            <div style={{color: "red", marginLeft: "5px"}}>
               {formik.errors.Email}
             </div>
           ) : null}
@@ -44,30 +44,27 @@ function LoginForm({ handleSubmit }) {
             placeholder="Please Enter Your Password "
           />
           {formik.touched.Password && formik.errors.Password ? (
-            <div style={{ color: "red", marginLeft: "5px" }}>
+            <div style={{color: "red", marginLeft: "5px"}}>
               {formik.errors.Password}
             </div>
           ) : null}
-          <Link
-            to={"/forget-password"}
-            style={{
-              float: "right",
-              margin: "5px 0px",
-              textDecoration: "none ",
-            }}
-          >
+          <Link to={"/forget-password"} style={{}}>
             Forget Password
           </Link>
           <br />
-          <Button type="submit">Submit</Button>
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <Button className={"login-form-btn"} type="submit">
+            Submit
+          </Button>
+          <div
+            style={{display: "flex", justifyContent: "center", color: "white"}}
+          >
             <p>or</p>
           </div>
         </form>
 
         <div className="login_footer">
           <h1>
-            if your not register please <Link to="/signup">click here</Link>
+            Don't have an account <Link to="/signup">sign up</Link>
           </h1>
         </div>
       </div>

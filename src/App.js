@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import {useSelector} from "react-redux";
 import {Route, Routes} from "react-router-dom";
 import ScrollUp from "./common/ScrollUp/ScrollUp";
@@ -45,6 +45,8 @@ import ClientInfo from "./pages/AdminPages/Client/ClientInfo";
 import Contractorinfo from "./pages/AdminPages/Contractor/Contractorinfo";
 import Task from "./pages/Task/Task";
 import ContractorTeam from "./pages/ContractorPages/ContractorTeam/ContractorTeam";
+import AOS from "aos";
+import "aos/dist/aos.css";
 function App() {
   const [isScroll, setIsScroll] = useState(false);
   const isLoad = useSelector((state) => state.loader.loading);
@@ -58,6 +60,10 @@ function App() {
       setIsScroll(false);
     }
   });
+
+  React.useEffect(() => {
+    AOS.init();
+  }, [0]);
 
   return (
     <>

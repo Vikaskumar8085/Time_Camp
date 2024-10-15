@@ -1,11 +1,14 @@
-import React, { lazy, Suspense, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
-import { useDispatch } from "react-redux";
-import { registerauth } from "../../apiservice/auth";
+import React, {lazy, Suspense, useEffect} from "react";
+import {Helmet} from "react-helmet-async";
+import {useDispatch} from "react-redux";
+import {registerauth} from "../../apiservice/auth";
 import toast from "react-hot-toast";
-import { setLoader } from "../../redux/slices/loaderSlice";
-import { useNavigate } from "react-router-dom";
+import {setLoader} from "../../redux/slices/loaderSlice";
+import {useNavigate} from "react-router-dom";
 import Loader from "../../common/Loader";
+import {Container} from "@mui/system";
+import {Grid} from "@mui/material";
+import rgistericon from "../../assest/icons/authicons/registerbg.png";
 const SignUpForm = lazy(() =>
   import("../../components/AuthComponent/SignUp/SignUpForm")
 );
@@ -54,14 +57,32 @@ const SiginUp = () => {
           <title>Sign Up</title>
         </Helmet>
         <div className="Register_wrapper">
-          <div className="Register_box">
-            <div className="Register_RightSide">
-              <div className="Register_title">
-                <h1>Register</h1>
-              </div>
-              <SignUpForm hsubmit={handleSubmit} />
+          <Container>
+            <div className="Register_box">
+              <Grid container spacing={2}>
+                <Grid
+                  item
+                  md={6}
+                  xs={12}
+                  sm={12}
+                  lg={6}
+                  sx={{display: {xs: "none", md: "block"}}}
+                >
+                  <div className="Register_LeftSide">
+                    <img src={rgistericon} alt="" srcset="" />
+                  </div>
+                </Grid>
+                <Grid item md={6} xs={12} sm={12} lg={6}>
+                  <div className="Register_RightSide">
+                    <div className="Register_title">
+                      <h1>Resitration Form</h1>
+                    </div>
+                    <SignUpForm hsubmit={handleSubmit} />
+                  </div>
+                </Grid>
+              </Grid>
             </div>
-          </div>
+          </Container>
         </div>
       </Suspense>
     </>

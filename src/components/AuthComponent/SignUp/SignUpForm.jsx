@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Input from "../../../common/Input/Input";
-import { useFormik } from "formik";
-import { validate } from "./signupvalidation";
+import {useFormik} from "formik";
+import {validate} from "./signupvalidation";
 import InputPassword from "../../../common/Input/InputPassword";
 import Button from "../../../common/Button";
-function SignUpForm({ hsubmit }) {
+function SignUpForm({hsubmit}) {
   const formik = useFormik({
     initialValues: {
       FirstName: "",
@@ -32,7 +32,7 @@ function SignUpForm({ hsubmit }) {
           {...formik.getFieldProps("FirstName")}
         />
         {formik.touched.FirstName && formik.errors.FirstName ? (
-          <div style={{ color: "red", marginTop: "5px" }}>
+          <div style={{color: "red", marginTop: "5px"}}>
             {formik.errors.FirstName}
           </div>
         ) : null}
@@ -44,7 +44,7 @@ function SignUpForm({ hsubmit }) {
           {...formik.getFieldProps("LastName")}
         />
         {formik.touched.LastName && formik.errors.LastName ? (
-          <div style={{ color: "red", marginTop: "5px" }}>
+          <div style={{color: "red", marginTop: "5px"}}>
             {formik.errors.LastName}
           </div>
         ) : null}
@@ -56,7 +56,7 @@ function SignUpForm({ hsubmit }) {
           {...formik.getFieldProps("Email")}
         />
         {formik.touched.Email && formik.errors.Email ? (
-          <div style={{ color: "red", marginTop: "5px" }}>
+          <div style={{color: "red", marginTop: "5px"}}>
             {formik.errors.Email}
           </div>
         ) : null}
@@ -68,11 +68,11 @@ function SignUpForm({ hsubmit }) {
           {...formik.getFieldProps("Password")}
         />
         {formik.touched.Password && formik.errors.Password ? (
-          <div style={{ color: "red", marginTop: "5px" }}>
+          <div style={{color: "red", marginTop: "5px"}}>
             {formik.errors.Password}
           </div>
         ) : null}
-        <div style={{ display: "flex" }}>
+        <div style={{display: "flex"}}>
           <input
             autocomplete="off"
             type="checkbox"
@@ -86,11 +86,11 @@ function SignUpForm({ hsubmit }) {
         </div>
 
         {formik.touched.Term && formik.errors.Term ? (
-          <div style={{ color: "red", marginTop: "5px" }}>
+          <div style={{color: "red", marginTop: "5px"}}>
             {formik.errors.Term}
           </div>
         ) : null}
-        <Button type={"submit"}>Submit</Button>
+        <Button className="register_btn" type={"submit"}>Submit</Button>
       </form>
 
       <div className="register_footer">
